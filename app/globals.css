@@ -3,24 +3,35 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-default: var(--font-inter);
+  
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #0E0E0F;
+    --background-secondary: #131314;
     --foreground: #ededed;
+    --foreground-muted: #81888F;
+    --border: #26262C;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif, var(--font-default);
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.bg-secondary {
+  background-color: var(--background-secondary);
+}
+
+.border-default {
+  border-color: var(--border);
+}
+
+.container-small {
+  width: 1000px;
 }
