@@ -1,8 +1,6 @@
-import { Calendar, Flower, Folder, ListFilter } from "lucide-react";
+import { Calendar, Flower, Folder } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Input } from "../components/input";
-import { Button } from "../components/btn";
 
 const posts = [
   {
@@ -48,7 +46,7 @@ const posts = [
     folder: "Programming",
   },
   {
-    title: "Raspi Part 1: Setup & Cloudflare Tunnel",
+    title: "Understanding Zettelkasten",
     description: "A deep dive into the Zettelkasten method.",
     date: "2023-07-10",
     link: "/posts/understanding-zettelkasten",
@@ -69,71 +67,9 @@ const posts = [
   },
 ];
 
-const CardSecondary = ({
-  title,
-  image,
-  description,
-  date,
-  link,
-  tags,
-  folder,
-}: any) => {
-  return (
-    <div className="bg-[#131314] p-6 rounded-sm transition-shadow border border-default duration-200 col-span-2 h-full flex">
-      <div className="w-[50%] h-full flex-shrink-0 relative">
-        <img
-          src={image}
-          alt={title}
-          className="object-cover rounded-md absolute top-0 left-0 w-full h-full"
-          loading="lazy"
-        />
-      </div>
-      <div className="flex flex-col items-center p-6">
-        <div className="flex flex-col gap-2 w-full">
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 flex gap-1 items-center">
-            <Calendar size={16} />
-            {new Date(date).toLocaleDateString(undefined, {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </p>
-          {/* <p className="text-sm text-zinc-500 dark:text-zinc-400 flex gap-1 items-center">
-            <Folder size={16} /> {folder}
-          </p> */}
-          <Link href={link} className="text-lg font-medium">
-            {title}
-          </Link>
-          <p className="text-zinc-600 dark:text-zinc-400 break-words hyphens-auto">
-            {description}
-          </p>
-          <div className="tags flex flex-wrap gap-2 mt-2">
-            {tags.map((tag: string, index: number) => (
-              <Link
-                href={`/tags/${tag}`}
-                key={index}
-                className="bg-zinc-900 hover:bg-zinc-800 text-zinc-300 px-2 py-1 rounded-sm text-xs"
-              >
-                {tag}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const Card = ({ title, image, description, date, link, tags, folder }: any) => {
   return (
-    <div className=" bg-[#131314] p-6 rounded-sm transition-shadow border border-default duration-200 col-span-1 h-full">
-      <img
-        src={image}
-        alt={title}
-        className="object-cover rounded-sm mb-4 w-full h-[125px]"
-        loading="lazy"
-      />
-
+    <div className=" bg-[#131314] p-6 rounded-sm transition-shadow border border-default duration-200 col-span-1 h-full flex justify-between gap-4">
       <div className="gap-2 flex flex-col h-full">
         <p className="text-sm text-zinc-500 dark:text-zinc-400 flex gap-1 items-center">
           <Calendar size={16} />
@@ -165,24 +101,58 @@ const Card = ({ title, image, description, date, link, tags, folder }: any) => {
           ))}
         </div>
       </div>
+      <div className="flex-shrink-0 w-[150px] h-full relative">
+        <img
+          src={image}
+          alt={title}
+          className="object-cover rounded-sm absolute top-0 left-0 w-full h-full"
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 };
 
+import * as React from "react";
+import { cn } from "@/lib/utils";
+
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          // Base styles
+          "flex h-10 w-full rounded-md border border-default bg-secondary px-3 py-2 text-base ring-offset-background",
+          // File input specific styles
+          "file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground",
+          // Placeholder styles
+          "placeholder:text-muted-foreground",
+          // Focus styles
+          "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
+          // Disabled styles
+          "disabled:cursor-not-allowed disabled:opacity-50",
+          // Mobile responsive text size
+          "md:text-sm",
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
+);
+Input.displayName = "Input";
+
 export default function Home() {
   return (
     <div className="w-full flex justify-center py-4">
-      <div className="container-small mt-16 mx-4">
+      <div className="max-w-[850px] mt-16 mx-4">
         <div className="hero-section mb-8">
-          <div className="flex gap-2 items-center">
-            <div className="text-3xl font-bold">Sumi Library</div>
-            <img
-              src="/cherry-blossom-white.svg"
-              className="w-12 h-12 mt-2 text-red-500"
-              alt="Cherry Blossom"
-            />
-          </div>
-
+          <div className="text-3xl font-bold">Sumi Library</div>
           <div className="text-xl font-light text-zinc-400">
             Tim's Digital Garden
           </div>
@@ -190,36 +160,20 @@ export default function Home() {
             Welcome. This is my little, minimalistic digital garden on the
             Internet.
           </p>
-          <div className="mt-4 flex gap-2">
+          <div className="mt-4">
             <Input
               type="text"
               placeholder="What are you searching for?"
               className="w-full max-w-md"
             />
-            <Button className="flex items-center justify-center w-min">
-              <ListFilter size={16} />
-            </Button>
           </div>
         </div>
+
         <div className="">
           {posts.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6">
               {posts.map((post, index) => {
-                const isBig = index % 4 === 0 || index % 4 === 3;
-                if (false) {
-                  return (
-                    <CardSecondary
-                      key={post.title}
-                      title={post.title}
-                      image={post.image}
-                      description={post.description}
-                      date={post.date}
-                      link={post.link}
-                      tags={post.tags}
-                      folder={post.folder}
-                    />
-                  );
-                }
+                if (index > 2) return null;
                 return (
                   <Card
                     key={post.title}
