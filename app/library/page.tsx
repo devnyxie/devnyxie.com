@@ -14,7 +14,6 @@ const posts = [
     image:
       "https://i.pinimg.com/736x/a3/8d/7c/a38d7c78e53ad9a6aae7820726a7b0d0.jpg",
     tags: ["C", "algorithm"],
-    folder: "Programming",
   },
   {
     title: "Go Types in Depth",
@@ -23,8 +22,7 @@ const posts = [
     link: "/posts/the-art-of-note-taking",
     image:
       "https://i.pinimg.com/736x/47/07/7a/47077afadae63d23218df3b9920b639b.jpg",
-    tags: ["Go"],
-    folder: "Programming",
+    tags: ["Go", "Basics"],
   },
   {
     title: "so_long: 2D Game in C",
@@ -34,8 +32,7 @@ const posts = [
     link: "/posts/building-a-digital-garden",
     image:
       "https://i.pinimg.com/736x/3c/ab/89/3cab8929fcd398e17efeeb29435a6782.jpg",
-    tags: ["knowledge", "digital garden"],
-    folder: "Knowledge",
+    tags: ["C", "Game Development", "MinilibX"],
   },
   {
     title: "GNL: Efficient Buffer Management in C",
@@ -45,7 +42,6 @@ const posts = [
     image:
       "https://i.pinimg.com/736x/04/9c/6a/049c6ae1db6f8b571cefdb6e95735edd.jpg",
     tags: ["C", "Memory Management", "Low-Level Programming"],
-    folder: "Programming",
   },
   {
     title: "Raspi Part 1: Setup & Cloudflare Tunnel",
@@ -55,7 +51,6 @@ const posts = [
     image:
       "https://i.pinimg.com/736x/49/3f/d6/493fd6b10b2fe259414f7d06e4625647.jpg",
     tags: ["knowledge", "zettelkasten"],
-    folder: "Knowledge",
   },
   {
     title: "The Power of Linking Notes 3",
@@ -65,68 +60,15 @@ const posts = [
     image:
       "https://i.pinimg.com/736x/50/dc/41/50dc41c3f1d6f199d09533c7faa867e2.jpg",
     tags: ["knowledge", "linking notes"],
-    folder: "Knowledge",
   },
 ];
 
-const CardSecondary = ({
-  title,
-  image,
-  description,
-  date,
-  link,
-  tags,
-  folder,
-}: any) => {
-  return (
-    <div className="bg-[#131314] p-6 rounded-sm transition-shadow border border-default duration-200 col-span-2 h-full flex">
-      <div className="w-[50%] h-full flex-shrink-0 relative">
-        <img
-          src={image}
-          alt={title}
-          className="object-cover rounded-md absolute top-0 left-0 w-full h-full"
-          loading="lazy"
-        />
-      </div>
-      <div className="flex flex-col items-center p-6">
-        <div className="flex flex-col gap-2 w-full">
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 flex gap-1 items-center">
-            <Calendar size={16} />
-            {new Date(date).toLocaleDateString(undefined, {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </p>
-          {/* <p className="text-sm text-zinc-500 dark:text-zinc-400 flex gap-1 items-center">
-            <Folder size={16} /> {folder}
-          </p> */}
-          <Link href={link} className="text-lg font-medium">
-            {title}
-          </Link>
-          <p className="text-zinc-600 dark:text-zinc-400 break-words hyphens-auto">
-            {description}
-          </p>
-          <div className="tags flex flex-wrap gap-2 mt-2">
-            {tags.map((tag: string, index: number) => (
-              <Link
-                href={`/tags/${tag}`}
-                key={index}
-                className="bg-zinc-900 hover:bg-zinc-800 text-zinc-300 px-2 py-1 rounded-sm text-xs"
-              >
-                {tag}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const Card = ({ title, image, description, date, link, tags, folder }: any) => {
+  const borderedClass = "";
   return (
-    <div className=" bg-[#131314] p-6 rounded-sm transition-shadow border border-default duration-200 col-span-1 h-full">
+    <div
+      className={`bg-background-secondary p-6 rounded-sm transition-shadow ${borderedClass} duration-200 col-span-1 h-full`}
+    >
       <img
         src={image}
         alt={title}
@@ -158,7 +100,8 @@ const Card = ({ title, image, description, date, link, tags, folder }: any) => {
             <Link
               href={`/tags/${tag}`}
               key={index}
-              className="bg-zinc-900 hover:bg-zinc-800 text-zinc-300 px-2 py-1 rounded-sm text-xs"
+              className="bg-zinc-900 hover:bg-zinc-800 text-zinc-300 px-2 py-1 rounded-sm text-xs "
+              // className="border border-yellow-500 bg-amber-500/10 hover:bg-amber-500/30 px-2 py-1 rounded-full text-xs transition-colors duration-200"
             >
               {tag}
             </Link>
@@ -172,7 +115,7 @@ const Card = ({ title, image, description, date, link, tags, folder }: any) => {
 export default function Home() {
   return (
     <div className="w-full flex justify-center py-4">
-      <div className="container-small mt-16 mx-4">
+      <div className="container-medium mt-16 mx-4">
         <div className="hero-section mb-8">
           <div className="flex gap-2 items-center">
             <div className="text-3xl font-bold">Sumi Library</div>
@@ -201,25 +144,11 @@ export default function Home() {
             </Button>
           </div>
         </div>
+        <hr className="mt-8 mb-8 text-outline" />
         <div className="">
           {posts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {posts.map((post, index) => {
-                const isBig = index % 4 === 0 || index % 4 === 3;
-                if (false) {
-                  return (
-                    <CardSecondary
-                      key={post.title}
-                      title={post.title}
-                      image={post.image}
-                      description={post.description}
-                      date={post.date}
-                      link={post.link}
-                      tags={post.tags}
-                      folder={post.folder}
-                    />
-                  );
-                }
                 return (
                   <Card
                     key={post.title}
@@ -229,7 +158,6 @@ export default function Home() {
                     date={post.date}
                     link={post.link}
                     tags={post.tags}
-                    folder={post.folder}
                   />
                 );
               })}

@@ -1,37 +1,76 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --font-default: var(--font-inter);
-  
+  /* Container sizes */
+  --container-small: 850px;
+  --container-medium: 1000px;
+  --container-large: 1200px;
 }
-@media (prefers-color-scheme: dark) {
+
+@theme {
+  /* Theme Aspects */
+  --color-background: var(--background);
+
+  --color-background-secondary: var(--background-secondary);
+  --color-background-secondary-hover: var(--background-secondary-hover);
+
+  --color-foreground: var(--foreground);
+
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-secondary-hover: var(--foreground-secondary-hover);
+
+  --color-outline: var(--outline);
+}
+
+@layer base {
   :root {
-    --background: #0E0E0F;
-    --background-secondary: #131314;
-    --foreground: #ededed;
-    --foreground-muted: #81888F;
-    --border: #26262C;
+    --background: #ffffff;
+
+    --background-secondary: var(--color-zinc-100);
+    --background-secondary-hover: var(--color-zinc-200);
+
+    --foreground: var(--color-zinc-900);
+
+    --foreground-secondary: var(--color-zinc-500);
+    --foreground-secondary-hover: var(--color-zinc-800);
+
+    --outline: var(--color-zinc-200);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #0e0e0f;
+
+      --background-secondary: #131314;
+      --background-secondary-hover: var(--color-zinc-800);
+
+      --foreground: var(--color-zinc-100);
+
+      --foreground-secondary: var(--color-zinc-400);
+      --foreground-secondary-hover: var(--color-zinc-200);
+
+      --outline: var(--color-zinc-800);
+    }
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif, var(--font-default);
   width: 100vw;
   min-height: 100vh;
 }
 
-.bg-secondary {
-  background-color: var(--background-secondary);
-}
-
-.border-default {
-  border-color: var(--border);
-}
-
+/* Containers */
 .container-small {
-  width: 1000px;
+  width: var(--container-small);
+  margin: 0 auto;
+}
+
+.container-medium {
+  width: var(--container-medium);
+  margin: 0 auto;
+}
+
+.container-large {
+  width: var(--container-large);
+  margin: 0 auto;
 }

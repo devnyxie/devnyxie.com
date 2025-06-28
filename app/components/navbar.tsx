@@ -13,16 +13,16 @@ interface NavbarProps {
 export default function Navbar({ routes }: NavbarProps) {
   const pathname = usePathname();
   return (
-    <div className=" border-b border-b-zinc-800 w-full flex justify-center">
-      <div className="container-small flex justify-start">
+    <div className="border-b border-outline w-full flex justify-center">
+      <div className="container-medium flex justify-start mx-2">
         {routes.map((route) => {
           return (
             <div
               key={`nav-link-${route.name}`}
               className={`capitalize ${
                 pathname === route.path
-                  ? "text-white border-b border-white opacity-100"
-                  : "text-zinc-400 hover:text-zinc-200 opacity-60"
+                  ? "border-b border-foreground "
+                  : "text-foreground-secondary hover:text-foreground-secondary-hover"
               } me-4 py-4 duration-100 transition-opacity`}
               style={{
                 transitionProperty: "color, border-color, opacity",
