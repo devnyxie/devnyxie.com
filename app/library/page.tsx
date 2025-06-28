@@ -1,5 +1,11 @@
-import { Calendar, Flower, Folder, ListFilter } from "lucide-react";
-import Image from "next/image";
+import {
+  Calendar,
+  Flower,
+  Folder,
+  Handshake,
+  ListFilter,
+  Terminal,
+} from "lucide-react";
 import Link from "next/link";
 import { Input } from "../components/input";
 import { Button } from "../components/btn";
@@ -63,11 +69,123 @@ const posts = [
   },
 ];
 
+const deep_dives = [
+  {
+    title: "Zettelkasten Method",
+    link: "/deep-dives/zettelkasten",
+    icon: <Flower size={24} />,
+  },
+  {
+    title: "Digital Gardening",
+    link: "/deep-dives/digital-gardening",
+    icon: (
+      <img
+        src="/pngs/folder.png"
+        alt="React Icon"
+        className="w-auto h-6"
+        loading="lazy"
+      />
+    ),
+  },
+  {
+    title: "Deep Dive into C",
+    link: "/deep-dives/js-event-loop",
+    icon: (
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/926px-C_Programming_Language.svg.png"
+        alt="React Icon"
+        className="w-auto h-6"
+        loading="lazy"
+      />
+    ),
+  },
+  {
+    title: "Deep Dive into JavaScript",
+    link: "/deep-dives/js-event-loop",
+    icon: (
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png"
+        alt="React Icon"
+        className="w-auto h-6"
+        loading="lazy"
+      />
+    ),
+  },
+  {
+    title: "How to Use Redux and React",
+    link: "/deep-dives/redux-react",
+    icon: (
+      <img
+        src="https://cdn.worldvectorlogo.com/logos/redux.svg"
+        alt="React Icon"
+        className="w-auto h-6"
+        loading="lazy"
+      />
+    ),
+  },
+  {
+    title: "How to Set up a Mac for Development",
+    link: "/deep-dives/mac-dev-setup",
+    icon: (
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/8/84/Apple_Computer_Logo_rainbow.svg"
+        alt="React Icon"
+        className="w-auto h-6"
+        loading="lazy"
+      />
+    ),
+  },
+  {
+    title: "A Complete Guide to CSS Concepts and Fundamentals",
+    link: "/deep-dives/css-guide",
+    icon: <Folder size={24} />,
+  },
+  {
+    title: "How to Use Vue, the JavaScript Framework",
+    link: "/deep-dives/vue-intro",
+    icon: (
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Vue.png"
+        alt="React Icon"
+        className="w-auto h-6"
+        loading="lazy"
+      />
+    ),
+  },
+  {
+    title: "Everything I Know as a Software Developer",
+    link: "/deep-dives/no-degree-dev",
+    icon: <Folder size={24} />,
+  },
+  {
+    title: "How to Use React, the JavaScript Framework",
+    link: "/deep-dives/react-intro",
+    icon: (
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1150px-React-icon.svg.png"
+        alt="React Icon"
+        className="w-auto h-6"
+        loading="lazy"
+      />
+    ),
+  },
+  {
+    title: "Design for Developers",
+    link: "/deep-dives/design-for-devs",
+    icon: <Handshake size={24} />,
+  },
+  {
+    title: "How to Use the Command Line in Linux and macOS",
+    link: "/deep-dives/command-line",
+    icon: <Terminal size={24} />,
+  },
+];
+
 const Card = ({ title, image, description, date, link, tags, folder }: any) => {
   const borderedClass = "";
   return (
     <div
-      className={`bg-background-secondary p-6 rounded-sm transition-shadow ${borderedClass} duration-200 col-span-1 h-full`}
+      className={`card bg-background-secondary p-6 rounded-sm transition-shadow ${borderedClass} duration-200 col-span-1 h-full`}
     >
       <img
         src={image}
@@ -85,9 +203,6 @@ const Card = ({ title, image, description, date, link, tags, folder }: any) => {
             day: "numeric",
           })}
         </p>
-        {/* <p className="text-sm text-zinc-500 dark:text-zinc-400 flex gap-1 items-center">
-          <Folder size={16} /> {folder}
-        </p> */}
         <Link href={link} className="text-lg font-medium hyphens-auto">
           {title}
         </Link>
@@ -101,7 +216,6 @@ const Card = ({ title, image, description, date, link, tags, folder }: any) => {
               href={`/tags/${tag}`}
               key={index}
               className="bg-zinc-900 hover:bg-zinc-800 text-zinc-300 px-2 py-1 rounded-sm text-xs "
-              // className="border border-yellow-500 bg-amber-500/10 hover:bg-amber-500/30 px-2 py-1 rounded-full text-xs transition-colors duration-200"
             >
               {tag}
             </Link>
@@ -112,10 +226,31 @@ const Card = ({ title, image, description, date, link, tags, folder }: any) => {
   );
 };
 
+const DeepDiveCard = ({
+  title,
+  link,
+  icon,
+}: {
+  title: string;
+  link: string;
+  icon: React.ReactNode;
+}) => {
+  return (
+    <Link
+      href={link}
+      className="flex items-center gap-4 p-4 py-3 bg-background-secondary hover:bg-background-secondary-hover border border-outline rounded-md shadow-sm hover:shadow-md transition-shadow duration-200"
+    >
+      <div className="text-xl text-zinc-500 shrink-0">{icon}</div>
+
+      <h3 className="font-medium">{title}</h3>
+    </Link>
+  );
+};
+
 export default function Home() {
   return (
-    <div className="w-full flex justify-center py-4">
-      <div className="container-medium mt-16 mx-4">
+    <div className="w-full flex justify-center py-4 mt-16">
+      <div className="container-medium mx-4">
         <div className="hero-section mb-8">
           <div className="flex gap-2 items-center">
             <div className="text-3xl font-bold">Sumi Library</div>
@@ -145,7 +280,10 @@ export default function Home() {
           </div>
         </div>
         <hr className="mt-8 mb-8 text-outline" />
-        <div className="">
+        <div id="recent-posts" className="mb-8">
+          <div className="text-2xl font-bold mb-4 text-foreground-secondary-hover">
+            Recent Posts
+          </div>
           {posts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {posts.map((post, index) => {
@@ -167,6 +305,24 @@ export default function Home() {
               No posts available.
             </div>
           )}
+        </div>
+        <div id="deep-dives">
+          <div className="text-2xl font-bold mb-2 text-foreground-secondary-hover">
+            Deep Dives
+          </div>
+          <p className="text-zinc-500 dark:text-zinc-400 mb-4">
+            Long-form tutorials and indexes on variety of development topics
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {deep_dives.map((dive) => (
+              <DeepDiveCard
+                key={dive.title}
+                title={dive.title}
+                link={dive.link}
+                icon={dive.icon}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

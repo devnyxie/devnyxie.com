@@ -33,9 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} bg-background text-foreground antialiased`}
-      >
+      <body className={`${inter.variable} text-foreground antialiased`}>
         <Navbar routes={routes} />
         {children}
       </body>
