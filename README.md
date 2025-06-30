@@ -1,34 +1,75 @@
-# devnyxie.com
+# Nuxt Minimal Starter
+
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup
 
+Make sure to install dependencies:
+
 ```bash
-# native (dev)
-yarn dev
-# native (build & host)
-yarn build
-yarn start
+# npm
+npm install
 
-# Docker
-docker build -t devnyxie.com .
-docker run -d --name devnyxie.com --restart always -p 3000:3000 devnyxie.com
+# pnpm
+pnpm install
 
-# Docker Compose
-docker compose up -d
+# yarn
+yarn install
+
+# bun
+bun install
 ```
 
-## To Do List
+## Development Server
 
-- [ ] Restructure CSS variables, add more variables: `ring-focus`, `bg-card`, `muted`
-      List of variables:
-      Background: `background`, `background-secondary`, `background-card`
-      Foreground: `foreground`, `foreground-secondary`, `foreground-secondary-hover`, `foreground-muted`
-      Border: `outline`
-- [ ] Parse markdown files instead of using JSON
-- [ ] Add a search feature
-- [ ] Add a dark mode toggle
+Start the development server on `http://localhost:3000`:
 
-### Notes
+```bash
+# npm
+npm run dev
 
-- The `cn` function is used to conditionally join class names.
-- Utilizing `shadcn/ui` for UI components is useless, each component can be easily built with Tailwind CSS - let's keep it simple & clean!
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
