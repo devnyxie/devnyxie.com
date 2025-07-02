@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const bere = [
-  { name: "home", path: "/" },
-  { name: "library", path: "/library" },
+  // { name: "home", path: "/" },
+  { name: "blog", path: "/blog" },
   { name: "portfolio", path: "/portfolio" },
   { name: "gallery", path: "/gallery" },
   { name: "about", path: "/about" },
-  { name: "status", path: "/status" },
+  // { name: "status", path: "/status" },
 ];
 
 const route = useRoute();
@@ -13,35 +13,34 @@ const isActive = (path: string) => path === route.fullPath;
 </script>
 
 <template>
-  <div class="border-b border-outline w-full flex justify-center">
-    <div class="container-medium flex justify-start mx-2">
-      <div
-        v-for="be in bere"
-        :key="`nav-link-${be.name}`"
-        style="transition-property: color, border-color, opacity"
+  <div
+    class="bg-background-secondary border-b border-outline backdrop-blur-sm w-full flex justify-center"
+  >
+    <div class="container-medium flex justify-between mx-2">
+      <NuxtLink to="/" class="font-bold text-xl flex items-center"
+        >>_ devnyxie.com</NuxtLink
       >
-        <NuxtLink
-          :to="be.path"
-          v-if="be.name !== 'status'"
-          class="capitalize me-4 duration-100 transition-opacity flex items-center py-4"
-          :class="
-            isActive(be.path)
-              ? 'border-b border-foreground'
-              : 'text-foreground-secondary hover:text-foreground-secondary-hover'
-          "
-        >
-          {{ be.name }}
-        </NuxtLink>
+      <div class="flex">
+        <div v-for="be in bere" :key="`nav-link-${be.name}`">
+          <NuxtLink
+            :to="be.path"
+            v-if="be.name !== 'status'"
+            class="capitalize font-medium me-4 flex items-center py-4 justify-center transition-colors duration-200"
+            :class="isActive(be.path) ? '' : 'text-muted hover:text-foreground'"
+            style="transition-property: color"
+          >
+            {{ be.name }}
+          </NuxtLink>
 
-        <NuxtLink
+          <!-- <NuxtLink
           :to="be.path"
           target="_blank"
           rel="noopener noreferrer"
           v-else
-          class="capitalize me-4 duration-100 transition-opacity flex items-center py-4"
+          class="capitalize font-medium me-4 duration-100 flex items-center py-4 justify-center"
           :class="
             isActive(be.path)
-              ? 'border-b border-foreground'
+              ? ''
               : 'text-foreground-secondary hover:text-foreground-secondary-hover'
           "
         >
@@ -57,7 +56,8 @@ const isActive = (path: string) => path === route.fullPath;
               class="inline-block w-1 h-1 mt-0.5 bg-green-400 rounded-full absolute transform -translate-x-1/2"
             ></span>
           </div>
-        </NuxtLink>
+        </NuxtLink> -->
+        </div>
       </div>
     </div>
   </div>

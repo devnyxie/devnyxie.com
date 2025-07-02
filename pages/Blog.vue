@@ -1,48 +1,32 @@
 <template>
-  <div class="w-full flex justify-center py-4 mt-16">
-    <div class="container-medium mx-4">
+  <div class="flex justify-center">
+    <div class="container-medium mx-4 pt-24">
       <div class="hero-section mb-8">
         <div class="flex gap-2 items-center">
-          <div class="text-3xl font-bold">Sumi Library</div>
+          <div
+            class="tracking-tight font-bold text-highlighted text-pretty text-3xl sm:text-4xl lg:text-5xl"
+          >
+            Latest Articles
+          </div>
           <!-- <img
             src="/cherry-blossom-white.svg"
             class="w-12 h-12 mt-2 text-red-500"
             alt="Cherry Blossom"
           /> -->
         </div>
-        <div class="text-xl font-light text-zinc-400">Tim's Digital Garden</div>
         <p class="text-zinc-500 dark:text-zinc-400 mt-2">
-          Welcome. This is my little, minimalistic digital garden on the
-          Internet.
+          Some of my recent posts about design, development, and the tech
+          industry.
         </p>
-        <div class="mt-4 flex gap-2">
-          <input
-            type="text"
-            placeholder="What are you searching for?"
-            class="w-full max-w-md px-3 py-2 border border-outline rounded"
-            v-model="search"
-          />
-          <button
-            class="flex items-center justify-center w-min px-3 py-2 border border-outline rounded"
-          >
-            <Icon name="material-symbols:filter-list-rounded" size="18px" />
-          </button>
-        </div>
       </div>
-      <hr class="mt-8 mb-8 text-outline" />
       <div id="recent-posts" class="mb-8">
-        <div class="text-2xl font-bold mb-4 text-foreground-secondary-hover">
-          Recent Posts
-        </div>
         <div
           v-if="posts.length > 0"
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           <Card v-for="post in posts" :key="post.title" v-bind="post" />
         </div>
-        <div v-else class="text-zinc-500 dark:text-zinc-400 mt-8">
-          No posts available.
-        </div>
+        <div v-else class="text-muted mt-8">No posts available.</div>
       </div>
       <!-- <div id="deep-dives">
         <div class="text-2xl font-bold mb-2 text-foreground-secondary-hover">
