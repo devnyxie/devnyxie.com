@@ -5,5 +5,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
   vite: { plugins: [tailwindcss()] },
-  modules: ["@nuxt/icon"],
+  modules: [
+    "@nuxt/icon",
+    "@nuxt/content",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/color-mode",
+    "motion-v/nuxt",
+  ],
 });

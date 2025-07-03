@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="card bg-background-secondary shadow-xs border border-outline p-6 rounded-sm h-full"
-  >
+  <div class="card bg-background-secondary shadow-xs p-6 rounded-sm h-full">
     <img
       :src="image"
       :alt="title"

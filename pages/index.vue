@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <LandingHero />
+  </div>
 </template>
 
 <script lang="ts" setup></script>

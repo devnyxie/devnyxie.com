@@ -24,27 +24,30 @@
           v-if="posts.length > 0"
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          <Card v-for="post in posts" :key="post.title" v-bind="post" />
+          <Motion
+            v-for="(post, index) in posts"
+            :key="post.title"
+            class="h-full"
+            :initial="{
+              scale: 1.1,
+              opacity: 0,
+              filter: 'blur(20px)',
+            }"
+            :animate="{
+              scale: 1,
+              opacity: 1,
+              filter: 'blur(0px)',
+            }"
+            :transition="{
+              duration: 0.6,
+              delay: index * 0.1,
+            }"
+          >
+            <Card v-bind="post" :index="index" />
+          </Motion>
         </div>
         <div v-else class="text-muted mt-8">No posts available.</div>
       </div>
-      <!-- <div id="deep-dives">
-        <div class="text-2xl font-bold mb-2 text-foreground-secondary-hover">
-          Deep Dives
-        </div>
-        <p class="text-zinc-500 dark:text-zinc-400 mb-4">
-          Long-form tutorials and indexes on variety of development topics
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <DeepDiveCard
-            v-for="dive in deep_dives"
-            :key="dive.title"
-            :title="dive.title"
-            :link="dive.link"
-            :icon="dive.icon"
-          />
-        </div>
-      </div> -->
     </div>
   </div>
 </template>
