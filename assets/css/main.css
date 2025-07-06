@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/* light mode variables */
+:root {
+  --ui-bg: var(--color-zinc-100);
+  --ui-bg-elevated: var(--color-white);
+  --ui-fg: var(--color-zinc-900);
+}
+
+/* dark mode variables */
+.dark {
+  /* --ui-bg: #0e0e0f;
+  --ui-bg-elevated: #131314; */
+  --ui-bg: #251c17;
+  --ui-bg-elevated: #31251f;
+  --ui-fg: var(--color-zinc-100);
+}
+
+@theme static {
+  --color-bg: var(--ui-bg);
+  --color-fg: var(--ui-fg);
+  --color-bg-elevated: var(--ui-bg-elevated);
+}
+
+:root {
+  --container-small: 850px;
+  --container-medium: 1000px;
+  --container-large: 1200px;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* Containers */
+.container-small {
+  width: var(--container-small);
+  margin: 0 auto;
+}
+
+.container-medium {
+  width: var(--container-medium);
+  margin: 0 auto;
+}
+
+.container-large {
+  width: var(--container-large);
+  margin: 0 auto;
+}
