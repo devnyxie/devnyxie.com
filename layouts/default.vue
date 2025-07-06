@@ -1,6 +1,7 @@
 <template>
   <div>
-    <Navbar />
+    <!-- <Navbar /> -->
+    <NavigationMenu />
     <NuxtPage />
   </div>
 </template>

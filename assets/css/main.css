@@ -1,79 +1,37 @@
 @import "tailwindcss";
+@import "@nuxt/ui";
+
+/* light mode variables */
+:root {
+  --ui-bg: var(--color-zinc-100);
+  --ui-bg-elevated: var(--color-white);
+  --ui-fg: var(--color-zinc-900);
+}
+
+/* dark mode variables */
+.dark {
+  /* --ui-bg: #0e0e0f;
+  --ui-bg-elevated: #131314; */
+  --ui-bg: #251c17;
+  --ui-bg-elevated: #31251f;
+  --ui-fg: var(--color-zinc-100);
+}
+
+@theme static {
+  --color-bg: var(--ui-bg);
+  --color-fg: var(--ui-fg);
+  --color-bg-elevated: var(--ui-bg-elevated);
+}
 
 :root {
-  /* Container sizes */
   --container-small: 850px;
   --container-medium: 1000px;
   --container-large: 1200px;
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-}
-
-@theme {
-  /* Theme Aspects */
-  --color-background: var(--background);
-
-  --color-background-secondary: var(--background-secondary);
-
-  --color-foreground: var(--foreground);
-
-  --color-foreground-secondary: var(--foreground-secondary);
-  --color-foreground-secondary-hover: var(--foreground-secondary-hover);
-
-  --color-outline: var(--outline);
-
-  /*new*/
-  --color-muted: var(--muted);
-}
-
-@layer base {
-  :root {
-    --background: var(--color-zinc-100);
-    /* --background: #eeefe0; */
-
-    --background-secondary: #ffffff;
-
-    --foreground: var(--color-zinc-900);
-
-    --foreground-secondary: var(--color-zinc-500);
-    --foreground-secondary-hover: var(--color-zinc-800);
-
-    --outline: var(--color-zinc-300);
-
-    /*new*/
-    --muted: var(--color-neutral-500);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: #0e0e0f;
-
-      --background-secondary: #131314;
-
-      --foreground: var(--color-zinc-100);
-
-      --foreground-secondary: var(--color-zinc-400);
-      --foreground-secondary-hover: var(--color-zinc-200);
-
-      --outline: var(--color-zinc-800);
-
-      /*new*/
-      --muted: var(--color-neutral-400);
-    }
-  }
 }
 
 body {
-  /* width: 100vw; */
-
   min-height: 100vh;
 }
-
-/* * {
-  scrollbar-gutter: stable;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-foreground-secondary) transparent;
-} */
 
 /* Containers */
 .container-small {

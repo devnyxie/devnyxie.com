@@ -6,13 +6,21 @@
           <div
             class="tracking-tight font-bold text-highlighted text-pretty text-3xl sm:text-4xl lg:text-5xl"
           >
-            Latest Articles
+            Recent Activity
           </div>
-          <!-- <img
-            src="/cherry-blossom-white.svg"
-            class="w-12 h-12 mt-2 text-red-500"
-            alt="Cherry Blossom"
-          /> -->
+        </div>
+        <p class="text-zinc-500 dark:text-zinc-400 mt-2">
+          Some of my recent posts about design, development, and the tech
+          industry.
+        </p>
+      </div>
+      <div class="hero-section mb-8">
+        <div class="flex gap-2 items-center">
+          <div
+            class="tracking-tight font-bold text-highlighted text-pretty text-3xl sm:text-4xl lg:text-5xl"
+          >
+            Articles
+          </div>
         </div>
         <p class="text-zinc-500 dark:text-zinc-400 mt-2">
           Some of my recent posts about design, development, and the tech
@@ -160,6 +168,4 @@ const deep_dives = [
 ];
 </script>
 
-<style scoped>
-/* Add any custom styles here */
-</style>
+<style scoped></style>

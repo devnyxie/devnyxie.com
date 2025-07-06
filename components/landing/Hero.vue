@@ -1,13 +1,11 @@
 <script setup lang="ts">
-// import type { IndexCollectionItem } from "@nuxt/content";
+import type { IndexCollectionItem } from "@nuxt/content";
 
-// const { footer, global } = useAppConfig();
+const { footer, global } = useAppConfig();
 
-// defineProps<{
-//   page: IndexCollectionItem;
-// }>();
-
-const links = [""];
+defineProps<{
+  page: IndexCollectionItem;
+}>();
 </script>
 
 <template>
@@ -30,13 +28,13 @@ const links = [""];
         }"
       >
         <img
-          class="w-24 h-24 object-fill rounded-full border border-outline"
-          src=""
+          class="w-24 h-24 object-fill rounded-full border-2 border-muted"
+          :src="global.picture.src"
         />
       </Motion>
     </div>
 
-    <div class="text-shadow-md max-w-lg mx-auto text-3xl font-bold text-center">
+    <div class="max-w-lg mx-auto">
       <Motion
         :initial="{
           scale: 1.1,
@@ -53,11 +51,15 @@ const links = [""];
           delay: 0.1,
         }"
       >
-        Hi, I'm Tim<br />Full Stack Developer
+        <p
+          class="text-shadow-md text-4xl font-bold text-center tracking-tight text-pretty"
+        >
+          {{ page.title }}
+        </p>
       </Motion>
     </div>
 
-    <div class="text-muted">
+    <div class="text-muted text-center">
       <Motion
         :initial="{
           scale: 1.1,
@@ -75,7 +77,8 @@ const links = [""];
         }"
       >
         Passionate about crafting elegant solutions and building impactful
-        software
+        software<br />
+        Based in Warsaw, available for both Frontend and Backend projects
       </Motion>
     </div>
 

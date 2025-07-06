@@ -13,8 +13,10 @@ const isActive = (path: string) => path === route.fullPath;
 </script>
 
 <template>
-  <div class="backdrop-blur-sm w-full flex justify-center">
-    <div class="container-medium flex justify-center mx-2">
+  <div
+    class="border-b border-muted backdrop-blur-sm w-full flex justify-center"
+  >
+    <div class="container-medium flex justify-start mx-2">
       <!-- <NuxtLink to="/" class="font-bold text-xl flex items-center"
         >Tim Afanasiev</NuxtLink
       > -->
@@ -42,7 +44,7 @@ const isActive = (path: string) => path === route.fullPath;
             :class="
               isActive(be.path)
                 ? ''
-                : 'text-foreground-secondary hover:text-foreground-secondary-hover'
+                : 'text-muted hover:text-muted-hover'
             "
           >
             {{ be.name }}
@@ -60,6 +62,7 @@ const isActive = (path: string) => path === route.fullPath;
           </NuxtLink> -->
         </div>
       </div>
+      <ColorModeButton />
     </div>
   </div>
 </template>
