@@ -1,26 +1,31 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+@import "./content.css";
+
+@import "rehype-callouts/theme/github";
+
 /* light mode variables */
 :root {
   --ui-bg: var(--color-zinc-100);
   --ui-bg-elevated: var(--color-white);
   --ui-fg: var(--color-zinc-900);
+  --ui-info: var(--ui-color-info-800);
 }
 
 /* dark mode variables */
 .dark {
-  /* --ui-bg: #0e0e0f;
-  --ui-bg-elevated: #131314; */
-  --ui-bg: #251c17;
-  --ui-bg-elevated: #31251f;
+  --ui-bg: #0e0e0f;
+  --ui-bg-elevated: #131314;
   --ui-fg: var(--color-zinc-100);
+  --ui-info: var(--ui-color-info-300);
 }
 
 @theme static {
   --color-bg: var(--ui-bg);
   --color-fg: var(--ui-fg);
   --color-bg-elevated: var(--ui-bg-elevated);
+  --color-fg-link: var(--ui-fg-link);
 }
 
 :root {

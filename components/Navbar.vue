@@ -16,7 +16,7 @@ const isActive = (path: string) => path === route.fullPath;
   <div
     class="border-b border-muted backdrop-blur-sm w-full flex justify-center"
   >
-    <div class="container-medium flex justify-start mx-2">
+    <div class="container-medium flex justify-center mx-2">
       <!-- <NuxtLink to="/" class="font-bold text-xl flex items-center"
         >Tim Afanasiev</NuxtLink
       > -->

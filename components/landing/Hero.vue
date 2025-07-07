@@ -58,8 +58,7 @@ defineProps<{
         </p>
       </Motion>
     </div>
-
-    <div class="text-muted text-center">
+    <div class="text-muted text-center mx-auto max-w-2xl text-balance">
       <Motion
         :initial="{
           scale: 1.1,
@@ -76,9 +75,7 @@ defineProps<{
           delay: 0.3,
         }"
       >
-        Passionate about crafting elegant solutions and building impactful
-        software<br />
-        Based in Warsaw, available for both Frontend and Backend projects
+        {{ page.description }}
       </Motion>
     </div>
 
@@ -99,7 +96,7 @@ defineProps<{
           delay: 0.5,
         }"
       >
-        <!-- <div v-if="page.hero.links" class="flex items-center gap-2">
+        <div v-if="page.hero.links" class="flex items-center gap-2">
           <UButton v-bind="page.hero.links[0]" />
           <UButton
             :color="global.available ? 'success' : 'error'"
@@ -107,12 +104,10 @@ defineProps<{
             class="gap-2"
             :to="global.available ? global.meetingLink : ''"
             :label="
-              global.available
-                ? 'Available for new projects'
-                : 'Not available at the moment'
+              global.available ? 'Available' : 'Not available at the moment'
             "
           >
-            <div #leading>
+            <template #leading>
               <span class="relative flex size-2">
                 <span
                   class="absolute inline-flex size-full rounded-full opacity-75"
@@ -125,33 +120,10 @@ defineProps<{
                   :class="global.available ? 'bg-success' : 'bg-error'"
                 />
               </span>
-            </div>
+            </template>
           </UButton>
-        </div> -->
+        </div>
       </Motion>
-
-      <!-- <div class="gap-x-4 inline-flex mt-4">
-        <Motion
-          v-for="(link, index) of links"
-          :key="index"
-          :initial="{
-            scale: 1.1,
-            opacity: 0,
-            filter: 'blur(20px)',
-          }"
-          :animate="{
-            scale: 1,
-            opacity: 1,
-            filter: 'blur(0px)',
-          }"
-          :transition="{
-            duration: 0.6,
-            delay: 0.5 + index * 0.1,
-          }"
-        >
-          <button>test</button>
-        </Motion>
-      </div> -->
     </div>
   </div>
 </template>

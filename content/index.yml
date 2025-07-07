@@ -1,33 +1,14 @@
 seo:
-  title: "Tim Afanasiev - Software Engineer"
+  title: "Tim Afanasiev - Full Stack Engineer"
   description: "Welcome to my portfolio! I'm Tim Afanasiev, a Software Engineer based in Warsaw. I specialize in creating user-centered digital experiences that are both beautiful and functional."
 title: >
-  Hey, I'm Tim Afanasiev, a Full Stack Engineer
-description: "I craft intuitive digital experiences where design meets functionality. Based in Warsaw, bringing ideas to life through code and creativity."
+  Hey, I'm Tim, a Full Stack Engineer
+description: "Passionate about crafting elegant solutions and building impactful software. Based in Warsaw, available for both Frontend and Backend projects worldwide."
 hero:
   links:
-    - label: "Use this template"
-      to: https://github.com/nuxt-ui-pro/portfolio
+    - label: "Let's Talk"
+      to: https://example.com
       color: "neutral"
-  images:
-    - src: https://picsum.photos/468/468?random=1
-      alt: Random Image 1
-    - src: https://picsum.photos/468/468?random=2
-      alt: Random Image 2
-    - src: https://picsum.photos/468/468?random=3
-      alt: Random Image 3
-    - src: https://picsum.photos/468/468?random=4
-      alt: Random Image 4
-    - src: https://picsum.photos/468/468?random=5
-      alt: Random Image 5
-    - src: https://picsum.photos/468/468?random=6
-      alt: Random Image 6
-    - src: https://picsum.photos/468/468?random=6
-      alt: Random Image 6
-    - src: https://picsum.photos/468/468?random=7
-      alt: Random Image 7
-    - src: https://picsum.photos/468/468?random=8
-      alt: Random Image 8
 about:
   title: "About Me"
   description: |

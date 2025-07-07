@@ -92,12 +92,13 @@ export default defineContentConfig({
     }),
     blog: defineCollection({
       type: "page",
-      source: "blog/*.md",
+      source: "blog/**/*.md",
       schema: z.object({
+        tags: z.array(z.string().nonempty()).optional(),
         minRead: z.number(),
         date: z.date(),
         image: z.string().nonempty().editor({ input: "media" }),
-        author: createAuthorSchema(),
+        // author: createAuthorSchema(),
       }),
     }),
     pages: defineCollection({
