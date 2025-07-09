@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center" v-if="page">
-    <div class="container-medium mx-4 pt-24">
+    <div class="container max-w-screen-lg mx-4 pt-24">
       <div class="hero-section mb-8">
         <Motion
           class="h-full"

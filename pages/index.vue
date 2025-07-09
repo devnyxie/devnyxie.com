@@ -1,5 +1,5 @@
 <template>
-  <div v-if="page">
+  <div class="py-18 lg:py-20" v-if="page">
     <LandingHero :page />
   </div>
 </template>

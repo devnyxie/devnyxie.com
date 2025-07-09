@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <!-- <Navbar /> -->
-    <NavigationMenu />
-    <NuxtPage />
+  <div class="w-full flex justify-center">
+    <div class="container max-w-screen-lg">
+      <!-- <Navbar /> -->
+      <NavigationMenu />
+      <NuxtPage />
+    </div>
   </div>
 </template>
 

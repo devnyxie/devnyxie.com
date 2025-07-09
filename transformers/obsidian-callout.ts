@@ -14,6 +14,7 @@ export default defineTransformer({
     //   > line1
     //   > line2
     const calloutRegex = /^> \[!(\w+)\](?: (.*))?\n((?:> .+\n)+)/gm;
+    // better regex: />\s?\[!(\w+)](?: (.*))?(?:\n>\s?.*)*/gm
 
     // Replace callout blocks with HTML structure
     file.body = (file.body as string).replace(
@@ -32,7 +33,7 @@ export default defineTransformer({
           .join("\n");
 
         // Return the HTML structure
-        return `<callout class="callout-${type.toLowerCase()}">
+        return `<div class="callout-${type.toLowerCase()}">
   ${title ? `<h4>${title}</h4>` : ""}
   ${paragraphs}
 </callout>`;

@@ -3,8 +3,6 @@
 
 @import "./content.css";
 
-@import "rehype-callouts/theme/github";
-
 /* light mode variables */
 :root {
   --ui-bg: var(--color-zinc-100);

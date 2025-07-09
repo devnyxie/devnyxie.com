@@ -16,7 +16,7 @@ const formatDate = (date) => {
 </script>
 
 <template>
-  <div class="max-w-3xl mx-auto px-4 py-8">
+  <div class="container max-w-screen-sm mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold mb-4">{{ post.title }}</h1>
     <p class="text-muted mb-4">
       <span class="text-sm">{{ formatDate(post.date) }}</span>

@@ -5,30 +5,25 @@ const route = useRoute();
 const isActive = (path: string) => path === route.fullPath;
 
 const items = ref<NavigationMenuItem[]>([
-  {
-    label: "Home",
-    // icon: "i-lucide-book-open",
-    to: "/",
-  },
+  // {
+  //   label: "Home",
+  //   to: "/",
+  // },
   {
     label: "Blog",
-    // icon: "i-lucide-book-open",
     to: "/blog",
   },
   {
     label: "Portfolio",
-    // icon: "i-lucide-briefcase",
     to: "/portfolio",
   },
   {
     label: "About",
-    // icon: "i-lucide-user",
     to: "/about",
   },
   {
-    label: "Guide",
-    // icon: "i-lucide-book-open",
-    to: "/getting-started",
+    label: "More",
+    // to: "/getting-started",
     children: [
       {
         label: "Introduction",
@@ -62,17 +57,25 @@ const items = ref<NavigationMenuItem[]>([
     ],
   },
   {
-    label: "GitHub",
-    icon: "i-simple-icons-github",
-    badge: "3.8k",
-    to: "https://github.com/nuxt/ui",
-    target: "_blank",
+    label: "",
+    icon: "material-symbols:search",
+    class: "text-foreground",
   },
 ]);
 </script>
 
 <template>
-  <div class="w-full flex justify-center py-1">
-    <UNavigationMenu variant="link" :items="items" class="w-min" />
+  <div class="w-full">
+    <div class="flex justify-between items-center px-4">
+      <NuxtLink to="/" class="font-semibold text-lg flex items-center"
+        >Tim Afanasiev</NuxtLink
+      >
+      <UNavigationMenu
+        variant="link"
+        :items="items"
+        class="flex justify-end max-w-[550px] flex-grow"
+      />
+      <!-- </div> -->
+    </div>
   </div>
 </template>

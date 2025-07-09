@@ -20,7 +20,7 @@ function transformNodes(nodes: any[]): any[] {
 
       if (tag === "p") {
         let childrenOne = children[0];
-        const obsidianLinkRegex = /!\[.*?\]/; // non-greedy to match just one tag
+        const obsidianLinkRegex = /!\[\[[^\[\]]+?\]\]/g; // non-greedy to match just one tag
 
         if (
           typeof childrenOne === "string" &&
@@ -28,7 +28,8 @@ function transformNodes(nodes: any[]): any[] {
         ) {
           const match = childrenOne.match(obsidianLinkRegex);
           if (match && isImageUrlInside(match[0])) {
-            let { url, width } = parseUrlAndWidth(match[0].slice(2, -1));
+            let { url, width } = parseUrlAndWidth(match[0].slice(3, -2)); // remove ![[ and ]]
+            console.log("obsidian link", url, width);
             if (!url.startsWith("/")) {
               // absolute obsidian links don't start with /, correct them
               url = `/${url}`;
