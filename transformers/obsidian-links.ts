@@ -43,30 +43,28 @@ function transformNodes(nodes: any[]): any[] {
             const parts = childrenOne.split(obsidianLinkRegex);
 
             // Replace children with parts and img tag inserted in the middle
-            // parts[0] + <img> + parts[1]
             const newChildren = [];
             if (parts[0]) newChildren.push(parts[0]);
             newChildren.push(["img", imgAttrs]);
             if (parts[1]) newChildren.push(parts[1]);
 
-            children.splice(0, children.length, ...newChildren); // replace all children
-
-            return ["p", attrs, ...children];
+            children.splice(0, children.length, ...newChildren);
+            return ["img", imgAttrs];
           }
         }
       }
-      // ![https://example.com/image.png|300], ![https://example.com]
+      // ![[https://example.com/image.png|300]], ![[https://example.com]]
       if (tag === "p" && children.length === 3) {
         const [first, second, third] = children;
 
         // Check if first and third are text nodes with "![" and "]"
         if (
           typeof first === "string" &&
-          first === "![" &&
+          first === "![[" &&
           Array.isArray(second) &&
           second[0] === "a" &&
           typeof third === "string" &&
-          third === "]"
+          third === "]]"
         ) {
           const rawUrl = second[2] || "";
           const { url, width } = parseUrlAndWidth(rawUrl);
@@ -82,11 +80,7 @@ function transformNodes(nodes: any[]): any[] {
             return ["a", { href: url }, url];
           }
         }
-      } else if (tag === "p" && children.length === 1) {
-        // absolute or ?relative links
-        // how to replace it in textanytext ![link] link
       }
-
       // Recursively process children
       return [tag, attrs, ...transformNodes(children)];
     }

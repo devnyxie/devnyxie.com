@@ -21,3 +21,7 @@ logs
 .env
 .env.*
 !.env.example
+
+# Personal Notes - To Be Changed
+/content/blog/*
+/public/Attachments

@@ -17,7 +17,7 @@
 }
 
 .content-body ul,
-ol {
+.content-body ol {
   @apply list-disc list-inside pl-5;
 }
 
@@ -84,4 +84,20 @@ ol {
 .content-body h6 a:hover::before {
   opacity: 1;
   transform: translateX(0);
+}
+
+/* Table Styles Reset */
+.content-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  @apply rounded overflow-hidden;
+}
+.content-body th,
+.content-body td {
+  text-align: left;
+  vertical-align: top;
+  @apply p-2 py-0.5 bg-elevated border border-muted;
+}
+.content-body th {
+  font-weight: 600;
 }
