@@ -65,8 +65,8 @@
 </template> -->
 
 <template>
-  <div class="flex justify-center" v-if="page">
-    <div class="container max-w-screen-sm mx-4 pt-24">
+  <div class="py-18 flex justify-center" v-if="page">
+    <div class="container max-w-screen-md">
       <div class="hero-section mb-8">
         <Motion
           class="h-full"
@@ -87,7 +87,7 @@
         >
           <div class="flex gap-2 items-center">
             <div
-              class="tracking-tight font-bold text-highlighted text-pretty text-3xl sm:text-4xl lg:text-5xl"
+              class="tracking-tight font-bold text-highlighted text-pretty text-2xl sm:text-3xl lg:text-4xl"
             >
               {{ page.title }}
             </div>
@@ -100,7 +100,7 @@
       <div id="recent-posts" class="mb-8" v-if="posts">
         <div
           v-if="posts.length > 0"
-          class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-4"
+          class="grid grid-cols-1 lg:grid-cols-1 gap-4"
         >
           <Motion
             v-for="(post, index) in posts"
@@ -121,8 +121,8 @@
               delay: index * 0.05,
             }"
           >
-            <!-- <Card v-bind="post" /> -->
-            <div
+            <RowBlogPost v-bind="post" />
+            <!-- <div
               class="flex justify-between gap-4 border border-muted dark:border-0 bg-elevated p-6 rounded-sm h-full"
             >
               <div class="gap-2 flex flex-col h-full">
@@ -168,7 +168,7 @@
                 class="object-cover rounded-sm h-[125px] aspect-square"
                 loading="lazy"
               />
-            </div>
+            </div> -->
           </Motion>
         </div>
         <div v-else class="text-muted mt-8">No posts available.</div>

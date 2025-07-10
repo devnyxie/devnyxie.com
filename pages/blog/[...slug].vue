@@ -86,7 +86,7 @@ const isValidPost = computed(() => {
 </script>
 
 <template>
-  <div class="container mx-auto px-4 py-8 max-w-screen-sm">
+  <div class="px-4 lg:px-0 py-18 max-w-screen-md">
     <BlogBreadcrumb :items="breadcrumbs" class="mb-6" />
 
     <!-- if we got a single post… -->
@@ -103,7 +103,7 @@ const isValidPost = computed(() => {
           :to="`/tags/${tag}`"
           class="px-2 py-1 rounded-sm text-xs bg-muted"
         >
-          #{{ tag }}
+          {{ tag }}
         </NuxtLink>
       </div>
       <img

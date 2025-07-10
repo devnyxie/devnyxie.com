@@ -1,43 +1,59 @@
 <template>
-  <div class="py-18 lg:py-20" v-if="page">
+  <div v-if="page" class="flex flex-col gap-10">
     <LandingHero :page />
-
-    <div class="grid grid-cols-2 gap-4">
-      <div class="col-span-1">
-        <div
-          class="col-span-1 text-pretty tracking-tight text-highlighted text-left text-xl sm:text-xl lg:text-2xl font-medium"
-        >
-          About Me
-        </div>
-        <div>
-          <p class="text-muted text-sm sm:text-base lg:text-lg mt-2">
-            I am a software engineer with a passion for building web
-            applications and exploring new technologies. I love to share my
-            knowledge through writing and mentoring.
-          </p>
-        </div>
-      </div>
-      <div class="col-span-1">
-        <div
-          class="col-span-1 mb-2 grid-col-1 text-pretty tracking-tight text-highlighted text-left text-xl sm:text-xl lg:text-2xl font-medium"
-        >
-          Work Experience
-        </div>
-        <ul class="w-full">
-          <li
-            v-for="job in jobs"
-            :key="job.id"
-            class="w-full flex items-center gap-1 mb-2"
+    <Motion
+      :initial="{
+        scale: 1.1,
+        opacity: 0,
+        filter: 'blur(20px)',
+      }"
+      :animate="{
+        scale: 1,
+        opacity: 1,
+        filter: 'blur(0px)',
+      }"
+      :transition="{
+        duration: 0.6,
+        delay: 0.5,
+      }"
+    >
+      <div class="grid grid-cols-2 gap-x-8">
+        <div class="col-span-1">
+          <div
+            class="col-span-1 text-pretty tracking-tight text-highlighted text-left text-xl sm:text-xl lg:text-2xl font-medium"
           >
-            <div class="text-sm text-gray-400">{{ job.years }}</div>
-            <hr class="border-muted grow" />
-            <div class="font-sm">{{ job.title }}</div>
-            at
-            <div class="text-sm">{{ job.company }}</div>
-          </li>
-        </ul>
+            About Me
+          </div>
+          <div>
+            <p class="text-muted text-sm mt-2">
+              I am a software engineer with a passion for building web
+              applications and exploring new technologies. I love to share my
+              knowledge through writing and mentoring.
+            </p>
+          </div>
+        </div>
+        <div class="col-span-1">
+          <div
+            class="col-span-1 mb-2 grid-col-1 text-pretty tracking-tight text-highlighted text-left text-xl sm:text-xl lg:text-2xl font-medium"
+          >
+            Work Experience
+          </div>
+          <ul class="w-full">
+            <li
+              v-for="job in jobs"
+              :key="job.id"
+              class="w-full flex items-center gap-1 mb-2"
+            >
+              <div class="text-sm text-muted">{{ job.years }}</div>
+              <hr class="border-muted grow" />
+              <div class="font-sm">{{ job.title }}</div>
+              at
+              <div class="text-sm">{{ job.company }}</div>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </Motion>
   </div>
 </template>
 

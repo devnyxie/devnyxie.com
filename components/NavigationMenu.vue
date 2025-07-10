@@ -66,10 +66,8 @@ const items = ref<NavigationMenuItem[]>([
 
 <template>
   <div class="w-full">
-    <div class="flex justify-between items-center px-4">
-      <NuxtLink to="/" class="font-semibold text-lg flex items-center"
-        >Tim Afanasiev</NuxtLink
-      >
+    <div class="flex justify-between items-center px-4 lg:px-0">
+      <NuxtLink to="/" class="flex items-center">Tim Afanasiev</NuxtLink>
       <UNavigationMenu
         variant="link"
         :items="items"
