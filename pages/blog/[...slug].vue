@@ -9,10 +9,6 @@ const slugArray = Array.isArray(route.params.slug)
   : [route.params.slug];
 const joinedSlug = slugArray.join("/");
 
-// const { data: post } = await useAsyncData(`blog-post-${joinedSlug}`, () =>
-//   queryCollection("blog").path(`/blog/${joinedSlug}`).first()
-// );
-
 const { data: post } = await useAsyncData(`blog-${slugArray}`, () => {
   return queryCollection("blog").path(`/blog/${joinedSlug}`).first();
 });
@@ -20,6 +16,25 @@ const { data: post } = await useAsyncData(`blog-${slugArray}`, () => {
 const posts = ref(null); // will hold directory list if no post
 
 console.log("Post data:", post.value);
+
+// TOC
+const toc = computed(() => {
+  const headers = [];
+
+  for (const node of post.value?.body.value || []) {
+    const [tag, props, content] = node;
+
+    if (["h1", "h2", "h3"].includes(tag)) {
+      headers.push({
+        id: props?.id || content?.toLowerCase().replace(/\s+/g, "-"),
+        text: content || "",
+        depth: parseInt(tag.replace("h", "")),
+      });
+    }
+  }
+
+  return headers;
+});
 
 if (!post.value) {
   const { data: dirPosts } = await useAsyncData(
@@ -80,6 +95,17 @@ const isValidPost = computed(() => {
       <p class="text-sm text-muted mb-4">
         {{ formatDate(post.date) }} · {{ post.minRead }} min read
       </p>
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2 mb-4">
+        <NuxtLink
+          v-for="(tag, idx) in post.tags"
+          :key="idx"
+          :to="`/tags/${tag}`"
+          class="px-2 py-1 rounded-sm text-xs bg-muted"
+        >
+          #{{ tag }}
+        </NuxtLink>
+      </div>
       <img
         v-if="post.image"
         :src="post.image"
@@ -87,6 +113,7 @@ const isValidPost = computed(() => {
         class="w-full h-64 object-cover rounded-lg mb-6"
         loading="lazy"
       />
+      <!-- Content -->
       <ContentBody>
         <ContentRenderer :value="post" />
       </ContentBody>

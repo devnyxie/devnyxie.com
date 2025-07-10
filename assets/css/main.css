@@ -9,6 +9,7 @@
   --ui-bg-elevated: var(--color-white);
   --ui-fg: var(--color-zinc-900);
   --ui-info: var(--ui-color-info-800);
+  --font-mono: "Roboto Mono";
 }
 
 /* dark mode variables */
@@ -34,20 +35,4 @@
 
 body {
   min-height: 100vh;
-}
-
-/* Containers */
-.container-small {
-  width: var(--container-small);
-  margin: 0 auto;
-}
-
-.container-medium {
-  width: var(--container-medium);
-  margin: 0 auto;
-}
-
-.container-large {
-  width: var(--container-large);
-  margin: 0 auto;
 }

@@ -6,13 +6,14 @@ function parseUrlAndWidth(urlWithWidth: string) {
 }
 
 function isImageUrl(url: string) {
-  return /\.(jpe?g|png|gif|svg)$/.test(url.toLowerCase());
+  return /\.(jpe?g|png|gif|svg|webp)$/.test(url.toLowerCase());
 }
 
 function isImageUrlInside(url: string) {
-  return /\.(jpe?g|png|gif|svg)/i.test(url.toLowerCase());
+  return /\.(jpe?g|png|gif|svg|webp)/i.test(url.toLowerCase());
 }
 
+// todo: handle page relative links, like [[page-name|Page Name]]
 function transformNodes(nodes: any[]): any[] {
   return nodes.map((node) => {
     if (Array.isArray(node)) {

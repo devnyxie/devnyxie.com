@@ -1,11 +1,11 @@
 ---
-title: Test
-date: 2025-07-20
-tags:
-  - test
-description: Test
-minRead: 1
-image: https://images.pexels.com/photos/1050312/pexels-photo-1050312.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+title: The Case for Slow Design in a Fast-Paced Digital World
+description: Why designing digital experiences that encourage users to slow down
+  and engage deeply can lead to more meaningful interactions and better
+  outcomes.
+date: 2025-08-01
+image: https://images.pexels.com/photos/4050314/pexels-photo-4050314.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+minRead: 7
 author:
   name: Emma Thompson
   avatar:
@@ -13,43 +13,12 @@ author:
     alt: Emma Thompson
 ---
 
-> [!info] Useful tip
-> You can use this feature to…
-> …save yourself time.
+# Title of Page
 
-version 1
+## Strings
 
-![/find1.png|200]
+## Numbers
 
-version 2
-![/find2.png|200]
+# Another H1 Header
 
-version 3 ![/find3.png|200] version 3
-
-version 4
-
-![[/find3.png|200]]
-
-![[find2.png|50]]
-
-![[find1.png]]
-
-version 4
-
-![https://i.pinimg.com/736x/44/c5/64/44c564b131e5fb3cd2ef9c02204184fa.jpg]
-
-![https://i.pinimg.com/736x/44/c5/64/44c564b131e5fb3cd2ef9c02204184fa.jpg|200]
-
-[testLink](/test-link)
-
-# One
-
-## Two
-
-### Three
-
-#### Four
-
-##### Five
-
-###### Six
+## Subheading under H1

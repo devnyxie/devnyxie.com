@@ -3,7 +3,11 @@
     class="card bg-elevated border border-muted dark:border-0 shadow-xs p-6 rounded-sm h-full"
   >
     <img
-      :src="image"
+      :src="
+        image
+          ? image
+          : `https://picsum.photos/id/${Math.floor(Math.random() * (200 - 50) + 50)}/1200/600`
+      "
       :alt="title"
       class="object-cover rounded-sm mb-4 w-full h-[125px]"
       loading="lazy"

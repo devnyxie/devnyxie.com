@@ -52,7 +52,11 @@ export default defineNuxtConfig({
           },
           langs: ["c", "cpp", "java", "go"],
         },
-        rehypePlugins: {},
+        contentHeading: false,
+        toc: {
+          depth: 20, // how many heading levels to show in TOC
+          searchDepth: 20, // how deep to search for headings in the document tree
+        },
       },
     },
   },
