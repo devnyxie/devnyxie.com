@@ -103,7 +103,11 @@ export default defineContentConfig({
     }),
     pages: defineCollection({
       type: "page",
-      source: [{ include: "projects.yml" }, { include: "blog.yml" }],
+      source: [
+        { include: "projects.yml" },
+        { include: "blog.yml" },
+        { include: "tags.yml" },
+      ],
       schema: z.object({
         links: z.array(createButtonSchema()),
       }),
@@ -114,6 +118,15 @@ export default defineContentConfig({
       schema: z.object({
         content: z.object({}),
         images: z.array(createImageSchema()),
+      }),
+    }),
+    tagIcons: defineCollection({
+      type: "data",
+      source: "tag-icons/**.json",
+      schema: z.object({
+        name: z.string(),
+        public_icon: z.string(),
+        nuxt_icon: z.string(),
       }),
     }),
   },

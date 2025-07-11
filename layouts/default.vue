@@ -1,8 +1,7 @@
 <template>
+  <NavigationMenuBrand />
   <div class="w-full flex justify-center">
     <div class="container max-w-screen-md">
-      <!-- <Navbar /> -->
-      <NavigationMenu />
       <NuxtPage />
     </div>
   </div>

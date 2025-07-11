@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-@import "./content.css";
-
 /* light mode variables */
 :root {
   --ui-bg: var(--color-zinc-100);

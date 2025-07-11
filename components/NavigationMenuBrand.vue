@@ -62,12 +62,24 @@ const items = ref<NavigationMenuItem[]>([
 </script>
 
 <template>
-  <div class="w-full border-b border-muted dark:border-muted/30">
-    <div class="flex justify-center items-center py-2 px-4 lg:px-0">
+  <div
+    class="w-full border-b border-muted dark:border-muted/30 flex justify-center"
+  >
+    <div
+      class="container max-w-screen-md flex justify-between items-center py-2 px-4 lg:px-0"
+    >
+      <div class="flex items-center gap-2">
+        <!-- <img
+          src="/pfp.jpg"
+          alt="Logo"
+          class="h-8 w-8 object-cover rounded-full border border-muted"
+        /> -->
+        <NuxtLink to="/" class="text-lg font-bold">timothee</NuxtLink>
+      </div>
       <UNavigationMenu
         variant="link"
         :items="items"
-        class="flex justify-center max-w-[550px] flex-grow"
+        class="flex justify-end max-w-[550px] flex-grow"
       />
     </div>
   </div>

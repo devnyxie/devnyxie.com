@@ -15,8 +15,6 @@ const { data: post } = await useAsyncData(`blog-${slugArray}`, () => {
 
 const posts = ref(null); // will hold directory list if no post
 
-console.log("Post data:", post.value);
-
 // TOC
 const toc = computed(() => {
   const headers = [];
@@ -50,13 +48,6 @@ if (!post.value) {
   console.log("Directory posts:", posts.value);
 }
 
-const formatDate = (d) =>
-  new Date(d).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-
 const breadcrumbs = slugArray.map((label, i) => {
   return {
     label: label.charAt(0).toUpperCase() + label.slice(1),
@@ -87,36 +78,36 @@ const isValidPost = computed(() => {
 
 <template>
   <div class="px-4 lg:px-0 py-18 max-w-screen-md">
-    <BlogBreadcrumb :items="breadcrumbs" class="mb-6" />
+    <!-- <BlogBreadcrumb :items="breadcrumbs" /> -->
 
     <!-- if we got a single post… -->
     <div v-if="isValidPost">
-      <h1 class="text-3xl font-bold mb-2">{{ post.title }}</h1>
-      <p class="text-sm text-muted mb-4">
-        {{ formatDate(post.date) }} · {{ post.minRead }} min read
-      </p>
-      <!-- Tags -->
-      <div class="flex flex-wrap gap-2 mb-4">
-        <NuxtLink
-          v-for="(tag, idx) in post.tags"
-          :key="idx"
-          :to="`/tags/${tag}`"
-          class="px-2 py-1 rounded-sm text-xs bg-muted"
-        >
-          {{ tag }}
-        </NuxtLink>
+      <div class="flex flex-col items-center text-center mb-14">
+        <p class="text-sm text-muted mb-4">
+          {{ formatDate(post.date) }} · {{ post.minRead }} min read
+        </p>
+
+        <img
+          v-if="post.image"
+          :src="post.image"
+          :alt="post.title"
+          class="w-full h-64 object-cover rounded-lg mb-6"
+          loading="lazy"
+        />
+        <h1 class="text-3xl font-bold mb-2">{{ post.title }}</h1>
+        <p class="text-muted text-sm mb-4">{{ post.description }}</p>
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          <BlogTag v-for="(tag, idx) in post.tags" :key="idx" :tag="tag">
+            {{ tag }}
+          </BlogTag>
+        </div>
       </div>
-      <img
-        v-if="post.image"
-        :src="post.image"
-        :alt="post.title"
-        class="w-full h-64 object-cover rounded-lg mb-6"
-        loading="lazy"
-      />
+
       <!-- Content -->
-      <ContentBody>
+      <BlogContentBody>
         <ContentRenderer :value="post" />
-      </ContentBody>
+      </BlogContentBody>
     </div>
 
     <!-- otherwise render a directory listing -->
@@ -125,24 +116,17 @@ const isValidPost = computed(() => {
         Posts in directory “{{ breadcrumbs[breadcrumbs.length - 1].label }}”
       </h2>
       <ul>
-        <li
-          v-for="p in posts"
-          :key="p.id"
-          class="mb-3 border-b border-muted pb-2 last:border-none"
-        >
-          <NuxtLink
-            :to="`/blog/${p.path.replace('/blog/', '')}`"
-            class="text-lg font-semibold hover:underline"
-          >
-            {{ p.title }}
-          </NuxtLink>
-          <div class="text-xs text-muted">
-            {{ formatDate(p.date) }} · {{ p.minRead }} min read
-          </div>
-        </li>
+        <BlogPostListItem
+          v-for="post in posts"
+          :key="post.id"
+          :title="post.title"
+          :path="post.path"
+          :min-read="post.minRead"
+          :date="post.date"
+        />
       </ul>
       <div v-if="posts && posts.length === 0" class="text-muted">
-        "> No posts found in this directory.
+        No posts found in this directory.
       </div>
     </div>
   </div>

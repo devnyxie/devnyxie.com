@@ -1,13 +1,10 @@
 <template>
   <div
-    class="card bg-elevated border border-muted dark:border-0 shadow-xs p-6 rounded-sm h-full"
+    class="card bg-elevated border border-muted dark:border-muted/50 shadow-xs p-6 rounded-sm h-full col-span-2"
   >
     <img
-      :src="
-        image
-          ? image
-          : `https://picsum.photos/id/${Math.floor(Math.random() * (200 - 50) + 50)}/1200/600`
-      "
+      v-if="image"
+      :src="image"
       :alt="title"
       class="object-cover rounded-sm mb-4 w-full h-[125px]"
       loading="lazy"
@@ -23,10 +20,13 @@
           })
         }}
       </p>
-      <NuxtLink :to="path" class="text-lg font-medium hyphens-auto">
+      <NuxtLink
+        :to="path"
+        class="text-lg font-medium hyphens-auto line-clamp-1"
+      >
         {{ title }}
       </NuxtLink>
-      <p class="text-muted break-words hyphens-auto">
+      <p class="text-muted break-words hyphens-auto line-clamp-2">
         {{ description }}
       </p>
       <div class="tags flex flex-wrap gap-2" v-if="tags && tags.length > 0">

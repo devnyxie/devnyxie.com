@@ -26,9 +26,12 @@
 }
 
 .content-body code:not(pre code) {
+  display: inline-block; /* so padding doesn’t alter your line‑height weirdly */
   background-color: var(--color-bg-elevated);
   font-family: var(--font-mono);
-  @apply border border-muted px-1 py-0.5 rounded-sm;
+  @apply border border-muted rounded-sm px-0.5 py-0;
+  white-space: normal; /* let it wrap like normal text */
+  word-break: break-word;
 }
 
 /* (#) Headings */

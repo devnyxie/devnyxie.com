@@ -1,8 +1,8 @@
 <template>
   <div
-    class="hover:bg-elevated border border-muted dark:border-muted/50 shadow-xs rounded-lg h-full"
+    class="bg-elevated border border-muted dark:border-muted/50 shadow-xs rounded-lg h-full col-span-4"
   >
-    <NuxtLink :to="path" class="flex gap-x-4 p-6">
+    <NuxtLink :to="path" class="flex justify-between gap-x-4 p-4">
       <div class="gap-2 flex flex-col h-full">
         <p class="text-sm text-muted flex gap-1 items-center">
           <Icon name="material-symbols:calendar-today-outline-rounded" />
@@ -21,22 +21,15 @@
           {{ description }}
         </p>
         <div class="tags flex flex-wrap gap-2" v-if="tags && tags.length > 0">
-          <div
-            v-for="(tag, idx) in tags"
-            :key="idx"
-            :to="`/tags/${tag}`"
-            class="dark:bg-zinc-900 dark:hover:bg-zinc-800 text-muted px-2 py-1 rounded-sm text-xs"
-          >
+          <!-- <UBadge color="secondary" variant="soft" v-for="(tag, idx) in tags">
             {{ tag }}
-          </div>
+          </UBadge> -->
+          <BlogTag v-for="(tag, idx) in tags" :key="idx" :tag="tag" />
         </div>
       </div>
       <img
-        :src="
-          image
-            ? image
-            : `https://picsum.photos/id/${Math.floor(Math.random() * (200 - 50) + 50)}/1200/600`
-        "
+        v-if="image"
+        :src="image"
         :alt="title"
         class="object-cover rounded-sm h-[125px] aspect-square"
         loading="lazy"
