@@ -4,7 +4,7 @@
       {{ title }}
     </NuxtLink>
     <div class="text-xs text-muted">
-      {{ formatDate(date) }} · {{ minRead }} min read
+      {{ formatDate(date) }} · {{ readingTime }} min read
     </div>
   </li>
 </template>
@@ -13,7 +13,7 @@
 interface Props {
   title: string;
   path: string;
-  minRead: number;
+  readingTime: number;
   date: string;
 }
 

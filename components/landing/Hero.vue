@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center gap-4 py-18">
+  <div class="flex flex-col items-center justify-center gap-4 section-padding">
     <div class="flex items-center justify-center">
       <Motion
         :initial="{

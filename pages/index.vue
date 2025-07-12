@@ -17,41 +17,11 @@
         delay: 0.5,
       }"
     >
-      <div class="grid grid-cols-2 gap-x-8">
-        <div class="col-span-1">
-          <div
-            class="col-span-1 text-pretty tracking-tight text-highlighted text-left text-xl sm:text-xl lg:text-2xl font-medium"
-          >
-            About Me
-          </div>
-          <div>
-            <p class="text-muted text-sm mt-2">
-              I am a software engineer with a passion for building web
-              applications and exploring new technologies. I love to share my
-              knowledge through writing and mentoring.
-            </p>
-          </div>
-        </div>
-        <div class="col-span-1">
-          <div
-            class="col-span-1 mb-2 grid-col-1 text-pretty tracking-tight text-highlighted text-left text-xl sm:text-xl lg:text-2xl font-medium"
-          >
-            Work Experience
-          </div>
-          <ul class="w-full">
-            <li
-              v-for="job in jobs"
-              :key="job.id"
-              class="w-full flex items-center gap-1 mb-2"
-            >
-              <div class="text-sm text-muted">{{ job.years }}</div>
-              <hr class="border-muted grow" />
-              <div class="font-sm">{{ job.title }}</div>
-              at
-              <div class="text-sm">{{ job.company }}</div>
-            </li>
-          </ul>
-        </div>
+      <div
+        class="gap-8 sm:gap-16 !pt-0 lg:grid lg:grid-cols-2 lg:gap-8 section-padding"
+      >
+        <LandingAbout :page="page" />
+        <LandingExperience :page="page" />
       </div>
     </Motion>
   </div>
@@ -75,27 +45,6 @@ useSeoMeta({
   description: page.value?.seo.description || page.value?.description,
   ogDescription: page.value?.seo.description || page.value?.description,
 });
-
-const jobs = [
-  {
-    id: 1,
-    title: "Software Engineer",
-    company: "Techy",
-    years: "2020 - Present",
-  },
-  {
-    id: 2,
-    title: "Frontend Developer",
-    company: "WebSol",
-    years: "2018 - 2020",
-  },
-  {
-    id: 3,
-    title: "Intern",
-    company: "Startup",
-    years: "2017 - 2018",
-  },
-];
 </script>
 
 <style></style>

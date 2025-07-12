@@ -1,5 +1,5 @@
 <template>
-  <div class="py-18 flex justify-center" v-if="page">
+  <div class="flex justify-center section-padding" v-if="page">
     <div class="">
       <div class="hero-section mb-8">
         <div class="flex gap-2 items-center">

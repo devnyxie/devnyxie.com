@@ -98,7 +98,6 @@ export default defineTransformer({
   extensions: [".md"],
   transform(file: any) {
     if (file.body?.type === "minimark") {
-      console.log(JSON.stringify(file.body, null, 2));
       return {
         ...file,
         body: {

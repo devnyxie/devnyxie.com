@@ -14,6 +14,10 @@ const items = ref<NavigationMenuItem[]>([
     label: "Portfolio",
     to: "/portfolio",
   },
+  //   {
+  //   label: "Now",
+  //   to: "/now",
+  // },
   {
     label: "About",
     to: "/about",
@@ -23,41 +27,18 @@ const items = ref<NavigationMenuItem[]>([
     // to: "/getting-started",
     children: [
       {
-        label: "Introduction",
-        description: "Fully styled and customizable components for Nuxt.",
-        icon: "i-lucide-house",
+        label: "Selfhosting",
+        description: "How I host all my services at home.",
+        icon: "i-lucide-server",
       },
       {
-        label: "Installation",
+        label: "Status",
         description:
-          "Learn how to install and configure Nuxt UI in your application.",
-        icon: "i-lucide-cloud-download",
-      },
-      {
-        label: "Icons",
-        icon: "i-lucide-smile",
-        description:
-          "You have nothing to do, @nuxt/icon will handle it automatically.",
-      },
-      {
-        label: "Colors",
-        icon: "i-lucide-swatch-book",
-        description:
-          "Choose a primary and a neutral color from your Tailwind CSS theme.",
-      },
-      {
-        label: "Theme",
-        icon: "i-lucide-cog",
-        description:
-          "You can customize components by using the `class` / `ui` props or in your app.config.ts.",
+          "Check the status of my services and see if they are online.",
+        icon: "i-lucide-server",
       },
     ],
   },
-  // {
-  //   label: "",
-  //   icon: "material-symbols:search",
-  //   class: "text-foreground",
-  // },
 ]);
 </script>
 
@@ -69,12 +50,7 @@ const items = ref<NavigationMenuItem[]>([
       class="container max-w-screen-md flex justify-between items-center py-2 px-4 lg:px-0"
     >
       <div class="flex items-center gap-2">
-        <!-- <img
-          src="/pfp.jpg"
-          alt="Logo"
-          class="h-8 w-8 object-cover rounded-full border border-muted"
-        /> -->
-        <NuxtLink to="/" class="text-lg font-bold">timothee</NuxtLink>
+        <NuxtLink to="/" class="font-semibold">timothee</NuxtLink>
       </div>
       <UNavigationMenu
         variant="link"

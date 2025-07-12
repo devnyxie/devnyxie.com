@@ -2,7 +2,7 @@
   <div
     class="bg-elevated border border-muted dark:border-muted/50 shadow-xs rounded-lg h-full col-span-4"
   >
-    <div class="flex justify-between gap-x-4 p-4">
+    <NuxtLink :to="path" class="flex justify-between gap-x-4 p-4">
       <div class="gap-2 flex flex-col h-full">
         <p class="text-sm text-muted flex gap-1 items-center">
           <Icon name="material-symbols:calendar-today-outline-rounded" />
@@ -14,12 +14,9 @@
             })
           }}
         </p>
-        <NuxtLink
-          :to="path"
-          class="text-lg font-medium hyphens-auto line-clamp-2"
-        >
+        <div :to="path" class="text-lg font-medium hyphens-auto line-clamp-2">
           {{ title }}
-        </NuxtLink>
+        </div>
         <p class="text-muted text-sm break-words hyphens-auto line-clamp-2">
           {{ description }}
         </p>
@@ -38,7 +35,7 @@
         class="object-cover rounded-sm h-[125px] aspect-square"
         loading="lazy"
       />
-    </div>
+    </NuxtLink>
   </div>
 </template>
 

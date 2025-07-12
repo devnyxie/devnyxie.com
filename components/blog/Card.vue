@@ -50,7 +50,7 @@ import { NuxtLink } from "#components";
 interface Props {
   title: string;
   description: string;
-  minRead: number;
+  readingTime: number;
   date: string;
   path: string;
   image: string;

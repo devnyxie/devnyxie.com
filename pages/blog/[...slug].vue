@@ -74,6 +74,8 @@ if (post.value) {
 const isValidPost = computed(() => {
   return post.value && post.value?.title && post.value?.date;
 });
+
+console.log("Blog page data:", post.value);
 </script>
 
 <template>
@@ -84,7 +86,7 @@ const isValidPost = computed(() => {
     <div v-if="isValidPost">
       <div class="flex flex-col items-center text-center mb-14">
         <p class="text-sm text-muted mb-4">
-          {{ formatDate(post.date) }} · {{ post.minRead }} min read
+          {{ formatDate(post.date) }} · {{ post.readingTime }} min read
         </p>
 
         <img
@@ -121,7 +123,7 @@ const isValidPost = computed(() => {
           :key="post.id"
           :title="post.title"
           :path="post.path"
-          :min-read="post.minRead"
+          :readingTime="post.readingTime"
           :date="post.date"
         />
       </ul>

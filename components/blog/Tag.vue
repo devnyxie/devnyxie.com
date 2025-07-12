@@ -20,7 +20,7 @@
     </UBadge> -->
     <UButton
       color="info"
-      variant="soft"
+      variant="ghost"
       size="sm"
       v-if="avatar"
       class="flex items-center gap-2"
@@ -34,7 +34,7 @@
       /> -->
       #{{ tag }}
     </UButton>
-    <UButton color="info" variant="soft" size="sm" :icon="icon" v-else>
+    <UButton color="info" variant="ghost" size="sm" :icon="icon" v-else>
       #{{ tag }}
     </UButton>
   </NuxtLink>
@@ -46,8 +46,6 @@ interface Props {
 }
 const props = defineProps<Props>();
 
-console.log("Tag component props:", props);
-
 const { data: iconData } = await useAsyncData(`icon-${props.tag}`, () => {
   return queryCollection("tagIcons")
     .where("stem", "=", `tag-icons/${props.tag.toLowerCase()}`)
@@ -57,8 +55,6 @@ const { data: iconData } = await useAsyncData(`icon-${props.tag}`, () => {
 // Pick public_icon if present, fallback to nuxt_icon, else undefined
 const icon = computed(() => iconData.value?.nuxt_icon || undefined);
 const avatar = computed(() => iconData.value?.public_icon || undefined);
-
-console.log("Tag icon data:", iconData.value);
 </script>
 
 <style></style>

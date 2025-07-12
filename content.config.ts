@@ -56,8 +56,6 @@ export default defineContentConfig({
               company: z.object({
                 name: z.string(),
                 url: z.string(),
-                logo: z.string().editor({ input: "icon" }),
-                color: z.string(),
               }),
             })
           ),
@@ -95,10 +93,9 @@ export default defineContentConfig({
       source: "blog/**/*.md",
       schema: z.object({
         tags: z.array(z.string().nonempty()).optional(),
-        minRead: z.number(),
+        readingTime: z.number(),
         date: z.date(),
         image: z.string().nonempty().editor({ input: "media" }),
-        // author: createAuthorSchema(),
       }),
     }),
     pages: defineCollection({

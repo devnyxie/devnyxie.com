@@ -38,11 +38,7 @@ export default defineNuxtConfig({
       showURL: false,
     },
     build: {
-      transformers: [
-        // "~~/transformers/obsidian-callout",
-        "~~/transformers/obsidian-links",
-        // "~~/transformers/title-suffix",
-      ],
+      transformers: ["~~/transformers/obsidian-links"],
       markdown: {
         highlight: {
           theme: {
@@ -53,11 +49,23 @@ export default defineNuxtConfig({
           langs: ["c", "cpp", "java", "go"],
         },
         contentHeading: false,
-        toc: {
-          depth: 20, // how many heading levels to show in TOC
-          searchDepth: 20, // how deep to search for headings in the document tree
+        remarkPlugins: {
+          "remark-reading-time": {
+            attribute: "myKeyName",
+          },
         },
       },
+    },
+  },
+  hooks: {
+    "content:file:afterParse"(ctx) {
+      const { file, content } = ctx;
+
+      const wordsPerMinute = 180;
+      const text = typeof file.body === "string" ? file.body : "";
+      const wordCount = text.split(/\s+/).length;
+
+      content.readingTime = Math.ceil(wordCount / wordsPerMinute);
     },
   },
 });

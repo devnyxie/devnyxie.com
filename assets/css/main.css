@@ -34,3 +34,7 @@
 body {
   min-height: 100vh;
 }
+
+.section-padding {
+  @apply py-16 sm:py-20 lg:py-24;
+}
