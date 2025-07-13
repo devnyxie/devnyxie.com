@@ -79,12 +79,20 @@ console.log("Blog page data:", post.value);
 </script>
 
 <template>
-  <div class="px-4 lg:px-0 py-18 max-w-screen-md">
+  <!-- <div class="px-4 lg:px-0 section-padding"> -->
+  <PageSection>
     <!-- <BlogBreadcrumb :items="breadcrumbs" /> -->
 
     <!-- if we got a single post… -->
     <div v-if="isValidPost">
       <div class="flex flex-col items-center text-center mb-14">
+        <img
+          v-if="post.icon"
+          :src="post.icon"
+          :alt="post.title"
+          class="h-10 object-contain rounded-lg mb-6"
+          loading="lazy"
+        />
         <p class="text-sm text-muted mb-4">
           {{ formatDate(post.date) }} · {{ post.readingTime }} min read
         </p>
@@ -93,9 +101,10 @@ console.log("Blog page data:", post.value);
           v-if="post.image"
           :src="post.image"
           :alt="post.title"
-          class="w-full h-64 object-cover rounded-lg mb-6"
+          class="h-64 object-contain rounded-lg mb-6"
           loading="lazy"
         />
+
         <h1 class="text-3xl font-bold mb-2">{{ post.title }}</h1>
         <p class="text-muted text-sm mb-4">{{ post.description }}</p>
         <!-- Tags -->
@@ -107,9 +116,9 @@ console.log("Blog page data:", post.value);
       </div>
 
       <!-- Content -->
-      <BlogContentBody>
+      <div class="content-body">
         <ContentRenderer :value="post" />
-      </BlogContentBody>
+      </div>
     </div>
 
     <!-- otherwise render a directory listing -->
@@ -131,5 +140,6 @@ console.log("Blog page data:", post.value);
         No posts found in this directory.
       </div>
     </div>
-  </div>
+  </PageSection>
+  <!-- </div> -->
 </template>

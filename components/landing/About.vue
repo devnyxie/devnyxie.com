@@ -1,16 +1,9 @@
 <template>
-  <div>
-    <div
-      class="text-pretty tracking-tight text-highlighted text-left text-xl sm:text-xl lg:text-2xl font-medium"
-    >
-      {{ page.about.title }}
-    </div>
-    <div>
-      <p class="text-muted text-sm mt-2">
-        {{ page.about.description }}
-      </p>
-    </div>
-  </div>
+  <Section :title="page.about.title">
+    <div class="text-sm sm:text-md lg:text-sm text-muted">
+      {{ page.about.description }}
+    </div></Section
+  >
 </template>
 
 <script lang="ts" setup>

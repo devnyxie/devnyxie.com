@@ -1,10 +1,5 @@
 <template>
-  <div>
-    <div
-      class="mb-2 grid-col-1 text-pretty tracking-tight text-highlighted text-left text-xl sm:text-xl lg:text-2xl font-medium"
-    >
-      {{ page.experience.title }}
-    </div>
+  <Section :title="page.experience.title">
     <ul class="w-full">
       <li
         v-for="job in page.experience.items"
@@ -20,7 +15,7 @@
         }}</NuxtLink>
       </li>
     </ul>
-  </div>
+  </Section>
 </template>
 
 <script lang="ts" setup>

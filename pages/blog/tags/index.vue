@@ -1,17 +1,14 @@
 <template>
-  <div v-if="page">
-    <div class="hero-section mb-8">
-      <div class="flex gap-2 items-center">
-        <div
-          class="tracking-tight font-bold text-highlighted text-pretty text-2xl sm:text-3xl lg:text-4xl"
-        >
-          {{ page.title }}
-        </div>
-      </div>
-      <p class="text-muted mt-2">
-        {{ page.description }}
-      </p>
-    </div>
+  <PageSection
+    :title="page.title"
+    :description="page.description"
+    :ui="{
+      title:
+        'tracking-tight font-bold text-highlighted text-pretty text-2xl sm:text-3xl lg:text-4xl',
+      description: 'mt-2 text-sm sm:text-md lg:text-sm text-muted',
+      container: 'section-padding',
+    }"
+  >
     <ul>
       <BlogTagListItem
         v-for="tag in tags"
@@ -20,7 +17,7 @@
         :path="`/blog/tags/${tag}`"
       />
     </ul>
-  </div>
+  </PageSection>
 </template>
 
 <script setup>

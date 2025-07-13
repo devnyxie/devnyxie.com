@@ -92,10 +92,12 @@ export default defineContentConfig({
       type: "page",
       source: "blog/**/*.md",
       schema: z.object({
+        // title and description are inherited from the base schema
         tags: z.array(z.string().nonempty()).optional(),
-        readingTime: z.number(),
+        readingTime: z.number(), // filled by the hook
         date: z.date(),
-        image: z.string().nonempty().editor({ input: "media" }),
+        image: z.string().nonempty().editor({ input: "media" }).optional(),
+        icon: z.string().nonempty().editor({ input: "media" }).optional(),
       }),
     }),
     pages: defineCollection({

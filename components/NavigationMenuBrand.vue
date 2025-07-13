@@ -14,10 +14,10 @@ const items = ref<NavigationMenuItem[]>([
     label: "Portfolio",
     to: "/portfolio",
   },
-  //   {
-  //   label: "Now",
-  //   to: "/now",
-  // },
+  {
+    label: "Now",
+    to: "/now",
+  },
   {
     label: "About",
     to: "/about",

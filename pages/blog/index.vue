@@ -1,33 +1,17 @@
 <template>
-  <div class="flex justify-center section-padding" v-if="page">
-    <div class="">
-      <div class="hero-section mb-8">
-        <div class="flex gap-2 items-center">
-          <div
-            class="tracking-tight font-bold text-highlighted text-pretty text-2xl sm:text-3xl lg:text-4xl"
-          >
-            {{ page.title }}
-          </div>
-        </div>
-        <p class="text-muted mt-2">
-          {{ page.description }}
-        </p>
-      </div>
-      <div id="recent-posts" class="mb-8" v-if="posts">
-        <div
-          v-if="posts.length > 0"
-          class="grid grid-cols-1 lg:grid-cols-4 gap-4"
-        >
-          <BlogRowPost
-            v-for="(post, index) in posts"
-            :key="post.title"
-            v-bind="post"
-          />
-        </div>
-        <div v-else class="text-muted mt-8">No posts available.</div>
-      </div>
+  <PageSection :title="page?.title" :description="page?.description">
+    <div
+      v-if="posts && posts.length > 0"
+      class="grid grid-cols-1 lg:grid-cols-4 gap-4"
+    >
+      <BlogRowPost
+        v-for="(post, index) in posts"
+        :key="post.title"
+        v-bind="post"
+      />
     </div>
-  </div>
+    <div v-else class="text-muted mt-8">No posts available.</div>
+  </PageSection>
 </template>
 
 <script lang="ts" setup>

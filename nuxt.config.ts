@@ -49,11 +49,6 @@ export default defineNuxtConfig({
           langs: ["c", "cpp", "java", "go"],
         },
         contentHeading: false,
-        remarkPlugins: {
-          "remark-reading-time": {
-            attribute: "myKeyName",
-          },
-        },
       },
     },
   },
