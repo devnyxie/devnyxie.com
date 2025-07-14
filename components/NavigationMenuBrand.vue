@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
 
-const items = ref<NavigationMenuItem[]>([
+const route = useRoute();
+
+const items = computed<NavigationMenuItem[]>(() => [
   {
     label: "Home",
     to: "/",
@@ -9,10 +11,13 @@ const items = ref<NavigationMenuItem[]>([
   {
     label: "Blog",
     to: "/blog",
+    // active: isActive("/blog"),
+    active: route.path.startsWith("/blog"),
   },
   {
     label: "Portfolio",
     to: "/portfolio",
+    active: route.path.startsWith("/portfolio"),
   },
   {
     label: "Now",
@@ -24,7 +29,6 @@ const items = ref<NavigationMenuItem[]>([
   },
   {
     label: "More",
-    // to: "/getting-started",
     children: [
       {
         label: "Selfhosting",

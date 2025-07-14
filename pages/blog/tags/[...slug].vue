@@ -37,7 +37,6 @@ console.log("Directory posts:", posts.value);
           v-for="(post, index) in posts"
           :key="post.title"
           v-bind="post"
-          class="border-none col-span-4 list-inside"
         />
       </div>
       <div v-else class="text-muted mt-8">No posts available.</div>

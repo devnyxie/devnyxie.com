@@ -76,9 +76,9 @@ export default defineContentConfig({
         }),
       }),
     }),
-    projects: defineCollection({
+    portfolio: defineCollection({
       type: "data",
-      source: "projects/*.yml",
+      source: "portfolio/*.yml",
       schema: z.object({
         title: z.string().nonempty(),
         description: z.string().nonempty(),
@@ -103,8 +103,10 @@ export default defineContentConfig({
     pages: defineCollection({
       type: "page",
       source: [
-        { include: "projects.yml" },
+        { include: "portfolio.yml" },
+        { include: "now.yml" },
         { include: "blog.yml" },
+        { include: "about.yml" },
         { include: "tags.yml" },
       ],
       schema: z.object({
@@ -115,8 +117,19 @@ export default defineContentConfig({
       type: "page",
       source: "about.yml",
       schema: z.object({
+        title: z.string().nonempty(),
+        description: z.string().nonempty(),
         content: z.object({}),
         images: z.array(createImageSchema()),
+      }),
+    }),
+    now: defineCollection({
+      type: "page",
+      source: "now.yml",
+      schema: z.object({
+        title: z.string().nonempty(),
+        description: z.string().nonempty(),
+        content: z.string().nonempty(),
       }),
     }),
     tagIcons: defineCollection({

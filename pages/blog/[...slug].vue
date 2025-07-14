@@ -1,7 +1,7 @@
 <script setup>
-// add: .where('published', '=', true)
 import { ref, computed } from "vue";
 import { useRoute, useAsyncData, queryCollection } from "#imports";
+import { BlogDirectoryLayout, BlogPostLayout } from "#components";
 
 const route = useRoute();
 const slugArray = Array.isArray(route.params.slug)
@@ -9,44 +9,40 @@ const slugArray = Array.isArray(route.params.slug)
   : [route.params.slug];
 const joinedSlug = slugArray.join("/");
 
+const data = ref(null);
+
+// try to fetch the post by the full slug
 const { data: post } = await useAsyncData(`blog-${slugArray}`, () => {
   return queryCollection("blog").path(`/blog/${joinedSlug}`).first();
 });
 
-const posts = ref(null); // will hold directory list if no post
+data.value = post.value || null;
 
-// TOC
-const toc = computed(() => {
-  const headers = [];
-
-  for (const node of post.value?.body.value || []) {
-    const [tag, props, content] = node;
-
-    if (["h1", "h2", "h3"].includes(tag)) {
-      headers.push({
-        id: props?.id || content?.toLowerCase().replace(/\s+/g, "-"),
-        text: content || "",
-        depth: parseInt(tag.replace("h", "")),
-      });
-    }
-  }
-
-  return headers;
-});
-
-if (!post.value) {
+// otherwise, try to fetch the directory posts
+if (!data.value) {
   const { data: dirPosts } = await useAsyncData(
     `blog-partial-${joinedSlug}`,
     () =>
       queryCollection("blog")
-        // SQL-like pattern matching: anything beginning with "/blog/foo/bar"
         .where("path", "LIKE", `/blog/${joinedSlug}%`)
         .order("date", "DESC")
         .all() // returns an array of matches
   );
-  posts.value = dirPosts.value || [];
-  console.log("Directory posts:", posts.value);
+  data.value = dirPosts.value || null;
 }
+
+// if still no data, throw a 404 error
+if (!data.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Page not found",
+    fatal: true,
+  });
+}
+
+const isPost = computed(() => {
+  return Array.isArray(data.value) ? false : true;
+});
 
 const breadcrumbs = slugArray.map((label, i) => {
   return {
@@ -55,14 +51,11 @@ const breadcrumbs = slugArray.map((label, i) => {
   };
 });
 
-// add a "Blog" breadcrumb at the start
 breadcrumbs.unshift({
   label: "Blog",
   to: "/blog",
 });
 
-// if it's a single post, delete the last breadcrumb
-// and replace it with the post title
 if (post.value) {
   breadcrumbs.pop();
   breadcrumbs.push({
@@ -70,76 +63,9 @@ if (post.value) {
     to: `/blog/${joinedSlug}`,
   });
 }
-
-const isValidPost = computed(() => {
-  return post.value && post.value?.title && post.value?.date;
-});
-
-console.log("Blog page data:", post.value);
 </script>
 
 <template>
-  <!-- <div class="px-4 lg:px-0 section-padding"> -->
-  <PageSection>
-    <!-- <BlogBreadcrumb :items="breadcrumbs" /> -->
-
-    <!-- if we got a single post… -->
-    <div v-if="isValidPost">
-      <div class="flex flex-col items-center text-center mb-14">
-        <img
-          v-if="post.icon"
-          :src="post.icon"
-          :alt="post.title"
-          class="h-10 object-contain rounded-lg mb-6"
-          loading="lazy"
-        />
-        <p class="text-sm text-muted mb-4">
-          {{ formatDate(post.date) }} · {{ post.readingTime }} min read
-        </p>
-
-        <img
-          v-if="post.image"
-          :src="post.image"
-          :alt="post.title"
-          class="h-64 object-contain rounded-lg mb-6"
-          loading="lazy"
-        />
-
-        <h1 class="text-3xl font-bold mb-2">{{ post.title }}</h1>
-        <p class="text-muted text-sm mb-4">{{ post.description }}</p>
-        <!-- Tags -->
-        <div class="flex flex-wrap gap-2 mb-4">
-          <BlogTag v-for="(tag, idx) in post.tags" :key="idx" :tag="tag">
-            {{ tag }}
-          </BlogTag>
-        </div>
-      </div>
-
-      <!-- Content -->
-      <div class="content-body">
-        <ContentRenderer :value="post" />
-      </div>
-    </div>
-
-    <!-- otherwise render a directory listing -->
-    <div v-else>
-      <h2 class="text-2xl font-semibold mb-4">
-        Posts in directory “{{ breadcrumbs[breadcrumbs.length - 1].label }}”
-      </h2>
-      <ul>
-        <BlogPostListItem
-          v-for="post in posts"
-          :key="post.id"
-          :title="post.title"
-          :path="post.path"
-          :readingTime="post.readingTime"
-          :date="post.date"
-        />
-      </ul>
-      <div v-if="posts && posts.length === 0" class="text-muted">
-        No posts found in this directory.
-      </div>
-    </div>
-  </PageSection>
-  <!-- </div> -->
+  <BlogPostLayout v-if="isPost" :post="data" :toc="toc" />
+  <BlogDirectoryLayout v-else :posts="data" :slugArray="slugArray" />
 </template>
