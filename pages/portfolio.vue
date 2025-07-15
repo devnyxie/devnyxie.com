@@ -3,7 +3,28 @@
     v-if="page"
     :title="page?.title"
     :description="page?.description"
-  ></PageSection>
+  >
+    <Section
+      title="Software"
+      description="A showcase of my programming projects."
+    >
+      <img
+        src="/images/portfolio/solar_map.png"
+        alt="Placeholder Image"
+        class="w-full h-auto rounded-lg border border-muted"
+      />
+    </Section>
+    <Section
+      title="Design"
+      description="A showcase of my design-as-a-hobby projects."
+    >
+      <img
+        src="/images/portfolio/ethereal_preview.png"
+        alt="Placeholder Image"
+        class="w-full h-auto"
+      />
+    </Section>
+  </PageSection>
 </template>
 
 <script setup lang="ts">
