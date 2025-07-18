@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
   css: ["~/assets/css/main.css", "~/assets/css/content.css"],
-  // vite: { plugins: [tailwindcss()] },
   modules: [
     "@nuxt/icon",
     "@nuxt/content",
@@ -11,6 +10,7 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "motion-v/nuxt",
     "@nuxt/ui",
+    "@nuxt/fonts",
   ],
   colorMode: {
     classSuffix: "",

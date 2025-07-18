@@ -6,8 +6,8 @@
   --ui-bg: var(--color-zinc-100);
   --ui-bg-elevated: var(--color-white);
   --ui-fg: var(--color-zinc-900);
-  --ui-info: var(--ui-color-info-800);
-  --font-mono: "Roboto Mono";
+  --ui-info: var(--ui-color-info-500);
+  --font-mono: "Roboto Mono", monospace;
 }
 
 /* dark mode variables */
@@ -16,6 +16,7 @@
   --ui-bg-elevated: #131314;
   --ui-fg: var(--color-zinc-100);
   --ui-info: var(--ui-color-info-300);
+  --ui-border-muted: var(--ui-color-neutral-800);
 }
 
 @theme static {

@@ -4,13 +4,13 @@
       <li
         v-for="job in page.experience.items"
         :key="job.position"
-        class="w-full flex items-center gap-1 mb-2"
+        class="w-full flex items-center gap-1 mb-2 text-sm"
       >
-        <div class="text-sm text-muted">{{ job.date }}</div>
-        <hr class="border-muted grow" />
+        <div class="">{{ job.date }}</div>
+        <hr class="grow border-accented" />
         <div class="font-sm">{{ job.position }}</div>
         at
-        <NuxtLink :to="job.company.url" class="text-sm underline">{{
+        <NuxtLink :to="job.company.url" class="underline">{{
           job.company.name
         }}</NuxtLink>
       </li>

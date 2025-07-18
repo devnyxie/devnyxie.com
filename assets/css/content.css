@@ -4,8 +4,8 @@
 .content-body {
   /* padding-inline: 2rem; */
   border-radius: 0.5rem;
-  line-height: 1.6;
-  font-size: 1rem;
+  /* line-height: 1.6; */
+  /* font-size: 1rem; */
 }
 
 .dark .content-body {
@@ -26,16 +26,14 @@
 }
 
 .content-body pre {
-  @apply p-4 bg-elevated rounded-sm overflow-x-auto border border-muted;
+  @apply p-4 bg-elevated rounded-sm overflow-x-auto border border-muted text-sm;
 }
 
 .content-body code:not(pre code) {
-  display: inline-block; /* so padding doesn’t alter your line‑height weirdly */
+  display: inline-block;
   background-color: var(--color-bg-elevated);
-  font-family: var(--font-mono);
-  @apply border border-muted rounded-sm px-0.5 py-0;
-  white-space: normal; /* let it wrap like normal text */
-  word-break: break-word;
+  line-height: 110%;
+  @apply border border-muted rounded-sm px-0.5 py-0 font-mono;
 }
 
 /* (#) Headings */
