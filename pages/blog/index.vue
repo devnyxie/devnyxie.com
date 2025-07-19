@@ -6,7 +6,7 @@
   >
     <div
       v-if="deepDives && deepDives.length > 0"
-      class="grid grid-cols-1 lg:grid-cols-2 gap-4"
+      class="grid grid-cols-1 sm:grid-cols-2 gap-4"
     >
       <BlogDeepDive
         v-for="(post, index) in deepDives"
@@ -17,10 +17,7 @@
     <div v-else class="text-muted mt-8">No posts available.</div>
   </PageSection>
   <PageSection :title="page?.title" :description="page?.description">
-    <div
-      v-if="posts && posts.length > 0"
-      class="grid grid-cols-1 lg:grid-cols-4 gap-4"
-    >
+    <div v-if="posts && posts.length > 0" class="grid grid-cols-1 gap-4">
       <BlogRowPost
         v-for="(post, index) in posts"
         :key="post.title"
@@ -43,23 +40,21 @@ if (!page.value) {
   });
 }
 
-const { data: posts } = await useAsyncData("blogs", () =>
-  queryCollection("blog").order("date", "DESC").all()
+const { data: posts } = await useAsyncData("blog-posts", () =>
+  queryCollection("blog")
+    .order("date", "DESC")
+    .where("type", "=", "article")
+    .limit(6)
+    .all()
 );
 
-const { data: deepDives } = await useAsyncData("deepDives", () =>
-  queryCollection("deepDives").order("date", "DESC").all()
+const { data: deepDives } = await useAsyncData("blog-deep-dives", () =>
+  queryCollection("blog")
+    .order("date", "DESC")
+    .where("type", "=", "deep-dive")
+    .limit(6)
+    .all()
 );
-
-console.log("Deep Dives:", deepDives.value);
-
-if (!posts.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: "blogs posts not found",
-    fatal: true,
-  });
-}
 
 useSeoMeta({
   title: page.value?.seo?.title || page.value?.title,

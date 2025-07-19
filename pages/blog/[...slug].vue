@@ -40,10 +40,6 @@ if (!data.value) {
   });
 }
 
-const isPost = computed(() => {
-  return Array.isArray(data.value) ? false : true;
-});
-
 const breadcrumbs = slugArray.map((label, i) => {
   return {
     label: label.charAt(0).toUpperCase() + label.slice(1),
@@ -66,6 +62,7 @@ if (post.value) {
 </script>
 
 <template>
-  <BlogPostLayout v-if="isPost" :post="data" :toc="toc" />
-  <BlogDirectoryLayout v-else :posts="data" :slugArray="slugArray" />
+  <NuxtLayout name="md">
+    <BlogPostLayout :post="data" :toc="toc" />
+  </NuxtLayout>
 </template>

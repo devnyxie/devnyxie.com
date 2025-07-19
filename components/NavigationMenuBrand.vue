@@ -50,9 +50,7 @@ const items = computed<NavigationMenuItem[]>(() => [
   <div
     class="w-full border-b border-muted dark:border-muted/30 flex justify-center"
   >
-    <div
-      class="container max-w-screen-md flex justify-between items-center py-2 px-4 lg:px-0"
-    >
+    <NuxtLayout name="md" class="flex justify-between items-center py-2">
       <div class="flex items-center gap-2">
         <NuxtLink to="/" class="font-semibold">timothee</NuxtLink>
       </div>
@@ -61,6 +59,6 @@ const items = computed<NavigationMenuItem[]>(() => [
         :items="items"
         class="flex justify-end max-w-[550px] flex-grow"
       />
-    </div>
+    </NuxtLayout>
   </div>
 </template>

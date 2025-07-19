@@ -4,7 +4,7 @@
     :description="page.blog.description"
     v-if="posts"
   >
-    <div v-if="posts.length > 0" class="grid grid-cols-1 lg:grid-cols-4 gap-4">
+    <div v-if="posts.length > 0" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <BlogRowPost
         v-for="(post, index) in posts"
         :key="post.title"
@@ -13,8 +13,6 @@
         :date="post.date"
         :readingTime="post.readingTime"
         :path="post.path"
-        :image="post.image"
-        :icon="post.icon"
         :tags="post.tags"
       />
     </div>
@@ -25,7 +23,7 @@
 import { BlogRowPost } from "#components";
 
 const { data: posts } = await useAsyncData("recent-posts", () =>
-  queryCollection("blog").order("date", "DESC").limit(3).all()
+  queryCollection("blog").order("date", "DESC").limit(4).all()
 );
 defineProps<{
   page: {

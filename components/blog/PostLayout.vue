@@ -44,23 +44,5 @@
   </PageSection>
 </template>
 <script setup>
-// TOC
-// const toc = computed(() => {
-//   const headers = [];
-
-//   for (const node of post.value?.body.value || []) {
-//     const [tag, props, content] = node;
-
-//     if (["h1", "h2", "h3"].includes(tag)) {
-//       headers.push({
-//         id: props?.id || content?.toLowerCase().replace(/\s+/g, "-"),
-//         text: content || "",
-//         depth: parseInt(tag.replace("h", "")),
-//       });
-//     }
-//   }
-
-//   return headers;
-// });
 defineProps({ post: Object });
 </script>

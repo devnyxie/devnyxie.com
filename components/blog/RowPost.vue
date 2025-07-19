@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-elevated border border-muted dark:border-muted shadow-xs rounded-lg h-full col-span-4"
+    class="bg-elevated border border-muted dark:border-muted shadow-xs rounded-lg h-full col-span-1"
   >
     <div class="flex justify-between gap-x-4 p-4">
       <div class="gap-2 flex flex-col h-full grow">
