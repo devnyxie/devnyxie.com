@@ -100,6 +100,17 @@ export default defineContentConfig({
         icon: z.string().nonempty().editor({ input: "media" }).optional(),
       }),
     }),
+    deepDives: defineCollection({
+      type: "page",
+      source: "deep-dives/**/*.md",
+      schema: z.object({
+        tags: z.array(z.string().nonempty()).optional(),
+        readingTime: z.number(), // filled by the hook
+        date: z.date(),
+        image: z.string().nonempty().editor({ input: "media" }).optional(),
+        icon: z.string().nonempty().editor({ input: "media" }).optional(),
+      }),
+    }),
     pages: defineCollection({
       type: "page",
       source: [

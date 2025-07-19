@@ -18,7 +18,7 @@
       }"
     >
       <div
-        class="gap-8 sm:gap-16 !pt-0 lg:grid lg:grid-cols-2 lg:gap-8 section-padding"
+        class="!pt-0 flex flex-col gap-8 md:grid md:grid-cols-2 section-padding"
       >
         <LandingAbout :page="page" />
         <LandingExperience :page="page" />

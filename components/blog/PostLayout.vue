@@ -25,7 +25,12 @@
         <p class="text-muted text-sm mb-4">{{ post.description }}</p>
         <!-- Tags -->
         <div class="flex flex-wrap gap-2 mb-4">
-          <BlogTag v-for="(tag, idx) in post.tags" :key="idx" :tag="tag">
+          <BlogTag
+            v-for="(tag, idx) in post.tags"
+            :key="idx"
+            :tag="tag"
+            variant="soft"
+          >
             {{ tag }}
           </BlogTag>
         </div>

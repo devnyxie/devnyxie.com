@@ -3,7 +3,7 @@
     class="bg-elevated border border-muted dark:border-muted shadow-xs rounded-lg h-full col-span-4"
   >
     <div class="flex justify-between gap-x-4 p-4">
-      <div class="gap-2 flex flex-col h-full w-full">
+      <div class="gap-2 flex flex-col h-full grow">
         <p class="text-sm text-muted flex gap-1 items-center">
           <Icon name="material-symbols:calendar-today-outline-rounded" />
           {{
@@ -16,22 +16,9 @@
         </p>
         <NuxtLink
           :to="path"
-          class="text-lg font-medium hyphens-auto line-clamp-1 group"
+          class="text-lg font-medium hyphens-auto line-clamp-1 group hover:text-info transition-colors"
         >
-          <!-- {{ title }} -->
-          <UButton
-            size="xl"
-            variant="link"
-            class="p-0 gap-0 group-hover:text-info hover:text-info cursor-pointer text-lg"
-            :label="title"
-          >
-            <template #trailing>
-              <UIcon
-                name="line-md:chevron-small-right"
-                class="size-6 text-primary transition-all opacity-0 group-hover:translate-x-1 group-hover:opacity-100"
-              />
-            </template>
-          </UButton>
+          {{ title }}
         </NuxtLink>
 
         <p class="text-muted text-sm break-words hyphens-auto line-clamp-2">
@@ -42,6 +29,7 @@
             v-for="(tag, idx) in tags"
             :key="`${tag}-${idx}`"
             :tag="tag"
+            variant="ghost"
           />
         </div>
       </div>
@@ -49,7 +37,7 @@
         v-if="image"
         :src="image"
         :alt="title"
-        class="object-cover rounded-sm h-[125px] aspect-square"
+        class="object-cover rounded-sm h-[125px] aspect-square hidden sm:block"
         loading="lazy"
       />
       <img

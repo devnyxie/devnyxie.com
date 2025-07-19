@@ -1,4 +1,21 @@
 <template>
+  <PageSection
+    title="Deep Dives"
+    description="Explore in-depth articles and insights"
+    class="!pb-0"
+  >
+    <div
+      v-if="deepDives && deepDives.length > 0"
+      class="grid grid-cols-1 lg:grid-cols-2 gap-4"
+    >
+      <BlogDeepDive
+        v-for="(post, index) in deepDives"
+        :key="post.title"
+        v-bind="post"
+      />
+    </div>
+    <div v-else class="text-muted mt-8">No posts available.</div>
+  </PageSection>
   <PageSection :title="page?.title" :description="page?.description">
     <div
       v-if="posts && posts.length > 0"
@@ -29,6 +46,13 @@ if (!page.value) {
 const { data: posts } = await useAsyncData("blogs", () =>
   queryCollection("blog").order("date", "DESC").all()
 );
+
+const { data: deepDives } = await useAsyncData("deepDives", () =>
+  queryCollection("deepDives").order("date", "DESC").all()
+);
+
+console.log("Deep Dives:", deepDives.value);
+
 if (!posts.value) {
   throw createError({
     statusCode: 404,
