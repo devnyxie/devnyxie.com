@@ -4,8 +4,8 @@ export default defineAppConfig({
       src: "/pfp.jpg",
       alt: "My profile picture",
     },
-    meetingLink: "https://cal.com/",
-    email: "ui-pro@nuxt.com",
+    meetingLink: "https://cal.com/tim-afanasiev-7q9d0s",
+    email: "timbusinez@gmail.com",
     available: true,
   },
   ui: {
