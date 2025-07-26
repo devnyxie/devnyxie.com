@@ -16,7 +16,7 @@ defineProps({
   ui: {
     type: Object,
     default: () => ({
-      container: "px-0 gap-8 sm:gap-6 lg:gap-8 section-padding",
+      container: "px-0 gap-8 sm:gap-6 lg:gap-8 py-16 sm:py-20 lg:py-24",
       title:
         "tracking-tight font-bold text-highlighted text-pretty text-2xl sm:text-3xl lg:text-4xl",
       description: "text-muted mt-2",

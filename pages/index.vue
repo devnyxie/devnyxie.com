@@ -1,5 +1,8 @@
 <template>
-  <div v-if="page" class="flex flex-col gap-10">
+  <div
+    v-if="page"
+    class="flex flex-col gap-16 sm:gap-20 lg:gap-24 py-16 sm:py-20 lg:py-24"
+  >
     <LandingHero :page />
     <Motion
       :initial="{
@@ -17,9 +20,7 @@
         delay: 0.5,
       }"
     >
-      <div
-        class="!pt-0 flex flex-col gap-8 md:grid md:grid-cols-2 section-padding"
-      >
+      <div class="!pt-0 flex flex-col gap-8 md:grid md:grid-cols-2">
         <LandingAbout :page="page" />
         <LandingExperience :page="page" />
       </div>

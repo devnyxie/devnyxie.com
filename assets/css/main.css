@@ -36,6 +36,6 @@ body {
   min-height: 100vh;
 }
 
-.section-padding {
-  @apply py-16 sm:py-20 lg:py-24;
+.section-padding-bottom {
+  @apply pb-16 sm:pb-20 lg:pb-24;
 }

@@ -2,8 +2,8 @@
   <Section :title="page.about.title">
     <div class="text-sm sm:text-md lg:text-sm text-muted">
       {{ page.about.description }}
-    </div></Section
-  >
+    </div>
+  </Section>
 </template>
 
 <script lang="ts" setup>

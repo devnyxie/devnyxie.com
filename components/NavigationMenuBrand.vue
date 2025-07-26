@@ -48,7 +48,7 @@ const items = computed<NavigationMenuItem[]>(() => [
 
 <template>
   <div
-    class="w-full border-b border-muted dark:border-muted/30 flex justify-center"
+    class="w-full border-b border-muted dark:border-muted/50 flex justify-center"
   >
     <NuxtLayout name="md" class="flex justify-between items-center py-2">
       <div class="flex items-center gap-2">

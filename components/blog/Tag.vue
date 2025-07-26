@@ -7,7 +7,7 @@
       color="info"
       :variant="variant"
       size="sm"
-      class="flex items-center gap-2"
+      class="flex items-center gap-2 cursor-pointer"
     >
       #{{ tag }}
     </UButton>
