@@ -3,29 +3,38 @@ import type { NavigationMenuItem } from "@nuxt/ui";
 
 const route = useRoute();
 
+const getItemClass = (to?: string): string => {
+  if (!to) return "";
+  const isHome = to === "/";
+  const isActive = isHome ? route.path === "/" : route.path.startsWith(to);
+  return isActive ? "before:border before:border-muted before:rounded-sm" : "";
+};
+
 const items = computed<NavigationMenuItem[]>(() => [
   {
     label: "Home",
     to: "/",
+    class: getItemClass("/"),
   },
   {
     label: "Blog",
     to: "/blog",
-    // active: isActive("/blog"),
-    active: route.path.startsWith("/blog"),
+    class: getItemClass("/blog"),
   },
   {
     label: "Portfolio",
     to: "/portfolio",
-    active: route.path.startsWith("/portfolio"),
+    class: getItemClass("/portfolio"),
   },
   {
     label: "Now",
     to: "/now",
+    class: getItemClass("/now"),
   },
   {
     label: "About",
     to: "/about",
+    class: getItemClass("/about"),
   },
   {
     label: "More",
@@ -55,7 +64,7 @@ const items = computed<NavigationMenuItem[]>(() => [
         <NuxtLink to="/" class="font-semibold">timothee</NuxtLink>
       </div>
       <UNavigationMenu
-        variant="link"
+        variant="pill"
         :items="items"
         class="flex justify-end max-w-[550px] flex-grow"
       />
