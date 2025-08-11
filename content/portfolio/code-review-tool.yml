@@ -1,0 +1,8 @@
+title: "Code Review Tool"
+description: "A collaborative code review platform built with Django and Vue.js. Features syntax highlighting, inline comments, diff visualization, merge request management, and automated code quality checks. Includes integration with Git repositories, team collaboration tools, and comprehensive review analytics."
+image: https://github.com/devnyxie/code-review-tool/blob/main/docs/review-interface.png?raw=true
+public: true
+source: "https://github.com/devnyxie/code-review-tool"
+preview: "https://code-review.devnyxie.com"
+tags: ["Full-Stack", "Django", "Vue.js", "DevTools", "Collaboration"]
+date: "2024"

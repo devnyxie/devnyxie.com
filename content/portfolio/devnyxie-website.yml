@@ -1,0 +1,8 @@
+title: "Personal Portfolio Website"
+description: "A modern, responsive portfolio website built with Nuxt.js, Tailwind CSS, and Nuxt Content. Features a git-based CMS, automatic content rendering, and beautiful animations using Motion.vue. Includes a blog system, portfolio showcase, and full SEO optimization."
+image: https://github.com/devnyxie/devnyxie.com/blob/main/preview.png?raw=true
+public: true
+source: "https://github.com/devnyxie/devnyxie.com"
+preview: "https://devnyxie.com"
+tags: ["Frontend", "Nuxt.js", "Vue.js", "TypeScript", "Tailwind CSS"]
+date: "2025"

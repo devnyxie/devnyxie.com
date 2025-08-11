@@ -1,0 +1,8 @@
+title: "E-commerce Dashboard"
+description: "A comprehensive admin dashboard for e-commerce platforms built with React, TypeScript, and Material-UI. Features real-time analytics, inventory management, order tracking, and customer insights. Includes advanced data visualization with Chart.js and responsive design for all devices."
+image: https://github.com/devnyxie/ecommerce-dashboard/blob/main/screenshots/dashboard-overview.png?raw=true
+public: true
+source: "https://github.com/devnyxie/ecommerce-dashboard"
+preview: "https://ecommerce-dashboard-demo.vercel.app"
+tags: ["Frontend", "React", "TypeScript", "Material-UI", "Analytics"]
+date: "2024"

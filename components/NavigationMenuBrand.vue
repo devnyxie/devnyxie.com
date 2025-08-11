@@ -7,7 +7,9 @@ const getItemClass = (to?: string): string => {
   if (!to) return "";
   const isHome = to === "/";
   const isActive = isHome ? route.path === "/" : route.path.startsWith(to);
-  return isActive ? "before:border before:border-muted before:rounded-sm" : "";
+  return isActive
+    ? "before:border before:border-muted before:rounded-sm text-highlighted"
+    : "";
 };
 
 const items = computed<NavigationMenuItem[]>(() => [

@@ -3,6 +3,13 @@
     class="bg-elevated border border-muted dark:border-muted shadow-xs rounded-lg h-full col-span-1"
   >
     <div class="flex justify-between gap-x-4 p-4">
+      <img
+        v-if="image"
+        :src="image"
+        :alt="title"
+        class="object-cover rounded-sm h-[125px] aspect-[16/9] hidden sm:block"
+        loading="lazy"
+      />
       <div class="gap-2 flex flex-col h-full grow">
         <p class="text-sm text-muted flex gap-1 items-center">
           <Icon name="material-symbols:calendar-today-outline-rounded" />
@@ -21,7 +28,7 @@
           {{ title }}
         </NuxtLink>
 
-        <p class="text-muted text-sm break-words hyphens-auto line-clamp-2">
+        <p class="text-muted text-sm break-words hyphens-auto">
           {{ description }}
         </p>
         <div class="tags flex flex-wrap gap-1" v-if="tags && tags.length > 0">
@@ -33,20 +40,6 @@
           />
         </div>
       </div>
-      <img
-        v-if="image"
-        :src="image"
-        :alt="title"
-        class="object-cover rounded-sm h-[125px] aspect-square hidden sm:block"
-        loading="lazy"
-      />
-      <img
-        v-else-if="icon"
-        :src="icon"
-        alt=""
-        class="object-cover rounded-sm h-[35px]"
-        loading="lazy"
-      />
     </div>
   </div>
 </template>

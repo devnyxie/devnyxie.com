@@ -5,7 +5,7 @@ tags:
   - bot
 date: 2025-03-23
 description: "Setting up Freqtrade, a free and open-source crypto trading bot and backtesting it with sample data."
-icon: https://cdn.freebiesupply.com/logos/large/2x/python-5-logo-png-transparent.png
+image: https://machow2.com/wp-content/uploads/2015/10/motivewave-for-mac-desktop-app.jpg
 ---
 
 Yeah. It was unexpected for me as well. I'm not a fan of gambling and prefer stability over volatility. However, as a human seeking new experiences, I decided to give it a try.

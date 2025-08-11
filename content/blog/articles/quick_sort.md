@@ -4,6 +4,8 @@ tags:
   - algorithm
   - c
 date: 2025-02-06
+image: https://lh7-us.googleusercontent.com/docsz/AD_4nXd_VD-PkxcpHnLp5ZJrgUXyIgh1ln6thyBna__49yH3YrOFSWdkcc2Qh8Lxf74uIcfnkpTWkump1uHsXt8HUBi2p4DpNRy43GStHkxkxr0e9E8hVx8Lpszk3rcO9yVUSd1-7BJUsaLsB6pNM5_70uOYNTw_?key=3_UPicvf_BgAHhUYi-MqCw
+description: "Quick Sort is a popular sorting algorithm that uses the Divide and Conquer strategy. It is an efficient, in-place sorting algorithm that has an average time complexity of O(n log n)."
 ---
 
 Quick Sort is a popular sorting algorithm that uses the **Divide and Conquer** strategy. It is an efficient, in-place sorting algorithm that has an average time complexity of `O(n log n)`.

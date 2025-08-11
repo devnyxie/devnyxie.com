@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="path"
-    class="group bg-elevated border border-muted hover:border-info shadow-xs rounded-lg h-full transition-colors duration-300 flex flex-col justify-center"
+    class="group hover:bg-elevated border border-muted shadow-xs rounded-lg h-full transition-colors duration-300 flex flex-col justify-center"
   >
     <div class="flex justify-between items-center gap-x-4 p-4">
       <img

@@ -5,7 +5,7 @@ tags:
   - c
 date: 2025-02-27
 description: Counting Sort is a sorting algorithm that sorts the elements of an array by counting the number of occurrences of each unique element in the array.
-icon: /icons/c_lang.svg
+image: https://www.boardinfinity.com/blog/content/images/2023/03/Counting-sort.png
 ---
 
 Counting Sort is a sorting algorithm that sorts the elements of an array by counting the number of occurrences of each unique element in the array. It is a **non-comparison-based** sorting algorithm that has a time complexity of `O(n + k)`, where `n` is the number of elements in the array and `k` is the range of the input (the difference between the maximum and minimum values respectively). It is often used as a subroutine in other sorting algorithms like **Radix Sort**.

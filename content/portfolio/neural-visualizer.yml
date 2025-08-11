@@ -1,0 +1,8 @@
+title: "Neural Network Visualizer"
+description: "An interactive web application for visualizing neural network architectures and training processes. Built with Python Flask backend and D3.js frontend. Features real-time visualization of forward/backward propagation, customizable network architectures, and educational tutorials for machine learning concepts."
+image: https://github.com/devnyxie/neural-viz/blob/main/docs/network-visualization.png?raw=true
+public: true
+source: "https://github.com/devnyxie/neural-viz"
+preview: "https://neural-visualizer.herokuapp.com"
+tags: ["Machine Learning", "Python", "Flask", "D3.js", "Education"]
+date: "2023"

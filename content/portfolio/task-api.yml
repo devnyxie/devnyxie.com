@@ -1,0 +1,8 @@
+title: "Task Management API"
+description: "A RESTful API built with Go and PostgreSQL for task management applications. Features JWT authentication, role-based access control, real-time notifications via WebSocket, and comprehensive API documentation with Swagger. Includes Docker containerization and CI/CD pipeline setup."
+image: https://raw.githubusercontent.com/devnyxie/task-api/main/docs/api-overview.png
+public: true
+source: "https://github.com/devnyxie/task-api"
+preview: "https://task-api-demo.devnyxie.com"
+tags: ["Backend", "Go", "PostgreSQL", "Docker", "API"]
+date: "2024"

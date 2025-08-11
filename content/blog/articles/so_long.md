@@ -5,7 +5,7 @@ date: 2025-05-18
 tags:
   - c
   - algorithm
-image: /Attachments/42Warsaw/so_long/Screenshot from 2025-05-18 14-01-15.png
+image: https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 ---
 
 # so_long
