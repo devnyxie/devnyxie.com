@@ -1,8 +1,0 @@
-title: "Chat Application"
-description: "A real-time chat application built with Socket.io, Express.js, and React. Features instant messaging, file sharing, emoji reactions, user presence indicators, and room-based conversations. Includes message encryption, user authentication, and responsive design for seamless communication across devices."
-image: https://github.com/devnyxie/realtime-chat/blob/main/screenshots/chat-interface.png?raw=true
-public: true
-source: "https://github.com/devnyxie/realtime-chat"
-preview: "https://realtime-chat-demo.herokuapp.com"
-tags: ["Full-Stack", "Socket.io", "React", "Express.js", "Real-time"]
-date: "2023"

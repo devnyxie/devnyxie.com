@@ -1,0 +1,9 @@
+title: "Minimalist Go CI/CD Service"
+description: "A lightweight CI/CD service built with Go, designed for simplicity and speed. It supports basic pipeline configurations and integrates with GitHub for automated deployments. Made specifically for my personal home server setup."
+image:
+public: true
+source: "https://github.com/devnyxie/cicd-service"
+preview:
+state: "published"
+tags: ["Backend", "Go", "CI/CD", "DevOps"]
+date: "2025-07"

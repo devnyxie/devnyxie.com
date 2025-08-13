@@ -1,8 +1,0 @@
-title: "Weather Forecast App"
-description: "A modern weather application built with Vue.js and the OpenWeatherMap API. Features location-based weather data, 7-day forecasts, interactive weather maps, and personalized weather alerts. Includes PWA capabilities for offline functionality and native-like experience on mobile devices."
-image: https://github.com/devnyxie/weather-app/blob/main/assets/app-preview.jpg?raw=true
-public: true
-source: "https://github.com/devnyxie/weather-app"
-preview: "https://weather-forecast.devnyxie.com"
-tags: ["Frontend", "Vue.js", "PWA", "API Integration", "Mobile"]
-date: "2023"

@@ -1,32 +1,34 @@
 <template>
-  <PageSection
-    title="Deep Dives"
-    description="Explore in-depth articles and insights"
-    class="!pb-0"
-  >
-    <div
-      v-if="deepDives && deepDives.length > 0"
-      class="grid grid-cols-1 sm:grid-cols-2 gap-4"
+  <NuxtLayout name="md">
+    <PageSection
+      title="Deep Dives"
+      description="Explore in-depth articles and insights"
+      class="!pb-0"
     >
-      <BlogDeepDive
-        v-for="(post, index) in deepDives"
-        :key="post.title"
-        v-bind="post"
-      />
-    </div>
-    <div v-else class="text-muted mt-8">No posts available.</div>
-  </PageSection>
-  <PageSection :title="page?.title" :description="page?.description">
-    <div v-if="posts && posts.length > 0" class="grid grid-cols-1 gap-4">
-      <BlogRowPost
-        v-for="(post, index) in posts"
-        :key="post.title"
-        v-bind="post"
-        :icon="``"
-      />
-    </div>
-    <div v-else class="text-muted mt-8">No posts available.</div>
-  </PageSection>
+      <div
+        v-if="deepDives && deepDives.length > 0"
+        class="grid grid-cols-1 sm:grid-cols-2 gap-4"
+      >
+        <BlogDeepDive
+          v-for="(post, index) in deepDives"
+          :key="post.title"
+          v-bind="post"
+        />
+      </div>
+      <div v-else class="text-muted mt-8">No posts available.</div>
+    </PageSection>
+    <PageSection :title="page?.title" :description="page?.description">
+      <div v-if="posts && posts.length > 0" class="grid grid-cols-1 gap-4">
+        <BlogRowPost
+          v-for="(post, index) in posts"
+          :key="post.title"
+          v-bind="post"
+          :icon="``"
+        />
+      </div>
+      <div v-else class="text-muted mt-8">No posts available.</div>
+    </PageSection>
+  </NuxtLayout>
 </template>
 
 <script lang="ts" setup>
