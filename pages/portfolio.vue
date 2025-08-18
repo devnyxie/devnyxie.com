@@ -25,11 +25,11 @@
           />
         </div>
       </Section>
-      <Section
+      <!-- <Section
         title="Design"
         description="A showcase of my design-as-a-hobby projects."
       >
-      </Section>
+      </Section> -->
     </PageSection>
   </NuxtLayout>
 </template>

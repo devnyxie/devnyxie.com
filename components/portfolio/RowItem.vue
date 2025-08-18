@@ -20,6 +20,15 @@
       <p class="text-sm mb-4">
         {{ description }}
       </p>
+      <div class="flex flex-wrap">
+        <InlineTag
+          v-for="tag in tags"
+          :key="tag"
+          :tag="tag"
+          :path="`/portfolio/tags/${tag}`"
+          variant="link"
+        />
+      </div>
     </div>
 
     <Image
@@ -35,7 +44,6 @@
 
 <script lang="ts" setup>
 import Image from "primevue/image";
-import Portfolio from "~/pages/portfolio.vue";
 
 interface Props {
   title: string;

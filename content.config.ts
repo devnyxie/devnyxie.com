@@ -83,7 +83,9 @@ export default defineContentConfig({
         title: z.string().nonempty(),
         description: z.string().nonempty(),
         image: z.string().nonempty().editor({ input: "media" }),
-        state: z.enum(["draft", "published", "archived"]).default("draft"),
+        state: z
+          .enum(["draft", "published", "archived", "in_progress"])
+          .default("draft"),
         public: z.boolean().default(true),
         source: z.string().nonempty().optional(),
         preview: z.string().nonempty().optional(),
