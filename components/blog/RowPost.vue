@@ -32,10 +32,11 @@
           {{ description }}
         </p>
         <div class="tags flex flex-wrap gap-1" v-if="tags && tags.length > 0">
-          <BlogTag
+          <InlineTag
             v-for="(tag, idx) in tags"
             :key="`${tag}-${idx}`"
             :tag="tag"
+            :path="`/blog/tags/${tag}`"
             variant="ghost"
           />
         </div>

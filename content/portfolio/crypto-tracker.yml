@@ -1,8 +1,0 @@
-title: "Crypto Portfolio Tracker"
-description: "A cryptocurrency portfolio tracking application built with Next.js and Node.js. Features real-time price updates, portfolio performance analytics, profit/loss calculations, and market trend analysis. Integrates with multiple crypto exchanges API and includes secure wallet connection capabilities."
-image: https://github.com/devnyxie/crypto-tracker/blob/main/public/portfolio-overview.png?raw=true
-public: true
-source: "https://github.com/devnyxie/crypto-tracker"
-preview: "https://crypto-portfolio-tracker.vercel.app"
-tags: ["Full-Stack", "Next.js", "Node.js", "Cryptocurrency", "Finance"]
-date: "2024"

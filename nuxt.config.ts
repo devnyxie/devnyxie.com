@@ -1,8 +1,13 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import Aura from "@primeuix/themes/aura";
+
 export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
-  css: ["~/assets/css/main.css", "~/assets/css/content.css"],
+  css: [
+    "~/assets/css/main.css",
+    "~/assets/css/content.css",
+    "~/assets/css/overrides.css",
+  ],
   modules: [
     "@nuxt/icon",
     "@nuxt/content",
@@ -11,6 +16,7 @@ export default defineNuxtConfig({
     "motion-v/nuxt",
     "@nuxt/ui",
     "@nuxt/fonts",
+    "@primevue/nuxt-module",
   ],
   colorMode: {
     classSuffix: "",
@@ -56,6 +62,13 @@ export default defineNuxtConfig({
       const wordCount = text.split(/\s+/).length;
 
       content.readingTime = Math.ceil(wordCount / wordsPerMinute);
+    },
+  },
+  primevue: {
+    options: {
+      theme: {
+        preset: Aura,
+      },
     },
   },
 });

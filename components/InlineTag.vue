@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    :to="`/blog/tags/${tag}`"
+    :to="path"
     class="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors"
   >
     <UButton
@@ -19,6 +19,7 @@ import type { ButtonProps } from "@nuxt/ui";
 
 interface Props {
   tag: string;
+  path: string;
   variant: ButtonProps["variant"];
 }
 const props = defineProps<Props>();

@@ -1,9 +1,7 @@
 <template>
   <NavigationMenuBrand />
   <div class="w-full flex justify-center">
-    <NuxtLayout name="md">
-      <NuxtPage />
-    </NuxtLayout>
+    <NuxtPage />
   </div>
 </template>
 

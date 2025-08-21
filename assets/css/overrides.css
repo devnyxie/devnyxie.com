@@ -1,0 +1,5 @@
+.p-image-preview-mask {
+  transition:
+    opacity 0.3s,
+    background var(--p-image-transition-duration);
+}

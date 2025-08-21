@@ -1,9 +1,11 @@
 <template>
-  <PageSection
-    v-if="page"
-    :title="page?.title"
-    :description="page?.description"
-  ></PageSection>
+  <NuxtLayout name="md">
+    <PageSection
+      v-if="page"
+      :title="page?.title"
+      :description="page?.description"
+    ></PageSection>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
