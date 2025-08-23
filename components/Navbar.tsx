@@ -2,13 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import {
-  CircleCheckIcon,
-  CircleHelpIcon,
-  CircleIcon,
-  Server,
-  ServerCog,
-} from "lucide-react";
+import { Server, ServerCog } from "lucide-react";
 
 import {
   NavigationMenu,
@@ -35,7 +29,7 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <div className="w-full flex items-center justify-center border-b border-muted/50 z-2">
+    <div className="w-full flex items-center justify-center border-b border-muted/50 dark:border-muted/50 z-2">
       <div className="container max-w-screen-md py-4 flex items-center justify-between px-4 md:px-0">
         <Link href="/" className="font-semibold">
           timothee

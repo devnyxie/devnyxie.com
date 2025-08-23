@@ -1,6 +1,6 @@
 import fs from "fs";
 import path, { join } from "path";
-import { PostInput, PostSchema } from "./zod/post";
+import { blogPostSchema, PostInput } from "../types/blog";
 import z from "zod";
 import matter from "gray-matter";
 
@@ -19,16 +19,18 @@ function parsePostFile(filePath: string): PostInput | null {
     tags: frontmatter.tags ?? [],
     description: frontmatter.description ?? "",
     image: frontmatter.image ?? "",
+    date: frontmatter.date, // Include date field from frontmatter
   };
 
   // Validate with Zod schema
-  const parsed = PostSchema.safeParse(postData);
+  const parsed = blogPostSchema.safeParse(postData);
 
   if (!parsed.success) {
     z.treeifyError(parsed.error);
     const errorMessage = `Invalid post data in ${filePath}: ${parsed.error.message}`;
     throw new Error(errorMessage);
   }
+
   return parsed.data;
 }
 
@@ -51,6 +53,24 @@ export function getAllPosts(): PostInput[] {
     })
     .filter((post): post is PostInput => post !== null);
   posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  // Connect posts by next and previous (chronological order)
+  for (let i = 0; i < posts.length; i++) {
+    const currentPost = posts[i];
+    if (i + 1 < posts.length) {
+      currentPost.previous = {
+        title: posts[i + 1].title,
+        slug: posts[i + 1].slug,
+      };
+    }
+    if (i - 1 >= 0) {
+      currentPost.next = {
+        title: posts[i - 1].title,
+        slug: posts[i - 1].slug,
+      };
+    }
+  }
+
   return posts;
 }
 
@@ -60,7 +80,17 @@ export function getPostBySlug(slug: string): PostInput | null {
     console.warn(`Post with slug "${slug}" not found.`);
     return null;
   }
-  return parsePostFile(filePath);
+
+  // Get all posts to access next/previous information
+  const allPosts = getAllPosts();
+  const post = allPosts.find((p) => p.slug === slug);
+
+  if (!post) {
+    console.warn(`Post with slug "${slug}" not found in published posts.`);
+    return null;
+  }
+
+  return post;
 }
 
 export function getPostsByTag(tag: string): PostInput[] {

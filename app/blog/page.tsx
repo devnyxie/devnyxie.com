@@ -1,5 +1,4 @@
-import { getAllPosts } from "@/lib/api";
-import Image from "next/image";
+import { getAllPosts } from "@/lib/api/blog";
 import RowPost from "./post";
 
 export default function Blog() {
@@ -21,6 +20,8 @@ export default function Blog() {
             series_name={post.series_name}
             series_index={post.series_index}
             tags={post.tags}
+            next={post.next}
+            previous={post.previous}
           />
         ))}
       </div>

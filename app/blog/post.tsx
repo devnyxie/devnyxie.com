@@ -1,12 +1,12 @@
 import Link from "next/link";
 import React from "react";
-import { PostInput } from "@/lib/zod/post";
+import { PostInput } from "@/lib/types/blog";
 import { Calendar } from "lucide-react";
 
 type PostProps = Omit<PostInput, "content" | "published">;
 
 function RowPost(props: PostProps) {
-  const { title, description, date, image, path } = props;
+  const { title, slug, description, date, image } = props;
 
   return (
     <div className="bg-accent/25 border border-muted dark:border-muted shadow-xs rounded-lg h-full col-span-1">
@@ -29,7 +29,7 @@ function RowPost(props: PostProps) {
             })}
           </p>
           <Link
-            href={`/blog/${path}`}
+            href={`/blog/${slug}`}
             className="text-lg font-medium hyphens-auto line-clamp-1 group hover:text-info transition-colors"
           >
             {title}

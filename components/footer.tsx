@@ -1,6 +1,5 @@
 import { IconBrandGithub } from "@tabler/icons-react";
 import { MailboxIcon, Rss } from "lucide-react";
-import Image from "next/image";
 import React from "react";
 
 type Item = {

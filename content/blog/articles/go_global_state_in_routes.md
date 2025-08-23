@@ -14,6 +14,7 @@ In one point or another, we all come up to this issue - how to share certain pro
 Let's say we have a basic route in `routes` package:
 
 ```go
+// test.go
 func HandlerData(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Hello from data route!")
 }
