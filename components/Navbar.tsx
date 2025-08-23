@@ -26,11 +26,16 @@ function activeClassName(pathname: string, href: string) {
     : "border border-transparent text-muted-foreground";
 }
 
+/*
+Notes:
+- "z-2" is for ensuring the navbar's dropdowns appear above other content and remain clickable.
+*/
+
 export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <div className="w-full flex items-center justify-center border-b border-muted/50">
+    <div className="w-full flex items-center justify-center border-b border-muted/50 z-2">
       <div className="container max-w-screen-md py-4 flex items-center justify-between px-4 md:px-0">
         <Link href="/" className="font-semibold">
           timothee
