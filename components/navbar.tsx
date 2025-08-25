@@ -15,8 +15,14 @@ import {
 import { usePathname } from "next/navigation";
 
 function activeClassName(pathname: string, href: string) {
-  return pathname === href
-    ? "border border-muted bg-accent/25"
+  if (href === "/") {
+    return pathname === "/"
+      ? "border border-border bg-accent dark:bg-accent/25"
+      : "border border-transparent text-muted-foreground";
+  }
+
+  return pathname.startsWith(href)
+    ? "border border-border bg-accent dark:bg-accent/25"
     : "border border-transparent text-muted-foreground";
 }
 
@@ -29,7 +35,7 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <div className="w-full flex items-center justify-center border-b border-muted/50 dark:border-muted/50 z-2">
+    <div className="w-full flex items-center justify-center border-b border-border z-2">
       <div className="container max-w-screen-md py-4 flex items-center justify-between px-4 md:px-0">
         <Link href="/" className="font-semibold">
           timothee
@@ -44,9 +50,7 @@ export function Navbar() {
                 <Link href="/">Home</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
-            <NavigationMenuItem
-              aria-current={pathname === "/blog" ? "page" : undefined}
-            >
+            <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
                 className={activeClassName(pathname, "/blog")}

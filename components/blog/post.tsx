@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { PostInput } from "@/lib/types/blog";
 import { Calendar } from "lucide-react";
+import Tag from "./tag";
 
 type PostProps = Omit<PostInput, "content" | "published">;
 
@@ -9,13 +10,13 @@ function RowPost(props: PostProps) {
   const { title, slug, description, date, image } = props;
 
   return (
-    <div className="bg-accent/25 border border-muted dark:border-muted shadow-xs rounded-lg h-full col-span-1">
+    <div className="bg-accent/25 border border-border shadow-xs rounded-md h-full col-span-1">
       <div className="flex justify-between gap-x-4 p-4">
         {image && (
           <img
             src={image}
             alt={title}
-            className="object-cover rounded-sm h-[125px] aspect-[16/9] hidden sm:block"
+            className="object-cover rounded h-[125px] aspect-[16/9] hidden sm:block"
             loading="lazy"
           />
         )}
@@ -51,6 +52,7 @@ function RowPost(props: PostProps) {
                 </div>
             )} 
             */}
+          <Tag name="code" path="/" />
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { getAllPosts } from "@/lib/api/blog";
-import RowPost from "./post";
+import RowPost from "../../components/blog/post";
 
 export default function Blog() {
   const posts = getAllPosts();

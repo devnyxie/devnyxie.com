@@ -103,15 +103,15 @@
 }
 
 .content-body pre {
-  @apply text-sm p-4 overflow-y-scroll my-2 rounded bg-accent/25 border border-muted;
+  @apply text-sm p-4 overflow-y-scroll my-2 rounded bg-accent/25 border border-border;
 }
 
 .dark .content-body pre {
-  @apply border border-muted bg-accent/25 shadow-none;
+  @apply border border-border bg-accent/50 shadow-none;
 }
 
 code:not(pre code) {
   display: inline-block;
   line-height: 110%;
-  @apply border border-muted rounded-sm px-0.5 py-0 font-mono bg-accent text-sm;
+  @apply border border-border rounded-sm px-0.5 py-0 font-mono bg-accent text-sm;
 }
