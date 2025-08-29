@@ -1,5 +1,4 @@
 import React from "react";
-import { Badge } from "../shadcn/badge";
 
 type Props = {
   name: string;
@@ -10,12 +9,9 @@ type Props = {
 
 function Tag({ name, path }: Props) {
   return (
-    <Badge
-      variant="default"
-      className="rounded-none group cursor-pointer bg-accent text-accent-foreground/50 transition-colors"
-    >
+    <div className="rounded group cursor-pointer bg-accent text-accent-foreground/50 transition-colors w-max px-1.5 text-sm">
       # {name}
-    </Badge>
+    </div>
   );
 }
 

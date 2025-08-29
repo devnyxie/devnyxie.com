@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../shadcn/button";
+import { Button } from "../button";
 import Link from "next/link";
 import { PostInput } from "@/lib/types/blog";
 import { ChevronLeft, ChevronRight } from "lucide-react";
