@@ -1,12 +1,12 @@
 ---
-title: "GNL: Efficient Buffer Management"
+title: P
 tags:
-  - c
-  - project
-  - article
-date: 2025-02-02
-icon: /icons/c_lang.svg
-description: An optimized approach to the Get Next Line (GNL) project in C, focusing on efficient buffer management and memory allocation strategies.
+  - react
+  - nodejs
+  - docker
+date: 2025-09-09
+image: https://wallpapercave.com/wp/wp11592599.jpg
+description: An in-depth look at the development of Pluto, a web application designed to streamline project management and collaboration.
 ---
 
 The Get Next Line (GNL) is a project in C programming that requires reading a file line by line, while handling multiple file descriptors and maintaining the state of each file descriptor.

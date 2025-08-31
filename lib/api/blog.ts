@@ -1,10 +1,12 @@
 import fs from "fs";
 import path, { join } from "path";
-import { blogPostSchema, PostInput } from "../types/blog";
+import { blogPostSchema, PostInput } from "../types/data/blog";
 import z from "zod";
 import matter from "gray-matter";
+import { glob } from "glob";
+import { getContentConfig } from "../content.config";
 
-const postsDirectory = join(process.cwd(), "content/blog/articles");
+// const postsDirectory = join(process.cwd(), "content/blog/articles");
 
 function parsePostFile(filePath: string): PostInput | null {
   const contentRaw = fs.readFileSync(filePath, "utf-8");
@@ -14,35 +16,37 @@ function parsePostFile(filePath: string): PostInput | null {
     ...frontmatter,
     content,
     slug: fileName,
-    // Ensure required fields have defaults
     published: frontmatter.published ?? true,
-    tags: frontmatter.tags ?? [],
-    description: frontmatter.description ?? "",
-    image: frontmatter.image ?? "",
-    date: frontmatter.date, // Include date field from frontmatter
+    date: frontmatter.date,
   };
 
   // Validate with Zod schema
   const parsed = blogPostSchema.safeParse(postData);
 
   if (!parsed.success) {
-    z.treeifyError(parsed.error);
-    const errorMessage = `Invalid post data in ${filePath}: ${parsed.error.message}`;
+    console.log(`Post "${fileName}" failed to parse ❌`);
+    const errorDetails = parsed.error.issues
+      .map((issue) => `${issue.message}`)
+      .join("\n");
+    const errorMessage = `Invalid post data in "${filePath}":\n${errorDetails}`;
     throw new Error(errorMessage);
+  } else {
+    console.log(`Post "${fileName}" parsed successfully ✅`);
   }
 
   return parsed.data;
 }
 
-export function getAllPosts(): PostInput[] {
-  const fileNames = fs.readdirSync(postsDirectory);
-  const posts: PostInput[] = fileNames
-    .map((fileName) => {
-      const filePath = join(postsDirectory, fileName);
+export async function getAllPosts(): Promise<PostInput[]> {
+  const { content } = getContentConfig();
+  const articlesGlob = path.resolve("./content/" + content.articles.source);
+  const filePaths = await glob(articlesGlob, { nodir: true });
+  const posts: PostInput[] = filePaths
+    .map((filePath) => {
       const post = parsePostFile(filePath);
       if (!post) {
         console.warn(
-          `Post file ${fileName} is invalid or missing required fields.`
+          `Post file ${filePath} is invalid or missing required fields.`
         );
         return null;
       } else if (!post?.published) {
@@ -74,16 +78,14 @@ export function getAllPosts(): PostInput[] {
   return posts;
 }
 
-export function getPostBySlug(slug: string): PostInput | null {
-  const filePath = join(postsDirectory, `${slug}.md`);
-  if (!fs.existsSync(filePath)) {
-    console.warn(`Post with slug "${slug}" not found.`);
+export async function getPostBySlug(slug: string): Promise<PostInput | null> {
+  const allPosts = await getAllPosts();
+  const post = allPosts.find((p) => p.slug === slug);
+
+  if (!post) {
+    console.warn(`Post with slug "${slug}" not found in published posts.`);
     return null;
   }
-
-  // Get all posts to access next/previous information
-  const allPosts = getAllPosts();
-  const post = allPosts.find((p) => p.slug === slug);
 
   if (!post) {
     console.warn(`Post with slug "${slug}" not found in published posts.`);
@@ -93,21 +95,7 @@ export function getPostBySlug(slug: string): PostInput | null {
   return post;
 }
 
-export function getPostsByTag(tag: string): PostInput[] {
-  const allPosts = getAllPosts();
+export async function getPostsByTag(tag: string): Promise<PostInput[]> {
+  const allPosts = await getAllPosts();
   return allPosts.filter((post) => post.tags.includes(tag));
 }
-
-// export function getPostsBySeries(seriesName: string): PostInput[] {
-//   const allPosts = getAllPosts();
-//   return allPosts.filter(
-//     (post) => post.series_name && post.series_name === seriesName
-//   );
-// }
-
-// export function getSeriesPosts(seriesName: string): PostInput[] {
-//   const allPosts = getAllPosts();
-//   return allPosts
-//     .filter((post) => post.series_name === seriesName)
-//     .sort((a, b) => a.series_index - b.series_index);
-// }

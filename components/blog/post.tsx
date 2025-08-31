@@ -1,13 +1,13 @@
 import Link from "next/link";
 import React from "react";
-import { PostInput } from "@/lib/types/blog";
+import { PostInput } from "@/lib/types/data/blog";
 import { Calendar } from "lucide-react";
 import Tag from "./tag";
 
 type PostProps = Omit<PostInput, "content" | "published">;
 
 function RowPost(props: PostProps) {
-  const { title, slug, description, date, image } = props;
+  const { title, slug, description, date, image, tags } = props;
 
   return (
     <div className="bg-accent/25 border border-border shadow-xs rounded-md h-full col-span-1">
@@ -38,21 +38,19 @@ function RowPost(props: PostProps) {
           <p className="text-muted-foreground text-sm break-words hyphens-auto">
             {description}
           </p>
-          {/* 
-            {tags && tags.length > 0 && (
-                <div className="tags flex flex-wrap gap-1">
-                    {tags.map((tag, idx) => (
-                        <InlineTag
-                            key={`${tag}-${idx}`}
-                            tag={tag}
-                            path={`/blog/tags/${tag}`}
-                            variant="ghost"
-                        />
-                    ))}
-                </div>
-            )} 
-            */}
-          <Tag name="code" path="/" />
+          <div className="tags flex flex-wrap gap-1 mt-auto">
+            {tags &&
+              tags.length > 0 &&
+              tags.map((tag, idx) => (
+                <Tag
+                  key={`${tag}-${idx}`}
+                  name={tag}
+                  path={`/blog/tags/${tag}`}
+                  size="sm"
+                  variant="subtle"
+                />
+              ))}
+          </div>
         </div>
       </div>
     </div>

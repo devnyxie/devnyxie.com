@@ -1,5 +1,5 @@
 import z from "zod";
-import { baseSchema } from "./base";
+import { baseSchema } from "../base";
 
 export const portfolioItemSchema = z.object({
   name: z.string().min(1, "Project name is required"),
@@ -11,6 +11,5 @@ export const portfolioItemSchema = z.object({
 });
 
 export const portfolioPageSchema = baseSchema.extend({
-  source: "portfolio.yml",
   schema: portfolioItemSchema,
 });

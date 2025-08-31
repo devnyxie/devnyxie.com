@@ -1,12 +1,13 @@
 import { getPostBySlug, getAllPosts } from "@/lib/api/blog";
 import { notFound } from "next/navigation";
-import parseMarkdown from "@/lib/md_html";
+import parseMarkdown from "@/lib/utils/markdown_parser";
 import { formatDate } from "@/lib/utils";
 import "../../assets/md.css";
 import Surround from "@/components/blog/surround";
+import Tag from "@/components/blog/tag";
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -18,7 +19,9 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
+
+  console.log(post);
 
   if (!post) {
     return {
@@ -48,7 +51,7 @@ export default async function Page({
   if (!slug) {
     notFound();
   }
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
   if (!post) {
     notFound();
   }
@@ -72,6 +75,19 @@ export default async function Page({
             <div className="flex-1 my-0.5 w-[1px] bg-muted" />
             <p className="text-muted-foreground">{post.readTime} min read</p>
           </div>
+        </div>
+        <div className="tags flex flex-wrap gap-1 mt-auto">
+          {post.tags &&
+            post.tags.length > 0 &&
+            post.tags.map((tag, idx) => (
+              <Tag
+                key={`${tag}-${idx}`}
+                name={tag}
+                path={`/blog/tags/${tag}`}
+                size="sm"
+                variant="subtle"
+              />
+            ))}
         </div>
         <Surround post={post} />
         {/* <PostTags tags={post.tags || []} /> */}

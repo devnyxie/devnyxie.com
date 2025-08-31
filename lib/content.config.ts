@@ -1,24 +1,10 @@
-import { ZodType } from "zod";
 import { baseSchema } from "./types/base";
-import { blogPostSchema } from "./types/blog";
-import { indexPageSchema } from "./types/index";
-import { portfolioItemSchema } from "./types/portfolio";
+import { blogPostSchema } from "./types/data/blog";
+import { indexPageSchema } from "./types/pages/index";
+import { portfolioItemSchema } from "./types/data/portfolio";
+import t_content_config from "./types/content";
 
-type t_item = {
-  source: string;
-  schema: ZodType;
-};
-
-type t_config = {
-  pages: {
-    [key: string]: t_item;
-  };
-  content: {
-    [key: string]: t_item;
-  };
-};
-
-export const Config: t_config = {
+const contentConfig: t_content_config = {
   pages: {
     index: {
       source: "index.yml",
@@ -42,8 +28,12 @@ export const Config: t_config = {
     },
   },
   content: {
-    blog: {
-      source: "blog/**/*.md",
+    articles: {
+      source: "blog/articles/**/*.md",
+      schema: blogPostSchema,
+    },
+    deep_dives: {
+      source: "blog/deep-dives/**/*.md",
       schema: blogPostSchema,
     },
     portfolio: {
@@ -52,3 +42,9 @@ export const Config: t_config = {
     },
   },
 };
+
+export function getContentConfig() {
+  return contentConfig;
+}
+
+export default contentConfig;

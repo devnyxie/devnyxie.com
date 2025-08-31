@@ -113,5 +113,7 @@
 code:not(pre code) {
   display: inline-block;
   line-height: 110%;
-  @apply border border-border rounded-sm px-0.5 py-0 font-mono bg-accent text-sm;
+  font-family: monospace;
+  @apply border border-border rounded-sm px-0.5 py-0
+    font-mono bg-accent text-sm;
 }

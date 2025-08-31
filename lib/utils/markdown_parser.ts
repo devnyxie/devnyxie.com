@@ -23,7 +23,6 @@ const parseMarkdown = async (markdownContent: string) => {
     })
     .use(rehypeShiki, {
       themes: {
-        // light: "catppuccin-latte",
         light: "github-light-default",
         dark: "dark-plus",
       },

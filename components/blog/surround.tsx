@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "../button";
 import Link from "next/link";
-import { PostInput } from "@/lib/types/blog";
+import { PostInput } from "@/lib/types/data/blog";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function Surround({ post }: { post: PostInput }) {
@@ -14,7 +14,7 @@ function Surround({ post }: { post: PostInput }) {
       >
         <Link
           href={post.previous ? `/blog/${post.previous.slug}` : ""}
-          className="flex items-center gap-4 flex w-full px-4 py-2"
+          className="flex items-center gap-4 w-full px-4 py-2"
         >
           <ChevronLeft
             className={`transition-transform duration-200 ease-in-out group-hover:-translate-x-1 ${

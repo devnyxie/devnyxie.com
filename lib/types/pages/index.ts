@@ -1,16 +1,16 @@
 import { z } from "zod";
-import { createButtonSchema, baseSchema } from "../types/base";
+import { createButtonSchema, baseSchema, titleSchema } from "../base";
 
 export const indexPageSchema = baseSchema.extend({
-  source: "index.yml",
   hero: z.object({
     links: z.array(createButtonSchema()),
   }),
   about: baseSchema,
-  experience: baseSchema.extend({
+  experience: z.object({
+    title: titleSchema,
     items: z.array(
       z.object({
-        date: z.string().or(z.date()), // YAML usually loads dates as strings
+        date: z.string().or(z.date()),
         position: z.string(),
         company: z.object({
           name: z.string(),

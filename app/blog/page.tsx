@@ -1,11 +1,20 @@
 import { getAllPosts } from "@/lib/api/blog";
 import RowPost from "../../components/blog/post";
+import Heading from "@/components/heading";
+import { getPageData } from "@/lib/api/pages";
 
-export default function Blog() {
-  const posts = getAllPosts();
-  // console.log(posts);
+export default async function Blog() {
+  const page = await getPageData("blog");
+  const posts = await getAllPosts();
   return (
-    <>
+    <div>
+      <div className="mb-8">
+        <Heading className="mb-2" size="big">
+          {page.title}
+        </Heading>
+        <p className="text-muted-foreground">{page.description}</p>
+      </div>
+
       <div className="grid grid-cols-1 gap-4">
         {posts.map((post) => (
           <RowPost
@@ -25,6 +34,6 @@ export default function Blog() {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }

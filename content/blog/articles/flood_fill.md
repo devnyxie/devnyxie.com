@@ -6,6 +6,7 @@ tags:
   - article
 date: 2025-02-04
 icon: /icons/c_lang.svg
+description: Implementing the Flood Fill algorithm using Depth-First Search (DFS) in C, demonstrating how to fill connected areas in a 2D array.
 ---
 
 **Flood Fill** is an algorithm that is used to color a connected area of pixels in an image. The algorithm starts at a given point and "floods" the area with a specific color. It is used in the "bucket fill" tool of paint programs to fill connected, similarly-colored areas with a different color.
