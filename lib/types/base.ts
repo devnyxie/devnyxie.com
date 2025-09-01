@@ -2,7 +2,7 @@ import z from "zod";
 
 export const titleSchema = z
   .string()
-  .min(5, "Title must be at least 5 characters")
+  .min(3, "Title must be at least 3 characters")
   .max(120, "Title must be at most 120 characters");
 
 export const descriptionSchema = z

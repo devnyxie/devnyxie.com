@@ -10,7 +10,7 @@ function RowPost(props: PostProps) {
   const { title, slug, description, date, image, tags } = props;
 
   return (
-    <div className="bg-accent/25 border border-border shadow-xs rounded-md h-full col-span-1">
+    <div className="bg-card dark:bg-accent/25 border border-border shadow-xs rounded-md h-full col-span-1">
       <div className="flex justify-between gap-x-4 p-4">
         {image && (
           <img
@@ -22,7 +22,7 @@ function RowPost(props: PostProps) {
         )}
         <div className="gap-2 flex flex-col h-full grow">
           <p className="text-sm text-muted-foreground flex gap-1 items-center">
-            <Calendar className="w-4 h-4" />
+            <Calendar className="w-3.5 h-3.5" />
             {new Date(date).toLocaleDateString(undefined, {
               year: "numeric",
               month: "long",

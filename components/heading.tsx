@@ -19,13 +19,11 @@ function Heading({
   size,
   asChild = false,
   ...props
-}: React.ComponentProps<"div"> &
+}: React.ComponentProps<"p"> &
   VariantProps<typeof headingVariants> & {
     asChild?: boolean;
   }) {
-  return (
-    <div className={cn(headingVariants({ size, className }))} {...props} />
-  );
+  return <p className={cn(headingVariants({ size, className }))} {...props} />;
 }
 
 export default Heading;
