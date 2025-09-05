@@ -21,3 +21,5 @@ export const indexPageSchema = baseSchema.extend({
   }),
   blog: baseSchema,
 });
+
+export type IndexPageType = z.infer<typeof indexPageSchema>;

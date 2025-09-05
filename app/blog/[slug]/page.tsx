@@ -4,7 +4,7 @@ import parseMarkdown from "@/lib/utils/markdown_parser";
 import { formatDate } from "@/lib/utils";
 import "../../assets/md.css";
 import Surround from "@/components/blog/surround";
-import Tag from "@/components/blog/tag";
+import Tag from "@/components/blog/tag/tag";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();

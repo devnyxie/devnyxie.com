@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { PostInput } from "@/lib/types/data/blog";
 import { Calendar } from "lucide-react";
-import Tag from "./tag";
+import Tag from "./tag/tag";
 
 type PostProps = Omit<PostInput, "content" | "published">;
 
@@ -46,7 +46,6 @@ function RowPost(props: PostProps) {
                   key={`${tag}-${idx}`}
                   name={tag}
                   path={`/blog/tags/${tag}`}
-                  size="sm"
                   variant="subtle"
                 />
               ))}

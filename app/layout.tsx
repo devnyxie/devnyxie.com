@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
 import "./assets/globals.css";
 import { ThemeProvider } from "next-themes";
-import { Navbar } from "../components/navbar";
-import Footer from "@/components/footer";
+import { Navbar } from "../components/layout/navbar";
+import Footer from "@/components/layout/footer";
+import Content from "@/components/layout/content";
 
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",
@@ -37,9 +38,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <div className="relative flex-grow w-full max-w-[768px] flex flex-col gap-16 sm:gap-20 lg:gap-24 py-16 sm:py-20 lg:py-24">
-            {children}
-          </div>
+          <Content>{children}</Content>
           <Footer />
         </ThemeProvider>
       </body>

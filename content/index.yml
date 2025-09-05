@@ -6,7 +6,7 @@ hero:
   links:
     - label: "Let's Talk"
       to: https://cal.com/tim-afanasiev-7q9d0s
-      color: "neutral"
+      color: "default"
 about:
   title: "About Me"
   description: |
