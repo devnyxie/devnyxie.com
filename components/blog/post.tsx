@@ -10,7 +10,7 @@ function RowPost(props: PostProps) {
   const { title, slug, description, date, image, tags } = props;
 
   return (
-    <div className="bg-card dark:bg-accent/25 border border-border shadow-xs rounded-md h-full col-span-1">
+    <div className="bg-card border border-border shadow-xs rounded-md h-full col-span-1">
       <div className="flex justify-between gap-x-4 p-4">
         {image && (
           <img

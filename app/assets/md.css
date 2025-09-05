@@ -1,5 +1,9 @@
 @reference './globals.css';
 
+/* 
+  todo: change accent colors to card colors?
+*/
+
 .content-body {
   all: unset;
   all: initial;
@@ -31,7 +35,7 @@
 .content-body h4,
 .content-body h5,
 .content-body h6 {
-  @apply relative;
+  @apply relative w-max;
 }
 
 .content-body h1:hover,
@@ -112,8 +116,7 @@
 
 code:not(pre code) {
   display: inline-block;
-  line-height: 110%;
   font-family: monospace;
-  @apply border border-border rounded-sm px-0.5 py-0
+  @apply rounded-xs px-1
     font-mono bg-accent text-sm;
 }

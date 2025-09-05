@@ -6,7 +6,6 @@ icon: https://nuxt.com/assets/design-kit/icon-green.svg
 tags:
   - nuxt
   - frontend
-type: deep-dive
 ---
 
 ![[Attachments/Pasted image 20250706193819.png]]

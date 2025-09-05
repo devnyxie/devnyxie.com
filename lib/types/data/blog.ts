@@ -39,13 +39,13 @@ export const deepDiveSchema = baseSchema
   .extend({
     slug: slugSchema,
     content: z.string().min(1, "Content is required"),
-    icon: z.string().default(""),
+    icon: z.string(),
     date: z.date(), // YAML usually loads dates as strings
     published: z.boolean().default(true),
     tags: z.array(z.string().min(1)).max(10).default([]),
     // *** To Be Implemented ***
-    series_name: z.string().optional().default(""),
-    series_index: z.number().optional().default(0),
+    // series_name: z.string().optional().default(""),
+    // series_index: z.number().optional().default(0),
     // *** Linked Data ***
     next: surroundPost.optional().default(undefined),
     previous: surroundPost.optional().default(undefined),

@@ -1,10 +1,10 @@
 import React from "react";
 import { Button } from "../button";
 import Link from "next/link";
-import { PostInput } from "@/lib/types/data/blog";
+import { PostInput, DeepDiveInput } from "@/lib/types/data/blog";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-function Surround({ post }: { post: PostInput }) {
+function Surround({ post }: { post: PostInput | DeepDiveInput }) {
   return (
     <div className="w-full flex gap-4">
       <Button

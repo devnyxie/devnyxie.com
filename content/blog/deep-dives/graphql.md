@@ -7,7 +7,6 @@ tags:
   - javascript
 date: 2024-12-25
 icon: https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/1200px-GraphQL_Logo.svg.png
-type: deep-dive
 ---
 
 ## Introduction

@@ -3,6 +3,7 @@ import { blogPostSchema } from "./types/data/blog";
 import { indexPageSchema } from "./types/pages/index";
 import { portfolioItemSchema } from "./types/data/portfolio";
 import t_content_config from "./types/content";
+import { blogPageSchema } from "./types/pages/blog";
 
 const contentConfig: t_content_config = {
   pages: {
@@ -24,7 +25,7 @@ const contentConfig: t_content_config = {
     },
     blog: {
       source: "blog.yml",
-      schema: baseSchema,
+      schema: blogPageSchema,
     },
   },
   content: {

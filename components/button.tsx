@@ -50,12 +50,12 @@ const buttonVariants = cva(
       //   class: "bg-secondary",
       // },
       // Outline variant styles
-      // {
-      //   variant: "outline",
-      //   color: "primary",
-      //   class:
-      //     "hover:bg-accent text-accent-foreground hover:text-accent-foreground border dark:bg-input/30 dark:border-input dark:hover:bg-input/50 ",
-      // },
+      {
+        variant: "outline",
+        color: "primary",
+        class:
+          "hover:bg-accent text-accent-foreground hover:text-accent-foreground border dark:bg-input/30 dark:border-input dark:hover:bg-input/50 ",
+      },
       // {
       //   variant: "outline",
       //   color: "destructive",
