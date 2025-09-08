@@ -4,6 +4,7 @@ import { indexPageSchema } from "./types/pages/index";
 import { portfolioItemSchema } from "./types/data/portfolio";
 import t_content_config from "./types/content";
 import { blogPageSchema } from "./types/pages/blog";
+import { portfolioPageSchema } from "./types/pages/portfolio";
 
 const contentConfig: t_content_config = {
   pages: {
@@ -21,7 +22,7 @@ const contentConfig: t_content_config = {
     },
     portfolio: {
       source: "portfolio.yml",
-      schema: baseSchema,
+      schema: portfolioPageSchema,
     },
     blog: {
       source: "blog.yml",

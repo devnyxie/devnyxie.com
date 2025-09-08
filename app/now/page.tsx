@@ -1,12 +1,9 @@
 import Heading from "@/components/heading";
-import Hero from "@/components/landing/hero";
 import { getPageData } from "@/lib/api/pages";
-import { getConfig } from "@/lib/app.config";
 import PageBreadcrumb from "@/components/breadcrumb";
 
 export default function Page() {
-  const page = getPageData("about");
-  const {} = getConfig();
+  const page = getPageData("now");
 
   return (
     <div className="mb-8">

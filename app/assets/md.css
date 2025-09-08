@@ -5,11 +5,11 @@
 */
 
 .content-body {
-  all: unset;
-  all: initial;
-  border-radius: 0.5rem;
+  /* all: unset;
+    all: initial; */
+  /* border-radius: 0.5rem; */
   font-family: inherit;
-  line-height: normal;
+  /* line-height: 100%; */
 }
 
 .dark .content-body {
@@ -111,12 +111,11 @@
 }
 
 .dark .content-body pre {
-  @apply border border-border bg-accent/50 shadow-none;
+  @apply border border-border bg-accent/25 shadow-none;
 }
 
 code:not(pre code) {
   display: inline-block;
   font-family: monospace;
-  @apply rounded-xs px-1
-    font-mono bg-accent text-sm;
+  @apply rounded-sm px-1 font-mono bg-accent/25 border border-border text-sm;
 }

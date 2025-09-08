@@ -7,7 +7,7 @@ type PostProps = Omit<DeepDiveInput, "content" | "published">;
 function RowDeepDive({ title, icon, slug }: PostProps) {
   return (
     <Link
-      href={`/blog/${slug}`}
+      href={`/blog/deep-dives/${slug}`}
       className="group bg-card border border-border hover:border-foreground/50 shadow-xs rounded-lg h-full transition-colors duration-200 flex flex-col justify-center"
     >
       <div className="flex justify-between items-center gap-x-4 p-4">

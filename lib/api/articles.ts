@@ -25,10 +25,12 @@ function parsePostFile(filePath: string): PostInput | null {
     const errorDetails = parsed.error.issues
       .map((issue) => {
         const fieldPath = issue.path.length > 0 ? issue.path.join(".") : "root";
-        const receivedValue = issue.path.reduce(
-          (obj: any, key) => obj?.[key],
-          postData
-        );
+        const receivedValue = issue.path.reduce((obj: unknown, key) => {
+          if (obj && typeof obj === "object" && typeof key === "string") {
+            return (obj as Record<string, unknown>)[key];
+          }
+          return undefined;
+        }, postData);
         const receivedType = typeof receivedValue;
         return `  • Field "${fieldPath}": ${issue.message}`;
       })

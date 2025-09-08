@@ -1,15 +1,26 @@
 import z from "zod";
-import { baseSchema } from "../base";
 
-export const portfolioItemSchema = z.object({
-  name: z.string().min(1, "Project name is required"),
-  description: z.string().min(1, "Project description is required"),
-  url: z.string().optional(),
-  repo: z.string().optional(),
-  image: z.string().optional(),
-  tags: z.array(z.string().min(1)).max(10).default([]),
-});
+export const portfolioItemSchema = z
+  .object({
+    title: z.string().min(1, "Project title is required"),
+    description: z.string().min(1, "Project description is required"),
+    image: z.string().nullable().optional(),
+    public: z.boolean().default(true),
+    source: z.string().nullable().optional(),
+    preview: z.string().nullable().optional(),
+    state: z
+      .enum(["published", "archived", "in-progress", "in_progress", "draft"])
+      .default("draft"),
+    tags: z.array(z.string().min(1)).max(10).default([]),
+    date: z.string().or(z.date()), // YAML usually loads dates as strings
+  })
+  .transform((item) => ({
+    ...item,
+    // create date in case of string date
+    date: item.date instanceof Date ? item.date : new Date(item.date),
+  }));
 
-export const portfolioPageSchema = baseSchema.extend({
-  schema: portfolioItemSchema,
-});
+export type PortfolioItem = z.infer<typeof portfolioItemSchema> & {
+  slug: string;
+  path: string;
+};

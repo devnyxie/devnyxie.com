@@ -1,10 +1,28 @@
 import React from "react";
 import { Button } from "../button";
+
 import Link from "next/link";
 import { PostInput, DeepDiveInput } from "@/lib/types/data/blog";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-function Surround({ post }: { post: PostInput | DeepDiveInput }) {
+function Surround({
+  post,
+  contentType = "blog",
+}: {
+  post: PostInput | DeepDiveInput;
+  contentType?: "articles" | "deep-dives" | "blog";
+}) {
+  const getHref = (slug: string) => {
+    switch (contentType) {
+      case "articles":
+        return `/blog/articles/${slug}`;
+      case "deep-dives":
+        return `/blog/deep-dives/${slug}`;
+      default:
+        return `/blog/${slug}`;
+    }
+  };
+
   return (
     <div className="w-full flex gap-4">
       <Button
@@ -13,7 +31,7 @@ function Surround({ post }: { post: PostInput | DeepDiveInput }) {
         disabled={post.previous ? false : true}
       >
         <Link
-          href={post.previous ? `/blog/${post.previous.slug}` : ""}
+          href={post.previous ? getHref(post.previous.slug) : ""}
           className="flex items-center gap-4 w-full px-4 py-2"
         >
           <ChevronLeft
@@ -39,7 +57,7 @@ function Surround({ post }: { post: PostInput | DeepDiveInput }) {
         disabled={post.next ? false : true}
       >
         <Link
-          href={post.next ? `/blog/${post.next.slug}` : ""}
+          href={post.next ? getHref(post.next.slug) : ""}
           className="flex items-center gap-4 w-full justify-end px-4 py-2"
         >
           <div className="flex flex-col items-end">

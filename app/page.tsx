@@ -1,13 +1,22 @@
+import RowPost from "@/components/blog/post";
+import GitHeroSection from "@/components/github/github_heroSection";
 import Heading from "@/components/heading";
 import Hero from "@/components/landing/hero";
 import Gaps from "@/components/layout/gaps";
+import { getAllArticles } from "@/lib/api/articles";
+import { getAllPosts } from "@/lib/api/blog";
 import { getPageData } from "@/lib/api/pages";
 import { getConfig } from "@/lib/app.config";
+import { PostInput } from "@/lib/types/data/blog";
 import { IndexPageType } from "@/lib/types/pages";
+import { formatDate } from "@/lib/utils";
+import { format } from "path";
 
-export default function Home() {
+export default async function Home() {
   const pageData: IndexPageType = getPageData("index");
   const { picture, meetingLink, available } = getConfig();
+
+  const posts: PostInput[] = await getAllPosts();
 
   return (
     <Gaps>
@@ -43,7 +52,7 @@ export default function Home() {
                 <div className="text-muted-foreground">
                   {typeof item.date === "string"
                     ? item.date
-                    : item.date.toLocaleDateString()}
+                    : formatDate(item.date)}
                 </div>
                 <hr className="grow bg-muted/50" />
                 <div className="font-sm">{item.position}</div>
@@ -54,6 +63,26 @@ export default function Home() {
               </li>
             ))}
           </ul>
+        </div>
+      </div>
+      <GitHeroSection />
+      <div>
+        <Heading className="mb-2" size="default">
+          {pageData.blog.title}
+        </Heading>
+        <p className="text-balance text-left text-sm sm:text-md lg:text-sm text-muted-foreground">
+          {pageData.blog.description}
+        </p>
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {posts.length > 0 ? (
+            <>
+              {posts.slice(0, 6).map((post) => (
+                <RowPost key={post.slug} {...post} image="" />
+              ))}
+            </>
+          ) : (
+            <p className="text-sm text-muted-foreground">No posts found.</p>
+          )}
         </div>
       </div>
     </Gaps>

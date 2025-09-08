@@ -10,7 +10,7 @@ function RowPost(props: PostProps) {
   const { title, slug, description, date, image, tags } = props;
 
   return (
-    <div className="bg-card border border-border shadow-xs rounded-md h-full col-span-1">
+    <div className="bg-card border border-border shadow-xs rounded-md h-full flex">
       <div className="flex justify-between gap-x-4 p-4">
         {image && (
           <img
@@ -30,7 +30,7 @@ function RowPost(props: PostProps) {
             })}
           </p>
           <Link
-            href={`/blog/${slug}`}
+            href={`/blog/articles/${slug}`}
             className="text-lg font-medium hyphens-auto line-clamp-1 group hover:text-info transition-colors"
           >
             {title}

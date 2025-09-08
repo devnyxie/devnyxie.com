@@ -1,4 +1,3 @@
-import { getPostBySlug, getAllPosts } from "@/lib/api/blog";
 import { getAllArticles, getArticleBySlug } from "@/lib/api/articles";
 import { getAllDeepDives, getDeepDiveBySlug } from "@/lib/api/deep-dives";
 import { notFound } from "next/navigation";
@@ -8,7 +7,7 @@ import "../../assets/md.css";
 import Surround from "@/components/blog/surround";
 import Tag from "@/components/blog/tag/tag";
 import { PostInput, DeepDiveInput } from "@/lib/types/data/blog";
-import { Button } from "@/components/button";
+import PageBreadcrumb from "@/components/breadcrumb";
 
 export async function generateStaticParams() {
   const [articles, deepDives] = await Promise.all([
@@ -72,6 +71,7 @@ function ArticleRenderer({
 }) {
   return (
     <article className="flex flex-col">
+      <PageBreadcrumb pageTitle={article.title} />
       <div className="mb-4 gap-4 flex flex-col items-center">
         {article.image && (
           <img
@@ -121,6 +121,7 @@ function DeepDiveRenderer({
 }) {
   return (
     <article className="flex flex-col">
+      <PageBreadcrumb pageTitle={deepDive.title} />
       <div className="mb-4 gap-4 flex flex-col items-center">
         {/* {deepDive.icon && (
           <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center text-2xl">
@@ -160,7 +161,7 @@ function DeepDiveRenderer({
               />
             ))}
         </div>
-        <Surround post={deepDive as any} />
+        <Surround post={deepDive} />
       </div>
       <div
         className="markdown content-body deep-dive"

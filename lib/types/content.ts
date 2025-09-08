@@ -1,5 +1,6 @@
 import { ZodObject, ZodPipe } from "zod";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type schemaType = ZodObject | ZodPipe<any, any>;
 
 type t_content_config_item = {
