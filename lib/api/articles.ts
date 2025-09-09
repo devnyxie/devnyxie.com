@@ -46,8 +46,10 @@ function parsePostFile(filePath: string): PostInput | null {
 
 export async function getAllArticles(): Promise<PostInput[]> {
   const { content } = getContentConfig();
-  const articlesGlob = path.resolve("./content/" + content.articles.source);
+  const articlesGlob = "./content/" + content.articles.source;
+  console.log(`Searching for article files in: ${articlesGlob}`);
   const filePaths = await glob(articlesGlob, { nodir: true });
+  console.log(`Found ${filePaths.length} article files.`);
   const articles: PostInput[] = filePaths
     .map((filePath) => {
       const post = parsePostFile(filePath);

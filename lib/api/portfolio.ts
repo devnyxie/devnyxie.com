@@ -122,7 +122,7 @@ async function getAllPortfolioFiles(): Promise<string[]> {
   // }
 
   // scanDirectory(content.portfolio.source);
-  const articlesGlob = path.resolve("./content/" + content.portfolio.source);
+  const articlesGlob = "./content/" + content.portfolio.source;
   const portfolioFiles = await glob(articlesGlob, { nodir: true });
   return portfolioFiles;
 }

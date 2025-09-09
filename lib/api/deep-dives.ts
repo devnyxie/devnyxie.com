@@ -46,7 +46,7 @@ function parsePostFile(filePath: string): DeepDiveInput | null {
 
 export async function getAllDeepDives(): Promise<DeepDiveInput[]> {
   const { content } = getContentConfig();
-  const deepDivesGlob = path.resolve("./content/" + content.deep_dives.source);
+  const deepDivesGlob = "./content/" + content.deep_dives.source;
   const filePaths = await glob(deepDivesGlob, { nodir: true });
   const deepDives: DeepDiveInput[] = filePaths
     .map((filePath) => {
