@@ -3,7 +3,7 @@ description: "A minimalistic but very customizable website template built with N
 public: true
 source: "https://github.com/devnyxie/nigiri"
 preview: https://nigiri.vercel.app/
-state: "published"
+state: "archived"
 tags: ["Frontend", "Next.js", "TypeScript", "Tailwind CSS"]
 date: "2024"
 image: /images/portfolio/nigiri_overview.png

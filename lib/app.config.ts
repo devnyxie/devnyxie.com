@@ -4,6 +4,7 @@ export const APP_CONFIG = {
     alt: "My profile picture",
   },
   meetingLink: "https://cal.com/timbusinez/30min",
+  github_username: "devnyxie",
   email: "timbusinez@gmail.com",
   available: true,
 };

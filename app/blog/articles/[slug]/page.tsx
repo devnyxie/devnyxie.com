@@ -5,7 +5,6 @@ import { formatDate } from "@/lib/utils";
 import "../../../assets/md.css";
 import Surround from "@/components/blog/surround";
 import Tag from "@/components/blog/tag/tag";
-import { PostInput } from "@/lib/types/data/blog";
 import PageBreadcrumb from "@/components/breadcrumb";
 
 export async function generateStaticParams() {

@@ -1,5 +1,6 @@
+import { getConfig } from "@/lib/app.config";
 import React, { useState, useEffect } from "react";
-import ActivityCalendar from "react-activity-calendar";
+import ActivityCalendar, { Activity } from "react-activity-calendar";
 import colors from "tailwindcss/colors";
 
 interface Props {
@@ -7,22 +8,24 @@ interface Props {
 }
 
 const GithubCalendarInner: React.FC<Props> = ({ resolvedTheme }) => {
-  const [data, setData] = useState<any[] | null>(null);
+  const [data, setData] = useState<Activity[] | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    const currentYear = new Date().getFullYear();
+    const { github_username } = getConfig();
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://github-contributions-api.jogruber.de/v4/devnyxie?y=last"
+          `https://github-contributions-api.jogruber.de/v4/${github_username}?y=${currentYear}`
         );
         const result = await response.json();
         if (result) {
           setData(result.contributions);
         }
-      } catch (error: any) {
-        setError(error);
+      } catch (error: unknown) {
+        setError(error instanceof Error ? error : new Error("Unknown error"));
       } finally {
         setLoading(false);
       }
@@ -45,7 +48,7 @@ const GithubCalendarInner: React.FC<Props> = ({ resolvedTheme }) => {
         <ActivityCalendar
           data={data}
           blockSize={10}
-          hideTotalCount={true}
+          hideTotalCount={false}
           theme={{
             light: [
               "hsl(0, 0%, 88%)",

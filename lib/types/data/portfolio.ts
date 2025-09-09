@@ -9,7 +9,7 @@ export const portfolioItemSchema = z
     source: z.string().nullable().optional(),
     preview: z.string().nullable().optional(),
     state: z
-      .enum(["published", "archived", "in-progress", "in_progress", "draft"])
+      .enum(["published", "archived", "in-progress", "draft"])
       .default("draft"),
     tags: z.array(z.string().min(1)).max(10).default([]),
     date: z.string().or(z.date()), // YAML usually loads dates as strings

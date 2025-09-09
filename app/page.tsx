@@ -3,14 +3,12 @@ import GitHeroSection from "@/components/github/github_heroSection";
 import Heading from "@/components/heading";
 import Hero from "@/components/landing/hero";
 import Gaps from "@/components/layout/gaps";
-import { getAllArticles } from "@/lib/api/articles";
 import { getAllPosts } from "@/lib/api/blog";
 import { getPageData } from "@/lib/api/pages";
 import { getConfig } from "@/lib/app.config";
 import { PostInput } from "@/lib/types/data/blog";
 import { IndexPageType } from "@/lib/types/pages";
 import { formatDate } from "@/lib/utils";
-import { format } from "path";
 
 export default async function Home() {
   const pageData: IndexPageType = getPageData("index");
@@ -44,7 +42,7 @@ export default async function Home() {
             <Heading size="default">{pageData.experience.title}</Heading>
           </div>
           <ul className="list-disc list-inside text-sm sm:text-md lg:text-sm flex flex-col gap-2">
-            {pageData.experience.items.map((item, index) => (
+            {pageData.experience.items.map((item) => (
               <li
                 key={item.position}
                 className="w-full flex items-center gap-1 text-sm"

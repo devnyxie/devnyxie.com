@@ -4,6 +4,6 @@ image:
 public: true
 source: "https://github.com/devnyxie/cicd-service"
 preview:
-state: "published"
+state: "draft"
 tags: ["Backend", "Go", "CI/CD", "DevOps"]
 date: "2025-07"

@@ -4,6 +4,6 @@ description: "A minimalist shell implementation written in C, designed to mimic 
 public: true
 source: "https://github.com/devnyxie/minishell"
 preview:
-state: "in_progress"
+state: "in-progress"
 tags: ["C", "Low-Level", "Linux"]
 date: 2025-08
