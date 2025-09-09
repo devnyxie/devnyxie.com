@@ -3,6 +3,7 @@ import { getPageData } from "@/lib/api/pages";
 import { getAllPortfolioItems } from "@/lib/api/portfolio";
 import PageBreadcrumb from "@/components/breadcrumb";
 import ProjectCard from "@/components/portfolio/project-card";
+import PortfolioCarousel from "@/components/carousel";
 
 export const metadata = {
   title: "Portfolio",
@@ -23,6 +24,7 @@ export default async function PortfolioPage() {
         <p className="text-muted-foreground">{page.description}</p>
       </div>
 
+      <PortfolioCarousel />
       <div className="grid gap-6">
         {projects.length > 0 ? (
           projects.map((project, index) => (
