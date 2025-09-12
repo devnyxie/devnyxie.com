@@ -17,25 +17,10 @@ function parsePostFile(filePath: string): DeepDiveInput | null {
     date: frontmatter.date,
   };
 
-  // Validate with Zod schema
   const parsed = deepDiveSchema.safeParse(postData);
 
   if (!parsed.success) {
-    console.log(`Deep dive "${fileName}" failed to parse ❌`);
-    const errorDetails = parsed.error.issues
-      .map((issue) => {
-        const fieldPath = issue.path.length > 0 ? issue.path.join(".") : "root";
-        const receivedValue = issue.path.reduce((obj: unknown, key) => {
-          if (obj && typeof obj === "object" && typeof key === "string") {
-            return (obj as Record<string, unknown>)[key];
-          }
-          return undefined;
-        }, postData);
-        const receivedType = typeof receivedValue;
-        return `  • Field "${fieldPath}": ${issue.message}`;
-      })
-      .join("\n");
-    const errorMessage = `Invalid deep dive data in "${filePath}":\n${errorDetails}`;
+    const errorMessage = `Error parsing deep dive "${fileName}": ${parsed.error}`;
     throw new Error(errorMessage);
   } else {
     console.log(`Deep dive "${fileName}" parsed successfully ✅`);
@@ -69,7 +54,6 @@ export async function getAllDeepDives(): Promise<DeepDiveInput[]> {
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-  // Connect deep dives by next and previous (chronological order)
   for (let i = 0; i < deepDives.length; i++) {
     const currentPost = deepDives[i];
     if (i + 1 < deepDives.length) {

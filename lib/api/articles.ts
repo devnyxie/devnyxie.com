@@ -6,9 +6,9 @@ import { glob } from "glob";
 import { getContentConfig } from "../content.config";
 
 function parsePostFile(filePath: string): PostInput | null {
+  const fileName = path.basename(filePath, ".md");
   const contentRaw = fs.readFileSync(filePath, "utf-8");
   const { data: frontmatter, content } = matter(contentRaw);
-  const fileName = path.basename(filePath, ".md");
   const postData = {
     ...frontmatter,
     content,
@@ -17,30 +17,13 @@ function parsePostFile(filePath: string): PostInput | null {
     date: frontmatter.date,
   };
 
-  // Validate with Zod schema
   const parsed = blogPostSchema.safeParse(postData);
-
   if (!parsed.success) {
-    console.log(`Article "${fileName}" failed to parse ❌`);
-    const errorDetails = parsed.error.issues
-      .map((issue) => {
-        const fieldPath = issue.path.length > 0 ? issue.path.join(".") : "root";
-        const receivedValue = issue.path.reduce((obj: unknown, key) => {
-          if (obj && typeof obj === "object" && typeof key === "string") {
-            return (obj as Record<string, unknown>)[key];
-          }
-          return undefined;
-        }, postData);
-        const receivedType = typeof receivedValue;
-        return `  • Field "${fieldPath}": ${issue.message}`;
-      })
-      .join("\n");
-    const errorMessage = `Invalid article data in "${filePath}":\n${errorDetails}`;
+    const errorMessage = `Error parsing article "${fileName}": ${parsed.error}`;
     throw new Error(errorMessage);
   } else {
     console.log(`Article "${fileName}" parsed successfully ✅`);
   }
-
   return parsed.data;
 }
 

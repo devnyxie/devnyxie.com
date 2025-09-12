@@ -5,7 +5,7 @@ import yaml from "js-yaml";
 import { ZodObject, ZodType } from "zod";
 import { schemaType } from "../types/content";
 
-export function parseYamlWithJsYaml(filePath: string, schema: schemaType) {
+export function parseYamlFile(filePath: string, schema: schemaType) {
   try {
     const fileContent = fs.readFileSync(filePath, "utf-8");
     const data = yaml.load(fileContent);

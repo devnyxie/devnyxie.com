@@ -38,8 +38,8 @@ const contentConfig: t_content_config = {
       source: "blog/deep-dives/**/*.md",
       schema: blogPostSchema,
     },
-    portfolio: {
-      source: "portfolio/**/*.yml",
+    software: {
+      source: "portfolio/software/**/*.yml",
       schema: portfolioItemSchema,
     },
   },
