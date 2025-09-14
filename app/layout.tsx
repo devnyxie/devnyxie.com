@@ -9,11 +9,13 @@ import Content from "@/components/layout/content";
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
 });
 
 const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${robotoSans.variable} ${robotoMono.variable} antialiased min-h-screen flex flex-col justify-between items-center`}
+        className={`${robotoSans.variable} ${robotoMono.variable} font-sans antialiased min-h-screen flex flex-col justify-between items-center`}
       >
         <ThemeProvider
           attribute="class"
