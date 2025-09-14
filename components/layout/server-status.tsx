@@ -2,14 +2,21 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Server, Wifi, WifiOff } from "lucide-react";
+import { Server, Wifi, WifiOff, RefreshCw } from "lucide-react";
+import { useServerStatus } from "@/hooks/useServerStatus";
 
 interface ServerStatusProps {
-  latency?: number;
-  isOnline?: boolean;
+  refreshInterval?: number;
+  enabled?: boolean;
 }
 
-export function ServerStatus({ latency = 45, isOnline = true }: ServerStatusProps) {
+export function ServerStatus({ refreshInterval = 30000, enabled = true }: ServerStatusProps) {
+  const { status, loading, error, refetch } = useServerStatus({ 
+    refreshInterval, 
+    enabled 
+  });
+  
+  const { latency, isOnline } = status;
   const [isExpanded, setIsExpanded] = useState(false);
 
   const statusColor = isOnline 
@@ -109,8 +116,20 @@ export function ServerStatus({ latency = 45, isOnline = true }: ServerStatusProp
                 </div>
                 <div className="flex justify-between text-xs">
                   <span className="text-muted-foreground">Server:</span>
-                  <span className="text-foreground">Home Lab</span>
+                  <span className="text-foreground">{status.server}</span>
                 </div>
+                <div className="flex justify-between text-xs">
+                  <span className="text-muted-foreground">Region:</span>
+                  <span className="text-foreground">{status.region}</span>
+                </div>
+                {error && (
+                  <div className="flex justify-between text-xs">
+                    <span className="text-red-500">Error:</span>
+                    <span className="text-red-500 text-right max-w-[100px] truncate" title={error}>
+                      {error}
+                    </span>
+                  </div>
+                )}
               </div>
               
               <motion.div
@@ -119,9 +138,27 @@ export function ServerStatus({ latency = 45, isOnline = true }: ServerStatusProp
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.1, duration: 0.2 }}
               >
-                <p className="text-xs text-muted-foreground text-center">
-                  Hosted from my home server
-                </p>
+                <div className="flex items-center justify-between">
+                  <p className="text-xs text-muted-foreground">
+                    Hosted from my home server
+                  </p>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      refetch();
+                    }}
+                    className="text-muted-foreground hover:text-foreground transition-colors p-1 rounded"
+                    disabled={loading}
+                    title="Refresh status"
+                  >
+                    <RefreshCw 
+                      className={`w-3 h-3 ${loading ? "animate-spin" : ""}`} 
+                    />
+                  </button>
+                </div>
+                <div className="text-xs text-muted-foreground text-center mt-1">
+                  Last updated: {new Date(status.timestamp).toLocaleTimeString()}
+                </div>
               </motion.div>
             </motion.div>
           )}

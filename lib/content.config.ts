@@ -1,4 +1,4 @@
-import { baseSchema } from "./types/base";
+import { baseSchema, contentPageSchema } from "./types/base";
 import { blogPostSchema } from "./types/data/blog";
 import { indexPageSchema } from "./types/pages/index";
 import { portfolioItemSchema } from "./types/data/portfolio";
@@ -14,11 +14,11 @@ const contentConfig: t_content_config = {
     },
     about: {
       source: "about.yml",
-      schema: baseSchema,
+      schema: contentPageSchema,
     },
     now: {
       source: "now.yml",
-      schema: baseSchema,
+      schema: contentPageSchema,
     },
     portfolio: {
       source: "portfolio.yml",

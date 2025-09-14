@@ -30,7 +30,7 @@ export const blogPostSchema = baseSchema
   .transform((post) => ({
     ...post,
     readTime: Math.ceil(post.content.split(/\s+/).length / 180),
-    path: `/blog/${post.slug}`,
+    path: `/blog/articles/${post.slug}`,
   }));
 
 export type PostInput = z.infer<typeof blogPostSchema>;
@@ -53,7 +53,7 @@ export const deepDiveSchema = baseSchema
   .transform((post) => ({
     ...post,
     readTime: Math.ceil(post.content.split(/\s+/).length / 180),
-    path: `/blog/${post.slug}`,
+    path: `/blog/deep-dives/${post.slug}`,
   }));
 
 export type DeepDiveInput = z.infer<typeof deepDiveSchema>;

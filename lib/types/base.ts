@@ -15,6 +15,14 @@ export const baseSchema = z.object({
   description: descriptionSchema,
 });
 
+export const contentPageSchema = baseSchema.extend({
+  content: z.string().min(1, "Content is required"),
+});
+
+// Export types for use in components
+export type BasePageData = z.infer<typeof baseSchema>;
+export type ContentPageData = z.infer<typeof contentPageSchema>;
+
 export const createButtonSchema = () =>
   z.object({
     label: z.string(),

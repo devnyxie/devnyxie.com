@@ -1,20 +1,32 @@
-import Heading from "@/components/heading";
-import Hero from "@/components/landing/hero";
+import ContentPage, {
+  generateContentPageMetadata,
+} from "@/components/layout/content-page";
 import { getPageData } from "@/lib/api/pages";
-import { getConfig } from "@/lib/app.config";
-import PageBreadcrumb from "@/components/breadcrumb";
+import parseMarkdown from "@/lib/utils/markdown_parser";
+import { Metadata } from "next";
+import "@/app/assets/md.css";
 
-export default function Page() {
+export async function generateStaticParams() {
+  // This ensures the page is statically generated at build time
+  return [];
+}
+
+export async function generateMetadata(): Promise<Metadata> {
   const page = getPageData("about");
-  const {} = getConfig();
+  return generateContentPageMetadata({
+    title: page.title,
+    description: page.description,
+  });
+}
 
+export default async function Page() {
+  const page = getPageData("about");
+  const processedContent = await parseMarkdown(page.content);
   return (
-    <div className="mb-8">
-      <PageBreadcrumb />
-      <Heading className="mb-2" size="big">
-        {page.title}
-      </Heading>
-      <p className="text-muted-foreground">{page.description}</p>
-    </div>
+    <ContentPage
+      title={page.title}
+      description={page.description}
+      processedContent={processedContent}
+    />
   );
 }

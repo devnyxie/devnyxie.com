@@ -7,20 +7,15 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function Surround({
   post,
-  contentType = "blog",
+  contentType = "articles",
 }: {
   post: PostInput | DeepDiveInput;
-  contentType?: "articles" | "deep-dives" | "blog";
+  contentType?: "articles" | "deep-dives";
 }) {
   const getHref = (slug: string) => {
-    switch (contentType) {
-      case "articles":
-        return `/blog/articles/${slug}`;
-      case "deep-dives":
-        return `/blog/deep-dives/${slug}`;
-      default:
-        return `/blog/${slug}`;
-    }
+    return contentType === "deep-dives"
+      ? `/blog/deep-dives/${slug}`
+      : `/blog/articles/${slug}`;
   };
 
   return (

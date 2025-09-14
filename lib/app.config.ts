@@ -7,6 +7,10 @@ export const APP_CONFIG = {
   github_username: "devnyxie",
   email: "timbusinez@gmail.com",
   available: true,
+  server: {
+    name: "Home Lab",
+    region: "Warsaw, PL",
+  },
 };
 
 export function getConfig() {

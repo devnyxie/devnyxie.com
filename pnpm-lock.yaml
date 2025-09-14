@@ -89,6 +89,9 @@ importers:
       remark-rehype:
         specifier: ^11.1.2
         version: 11.1.2
+      shiki:
+        specifier: ^3.12.2
+        version: 3.12.2
       tailwind-merge:
         specifier: ^3.3.1
         version: 3.3.1

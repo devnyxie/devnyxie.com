@@ -2,7 +2,7 @@ import { getAllArticles, getArticleBySlug } from "@/lib/api/articles";
 import { notFound } from "next/navigation";
 import parseMarkdown from "@/lib/utils/markdown_parser";
 import { formatDate } from "@/lib/utils";
-import "../../../assets/md.css";
+import "@/app/assets/md.css";
 import Surround from "@/components/blog/surround";
 import Tag from "@/components/blog/tag/tag";
 import PageBreadcrumb from "@/components/breadcrumb";
