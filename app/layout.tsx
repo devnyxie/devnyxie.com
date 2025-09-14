@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { Navbar } from "../components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import Content from "@/components/layout/content";
+import { ServerStatus } from "@/components/layout/server-status";
 
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",
@@ -40,6 +41,7 @@ export default function RootLayout({
           <Navbar />
           <Content>{children}</Content>
           <Footer />
+          <ServerStatus />
         </ThemeProvider>
       </body>
     </html>
