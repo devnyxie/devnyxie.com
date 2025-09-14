@@ -28,6 +28,10 @@ const contentConfig: t_content_config = {
       source: "blog.yml",
       schema: blogPageSchema,
     },
+    tags: {
+      source: "tags.yml",
+      schema: baseSchema,
+    },
   },
   content: {
     articles: {

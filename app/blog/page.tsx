@@ -29,9 +29,14 @@ export default async function Blog() {
                 {page.description_deep_dives}
               </p>
             </div>
-            <Button variant="outline" asChild>
-              <Link href="/blog/deep-dives">View All</Link>
-            </Button>
+            <div className="flex gap-2">
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/blog/tags">Tags</Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/blog/deep-dives">View All</Link>
+              </Button>
+            </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {deep_dives ? (
@@ -69,9 +74,14 @@ export default async function Blog() {
                 {page.description_articles}
               </p>
             </div>
-            <Button variant="outline" asChild>
-              <Link href="/blog/articles">View All</Link>
-            </Button>
+            <div className="flex gap-2">
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/blog/tags">Tags</Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/blog/articles">View All</Link>
+              </Button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 gap-4">

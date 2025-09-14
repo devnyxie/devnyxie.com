@@ -24,8 +24,8 @@ export const blogPostSchema = baseSchema
     series_name: z.string().optional().default(""),
     series_index: z.number().optional().default(0),
     // *** Linked Data ***
-    next: surroundPost.optional().default(undefined),
-    previous: surroundPost.optional().default(undefined),
+    next: surroundPost.optional(),
+    previous: surroundPost.optional(),
   })
   .transform((post) => ({
     ...post,
@@ -47,8 +47,8 @@ export const deepDiveSchema = baseSchema
     // series_name: z.string().optional().default(""),
     // series_index: z.number().optional().default(0),
     // *** Linked Data ***
-    next: surroundPost.optional().default(undefined),
-    previous: surroundPost.optional().default(undefined),
+    next: surroundPost.optional(),
+    previous: surroundPost.optional(),
   })
   .transform((post) => ({
     ...post,
