@@ -1,4 +1,70 @@
-title: Now
+title: "What I'm Up To Now"
 description: This page reflects my current work, projects and studies. It includes ongoing projects, recent achievements, and what I'm currently learning or exploring in the tech and design space.
 content: |
   Welcome to my **Now** page! This is a snapshot of what I'm currently working on, learning, and exploring.
+
+  *Last updated: September 12, 2025*
+
+  ## 🚀 Current Projects
+
+  ### Personal Website & Portfolio
+  Recently migrated my personal website from Nuxt.js to Next.js with a focus on performance and developer experience. Currently enhancing the blog system, implementing better content management, and refining the overall user interface. The site now features improved SEO, better markdown processing, and a more maintainable codebase.
+
+  ### CI/CD Service Development
+  Building a lightweight, self-hosted CI/CD service using Go that integrates with GitHub webhooks. The focus is on simplicity and speed for personal projects and small team workflows. Features include automated deployment pipelines, Docker integration, and a clean web interface for monitoring builds.
+
+  ### Portfolio Projects
+  Actively working on several side projects including:
+  - **Ethereal**: A creative coding experiment exploring interactive visual experiences
+  - **Nigiri**: A modern web application with focus on clean UI/UX
+  - Various open-source contributions and technical experiments
+
+  ## 📚 Learning & Exploring
+
+  ### Go Deep Dive
+  Deepening my knowledge of Go, particularly focusing on:
+  - Concurrency patterns and goroutines
+  - Building efficient web services
+  - Performance optimization techniques
+
+  ### System Design
+  Studying distributed systems and architecture patterns to better understand scalable software design. Currently reading about microservices, event-driven architecture, and database optimization.
+
+  ### Design Systems
+  Exploring advanced design system concepts and component libraries, focusing on creating maintainable and scalable UI frameworks.
+
+  ## 💼 Work & Freelancing
+
+  Currently available for both frontend and backend projects worldwide. I'm particularly interested in:
+  - Full-stack web applications
+  - Performance optimization projects  
+  - Design system implementation
+  - Technical consulting
+
+  ## 🎯 Goals
+
+  ### Short-term (Next 3 months)
+  - Complete website migration to Next.js
+  - Launch CI/CD service for personal use
+  - Publish 2-3 technical articles
+  - Contribute to open source projects
+
+  ### Long-term (6-12 months)
+  - Build a SaaS product
+  - Speak at a tech conference
+  - Mentor junior developers
+  - Expand portfolio with design projects
+
+  ## 📍 Location & Availability
+
+  Based in **Warsaw, Poland** 🇵🇱
+
+  I'm currently open to remote opportunities and occasional travel for the right projects. My schedule is flexible, and I'm available for collaborations across different time zones.
+
+  ## 📫 Get in Touch
+
+  If any of this resonates with you or you'd like to collaborate, feel free to reach out! I'm always interested in discussing new opportunities and interesting projects.
+
+  ---
+
+  *This page is inspired by Derek Sivers' [/now page movement](https://nownownow.com/about). It's a way to share what I'm focused on at this point in my life.*

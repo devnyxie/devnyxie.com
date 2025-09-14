@@ -19,6 +19,18 @@ export const indexPageSchema = baseSchema.extend({
       })
     ),
   }),
+  skills: z.object({
+    title: titleSchema,
+    description: z.string(),
+    items: z.array(
+      z.object({
+        title: z.string(),
+        description: z.string().optional(),
+        icon: z.string().optional(),
+        category: z.enum(["blue", "green", "purple", "orange", "pink", "teal"]),
+      })
+    ),
+  }),
   blog: baseSchema,
 });
 

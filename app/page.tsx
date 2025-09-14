@@ -3,6 +3,7 @@ import GitHeroSection from "@/components/github/github_heroSection";
 import Heading from "@/components/heading";
 import Hero from "@/components/landing/hero";
 import Gaps from "@/components/layout/gaps";
+import SkillsBento from "@/components/skills/skills-bento";
 import { getAllPosts } from "@/lib/api/blog";
 import { getPageData } from "@/lib/api/pages";
 import { getConfig } from "@/lib/app.config";
@@ -53,16 +54,33 @@ export default async function Home() {
                     : formatDate(item.date)}
                 </div>
                 <hr className="grow bg-muted/50" />
-                <div className="font-sm">{item.position}</div>
-                <span>at</span>
-                <a href={item.company.url} className="underline">
-                  {item.company.name}
+                <a
+                  href={item.company.url}
+                  className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="font-sm">{item.position}</div>
+                  <span>at</span>
+                  <span className="font-medium">{item.company.name}</span>
                 </a>
               </li>
             ))}
           </ul>
         </div>
       </div>
+
+      {/* Skills Section */}
+      <div>
+        <div className="mb-4">
+          <Heading size="default">{pageData.skills.title}</Heading>
+        </div>
+        <p className="text-balance text-left text-sm sm:text-md lg:text-sm text-muted-foreground mb-6">
+          {pageData.skills.description}
+        </p>
+        <SkillsBento skills={pageData.skills.items} />
+      </div>
+
       <GitHeroSection />
       <div>
         <Heading className="mb-2" size="default">
