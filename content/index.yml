@@ -1,14 +1,12 @@
-seo:
-  title: "Tim Afanasiev - Full Stack Engineer"
-  description: "Welcome to my portfolio! I'm Tim Afanasiev, a Software Engineer based in Warsaw. I specialize in creating user-centered digital experiences that are both beautiful and functional."
-title: >
-  Hey, I'm Tim, a Full Stack Engineer
-description: "Passionate about crafting elegant solutions and building impactful software. Based in Warsaw, available for both Frontend and Backend projects worldwide."
+title: "Hey, I'm Tim, a Full Stack Engineer"
+description: >
+  Passionate about crafting elegant solutions and building impactful software.
+  Based in Warsaw, available for both Frontend and Backend projects worldwide.
 hero:
   links:
     - label: "Let's Talk"
       to: https://cal.com/tim-afanasiev-7q9d0s
-      color: "neutral"
+      color: "default"
 about:
   title: "About Me"
   description: |
@@ -33,6 +31,34 @@ experience:
       company:
         name: Draive.gr
         url: "https://www.draive.gr"
+skills:
+  title: "Tech Skills"
+  description: "Technologies I work with on a daily basis."
+  items:
+    - title: "Frontend"
+      description: "Modern frontend with advanced state management, primarily in Next.js or React, but also in Nuxt.js & Vue"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+      category: "blue"
+    - title: "Backend"
+      description: "Server-side development with Node.js, Go, and Python. RESTful APIs, GraphQL, and microservices architecture"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
+      category: "green"
+    - title: "Database"
+      description: "Relational and NoSQL databases including PostgreSQL, MongoDB, Redis for data persistence and caching"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+      category: "purple"
+    - title: "DevOps"
+      description: "Container orchestration with Docker, CI/CD pipelines, cloud and bare metal deployment"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+      category: "orange"
+    - title: "Design"
+      description: "UI/UX design and prototyping with Figma, creating user-centered interfaces and design systems"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+      category: "pink"
+    - title: "Mobile"
+      description: "Cross-platform mobile development with React Native and progressive web applications"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+      category: "teal"
 blog:
   title: "Latest Articles"
   description: "Some of my recent thoughts"

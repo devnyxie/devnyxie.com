@@ -4,7 +4,7 @@ date: 2025-08-08
 tags:
   - go
   - api
-image: /Attachments/sharing_state_go.png
+image: https://media2.dev.to/dynamic/image/width=1600,height=900,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fz7i5q6n15xf31byhvjnk.png
 icon: /icons/go_lang.png
 description: Learn how to share global state in Go routes using middleware, context, and interfaces.
 ---
@@ -14,6 +14,7 @@ In one point or another, we all come up to this issue - how to share certain pro
 Let's say we have a basic route in `routes` package:
 
 ```go
+// test.go
 func HandlerData(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Hello from data route!")
 }

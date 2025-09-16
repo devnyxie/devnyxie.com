@@ -1,15 +1,28 @@
-version: "3.8"
-
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: devnyxie-app
-    restart: unless-stopped
+    build: .
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - PORT=3000
-      - HOST=0.0.0.0
+      - NEXT_PUBLIC_SITE_URL=https://devnyxie.com
+    restart: unless-stopped
+    container_name: devnyxie-prod
+
+  # Development service (optional)
+  dev:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_SITE_URL=http://localhost:3000
+    command: sh -c "pnpm install && pnpm dev"
+    restart: unless-stopped
+    container_name: devnyxie-prod
+    profiles:
+      - dev

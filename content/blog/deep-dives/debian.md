@@ -6,7 +6,7 @@ tags:
   - article
 date: 2024-12-25
 icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Openlogo-debianV2.svg/1200px-Openlogo-debianV2.svg.png
-type: deep-dive
+description: A comprehensive guide to setting up a secure Debian server using VirtualBox, covering installation, partitioning, SSH configuration, firewall setup, sudo rules, password policies, and a monitoring script.
 ---
 
 ![[logos/debian_logo.webp|100]]

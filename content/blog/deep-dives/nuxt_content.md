@@ -6,12 +6,9 @@ icon: https://nuxt.com/assets/design-kit/icon-green.svg
 tags:
   - nuxt
   - frontend
-type: deep-dive
 ---
 
-![[Attachments/Pasted image 20250706193819.png]]
-
-# `@nuxt/content`
+# @nuxt/content
 
 Nuxt Content is a module for Nuxt that provides a simple way to manage content for your application. It allows developers to write their content in Markdown, YAML, CSV or JSON files and then query and display it in their application.
 
