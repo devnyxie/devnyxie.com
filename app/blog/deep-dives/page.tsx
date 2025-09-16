@@ -2,7 +2,7 @@ import { getAllDeepDives } from "@/lib/api/deep-dives";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import Tag from "@/components/blog/tag/tag";
-import PageBreadcrumb from "@/components/breadcrumb";
+import PageBreadcrumb from "@/components/layout/breadcrumb";
 
 export const metadata = {
   title: "Deep Dives",

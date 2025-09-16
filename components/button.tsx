@@ -54,7 +54,7 @@ const buttonVariants = cva(
         variant: "outline",
         color: "primary",
         class:
-          "hover:bg-accent text-accent-foreground hover:text-accent-foreground border dark:bg-input/25 dark:border-input dark:hover:bg-input/50 ",
+          "hover:bg-accent text-accent-foreground border dark:bg-input/25 dark:border-input dark:hover:bg-input/50",
       },
       // {
       //   variant: "outline",
@@ -75,12 +75,11 @@ const buttonVariants = cva(
       //     "border-secondary text-secondary-foreground hover:bg-secondary hover:text-secondary-foreground border dark:bg-secondary/10 dark:border-secondary/60 dark:text-secondary/90 dark:hover:bg-secondary/20",
       // },
       // Ghost variant styles
-      // {
-      //   variant: "ghost",
-      //   color: "primary",
-      //   class:
-      //     "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-      // },
+      {
+        variant: "ghost",
+        color: "primary",
+        class: "hover:bg-accent text-accent-foreground dark:hover:bg-input/25",
+      },
       // {
       //   variant: "ghost",
       //   color: "destructive",

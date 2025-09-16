@@ -1,5 +1,5 @@
 import { getAllArticles } from "@/lib/api/articles";
-import PageBreadcrumb from "@/components/breadcrumb";
+import PageBreadcrumb from "@/components/layout/breadcrumb";
 import RowPost from "@/components/blog/post";
 import Link from "next/link";
 

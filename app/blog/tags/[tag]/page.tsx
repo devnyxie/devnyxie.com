@@ -1,5 +1,5 @@
 import { getAllPostsByTag, getAllTags } from "@/lib/api/tags";
-import PageBreadcrumb from "@/components/breadcrumb";
+import PageBreadcrumb from "@/components/layout/breadcrumb";
 import RowPost from "@/components/blog/post";
 import RowDeepDive from "@/components/blog/dive";
 import Tag from "@/components/blog/tag/tag";

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/button";
-import PageBreadcrumb from "@/components/breadcrumb";
+import PageBreadcrumb from "@/components/layout/breadcrumb";
 import Gaps from "@/components/layout/gaps";
 import Heading from "@/components/heading";
 

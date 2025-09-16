@@ -1,2 +1,8 @@
 title: Building Systems, Crafting Solutions.
 description: As a Full Stack Engineer, I bring ideas to life end to end from backend logic to polished UIs. This is a collection of open source projects where I explored new ideas or built things to solve everyday challenges, with clean code, scalable architecture, and a focus on user or developer experience - or just for fun.
+software:
+  title: "Software Projects"
+  description: "A selection of open source software projects I've developed, showcasing a range of technologies and problem-solving approaches."
+designs:
+  title: "Design Projects"
+  description: "I design interfaces and draw arts in my spare time, as a way to change pace from coding. Here are some of my works."

@@ -27,8 +27,7 @@ import Heading from "../heading";
 function GitHeroSection() {
   return (
     <div className="w-full flex flex-col justify-center">
-      {/* <h2 className="mb-1">My Open Source Journey</h2> */}
-      <Heading size="default" className="mb-2">
+      <Heading size="default" className="mb-4">
         My Open Source Journey
       </Heading>
       <div className="text-muted-foreground mb-4 text-sm">

@@ -5,7 +5,7 @@ import { formatDate } from "@/lib/utils";
 import "../../../assets/md.css";
 import Surround from "@/components/blog/surround";
 import Tag from "@/components/blog/tag/tag";
-import PageBreadcrumb from "@/components/breadcrumb";
+import PageBreadcrumb from "@/components/layout/breadcrumb";
 
 export async function generateStaticParams() {
   const deepDives = await getAllDeepDives();

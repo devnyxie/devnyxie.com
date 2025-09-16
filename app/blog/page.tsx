@@ -6,7 +6,7 @@ import { getPageData } from "@/lib/api/pages";
 import Gaps from "@/components/layout/gaps";
 import { BlogPageType } from "@/lib/types/pages/blog";
 import RowDeepDive from "@/components/blog/dive";
-import PageBreadcrumb from "@/components/breadcrumb";
+import PageBreadcrumb from "@/components/layout/breadcrumb";
 import { DeepDiveInput, PostInput } from "@/lib/types/data/blog";
 import Link from "next/link";
 import { Button } from "@/components/button";

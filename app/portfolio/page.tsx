@@ -1,11 +1,11 @@
 import Heading from "@/components/heading";
 import { getPageData } from "@/lib/api/pages";
 import { getAllPortfolioItems } from "@/lib/api/portfolio";
-import { getPortfolioImages } from "@/lib/api/designs";
-import PageBreadcrumb from "@/components/breadcrumb";
+import { getAllDesigns } from "@/lib/api/designs";
+import PageBreadcrumb from "@/components/layout/breadcrumb";
 import ProjectCard from "@/components/portfolio/project-card";
+import DesignCard from "@/components/portfolio/design-card";
 import PortfolioCarousel from "@/components/carousel";
-import DesignShowcase from "@/components/portfolio/design-showcase";
 import Gaps from "@/components/layout/gaps";
 
 export const metadata = {
@@ -16,7 +16,7 @@ export const metadata = {
 export default async function PortfolioPage() {
   const page = await getPageData("portfolio");
   const projects = await getAllPortfolioItems();
-  const designImages = await getPortfolioImages();
+  const designs = await getAllDesigns();
 
   return (
     <div className="mx-auto">
@@ -30,15 +30,18 @@ export default async function PortfolioPage() {
             <p className="text-muted-foreground">{page.description}</p>
           </div>
 
-          {/* <PortfolioCarousel /> */}
-          <div className="grid gap-6">
-            {projects.length > 0 ? (
-              projects.map((project, index) => (
-                <ProjectCard key={`${project.slug}-${index}`} {...project} />
-              ))
-            ) : (
-              <p className="text-muted-foreground">No projects found.</p>
-            )}
+          <div className="mb-8">
+            <Heading className="mb-4">Software Projects</Heading>
+            {/* <PortfolioCarousel /> */}
+            <div className="grid gap-6">
+              {projects.length > 0 ? (
+                projects.map((project, index) => (
+                  <ProjectCard key={`${project.slug}-${index}`} {...project} />
+                ))
+              ) : (
+                <p className="text-muted-foreground">No projects found.</p>
+              )}
+            </div>
           </div>
         </div>
 
@@ -51,8 +54,14 @@ export default async function PortfolioPage() {
               A collection of my design works and case studies.
             </p>
           </div>
-          <div className="grid gap-6">
-            <DesignShowcase images={designImages} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {designs.length > 0 ? (
+              designs.map((design, index) => (
+                <DesignCard key={`${design.slug}-${index}`} {...design} />
+              ))
+            ) : (
+              <p className="text-muted-foreground">No designs found.</p>
+            )}
           </div>
         </div>
       </Gaps>

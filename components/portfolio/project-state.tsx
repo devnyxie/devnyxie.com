@@ -72,8 +72,6 @@ const stateLabels: {
 
 function ProjectState({ title }: Props) {
   const state = title.toLowerCase();
-  console.log("state", title);
-
   const label = stateLabels[state];
   if (!state) {
     throw new Error(`Portfolio Page: Invalid state provided '${state}'`);

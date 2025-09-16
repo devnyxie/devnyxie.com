@@ -36,7 +36,7 @@ skills:
   description: "Technologies I work with on a daily basis."
   items:
     - title: "Frontend"
-      description: "Modern frontend with advanced state management, primarily in Next.js / React, but also in Nuxt.js / Vue"
+      description: "Modern frontend with advanced state management, primarily in Next.js or React, but also in Nuxt.js & Vue"
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
       category: "blue"
     - title: "Backend"
@@ -48,7 +48,7 @@ skills:
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
       category: "purple"
     - title: "DevOps"
-      description: "Container orchestration with Docker, CI/CD pipelines, and cloud deployment on AWS and Vercel"
+      description: "Container orchestration with Docker, CI/CD pipelines, cloud and bare metal deployment"
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
       category: "orange"
     - title: "Design"

@@ -9,6 +9,7 @@ import { IconBrandGithub } from "@tabler/icons-react";
 import { formatDate } from "@/lib/utils";
 import ProjectState from "./project-state";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 
 type ProjectProps = PortfolioItem;
 
@@ -53,7 +54,7 @@ function ImageModal({
             <img
               src={src}
               alt={alt}
-              className="max-w-[90%] max-h-full rounded-lg cursor-zoom-out"
+              className="max-w-[75%] max-h-[75%] rounded-lg cursor-zoom-out"
               onClick={onClose}
             />
             {/* <button
@@ -139,17 +140,30 @@ function ProjectCard(props: ProjectProps) {
               )}
             </div>
           </div>
-          {image && (
-            <img
-              src={image}
-              alt={title}
-              className="object-cover rounded h-[125px] aspect-[16/9] hidden sm:block cursor-zoom-in hover:opacity-80 transition-opacity"
-              loading="lazy"
-              onClick={() => {
-                setOpen(true);
-              }}
-            />
-          )}
+          <div className="hidden sm:block rounded h-[125px] aspect-[16/9] shrink-0 overflow-hidden group">
+            {image && (
+              <img
+                src={image}
+                alt={title}
+                className="object-cover h-full w-full cursor-zoom-in hover:opacity-80  transition-transform duration-300 group-hover:scale-105 select-none"
+                loading="lazy"
+                onClick={() => {
+                  setOpen(true);
+                }}
+              />
+            )}
+          </div>
+          {/* <div className="aspect-[16/9] h-[125px] relative overflow-hidden">
+            {image && (
+              <Image
+                src={image}
+                alt={title}
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            )}
+          </div> */}
           {/* {image && (
             <img
               src={image}

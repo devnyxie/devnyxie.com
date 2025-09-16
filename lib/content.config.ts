@@ -20,6 +20,10 @@ const contentConfig: t_content_config = {
       source: "now.yml",
       schema: contentPageSchema,
     },
+    "self-hosting": {
+      source: "self-hosting.yml",
+      schema: contentPageSchema,
+    },
     portfolio: {
       source: "portfolio.yml",
       schema: portfolioPageSchema,
@@ -44,6 +48,10 @@ const contentConfig: t_content_config = {
     },
     software: {
       source: "portfolio/software/**/*.yml",
+      schema: portfolioItemSchema,
+    },
+    designs: {
+      source: "portfolio/designs/**/*.yml",
       schema: portfolioItemSchema,
     },
   },

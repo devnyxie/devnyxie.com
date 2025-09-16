@@ -2,6 +2,9 @@ import { getAllArticles } from "@/lib/api/articles";
 import { getAllDeepDives } from "@/lib/api/deep-dives";
 import { APP_CONFIG } from "@/lib/app.config";
 
+// This makes the route static at build time
+export const dynamic = "force-static";
+
 export async function GET() {
   const articles = await getAllArticles();
   const deepDives = await getAllDeepDives();

@@ -2,7 +2,15 @@
 
 A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind CSS`, and `MDX`.
 
-## Dependencies
+## Features
+
+- **Dark Mode**: Built-in dark mode support.
+- **Awesome Markdown Support**: Write your blog posts in Markdown with support for front matter, along with syntax cool highlighting and many themes for code blocks.
+- **Config Driven**: Easily customize **all** aspects of your blog through configuration files.
+- **SEO Optimized**: Built with SEO best practices in mind.
+- **Statically Generated**: Almost everything is statically generated for optimal performance and minimal server load.
+
+## Dependencies Overview
 
 ### Markdown Parsing
 
@@ -33,6 +41,13 @@ A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind
 
 - `motion` for animations and transitions
 
+## Roadmap
+
+- [ ] Add MDX Support: Callout Blocks, Steps/Timeline etc
+- [ ] Add Motion Animations
+- [ ] Add parsing **Caching** for faster builds and development
+- [ ] Rework `button` component structure
+
 ## Development
 
 We are utilizing Node.js 22.17 LTS for this project, along with `pnpm` as our package manager. To set up the development environment, please follow these steps:
@@ -51,3 +66,7 @@ We are utilizing Node.js 22.17 LTS for this project, along with `pnpm` as our pa
    ```bash
     pnpm dev
    ```
+
+## License
+
+The project is licensed under the [MIT License](LICENSE), except for the two directories: `public/*` and `content/*`, which are not included in the license and are strictly prohibited from being used, copied, modified, or distributed in any form without explicit permission from the original author.

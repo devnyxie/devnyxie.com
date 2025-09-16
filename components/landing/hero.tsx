@@ -70,26 +70,29 @@ function Hero({
             </Link>
           </Button>
         )}
-        <Button
-          variant="ghost"
-          color="success"
-          className="flex gap-2 items-center"
-        >
-          <span className="relative flex size-2">
-            <span
-              className={`
+        <Button variant="ghost" color="success" asChild>
+          <Link
+            href={meetingLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex gap-2 items-center"
+          >
+            <span className="relative flex size-2">
+              <span
+                className={`
                   absolute inline-flex size-full rounded-full opacity-75
                   ${available ? "bg-success animate-ping" : "bg-error"}
                   `}
-            />
-            <span
-              className={`
+              />
+              <span
+                className={`
                   relative inline-flex size-2 scale-90 rounded-full
                   ${available ? "bg-success" : "bg-error"}
                   `}
-            />
-          </span>
-          {available ? "Available" : "Not available at the moment"}
+              />
+            </span>
+            {available ? "Available" : "Not available at the moment"}
+          </Link>
         </Button>
       </div>
     </div>

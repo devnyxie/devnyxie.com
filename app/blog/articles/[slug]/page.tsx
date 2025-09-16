@@ -5,7 +5,7 @@ import { formatDate } from "@/lib/utils";
 import "@/app/assets/md.css";
 import Surround from "@/components/blog/surround";
 import Tag from "@/components/blog/tag/tag";
-import PageBreadcrumb from "@/components/breadcrumb";
+import PageBreadcrumb from "@/components/layout/breadcrumb";
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
@@ -58,7 +58,7 @@ export default async function ArticlePage({
   return (
     <article className="flex flex-col">
       <PageBreadcrumb pageTitle={article.title} />
-      <div className="mb-4 gap-4 flex flex-col items-center">
+      <div className="gap-4 flex flex-col items-center">
         {article.image && (
           <img
             src={article.image}
@@ -90,9 +90,10 @@ export default async function ArticlePage({
         <Surround post={article} contentType="articles" />
       </div>
       <div
-        className="markdown content-body"
+        className="markdown content-body mt-4 mb-4"
         dangerouslySetInnerHTML={{ __html: content }}
       />
+      <Surround post={article} contentType="articles" />
     </article>
   );
 }

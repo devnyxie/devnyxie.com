@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Heading from "@/components/heading";
-import PageBreadcrumb from "@/components/breadcrumb";
+import PageBreadcrumb from "@/components/layout/breadcrumb";
 
 interface ContentPageProps {
   title: string;

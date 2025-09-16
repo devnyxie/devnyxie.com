@@ -1,4 +1,4 @@
-import PageBreadcrumb from "@/components/breadcrumb";
+import PageBreadcrumb from "@/components/layout/breadcrumb";
 import Gaps from "@/components/layout/gaps";
 
 export default function TagsLoading() {

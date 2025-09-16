@@ -19,11 +19,12 @@ function Surround({
   };
 
   return (
-    <div className="w-full flex gap-4">
+    <div className="w-full gap-4 hidden md:flex">
       <Button
         variant="outline"
         className="flex-1 justify-start h-max rounded p-0 group"
         disabled={post.previous ? false : true}
+        asChild={true}
       >
         <Link
           href={post.previous ? getHref(post.previous.slug) : ""}
@@ -50,6 +51,7 @@ function Surround({
         variant="outline"
         className="flex-1 flex h-max rounded p-0 group"
         disabled={post.next ? false : true}
+        asChild={true}
       >
         <Link
           href={post.next ? getHref(post.next.slug) : ""}
