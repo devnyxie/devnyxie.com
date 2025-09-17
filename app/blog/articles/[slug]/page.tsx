@@ -1,6 +1,6 @@
 import { getAllArticles, getArticleBySlug } from "@/lib/api/articles";
 import { notFound } from "next/navigation";
-import parseMarkdown from "@/lib/utils/markdown_parser";
+import processContent from "@/lib/utils/content_processor";
 import { formatDate } from "@/lib/utils";
 import "@/app/assets/md.css";
 import Surround from "@/components/blog/surround";
@@ -53,7 +53,7 @@ export default async function ArticlePage({
     notFound();
   }
 
-  const content = await parseMarkdown(article.content);
+  const content = await processContent(article.content, article.isMDX);
 
   return (
     <article className="flex flex-col">

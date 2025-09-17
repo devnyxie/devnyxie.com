@@ -34,16 +34,20 @@ A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind
 - `class-variance-authority` for managing component variants
 - `next-themes` for theme management
 - `@radix-ui/react-*` for accessible UI components <br/>
-  Components used (1x):
+  (1x) components used :
   - `navigation-menu`.
 
 ### Animation
 
 - `motion` for animations and transitions
 
+### Package Management
+
+- `pnpm` for fast and efficient package management
+
 ## Roadmap
 
-- [ ] Add MDX Support: Callout Blocks, Steps/Timeline etc
+- [x] Add MDX Support: Alert and Callout components
 - [ ] Add Motion Animations
 - [ ] Add parsing **Caching** for faster builds and development
 - [ ] Rework `button` component structure

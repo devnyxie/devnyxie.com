@@ -6,7 +6,9 @@ import { glob } from "glob";
 import { getContentConfig } from "../content.config";
 
 function parsePostFile(filePath: string): PostInput | null {
-  const fileName = path.basename(filePath, ".md");
+  const ext = path.extname(filePath);
+  const fileName = path.basename(filePath, ext);
+  const isMDX = ext === ".mdx";
   const contentRaw = fs.readFileSync(filePath, "utf-8");
   const { data: frontmatter, content } = matter(contentRaw);
   const postData = {
@@ -15,6 +17,7 @@ function parsePostFile(filePath: string): PostInput | null {
     slug: fileName,
     published: frontmatter.published ?? true,
     date: frontmatter.date,
+    isMDX, // Add flag to indicate MDX content
   };
 
   const parsed = blogPostSchema.safeParse(postData);

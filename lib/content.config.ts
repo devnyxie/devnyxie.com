@@ -39,11 +39,11 @@ const contentConfig: t_content_config = {
   },
   content: {
     articles: {
-      source: "blog/articles/**/*.md",
+      source: "blog/articles/**/*.{md,mdx}",
       schema: blogPostSchema,
     },
     deep_dives: {
-      source: "blog/deep-dives/**/*.md",
+      source: "blog/deep-dives/**/*.{md,mdx}",
       schema: blogPostSchema,
     },
     software: {
