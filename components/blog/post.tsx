@@ -4,7 +4,7 @@ import { PostInput } from "@/lib/types/data/blog";
 import { Calendar } from "lucide-react";
 import Tag from "./tag/tag";
 
-type PostProps = Omit<PostInput, "content" | "published" | "isMDX">;
+type PostProps = Omit<PostInput, "content" | "published">;
 
 function RowPost(props: PostProps) {
   const { title, slug, description, date, image, tags } = props;

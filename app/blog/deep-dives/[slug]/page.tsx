@@ -1,6 +1,6 @@
 import { getAllDeepDives, getDeepDiveBySlug } from "@/lib/api/deep-dives";
 import { notFound } from "next/navigation";
-import processContent from "@/lib/utils/content_processor";
+import parseMarkdown from "@/lib/utils/markdown_parser";
 import { formatDate } from "@/lib/utils";
 import "../../../assets/md.css";
 import Surround from "@/components/blog/surround";
@@ -52,7 +52,7 @@ export default async function DeepDivePage({
     notFound();
   }
 
-  const content = await processContent(deepDive.content, deepDive.isMDX);
+  const content = await parseMarkdown(deepDive.content);
 
   return (
     <article className="flex flex-col">

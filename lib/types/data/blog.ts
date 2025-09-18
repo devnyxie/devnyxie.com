@@ -20,7 +20,6 @@ export const blogPostSchema = baseSchema
     date: z.date(), // YAML usually loads dates as strings
     published: z.boolean().default(true),
     tags: z.array(z.string().min(1)).max(10).default([]),
-    isMDX: z.boolean().optional().default(false), // Flag for MDX content
     // *** To Be Implemented ***
     series_name: z.string().optional().default(""),
     series_index: z.number().optional().default(0),
@@ -44,7 +43,6 @@ export const deepDiveSchema = baseSchema
     date: z.date(), // YAML usually loads dates as strings
     published: z.boolean().default(true),
     tags: z.array(z.string().min(1)).max(10).default([]),
-    isMDX: z.boolean().optional().default(false), // Flag for MDX content
     // *** To Be Implemented ***
     // series_name: z.string().optional().default(""),
     // series_index: z.number().optional().default(0),

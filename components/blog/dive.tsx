@@ -2,7 +2,7 @@ import { DeepDiveInput } from "@/lib/types/data/blog";
 import Link from "next/link";
 import React from "react";
 
-type PostProps = Omit<DeepDiveInput, "content" | "published" | "isMDX">;
+type PostProps = Omit<DeepDiveInput, "content" | "published">;
 
 function RowDeepDive({ title, icon, slug }: PostProps) {
   return (
