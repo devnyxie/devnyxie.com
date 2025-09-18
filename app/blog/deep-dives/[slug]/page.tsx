@@ -1,8 +1,8 @@
 import { getAllDeepDives, getDeepDiveBySlug } from "@/lib/api/deep-dives";
 import { notFound } from "next/navigation";
-import parseMarkdown from "@/lib/utils/markdown_parser";
+import MDXContent from "@/components/mdx-content";
 import { formatDate } from "@/lib/utils";
-import "../../../assets/md.css";
+import "@/app/assets/md.css";
 import Surround from "@/components/blog/surround";
 import Tag from "@/components/blog/tag/tag";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
@@ -52,8 +52,6 @@ export default async function DeepDivePage({
     notFound();
   }
 
-  const content = await parseMarkdown(deepDive.content);
-
   return (
     <article className="flex flex-col">
       <PageBreadcrumb pageTitle={deepDive.title} />
@@ -88,10 +86,9 @@ export default async function DeepDivePage({
         </div>
         <Surround post={deepDive} contentType="deep-dives" />
       </div>
-      <div
-        className="markdown content-body deep-dive"
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <div className="markdown content-body deep-dive">
+        <MDXContent source={deepDive.content} />
+      </div>
     </article>
   );
 }

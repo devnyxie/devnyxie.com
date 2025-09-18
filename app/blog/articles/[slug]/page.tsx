@@ -1,6 +1,6 @@
 import { getAllArticles, getArticleBySlug } from "@/lib/api/articles";
 import { notFound } from "next/navigation";
-import parseMarkdown from "@/lib/utils/markdown_parser";
+import MDXContent from "@/components/mdx-content";
 import { formatDate } from "@/lib/utils";
 import "@/app/assets/md.css";
 import Surround from "@/components/blog/surround";
@@ -53,8 +53,6 @@ export default async function ArticlePage({
     notFound();
   }
 
-  const content = await parseMarkdown(article.content);
-
   return (
     <article className="flex flex-col">
       <PageBreadcrumb pageTitle={article.title} />
@@ -89,10 +87,9 @@ export default async function ArticlePage({
         </div>
         <Surround post={article} contentType="articles" />
       </div>
-      <div
-        className="markdown content-body mt-4 mb-4"
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <div className="markdown content-body mt-4 mb-4">
+        <MDXContent source={article.content} />
+      </div>
       <Surround post={article} contentType="articles" />
     </article>
   );
