@@ -1,11 +1,13 @@
 import { Metadata } from "next";
 import Heading from "@/components/heading";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
+import MDXContent from "@/components/mdx-content";
 
 interface ContentPageProps {
   title: string;
   description: string;
-  processedContent: string; // Already processed HTML
+  processedContent?: string; // Already processed HTML (legacy)
+  content?: string; // Raw content to be processed with MDX
 }
 
 interface ContentPageMetadata {
@@ -41,6 +43,7 @@ export default function ContentPage({
   title,
   description,
   processedContent,
+  content,
 }: ContentPageProps) {
   return (
     <div className="mb-8">
@@ -50,10 +53,15 @@ export default function ContentPage({
       </Heading>
       <p className="text-muted-foreground mb-8">{description}</p>
 
-      <div
-        className="markdown content-body"
-        dangerouslySetInnerHTML={{ __html: processedContent }}
-      />
+      <div className="markdown content-body">
+        {content ? (
+          <MDXContent source={content} />
+        ) : processedContent ? (
+          <div dangerouslySetInnerHTML={{ __html: processedContent }} />
+        ) : (
+          <div>No content available</div>
+        )}
+      </div>
     </div>
   );
 }
