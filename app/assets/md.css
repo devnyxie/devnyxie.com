@@ -1,22 +1,18 @@
 @reference './globals.css';
 
-/* 
-  todo: change accent colors to card colors?
-*/
-
 .content-body {
   /* all: unset;
     all: initial; */
   /* border-radius: 0.5rem; */
   font-family: inherit;
-  /* line-height: 100%; */
 }
 
 .dark .content-body {
   color: #d4d4d4;
 }
 
-.content-body p {
+.content-body p,
+.content-body img {
   margin-bottom: 1rem;
 }
 
@@ -24,9 +20,17 @@
   text-decoration: underline;
 }
 
-.content-body ul,
+.content-body ul {
+  @apply list-disc list-outside pl-6 ml-4;
+}
+
 .content-body ol {
-  @apply list-disc list-inside pl-5;
+  @apply list-decimal list-outside pl-6 ml-4;
+}
+
+.content-body ul li,
+.content-body ol li {
+  @apply mb-2;
 }
 
 .content-body h1,
@@ -89,7 +93,6 @@
 }
 
 /* Code Block Styles */
-
 .content-body .shiki,
 .content-body .shiki span {
   color: var(--shiki-light) !important;
