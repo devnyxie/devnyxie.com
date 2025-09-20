@@ -1,9 +1,6 @@
 import React from "react";
 import GithubCalendar from "./githubCalendar";
-import { Button } from "../button";
-// import { RiNextjsFill } from "react-icons/ri";
-import Image from "next/image";
-import Link from "next/link";
+
 import Heading from "../heading";
 
 // const contributions = [

@@ -1,95 +1,99 @@
 @reference './globals.css';
 
-/* 
-  todo: change accent colors to card colors?
-*/
-
 .content-body {
   /* all: unset;
     all: initial; */
   /* border-radius: 0.5rem; */
   font-family: inherit;
-  /* line-height: 100%; */
 }
 
 .dark .content-body {
   color: #d4d4d4;
 }
 
-.content-body p {
+.content-body p:not(.mdx-component *),
+.content-body img:not(.mdx-component *) {
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
-.content-body a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a) {
+.content-body a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a):not(.mdx-component *) {
   text-decoration: underline;
 }
 
-.content-body ul,
-.content-body ol {
-  @apply list-disc list-inside pl-5;
+.content-body ul:not(.mdx-component *) {
+  @apply list-disc list-outside pl-6 ml-4;
 }
 
-.content-body h1,
-.content-body h2,
-.content-body h3,
-.content-body h4,
-.content-body h5,
-.content-body h6 {
+.content-body ol:not(.mdx-component *) {
+  @apply list-decimal list-outside pl-6 ml-4;
+}
+
+.content-body ul li:not(.mdx-component *),
+.content-body ol li:not(.mdx-component *) {
+  @apply mb-2;
+}
+
+.content-body h1:not(.mdx-component *),
+.content-body h2:not(.mdx-component *),
+.content-body h3:not(.mdx-component *),
+.content-body h4:not(.mdx-component *),
+.content-body h5:not(.mdx-component *),
+.content-body h6:not(.mdx-component *) {
   @apply relative w-max;
 }
 
-.content-body h1:hover,
-.content-body h2:hover,
-.content-body h3:hover,
-.content-body h4:hover,
-.content-body h5:hover,
-.content-body h6:hover {
+.content-body h1:not(.mdx-component *):hover,
+.content-body h2:not(.mdx-component *):hover,
+.content-body h3:not(.mdx-component *):hover,
+.content-body h4:not(.mdx-component *):hover,
+.content-body h5:not(.mdx-component *):hover,
+.content-body h6:not(.mdx-component *):hover {
   @apply opacity-80 transition-opacity cursor-pointer;
 }
 
-.content-body h1,
-.content-body h1 * {
+.content-body h1:not(.mdx-component *),
+.content-body h1:not(.mdx-component *) * {
   @apply text-4xl font-bold mt-8 mb-4;
 }
-.content-body h2,
-.content-body h2 * {
+.content-body h2:not(.mdx-component *),
+.content-body h2:not(.mdx-component *) * {
   @apply text-3xl font-semibold mt-7 mb-3;
 }
-.content-body h3,
-.content-body h3 * {
+.content-body h3:not(.mdx-component *),
+.content-body h3:not(.mdx-component *) * {
   @apply text-2xl font-semibold mt-6 mb-2;
 }
-.content-body h4,
-.content-body h4 * {
+.content-body h4:not(.mdx-component *),
+.content-body h4:not(.mdx-component *) * {
   @apply text-xl font-medium mt-5 mb-2;
 }
-.content-body h5,
-.content-body h5 * {
+.content-body h5:not(.mdx-component *),
+.content-body h5:not(.mdx-component *) * {
   @apply text-lg font-medium mt-4 mb-1;
 }
-.content-body h6,
-.content-body h6 * {
+.content-body h6:not(.mdx-component *),
+.content-body h6:not(.mdx-component *) * {
   @apply text-base font-medium mt-3 mb-1;
 }
 
 /* Table Styles Reset */
-.content-body table {
+.content-body table:not(.mdx-component *) {
   border-collapse: collapse;
   border-spacing: 0;
   @apply rounded overflow-hidden;
 }
-.content-body th,
-.content-body td {
+.content-body th:not(.mdx-component *),
+.content-body td:not(.mdx-component *) {
   text-align: left;
   vertical-align: top;
   @apply p-2 py-0.5 bg-accent border border-muted;
 }
-.content-body th {
+.content-body th:not(.mdx-component *) {
   font-weight: 600;
 }
 
 /* Code Block Styles */
-
 .content-body .shiki,
 .content-body .shiki span {
   color: var(--shiki-light) !important;
@@ -107,7 +111,7 @@
 }
 
 .content-body pre {
-  @apply text-sm p-4 overflow-y-scroll my-2 rounded bg-accent/25 border border-border;
+  @apply text-sm p-4 my-2 rounded bg-accent/25 border border-border;
 }
 
 .dark .content-body pre {
@@ -118,78 +122,4 @@ code:not(pre code) {
   display: inline-block;
   font-family: monospace;
   @apply rounded-sm px-1 font-mono bg-accent/25 border border-border text-sm;
-}
-
-/* MDX Component Styles */
-.content-body [data-mdx-component] {
-  @apply my-4;
-}
-
-/* Alert Component Styles */
-.content-body [role="alert"] {
-  @apply my-6;
-}
-
-.content-body .alert-info {
-  @apply border-blue-500/50 text-blue-700 bg-blue-50 dark:text-blue-200 dark:bg-blue-950/30;
-}
-
-.content-body .alert-warning {
-  @apply border-orange-500/50 text-orange-700 bg-orange-50 dark:text-orange-200 dark:bg-orange-950/30;
-}
-
-.content-body .alert-success {
-  @apply border-green-500/50 text-green-700 bg-green-50 dark:text-green-200 dark:bg-green-950/30;
-}
-
-.content-body .alert-destructive {
-  @apply border-red-500/50 text-red-700 bg-red-50 dark:text-red-200 dark:bg-red-950/30;
-}
-
-/* Callout Component Styles */
-.content-body [data-callout] {
-  @apply my-6;
-}
-
-.content-body .callout-note {
-  @apply border-l-blue-500 bg-blue-50/50 dark:bg-blue-950/20;
-}
-
-.content-body .callout-tip {
-  @apply border-l-green-500 bg-green-50/50 dark:bg-green-950/20;
-}
-
-.content-body .callout-important {
-  @apply border-l-purple-500 bg-purple-50/50 dark:bg-purple-950/20;
-}
-
-.content-body .callout-warning {
-  @apply border-l-orange-500 bg-orange-50/50 dark:bg-orange-950/20;
-}
-
-.content-body .callout-caution {
-  @apply border-l-red-500 bg-red-50/50 dark:bg-red-950/20;
-}
-
-.content-body .callout-default {
-  @apply border-l-border bg-background/50;
-}
-
-/* Timeline component styles */
-.content-body [data-timeline] {
-  @apply my-8;
-}
-
-/* Tabs component styles */
-.content-body [data-tabs] {
-  @apply my-6;
-}
-
-.content-body [data-tabs] [data-tab-content] {
-  @apply mt-4;
-}
-
-/* Code block component styles */
-.content-body [data-code-block] {
-  @apply my-6;
 }

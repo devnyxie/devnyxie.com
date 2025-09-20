@@ -1,11 +1,12 @@
 import { getAllArticles, getArticleBySlug } from "@/lib/api/articles";
 import { notFound } from "next/navigation";
-import processContent from "@/lib/utils/content_processor";
+import MDXContent from "@/components/mdx-content";
 import { formatDate } from "@/lib/utils";
 import "@/app/assets/md.css";
 import Surround from "@/components/blog/surround";
 import Tag from "@/components/blog/tag/tag";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
+import { generateMetadata as createMetadata } from "@/lib/metadata";
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
@@ -28,17 +29,13 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return createMetadata({
     title: article.title,
     description: article.description,
-    openGraph: {
-      title: article.title,
-      description: article.description,
-      type: "article",
-      publishedTime: article.date.toISOString(),
-      images: article.image ? [{ url: article.image }] : [],
-    },
-  };
+    type: "article",
+    publishedTime: article.date.toISOString(),
+    image: article.image || undefined,
+  });
 }
 
 export default async function ArticlePage({
@@ -52,8 +49,6 @@ export default async function ArticlePage({
   if (!article) {
     notFound();
   }
-
-  const content = await processContent(article.content, article.isMDX);
 
   return (
     <article className="flex flex-col">
@@ -89,10 +84,9 @@ export default async function ArticlePage({
         </div>
         <Surround post={article} contentType="articles" />
       </div>
-      <div
-        className="markdown content-body mt-4 mb-4"
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <div className="markdown content-body mt-4 mb-4">
+        <MDXContent source={article.content} />
+      </div>
       <Surround post={article} contentType="articles" />
     </article>
   );

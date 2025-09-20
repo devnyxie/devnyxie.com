@@ -5,13 +5,17 @@ import { getAllDesigns } from "@/lib/api/designs";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
 import ProjectCard from "@/components/portfolio/project-card";
 import DesignCard from "@/components/portfolio/design-card";
-import PortfolioCarousel from "@/components/carousel";
 import Gaps from "@/components/layout/gaps";
+import { generateMetadata as createMetadata } from "@/lib/metadata";
+import { PortfolioPageType } from "@/lib/types/pages/portfolio";
 
-export const metadata = {
-  title: "Portfolio",
-  description: "A showcase of my projects and work",
-};
+export async function generateMetadata() {
+  const page: PortfolioPageType = getPageData("portfolio");
+  return createMetadata({
+    title: page.title,
+    description: page.description,
+  });
+}
 
 export default async function PortfolioPage() {
   const page = await getPageData("portfolio");

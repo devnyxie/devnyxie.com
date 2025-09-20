@@ -8,7 +8,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/shadcn/carousel";
-import Autoplay from "embla-carousel-autoplay";
 
 function PortfolioCarousel() {
   const items = [

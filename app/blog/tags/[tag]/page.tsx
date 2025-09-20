@@ -8,6 +8,7 @@ import Gaps from "@/components/layout/gaps";
 import { Button } from "@/components/button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { generateMetadata as createMetadata } from "@/lib/metadata";
 
 interface TagPageProps {
   params: Promise<{
@@ -33,12 +34,12 @@ export async function generateMetadata({ params }: TagPageProps) {
     };
   }
 
-  return {
+  return createMetadata({
     title: `#${tagName}`,
     description: `Posts tagged with ${tagName} - ${tag.count} post${
       tag.count !== 1 ? "s" : ""
     } found`,
-  };
+  });
 }
 
 export default async function TagPage({ params }: TagPageProps) {

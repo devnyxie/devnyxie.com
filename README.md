@@ -34,29 +34,25 @@ A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind
 - `class-variance-authority` for managing component variants
 - `next-themes` for theme management
 - `@radix-ui/react-*` for accessible UI components <br/>
-  (1x) components used :
+  Components used (1x):
   - `navigation-menu`.
 
 ### Animation
 
 - `motion` for animations and transitions
 
-### Package Management
-
-- `pnpm` for fast and efficient package management
-
 ## Roadmap
 
-- [x] Add MDX Support: Alert and Callout components
+- [ ] Add MDX Support: Callout Blocks, Steps/Timeline etc
 - [ ] Add Motion Animations
 - [ ] Add parsing **Caching** for faster builds and development
 - [ ] Rework `button` component structure
 
 ## Development
 
-We are utilizing Node.js 22.17 LTS for this project, along with `pnpm` as our package manager. To set up the development environment, please follow these steps:
+We are utilizing Node.js 22 LTS for this project, along with `pnpm` as our package manager. To set up the development environment, please follow these steps:
 
-1. Install Node.js 22.17 LTS from the [official Node.js website](https://nodejs.org/) or via a version manager like `nvm`.
+1. Install Node.js 22 LTS from the [official Node.js website](https://nodejs.org/) or via a version manager like `nvm`.
 2. Install `pnpm` globally by running the following command:
    ```bash
    npm install -g pnpm

@@ -1,11 +1,12 @@
 import { getAllDeepDives, getDeepDiveBySlug } from "@/lib/api/deep-dives";
 import { notFound } from "next/navigation";
-import processContent from "@/lib/utils/content_processor";
+import MDXContent from "@/components/mdx-content";
 import { formatDate } from "@/lib/utils";
-import "../../../assets/md.css";
+import "@/app/assets/md.css";
 import Surround from "@/components/blog/surround";
 import Tag from "@/components/blog/tag/tag";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
+import { generateMetadata as createMetadata } from "@/lib/metadata";
 
 export async function generateStaticParams() {
   const deepDives = await getAllDeepDives();
@@ -28,16 +29,12 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return createMetadata({
     title: deepDive.title,
     description: deepDive.description,
-    openGraph: {
-      title: deepDive.title,
-      description: deepDive.description,
-      type: "article",
-      publishedTime: deepDive.date.toISOString(),
-    },
-  };
+    type: "article",
+    publishedTime: deepDive.date.toISOString(),
+  });
 }
 
 export default async function DeepDivePage({
@@ -51,8 +48,6 @@ export default async function DeepDivePage({
   if (!deepDive) {
     notFound();
   }
-
-  const content = await processContent(deepDive.content, deepDive.isMDX);
 
   return (
     <article className="flex flex-col">
@@ -88,10 +83,9 @@ export default async function DeepDivePage({
         </div>
         <Surround post={deepDive} contentType="deep-dives" />
       </div>
-      <div
-        className="markdown content-body deep-dive"
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <div className="markdown content-body deep-dive">
+        <MDXContent source={deepDive.content} />
+      </div>
     </article>
   );
 }

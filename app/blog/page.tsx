@@ -10,6 +10,15 @@ import PageBreadcrumb from "@/components/layout/breadcrumb";
 import { DeepDiveInput, PostInput } from "@/lib/types/data/blog";
 import Link from "next/link";
 import { Button } from "@/components/button";
+import { generateMetadata as createMetadata } from "@/lib/metadata";
+
+export async function generateMetadata() {
+  return createMetadata({
+    title: "Blog",
+    description:
+      "Articles, deep dives, and technical insights on software development and engineering",
+  });
+}
 
 export default async function Blog() {
   const page: BlogPageType = await getPageData("blog");

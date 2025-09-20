@@ -5,10 +5,12 @@ import Heading from "@/components/heading";
 import Gaps from "@/components/layout/gaps";
 import { getPageData } from "@/lib/api/pages";
 
-export const metadata = {
+import { generateMetadata as createMetadata } from "@/lib/metadata";
+
+export const metadata = createMetadata({
   title: "Tags",
   description: "Browse all tags used in articles and deep dives",
-};
+});
 
 export default async function TagsPage() {
   const tags = await getAllTags();

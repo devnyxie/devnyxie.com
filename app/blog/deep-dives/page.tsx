@@ -4,10 +4,13 @@ import Link from "next/link";
 import Tag from "@/components/blog/tag/tag";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
 
-export const metadata = {
+import { generateMetadata as createMetadata } from "@/lib/metadata";
+
+export const metadata = createMetadata({
   title: "Deep Dives",
-  description: "In-depth explorations of complex topics",
-};
+  description:
+    "In-depth explorations of complex topics in software engineering",
+});
 
 export default async function DeepDivesPage() {
   const deepDives = await getAllDeepDives();

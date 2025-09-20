@@ -25,7 +25,7 @@ export async function GET() {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 20); // Limit to most recent 20 posts
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://devnyxie.com";
+  const siteUrl = APP_CONFIG.domain;
   const feedUrl = `${siteUrl}/blog/feed.xml`;
 
   const rssXml = `<?xml version="1.0" encoding="UTF-8"?>

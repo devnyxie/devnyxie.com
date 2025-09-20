@@ -18,13 +18,10 @@ function parseFile(filePath: string): PortfolioItem | null {
     const parsed = portfolioItemSchema.safeParse(portfolioData);
 
     if (!parsed.success) {
-      console.error(`Error parsing portfolio item "${slug}":`, parsed.error);
       return null;
     }
-    console.log(`Portfolio item "${slug}" parsed successfully ✅`);
     return parsed.data as PortfolioItem;
   } catch (error) {
-    console.error(`Error parsing portfolio item "${slug}":`, error);
     return null;
   }
 }
@@ -47,6 +44,8 @@ export async function getAllPortfolioItems(): Promise<PortfolioItem[]> {
       portfolioItems.push(portfolioItem);
     }
   }
+
+  console.log(`Parsed ${portfolioItems.length} portfolio items`);
 
   return portfolioItems.sort((a, b) => {
     const dateA = new Date(a.date).getTime();

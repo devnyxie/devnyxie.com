@@ -2,7 +2,6 @@ import ContentPage, {
   generateContentPageMetadata,
 } from "@/components/layout/content-page";
 import { getPageData } from "@/lib/api/pages";
-import parseMarkdown from "@/lib/utils/markdown_parser";
 import { Metadata } from "next";
 import "@/app/assets/md.css";
 
@@ -21,12 +20,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Page() {
   const page = getPageData("about");
-  const processedContent = await parseMarkdown(page.content);
   return (
     <ContentPage
       title={page.title}
       description={page.description}
-      processedContent={processedContent}
+      content={page.content}
     />
   );
 }
