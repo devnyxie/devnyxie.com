@@ -5,6 +5,7 @@ import Tag from "@/components/blog/tag/tag";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
 
 import { generateMetadata as createMetadata } from "@/lib/metadata";
+import { Button } from "@/components/button";
 
 export const metadata = createMetadata({
   title: "Deep Dives",
@@ -25,12 +26,11 @@ export default async function DeepDivesPage() {
             In-depth explorations of complex topics
           </p>
         </div>
-        <div className="flex gap-2">
-          <Link
-            href="/blog/tags"
-            className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
-          >
-            Browse Tags
+        <div className="flex gap-2 h-max">
+          <Link href="/blog/tags">
+            <Button variant={"outline"} size={"md"}>
+              <Link href="/blog/tags">Browse Tags</Link>
+            </Button>
           </Link>
         </div>
       </div>

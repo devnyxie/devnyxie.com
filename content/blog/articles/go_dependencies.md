@@ -1,5 +1,5 @@
 ---
-title: Go Global State in Routes
+title: Go Dependencies Injection
 date: 2025-08-08
 tags:
   - go

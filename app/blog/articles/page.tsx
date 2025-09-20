@@ -4,6 +4,7 @@ import RowPost from "@/components/blog/post";
 import Link from "next/link";
 
 import { generateMetadata as createMetadata } from "@/lib/metadata";
+import { Button } from "@/components/button";
 
 export const metadata = createMetadata({
   title: "Articles",
@@ -24,11 +25,10 @@ export default async function ArticlesPage() {
           </p>
         </div>
         <div className="flex gap-2">
-          <Link
-            href="/blog/tags"
-            className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
-          >
-            Browse Tags
+          <Link href="/blog/tags">
+            <Button variant={"outline"} size={"md"}>
+              <Link href="/blog/tags">Browse Tags</Link>
+            </Button>
           </Link>
         </div>
       </div>
