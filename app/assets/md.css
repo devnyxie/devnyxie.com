@@ -111,7 +111,7 @@
 }
 
 .content-body pre {
-  @apply text-sm p-4 my-2 rounded bg-accent/25 border border-border;
+  @apply text-sm p-4 my-2 rounded bg-accent/25 border border-border overflow-x-auto max-w-[100%] whitespace-pre;
 }
 
 .dark .content-body pre {

@@ -1,5 +1,5 @@
 export const APP_CONFIG = {
-  domain: process.env.NEXT_PUBLIC_SITE_URL || "https://www.devnyxie.com",
+  domain: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   picture: {
     src: "/pfp_personal.jpg",
     alt: "My profile picture",
@@ -9,13 +9,24 @@ export const APP_CONFIG = {
   email: "timbusinez@gmail.com",
   available: true,
   server: {
-    name: "Home Lab",
-    region: "Warsaw, PL",
+    name: process.env.NEXT_PUBLIC_SERVER_NAME || "Home Lab",
+    region:
+      process.env.NEXT_PUBLIC_SERVER_REGION ||
+      process.env.VERCEL_REGION ||
+      "Unknown",
   },
   resumeLink: "/resume.pdf",
   og_img: {
     name: "Timothee",
     title: "Full Stack Developer",
+  },
+  rss: {
+    title: "Tim Afanasiev - Blog",
+    description:
+      "Passionate about crafting elegant solutions and building impactful software. Based in Warsaw, available for both Frontend and Backend projects worldwide.",
+    language: "en",
+    authorName: "Tim Afanasiev",
+    maxItems: 20,
   },
 };
 

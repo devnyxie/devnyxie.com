@@ -23,7 +23,7 @@ export async function GET() {
   const allPosts = [...articlesWithType, ...deepDivesWithType]
     .filter((post) => post.published)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 20); // Limit to most recent 20 posts
+    .slice(0, APP_CONFIG.rss.maxItems);
 
   const siteUrl = APP_CONFIG.domain;
   const feedUrl = `${siteUrl}/blog/feed.xml`;
@@ -31,13 +31,15 @@ export async function GET() {
   const rssXml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tim Afanasiev - Blog</title>
-    <description>Passionate about crafting elegant solutions and building impactful software. Based in Warsaw, available for both Frontend and Backend projects worldwide.</description>
+    <title>${APP_CONFIG.rss.title}</title>
+    <description>${APP_CONFIG.rss.description}</description>
     <link>${siteUrl}</link>
     <atom:link href="${feedUrl}" rel="self" type="application/rss+xml" />
-    <language>en</language>
-    <managingEditor>${APP_CONFIG.email} (Tim Afanasiev)</managingEditor>
-    <webMaster>${APP_CONFIG.email} (Tim Afanasiev)</webMaster>
+    <language>${APP_CONFIG.rss.language}</language>
+    <managingEditor>${APP_CONFIG.email} (${
+    APP_CONFIG.rss.authorName
+  })</managingEditor>
+    <webMaster>${APP_CONFIG.email} (${APP_CONFIG.rss.authorName})</webMaster>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     ${allPosts
       .map(

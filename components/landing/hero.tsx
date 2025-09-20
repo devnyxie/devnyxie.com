@@ -57,7 +57,11 @@ function Hero({
               </Link>
             </Button>
           )}
-          <Button variant="ghost" color="success" asChild>
+          <Button
+            variant="ghost"
+            color={available ? "success" : "destructive"}
+            asChild
+          >
             <Link
               href={meetingLink}
               target="_blank"
@@ -68,17 +72,17 @@ function Hero({
                 <span
                   className={`
                   absolute inline-flex size-full rounded-full opacity-75
-                  ${available ? "bg-success animate-ping" : "bg-error"}
+                  ${available ? "bg-success animate-ping" : "bg-destructive"}
                   `}
                 />
                 <span
                   className={`
                   relative inline-flex size-2 scale-90 rounded-full
-                  ${available ? "bg-success" : "bg-error"}
+                  ${available ? "bg-success" : "bg-destructive"}
                   `}
                 />
               </span>
-              {available ? "Available" : "Not available at the moment"}
+              {available ? "Available" : "Not available"}
             </Link>
           </Button>
         </div>

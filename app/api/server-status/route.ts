@@ -12,22 +12,19 @@ interface ServerStatusResponse {
 export async function GET(request: NextRequest) {
   try {
     const startTime = Date.now();
-    
+
     // Simple processing delay to measure Next.js route latency
-    await new Promise(resolve => setTimeout(resolve, Math.random() * 10 + 5));
-    
+    await new Promise((resolve) => setTimeout(resolve, Math.random() * 10 + 5));
+
     const latency = Date.now() - startTime;
     const isOnline = true; // Next.js route is responding, so we're online
-    
+
     const data: ServerStatusResponse = {
       isOnline,
       latency,
       timestamp: Date.now(),
-      server: process.env.NEXT_PUBLIC_SERVER_NAME || APP_CONFIG.server.name,
-      region:
-        process.env.NEXT_PUBLIC_SERVER_REGION ||
-        process.env.VERCEL_REGION ||
-        APP_CONFIG.server.region,
+      server: APP_CONFIG.server.name,
+      region: APP_CONFIG.server.region,
     };
 
     return NextResponse.json(data, {
@@ -45,11 +42,8 @@ export async function GET(request: NextRequest) {
         isOnline: false,
         latency: 0,
         timestamp: Date.now(),
-        server: process.env.NEXT_PUBLIC_SERVER_NAME || APP_CONFIG.server.name,
-        region:
-          process.env.NEXT_PUBLIC_SERVER_REGION ||
-          process.env.VERCEL_REGION ||
-          APP_CONFIG.server.region,
+        server: APP_CONFIG.server.name,
+        region: APP_CONFIG.server.region,
         error: "Failed to get server status",
       },
       { status: 500 }

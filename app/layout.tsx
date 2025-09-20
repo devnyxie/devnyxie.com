@@ -8,6 +8,7 @@ import Content from "@/components/layout/content";
 import { ServerStatus } from "@/components/layout/server-status";
 import { getPageData } from "@/lib/api/pages";
 import { IndexPageType } from "@/lib/types/pages";
+import { APP_CONFIG } from "@/lib/app.config";
 
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",
@@ -36,6 +37,7 @@ export const metadata: Metadata = {
     title: pageData.title,
     description: pageData.description,
   },
+  metadataBase: new URL(APP_CONFIG.domain),
 };
 
 export default function RootLayout({

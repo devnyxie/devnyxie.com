@@ -12,14 +12,9 @@ export const contentType = "image/png";
 
 //og:image generation
 export default async function Image() {
-  // Get the base URL for assets
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : process.env.NODE_ENV === "production"
-    ? `https://${Config.domain.replace(/^https?:\/\//, "")}`
-    : "http://localhost:3000";
+  const baseUrl = Config.domain;
 
-  const displayDomain = Config.domain
+  const displayDomain = baseUrl
     .replace(/^https?:\/\//, "")
     .replace(/^www\./, "");
 

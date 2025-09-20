@@ -80,12 +80,12 @@ const buttonVariants = cva(
         color: "primary",
         class: "hover:bg-accent text-accent-foreground dark:hover:bg-input/25",
       },
-      // {
-      //   variant: "ghost",
-      //   color: "destructive",
-      //   class:
-      //     "text-destructive hover:bg-destructive/10 dark:text-destructive/90 dark:hover:bg-destructive/20",
-      // },
+      {
+        variant: "ghost",
+        color: "destructive",
+        class:
+          "text-destructive hover:bg-destructive/10 dark:text-destructive/90 dark:hover:bg-destructive/20",
+      },
       {
         variant: "ghost",
         color: "success",
