@@ -6,6 +6,7 @@ import "@/app/assets/md.css";
 import Surround from "@/components/blog/surround";
 import Tag from "@/components/blog/tag/tag";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
+import { generateMetadata as createMetadata } from "@/lib/metadata";
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
@@ -28,17 +29,13 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return createMetadata({
     title: article.title,
     description: article.description,
-    openGraph: {
-      title: article.title,
-      description: article.description,
-      type: "article",
-      publishedTime: article.date.toISOString(),
-      images: article.image ? [{ url: article.image }] : [],
-    },
-  };
+    type: "article",
+    publishedTime: article.date.toISOString(),
+    image: article.image || undefined,
+  });
 }
 
 export default async function ArticlePage({

@@ -4,6 +4,6 @@ image: /minishell.gif
 public: true
 source: "https://github.com/devnyxie/minishell"
 preview:
-state: "in-progress"
+state: "published"
 tags: ["C", "Low-Level", "Linux"]
-date: 2025-08
+date: 2025-08-20

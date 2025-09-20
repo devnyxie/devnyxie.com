@@ -11,84 +11,85 @@
   color: #d4d4d4;
 }
 
-.content-body p,
-.content-body img {
+.content-body p:not(.mdx-component *),
+.content-body img:not(.mdx-component *) {
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
-.content-body a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a) {
+.content-body a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a):not(.mdx-component *) {
   text-decoration: underline;
 }
 
-.content-body ul {
+.content-body ul:not(.mdx-component *) {
   @apply list-disc list-outside pl-6 ml-4;
 }
 
-.content-body ol {
+.content-body ol:not(.mdx-component *) {
   @apply list-decimal list-outside pl-6 ml-4;
 }
 
-.content-body ul li,
-.content-body ol li {
+.content-body ul li:not(.mdx-component *),
+.content-body ol li:not(.mdx-component *) {
   @apply mb-2;
 }
 
-.content-body h1,
-.content-body h2,
-.content-body h3,
-.content-body h4,
-.content-body h5,
-.content-body h6 {
+.content-body h1:not(.mdx-component *),
+.content-body h2:not(.mdx-component *),
+.content-body h3:not(.mdx-component *),
+.content-body h4:not(.mdx-component *),
+.content-body h5:not(.mdx-component *),
+.content-body h6:not(.mdx-component *) {
   @apply relative w-max;
 }
 
-.content-body h1:hover,
-.content-body h2:hover,
-.content-body h3:hover,
-.content-body h4:hover,
-.content-body h5:hover,
-.content-body h6:hover {
+.content-body h1:not(.mdx-component *):hover,
+.content-body h2:not(.mdx-component *):hover,
+.content-body h3:not(.mdx-component *):hover,
+.content-body h4:not(.mdx-component *):hover,
+.content-body h5:not(.mdx-component *):hover,
+.content-body h6:not(.mdx-component *):hover {
   @apply opacity-80 transition-opacity cursor-pointer;
 }
 
-.content-body h1,
-.content-body h1 * {
+.content-body h1:not(.mdx-component *),
+.content-body h1:not(.mdx-component *) * {
   @apply text-4xl font-bold mt-8 mb-4;
 }
-.content-body h2,
-.content-body h2 * {
+.content-body h2:not(.mdx-component *),
+.content-body h2:not(.mdx-component *) * {
   @apply text-3xl font-semibold mt-7 mb-3;
 }
-.content-body h3,
-.content-body h3 * {
+.content-body h3:not(.mdx-component *),
+.content-body h3:not(.mdx-component *) * {
   @apply text-2xl font-semibold mt-6 mb-2;
 }
-.content-body h4,
-.content-body h4 * {
+.content-body h4:not(.mdx-component *),
+.content-body h4:not(.mdx-component *) * {
   @apply text-xl font-medium mt-5 mb-2;
 }
-.content-body h5,
-.content-body h5 * {
+.content-body h5:not(.mdx-component *),
+.content-body h5:not(.mdx-component *) * {
   @apply text-lg font-medium mt-4 mb-1;
 }
-.content-body h6,
-.content-body h6 * {
+.content-body h6:not(.mdx-component *),
+.content-body h6:not(.mdx-component *) * {
   @apply text-base font-medium mt-3 mb-1;
 }
 
 /* Table Styles Reset */
-.content-body table {
+.content-body table:not(.mdx-component *) {
   border-collapse: collapse;
   border-spacing: 0;
   @apply rounded overflow-hidden;
 }
-.content-body th,
-.content-body td {
+.content-body th:not(.mdx-component *),
+.content-body td:not(.mdx-component *) {
   text-align: left;
   vertical-align: top;
   @apply p-2 py-0.5 bg-accent border border-muted;
 }
-.content-body th {
+.content-body th:not(.mdx-component *) {
   font-weight: 600;
 }
 
@@ -110,7 +111,7 @@
 }
 
 .content-body pre {
-  @apply text-sm p-4 overflow-y-scroll my-2 rounded bg-accent/25 border border-border;
+  @apply text-sm p-4 my-2 rounded bg-accent/25 border border-border;
 }
 
 .dark .content-body pre {

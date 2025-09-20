@@ -3,10 +3,12 @@ import PageBreadcrumb from "@/components/layout/breadcrumb";
 import RowPost from "@/components/blog/post";
 import Link from "next/link";
 
-export const metadata = {
+import { generateMetadata as createMetadata } from "@/lib/metadata";
+
+export const metadata = createMetadata({
   title: "Articles",
-  description: "Technical articles and tutorials",
-};
+  description: "Technical articles and tutorials on software development",
+});
 
 export default async function ArticlesPage() {
   const articles = await getAllArticles();

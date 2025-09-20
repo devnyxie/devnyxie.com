@@ -4,19 +4,44 @@ content: |
 
   Hi, I'm **Timothee Afanasiev**, a Full Stack Developer based right here in Warsaw, Poland. For the past four years, I've been immersed in the world of digital product creation, focusing on building products that are not just functional, but genuinely intuitive for users.
 
-   <img src="/images/about/personal_image.jpg" className="w-80"/>
+   <MdxImage src="/images/about/personal_image.jpg" className="w-80"/>
 
   ## My Journey
 
-  - My journey began in **Polish-Japanese Academy of Information Technology** (2022), where I pursued a degree in Computer Science. This academic foundation provided me with a solid understanding of core programming concepts and problem-solving skills. It was a solid stepping stone into the tech world.
-    <img src="/images/about/pjatk_cover_fhd.jpg" className="w-full"/>
+  ### Early Spark
 
-  - Simultaneously, I did participate in **[Epicode Bootcamp](https://epicode.com/en/)** (2022-2023), focusing on **JavaScript** and its ecosystem - both for frontend and backend, which has been my primary toolkit. It was intense for me back then, focusing on all possible aspects - Real-time Data & Interactions, Authentication, Encryption, Databases, Highly interactive applications and more - but I loved every bit of it.
-    <img src="/images/about/epicode_cert.png" className="w-full"/>
-    
-  - After graduating, I joined **[Demandsphere](https://www.demandsphere.com/)** (2023), an American and Japanese Search Engine Optimization company, as a Junior Full Stack Developer. I got real hands-on experience working on diverse projects, from legacy system migrations to developing new features for existing applications. **Ruby**, Python, JavaScript - you name it, I worked with it. This role was crucial in shaping my team collaboration skills, understanding client requirements, and delivering solutions that met business needs.
+  My passion for technology and coding started in my teenage years. I was fascinated by how things work, and that curiosity naturally led me to programming and engineering. In 2022, I graduated from high school in 🇬🇷 Thessaloniki, Greece, where I was first introduced to the basics of programming and computer science. Right after, I passed the C2 Proficiency in English and moved to 🇵🇱 Warsaw, Poland, in search of better opportunities.
 
-  - After Demandsphere, I moved into **freelance development** (2024 - Now). This kept me engaged with real-world projects while giving me the flexibility to deepen my studies and explore new technologies - especially **Go**.
+  <MdxGallery images={[
+      { src: "/images/about/test1.jpg", alt: "Description 1" },
+      { src: "/images/about/test2.jpg", alt: "Description 2" },
+      { src: "/images/about/test3.jpg", alt: "Description 2" }
+  ]}/>
 
-  - In the meantime, I decided to push myself further - so I joined **42 Warsaw** (2024 - Now). Pure, advanced Low Level Programming in C was exactly what I needed to sharpen my problem-solving skills and learn to write really efficient, optimized code. When I fully graduate, I will have French's RNCP Level 7 diploma (equivalent to a Master's degree).
-    <img src="/images/about/42_kickoff.jpg" className="w-full"/>
+  ### Education
+
+  - In 2022, I joined the **[Polish-Japanese Academy of Information Technology](https://pja.edu.pl/en/)**, pursuing a degree in Computer Science. It gave me a strong foundation in programming concepts and problem-solving—an important stepping stone into the tech world.
+    <MdxImage src="/images/about/pjatk_cover_fhd.jpg" className="w-full"/>
+
+  - At the same time, I participated in the 🇮🇹 **[Epicode Bootcamp](https://epicode.com/en/)** (2022-2023), where I focused on the JavaScript ecosystem for both frontend and backend development, which has been my primary toolkit. The program was intense, covering everything from real-time applications and authentication to encryption, databases, and highly interactive interfaces—but I loved every bit of it.
+    <MdxImage src="/images/about/epicode_cert.png" className="w-full"/>
+
+  - Wanting to challenge myself further, I joined **42 Warsaw** (2024-Now). The program's emphasis on low-level C programming, UNIX systems, and efficiency was exactly what I needed to sharpen my problem-solving skills. Once I graduate, I'll earn France's RNCP Level 7 diploma, equivalent to a Master's degree.
+    <MdxImage src="/images/about/42_kickoff.jpg" className="w-full"/>
+
+  - In parallel with **42 Warsaw**, I started studying 🇵🇱 Polish at **[Language School Together](https://en.together.edu.pl/)**. In July 2025, I passed my A2 exam, and I'm now preparing for B1.
+
+
+  ### Professional Experience
+
+  1. While studying in Epicode, I interned as a Frontend Engineer at **[draive.gr](https://draive.gr/)** (2022-2023), a 🇬🇷 Greek startup focused on autonomous driving technology. I worked on their website, polishing the user interface. This role gave me my first taste of real-world collaboration.
+
+  2. Right after graduating, I joined **[Demandsphere](https://www.demandsphere.com/)** (2023), a 🇺🇸🇯🇵 US/JP SEO company, as a Junior Full Stack Developer. There, I worked with Ruby, Python, and JavaScript on projects ranging from legacy system migrations to developing new features. This experience helped me grow both technically and as part of a team, while learning how to balance client requirements with real-world solutions.
+
+  3. In 2024, I transitioned to **freelance development**, which allowed me to stay connected with real-world projects while giving me the freedom to explore new technologies—especially **Go**.
+
+  Apart from paid work, I also dedicate time to **Open Source**. I've contributed to several major repositories, including **Grafana**, **Next.js**, and **Pterm**.
+
+  <Callout variant="info" title="Open to Opportunities" icon="💼">
+    I'm currently available part-time for both frontend and backend roles. If you're looking for a dedicated developer to help bring your ideas to life, feel free to reach out!
+  </Callout>

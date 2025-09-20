@@ -1,4 +1,5 @@
 export const APP_CONFIG = {
+  domain: process.env.NEXT_PUBLIC_SITE_URL || "https://www.devnyxie.com",
   picture: {
     src: "/pfp_personal.jpg",
     alt: "My profile picture",
@@ -12,6 +13,10 @@ export const APP_CONFIG = {
     region: "Warsaw, PL",
   },
   resumeLink: "/resume.pdf",
+  og_img: {
+    name: "Timothee",
+    title: "Full Stack Developer",
+  },
 };
 
 export function getConfig() {

@@ -21,8 +21,6 @@ function parsePostFile(filePath: string): PostInput | null {
   if (!parsed.success) {
     const errorMessage = `Error parsing article "${fileName}": ${parsed.error}`;
     throw new Error(errorMessage);
-  } else {
-    console.log(`Article "${fileName}" parsed successfully ✅`);
   }
   return parsed.data;
 }
@@ -30,26 +28,17 @@ function parsePostFile(filePath: string): PostInput | null {
 export async function getAllArticles(): Promise<PostInput[]> {
   const { content } = getContentConfig();
   const articlesGlob = "./content/" + content.articles.source;
-  console.log(`Searching for article files in: ${articlesGlob}`);
   const filePaths = await glob(articlesGlob, { nodir: true });
-  console.log(`Found ${filePaths.length} article files.`);
   const articles: PostInput[] = filePaths
     .map((filePath) => {
       const post = parsePostFile(filePath);
-      if (!post) {
-        console.warn(
-          `Article file ${filePath} is invalid or missing required fields.`
-        );
-        return null;
-      } else if (!post?.published) {
-        console.warn(
-          `Skipping unpublished article: ${post.title} (${post.slug})`
-        );
+      if (!post || !post?.published) {
         return null;
       }
       return post;
     })
     .filter((post): post is PostInput => post !== null);
+  console.log(`Parsed ${articles.length} articles`);
   articles.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
@@ -81,9 +70,6 @@ export async function getArticleBySlug(
   const article = allArticles.find((p) => p.slug === slug);
 
   if (!article) {
-    console.warn(
-      `Article with slug "${slug}" not found in published articles.`
-    );
     return null;
   }
 

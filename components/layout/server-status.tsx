@@ -10,28 +10,31 @@ interface ServerStatusProps {
   enabled?: boolean;
 }
 
-export function ServerStatus({ refreshInterval = 30000, enabled = true }: ServerStatusProps) {
-  const { status, loading, error, refetch } = useServerStatus({ 
-    refreshInterval, 
-    enabled 
+export function ServerStatus({
+  refreshInterval = 30000,
+  enabled = true,
+}: ServerStatusProps) {
+  const { status, loading, error, refetch } = useServerStatus({
+    refreshInterval,
+    enabled,
   });
-  
+
   const { latency, isOnline } = status;
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const statusColor = isOnline 
-    ? latency < 100 
-      ? "bg-green-500" 
-      : latency < 200 
-      ? "bg-yellow-500" 
+  const statusColor = isOnline
+    ? latency < 100
+      ? "bg-green-500"
+      : latency < 200
+      ? "bg-yellow-500"
       : "bg-orange-500"
     : "bg-red-500";
 
-  const statusText = isOnline 
-    ? latency < 100 
-      ? "Excellent" 
-      : latency < 200 
-      ? "Good" 
+  const statusText = isOnline
+    ? latency < 100
+      ? "Excellent"
+      : latency < 200
+      ? "Good"
       : "Fair"
     : "Offline";
 
@@ -58,14 +61,14 @@ export function ServerStatus({ refreshInterval = 30000, enabled = true }: Server
               <div className={`w-2 h-2 rounded-full ${statusColor}`}>
                 <motion.div
                   className={`w-2 h-2 rounded-full ${statusColor}`}
-                  animate={{ 
+                  animate={{
                     scale: [1, 1.2, 1],
-                    opacity: [1, 0.7, 1]
+                    opacity: [1, 0.7, 1],
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 2,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   }}
                 />
               </div>
@@ -85,14 +88,14 @@ export function ServerStatus({ refreshInterval = 30000, enabled = true }: Server
                   <div className={`w-2 h-2 rounded-full ${statusColor}`}>
                     <motion.div
                       className={`w-2 h-2 rounded-full ${statusColor}`}
-                      animate={{ 
+                      animate={{
                         scale: [1, 1.2, 1],
-                        opacity: [1, 0.7, 1]
+                        opacity: [1, 0.7, 1],
                       }}
-                      transition={{ 
+                      transition={{
                         duration: 2,
                         repeat: Infinity,
-                        ease: "easeInOut"
+                        ease: "easeInOut",
                       }}
                     />
                   </div>
@@ -106,7 +109,7 @@ export function ServerStatus({ refreshInterval = 30000, enabled = true }: Server
                   <WifiOff className="w-4 h-4 text-muted-foreground" />
                 )}
               </div>
-              
+
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
                   <span className="text-muted-foreground">Latency:</span>
@@ -125,13 +128,16 @@ export function ServerStatus({ refreshInterval = 30000, enabled = true }: Server
                 {error && (
                   <div className="flex justify-between text-xs">
                     <span className="text-red-500">Error:</span>
-                    <span className="text-red-500 text-right max-w-[100px] truncate" title={error}>
+                    <span
+                      className="text-red-500 text-right max-w-[100px] truncate"
+                      title={error}
+                    >
                       {error}
                     </span>
                   </div>
                 )}
               </div>
-              
+
               <motion.div
                 className="mt-2 pt-2 border-t border-border"
                 initial={{ opacity: 0 }}
@@ -151,13 +157,14 @@ export function ServerStatus({ refreshInterval = 30000, enabled = true }: Server
                     disabled={loading}
                     title="Refresh status"
                   >
-                    <RefreshCw 
-                      className={`w-3 h-3 ${loading ? "animate-spin" : ""}`} 
+                    <RefreshCw
+                      className={`w-3 h-3 ${loading ? "animate-spin" : ""}`}
                     />
                   </button>
                 </div>
                 <div className="text-xs text-muted-foreground text-center mt-1">
-                  Last updated: {new Date(status.timestamp).toLocaleTimeString()}
+                  Last updated:{" "}
+                  {new Date(status.timestamp).toLocaleTimeString()}
                 </div>
               </motion.div>
             </motion.div>

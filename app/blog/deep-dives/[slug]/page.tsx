@@ -6,6 +6,7 @@ import "@/app/assets/md.css";
 import Surround from "@/components/blog/surround";
 import Tag from "@/components/blog/tag/tag";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
+import { generateMetadata as createMetadata } from "@/lib/metadata";
 
 export async function generateStaticParams() {
   const deepDives = await getAllDeepDives();
@@ -28,16 +29,12 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return createMetadata({
     title: deepDive.title,
     description: deepDive.description,
-    openGraph: {
-      title: deepDive.title,
-      description: deepDive.description,
-      type: "article",
-      publishedTime: deepDive.date.toISOString(),
-    },
-  };
+    type: "article",
+    publishedTime: deepDive.date.toISOString(),
+  });
 }
 
 export default async function DeepDivePage({

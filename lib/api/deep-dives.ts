@@ -22,8 +22,6 @@ function parsePostFile(filePath: string): DeepDiveInput | null {
   if (!parsed.success) {
     const errorMessage = `Error parsing deep dive "${fileName}": ${parsed.error}`;
     throw new Error(errorMessage);
-  } else {
-    console.log(`Deep dive "${fileName}" parsed successfully ✅`);
   }
 
   return parsed.data;
@@ -36,20 +34,13 @@ export async function getAllDeepDives(): Promise<DeepDiveInput[]> {
   const deepDives: DeepDiveInput[] = filePaths
     .map((filePath) => {
       const post = parsePostFile(filePath);
-      if (!post) {
-        console.warn(
-          `Deep dive file ${filePath} is invalid or missing required fields.`
-        );
-        return null;
-      } else if (!post?.published) {
-        console.warn(
-          `Skipping unpublished deep dive: ${post.title} (${post.slug})`
-        );
+      if (!post || !post?.published) {
         return null;
       }
       return post;
     })
     .filter((post): post is DeepDiveInput => post !== null);
+  console.log(`Parsed ${deepDives.length} deep dives`);
   deepDives.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
@@ -80,9 +71,6 @@ export async function getDeepDiveBySlug(
   const deepDive = allDeepDives.find((p) => p.slug === slug);
 
   if (!deepDive) {
-    console.warn(
-      `Deep dive with slug "${slug}" not found in published deep dives.`
-    );
     return null;
   }
 

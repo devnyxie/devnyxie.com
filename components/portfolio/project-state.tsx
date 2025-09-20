@@ -1,16 +1,6 @@
 import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
-import { de } from "zod/locales";
-import {
-  Archive,
-  Check,
-  Clock,
-  Edit2,
-  Edit2Icon,
-  FileEdit,
-  LucideProps,
-} from "lucide-react";
+
+import { Archive, Check, Clock, FileEdit, LucideProps } from "lucide-react";
 
 type Props = {
   title: string;

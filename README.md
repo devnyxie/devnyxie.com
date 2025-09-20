@@ -50,9 +50,9 @@ A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind
 
 ## Development
 
-We are utilizing Node.js 22.17 LTS for this project, along with `pnpm` as our package manager. To set up the development environment, please follow these steps:
+We are utilizing Node.js 22 LTS for this project, along with `pnpm` as our package manager. To set up the development environment, please follow these steps:
 
-1. Install Node.js 22.17 LTS from the [official Node.js website](https://nodejs.org/) or via a version manager like `nvm`.
+1. Install Node.js 22 LTS from the [official Node.js website](https://nodejs.org/) or via a version manager like `nvm`.
 2. Install `pnpm` globally by running the following command:
    ```bash
    npm install -g pnpm

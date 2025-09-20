@@ -1,9 +1,9 @@
-title: "Nigiri Website Template"
+title: "Nigiri - Minimalist Website Template"
 description: "A minimalistic but very customizable website template built with Next.js, inspired by japanese community websites. It features a clean design, responsive layout, 1-config-file setup, and is optimized for performance."
 public: true
 source: "https://github.com/devnyxie/nigiri"
 preview: https://nigiri.vercel.app/
-state: "archived"
+state: "published"
 tags: ["Frontend", "Next.js", "TypeScript", "Tailwind CSS"]
-date: "2024"
+date: "2023-12"
 image: /images/portfolio/nigiri_overview.png

@@ -3,7 +3,7 @@ description: This page reflects my current work, projects and studies. It includ
 content: |
   Welcome to my **Now** page! This is a snapshot of what I'm currently working on, learning, and exploring.
 
-  *Last updated: September 12, 2025*
+  *Last updated: September 19, 2025*
 
   ## 🚀 Current Projects
 
@@ -21,45 +21,57 @@ content: |
 
   ## 📚 Learning & Exploring
 
+  ### 42 Warsaw Programming School
+  Currently studying at **42 Warsaw** (2024-Now), focusing on low-level C programming, UNIX systems, and algorithmic efficiency. The program's peer-to-peer learning approach and emphasis on problem-solving is sharpening my technical skills significantly. Upon graduation, I'll earn France's RNCP Level 7 diploma (equivalent to a Master's degree).
+
+  ### Polish Language Studies
+  Actively studying Polish at **[Language School Together](https://en.together.edu.pl/)**. Recently passed my A2 exam in July 2025 and now preparing for the B1 level. Living in Warsaw has made language learning both practical and essential for deeper cultural integration.
+
   ### Go Deep Dive
   Deepening my knowledge of Go, particularly focusing on:
   - Concurrency patterns and goroutines
   - Building efficient web services
   - Performance optimization techniques
 
-  ### System Design
-  Studying distributed systems and architecture patterns to better understand scalable software design. Currently reading about microservices, event-driven architecture, and database optimization.
-
-  ### Design Systems
-  Exploring advanced design system concepts and component libraries, focusing on creating maintainable and scalable UI frameworks.
+  ### System Design & Low-Level Programming
+  Through 42 Warsaw, diving deep into:
+  - Memory management and optimization
+  - UNIX system programming
+  - Algorithm implementation and efficiency analysis
+  - Network programming and protocols
 
   ## 💼 Work & Freelancing
 
-  Currently available for both frontend and backend projects worldwide. I'm particularly interested in:
-  - Full-stack web applications
+  Since 2024, I've been working as a **freelance developer**, which allows me to stay connected with real-world projects while giving me the freedom to explore new technologies—especially **Go**. Currently available for both frontend and backend projects worldwide.
+
+  I'm particularly interested in:
+  - Full-stack web applications (JavaScript/TypeScript, Go)
   - Performance optimization projects  
   - Design system implementation
   - Technical consulting
+  - Migration and modernization projects
 
   ## 🎯 Goals
 
   ### Short-term (Next 3 months)
-  - Complete website migration to Next.js
+  - Progress through 42 Warsaw curriculum projects
+  - Pass Polish B1 language exam
+  - Complete website migration to Next.js with MDX support
   - Launch CI/CD service for personal use
   - Publish 2-3 technical articles
-  - Contribute to open source projects
 
   ### Long-term (6-12 months)
-  - Build a SaaS product
-  - Speak at a tech conference
-  - Mentor junior developers
-  - Expand portfolio with design projects
+  - Complete significant milestones at 42 Warsaw
+  - Achieve Polish B2 proficiency
+  - Build a SaaS product using Go
+  - Expand freelance client base
+  - Contribute more to open source projects
 
   ## 📍 Location & Availability
 
   Based in **Warsaw, Poland** 🇵🇱
 
-  I'm currently open to remote opportunities and occasional travel for the right projects. My schedule is flexible, and I'm available for collaborations across different time zones.
+  I'm currently balancing my studies at 42 Warsaw with freelance development work. My schedule is flexible around my academic commitments, and I'm available for remote collaborations across different time zones. The intensive nature of 42's program actually enhances my problem-solving skills, making me more efficient in client projects.
 
   ## 📫 Get in Touch
 
