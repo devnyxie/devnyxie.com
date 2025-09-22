@@ -173,7 +173,7 @@ export function Navbar() {
           />
 
           {/* Menu Panel */}
-          <div className="fixed right-0 top-0 h-full w-full max-w-sm bg-background border-l border-border shadow-2xl transform transition-transform duration-300 ease-out translate-x-0">
+          <div className="fixed right-0 top-0 h-full w-full max-w-xs bg-background border-l border-border shadow-2xl transform transition-transform duration-300 ease-out translate-x-0">
             <div className="flex flex-col h-full">
               {/* Header */}
               <div className="flex items-center justify-between p-4 border-b border-border">
@@ -196,7 +196,7 @@ export function Navbar() {
                     <Link
                       key={item.href + "-mobile"}
                       href={item.href}
-                      className={`flex items-center gap-3 px-3 py-3 rounded-md text-sm font-medium transition-colors ${
+                      className={`flex items-center gap-3 px-3 py-3 rounded-md text-sm transition-colors ${
                         pathname === item.href ||
                         (item.href !== "/" && pathname.startsWith(item.href))
                           ? "bg-accent/25 text-foreground-highlighted border border-border"
@@ -210,14 +210,14 @@ export function Navbar() {
 
                   {/* More Section */}
                   <div className="pt-4 mt-4 border-t border-border">
-                    <div className="text-xs font-medium text-muted-foreground px-3 mb-2 uppercase tracking-wider">
+                    <div className="text-xs text-muted-foreground px-3 mb-2 uppercase tracking-wider">
                       More
                     </div>
                     {moreItems.map((item) => (
                       <Link
                         key={item.href + "-mobile"}
                         href={item.href}
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-sm font-medium transition-colors text-muted-foreground hover:bg-accent/25 hover:text-foreground-highlighted border border-transparent hover:border-border/50"
+                        className="flex items-center gap-3 px-3 py-3 rounded-md text-sm transition-colors text-muted-foreground hover:bg-accent/25 hover:text-foreground-highlighted border border-transparent hover:border-border/50"
                         target={item.target}
                       >
                         <item.icon className="size-4" />

@@ -5,6 +5,8 @@ import { ChevronDownIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
+const fontSize = "font-normal"; // "font-normal" | "font-medium"
+
 function NavigationMenu({
   className,
   children,
@@ -60,7 +62,8 @@ function NavigationMenuItem({
 
 /* trigger-button */
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex w-max items-center justify-center rounded-md bg-background px-2 py-1.25 text-sm font-medium hover:bg-accent/25 hover:text-foreground-highlighted focus:bg-accent/25 focus:text-foreground-highlighted disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent/25 data-[state=open]:text-foreground-highlighted data-[state=open]:focus:bg-accent/25 data-[state=open]:bg-accent/25 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1"
+  `group inline-flex w-max items-center justify-center rounded-md bg-background px-2 py-1.25 text-sm hover:bg-accent/25 hover:text-foreground-highlighted focus:bg-accent/25 focus:text-foreground-highlighted disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent/25 data-[state=open]:text-foreground-highlighted data-[state=open]:focus:bg-accent/25 data-[state=open]:bg-accent/25 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 ${fontSize}
+  `
 );
 
 function NavigationMenuTrigger({
@@ -131,7 +134,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        `font-medium data-[active=true]:focus:bg-accent/25 data-[active=true]:hover:bg-accent/25 data-[active=true]:bg-accent data-[active=true]:text-foreground-highlighted hover:bg-accent/25 hover:text-foreground-highlighted [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm px-2 py-1.25 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4`,
+        `data-[active=true]:focus:bg-accent/25 data-[active=true]:hover:bg-accent/25 data-[active=true]:bg-accent data-[active=true]:text-foreground-highlighted hover:bg-accent/25 hover:text-foreground-highlighted [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm px-2 py-1.25 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4 ${fontSize}`,
         className
       )}
       {...props}
