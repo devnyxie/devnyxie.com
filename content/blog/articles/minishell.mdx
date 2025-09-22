@@ -1,0 +1,42 @@
+---
+title: "minishell: Building a Shell from Scratch in C"
+tags:
+  - c
+  - project
+date: 2025-08-15
+image: /images/blog/articles/minishell/thumbnail.png
+description: A quick update and feelings after finishing 3 months long project in pure C - minishell.
+---
+
+<div style={{display: "flex", gap: "10px", marginBottom: "10px"}}>
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" />
+  <img src="https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white" alt="C" />
+</div>
+
+## Introduction
+
+After three months of dedicated work in 42 Warsaw, I have successfully completed the **minishell** project. This project involved creating a copy of `Bash` in pure C, which has been both challenging and rewarding. In this article, I will share my experiences, challenges faced, and the skills I acquired during this journey.
+
+```bash
+minishell$ echo line1 > a && echo line2 >> a && < a cat | cat | cat > b
+minishell$ cat b
+line1
+line2
+```
+
+
+## Project Overview
+The **minishell** project required me to implement a functional shell that could interpret and execute commands, handle environment variables, manage processes, pipes, redirections and all sort of things that should work in `Bash`.
+
+The project can be divided into several key components:
+1. **Command Parsing**: A parser that could read user input, tokenize it, and handle various command structures, including built-in commands and external programs.
+2. **Execution**: Implementing the logic to execute commands, manage child processes, and handle input/output redirection.
+3. **Built-in Commands**: Creating built-in commands: `cd`, `echo`, `env`, `exit`, `export`, `pwd`, and `unset`.
+4. **Heredoc**: Multi-line input redirection.
+5. **Signal Handling**: Managing signals to ensure the shell behaves correctly in response to user interrupts and other signals.
+6. **Environment Variables**: Handling environment variables, including setting, unsetting, and exporting them.
+
+
+## Challenges Faced
+
+The journey was not without its challenges. Some of the most significant hurdles included:

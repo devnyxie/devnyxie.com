@@ -43,10 +43,12 @@ A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind
 
 ## Roadmap
 
-- [ ] Add MDX Support: Callout Blocks, Steps/Timeline etc
-- [ ] Add Motion Animations
+- [x] Add MDX Support: Callout Blocks, Steps/Timeline etc
+- [x] Add Motion Animations
 - [ ] Add parsing **Caching** for faster builds and development
 - [ ] Rework `button` component structure
+- [ ] Articles/Deep Dives responsiveness issue (critical)
+- [ ] Currently blog page structure is different, using Grid, and it's a must for proper TOC placement. We can switch entire layout to Grid and save some code duplication.
 
 ## Development
 

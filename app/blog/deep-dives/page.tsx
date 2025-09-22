@@ -1,11 +1,12 @@
-import { getAllDeepDives } from "@/lib/api/deep-dives";
+import { getAllDeepDives } from "@/lib/api/blog/deep-dives";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
-import Tag from "@/components/blog/tag/tag";
+import Tag from "@/components/blog/shared/tag/tag";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
 
 import { generateMetadata as createMetadata } from "@/lib/metadata";
 import { Button } from "@/components/button";
+import Container from "@/components/layout/container";
 
 export const metadata = createMetadata({
   title: "Deep Dives",
@@ -17,7 +18,7 @@ export default async function DeepDivesPage() {
   const deepDives = await getAllDeepDives();
 
   return (
-    <div>
+    <Container>
       <PageBreadcrumb />
       <div className="mb-8 flex items-start justify-between">
         <div>
@@ -29,7 +30,7 @@ export default async function DeepDivesPage() {
         <div className="flex gap-2 h-max">
           <Link href="/blog/tags">
             <Button variant={"outline"} size={"md"}>
-              <Link href="/blog/tags">Browse Tags</Link>
+              Browse Tags
             </Button>
           </Link>
         </div>
@@ -85,6 +86,6 @@ export default async function DeepDivesPage() {
           </article>
         ))}
       </div>
-    </div>
+    </Container>
   );
 }

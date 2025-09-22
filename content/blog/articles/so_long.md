@@ -5,10 +5,9 @@ date: 2025-05-18
 tags:
   - c
   - algorithm
-image: https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  - project
+image: /images/blog/articles/so_long/game.png
 ---
-
-# so_long
 
 **so_long** is a basic 2D game written in C using the [MinilibX](https://harm-smits.github.io/42docs/libs/minilibx) library for rendering and handling input. The goal is to navigate a maze, collect all items, and reach the exit.
 
@@ -18,11 +17,9 @@ This project is part of the 42 curriculum and introduces key concepts like:
 - keyboard event handling
 - as usual, memory&resource management in C
 
-![[Attachments/42Warsaw/so_long/Screenshot from 2025-05-18 14-01-15.png|600]]
-
 ## Key Requirements
 
-- [[Indexes/Libft|Libft]]
+- Your own `libft` implementation.
 - [ft_printf](Notes/c/ft_printf.md)
 - [get_next_line](Articles/get_next_line.md)
 - [MiniLibX](https://harm-smits.github.io/42docs/libs/minilibx) basics.
@@ -34,7 +31,7 @@ It would be impossible to cover all parts of the project in this document, but h
 
 - ⚠️ Proper parsing and validation of the map file (374 lines)
 - ⚠️ Properly closing the window and freeing resources, including MLX related ones.
-- ⚡️ Efficient handling of keyboard events (only ~60 lines!)
+- ⚡️ Efficient handling of keyboard events (only ~60 lines)
 
 ### Parsing and Validation
 

@@ -1,8 +1,8 @@
-import { getAllPostsByTag, getAllTags } from "@/lib/api/tags";
+import { getAllPostsByTag, getAllTags } from "@/lib/api/blog/tags";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
 import RowPost from "@/components/blog/post";
 import RowDeepDive from "@/components/blog/dive";
-import Tag from "@/components/blog/tag/tag";
+import Tag from "@/components/blog/shared/tag/tag";
 import Heading from "@/components/heading";
 import Gaps from "@/components/layout/gaps";
 import { Button } from "@/components/button";
@@ -109,7 +109,7 @@ export default async function TagPage({ params }: TagPageProps) {
                       </p>
                     </div>
                     {deepDives.length > 0 && (
-                      <Button variant="ghost" size="sm" asChild>
+                      <Button variant="ghost" asChild>
                         <Link href="/blog/deep-dives">View All Deep Dives</Link>
                       </Button>
                     )}
@@ -147,7 +147,7 @@ export default async function TagPage({ params }: TagPageProps) {
                       </p>
                     </div>
                     {articles.length > 0 && (
-                      <Button variant="ghost" size="sm" asChild>
+                      <Button variant="ghost" asChild>
                         <Link href="/blog/articles">View All Articles</Link>
                       </Button>
                     )}

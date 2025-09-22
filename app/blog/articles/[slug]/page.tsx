@@ -1,12 +1,15 @@
-import { getAllArticles, getArticleBySlug } from "@/lib/api/articles";
+import { getAllArticles, getArticleBySlug } from "@/lib/api/blog/articles";
 import { notFound } from "next/navigation";
 import MDXContent from "@/components/mdx-content";
 import { formatDate } from "@/lib/utils";
 import "@/app/assets/md.css";
-import Surround from "@/components/blog/surround";
-import Tag from "@/components/blog/tag/tag";
+import Surround from "@/components/blog/shared/surround";
+import Tag from "@/components/blog/shared/tag/tag";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
+import IntroSection from "@/components/blog/shared/introSection";
+import TableOfContents from "@/components/blog/shared/tableOfContents";
+import Container from "@/components/layout/container";
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
@@ -51,43 +54,27 @@ export default async function ArticlePage({
   }
 
   return (
-    <article className="flex flex-col">
-      <PageBreadcrumb pageTitle={article.title} />
-      <div className="gap-4 flex flex-col items-center">
-        {article.image && (
-          <img
-            src={article.image}
-            className="w-full rounded aspect-video object-cover"
-            alt={article.title}
-          />
-        )}
-
-        <div className="w-full flex flex-col items-center justify-center">
-          <h1 className="text-4xl font-medium mb-2">{article.title}</h1>
-          <div className="flex gap-2 text-sm">
-            <p className="text-muted-foreground">{formatDate(article.date)}</p>
-            <div className="flex-1 my-0.5 w-[1px] bg-muted" />
-            <p className="text-muted-foreground">{article.readTime} min read</p>
-          </div>
-        </div>
-        <div className="tags flex flex-wrap gap-1 mt-auto">
-          {article.tags &&
-            article.tags.length > 0 &&
-            article.tags.map((tag, idx) => (
-              <Tag
-                key={`${tag}-${idx}`}
-                name={tag}
-                path={`/blog/tags/${tag}`}
-                variant="subtle"
-              />
-            ))}
-        </div>
+    <div
+      className="flex flex-col w-full md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,var(--breakpoint-md))_minmax(0,1fr)]
+ gap-y-6"
+    >
+      <div className="col-start-2">
+        <PageBreadcrumb pageTitle={article.title} />
+      </div>
+      <div className="col-start-2 gap-4 flex flex-col items-center">
+        <IntroSection {...article} tagPath="articles" />
+      </div>
+      <div className="col-start-2 flex flex-wrap gap-2">
         <Surround post={article} contentType="articles" />
       </div>
-      <div className="markdown content-body mt-4 mb-4">
+
+      <div className="content-body prose col-start-2 relative">
         <MDXContent source={article.content} />
       </div>
-      <Surround post={article} contentType="articles" />
-    </article>
+      <TableOfContents content={article.content} />
+      <div className="col-start-2 flex flex-wrap gap-2">
+        <Surround post={article} contentType="articles" />
+      </div>
+    </div>
   );
 }

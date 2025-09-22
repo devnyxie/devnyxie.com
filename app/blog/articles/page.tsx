@@ -1,10 +1,11 @@
-import { getAllArticles } from "@/lib/api/articles";
+import { getAllArticles } from "@/lib/api/blog/articles";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
 import RowPost from "@/components/blog/post";
 import Link from "next/link";
 
 import { generateMetadata as createMetadata } from "@/lib/metadata";
 import { Button } from "@/components/button";
+import Container from "@/components/layout/container";
 
 export const metadata = createMetadata({
   title: "Articles",
@@ -15,7 +16,7 @@ export default async function ArticlesPage() {
   const articles = await getAllArticles();
 
   return (
-    <div>
+    <Container>
       <PageBreadcrumb />
       <div className="mb-8 flex items-start justify-between">
         <div>
@@ -26,9 +27,7 @@ export default async function ArticlesPage() {
         </div>
         <div className="flex gap-2">
           <Link href="/blog/tags">
-            <Button variant={"outline"} size={"md"}>
-              <Link href="/blog/tags">Browse Tags</Link>
-            </Button>
+            <Button variant={"outline"}>Browse Tags</Button>
           </Link>
         </div>
       </div>
@@ -38,6 +37,6 @@ export default async function ArticlesPage() {
           <RowPost key={article.slug} {...article} />
         ))}
       </div>
-    </div>
+    </Container>
   );
 }

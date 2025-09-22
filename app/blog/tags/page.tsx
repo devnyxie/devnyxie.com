@@ -1,6 +1,6 @@
-import { getAllTags } from "@/lib/api/tags";
+import { getAllTags } from "@/lib/api/blog/tags";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
-import Tag from "@/components/blog/tag/tag";
+import Tag from "@/components/blog/shared/tag/tag";
 import Heading from "@/components/heading";
 import Gaps from "@/components/layout/gaps";
 import { getPageData } from "@/lib/api/pages";

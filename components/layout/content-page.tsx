@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Heading from "@/components/heading";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
 import MDXContent from "@/components/mdx-content";
+import Container from "./container";
 
 interface ContentPageProps {
   title: string;
@@ -46,7 +47,7 @@ export default function ContentPage({
   content,
 }: ContentPageProps) {
   return (
-    <div className="mb-8">
+    <Container className="mb-8">
       <PageBreadcrumb />
       <Heading className="mb-2" size="big">
         {title}
@@ -62,6 +63,6 @@ export default function ContentPage({
           <div>No content available</div>
         )}
       </div>
-    </div>
+    </Container>
   );
 }

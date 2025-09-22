@@ -1,5 +1,5 @@
-import { getAllDeepDives } from "@/lib/api/blog";
-import { getAllArticles } from "@/lib/api/articles";
+import { getAllDeepDives } from "@/lib/api/blog/blog";
+import { getAllArticles } from "@/lib/api/blog/articles";
 import RowPost from "../../components/blog/post";
 import Heading from "@/components/heading";
 import { getPageData } from "@/lib/api/pages";
@@ -11,7 +11,9 @@ import { DeepDiveInput, PostInput } from "@/lib/types/data/blog";
 import Link from "next/link";
 import { Button } from "@/components/button";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
+import Container from "@/components/layout/container";
 
+// todo: wire up metadata from the config files
 export async function generateMetadata() {
   return createMetadata({
     title: "Blog",
@@ -25,7 +27,7 @@ export default async function Blog() {
   const articles: PostInput[] = await getAllArticles();
   const deep_dives: DeepDiveInput[] = await getAllDeepDives();
   return (
-    <>
+    <Container>
       <PageBreadcrumb />
       <Gaps>
         <div id="section" className="gap-8">
@@ -120,6 +122,6 @@ export default async function Blog() {
           </div>
         </div>
       </Gaps>
-    </>
+    </Container>
   );
 }

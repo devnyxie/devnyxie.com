@@ -87,7 +87,7 @@
 .content-body td:not(.mdx-component *) {
   text-align: left;
   vertical-align: top;
-  @apply p-2 py-0.5 bg-accent border border-muted;
+  @apply p-2 py-0.5 bg-accent/25 border border-muted;
 }
 .content-body th:not(.mdx-component *) {
   font-weight: 600;
@@ -122,4 +122,9 @@ code:not(pre code) {
   display: inline-block;
   font-family: monospace;
   @apply rounded-sm px-1 font-mono bg-accent/25 border border-border text-sm;
+}
+
+/* First Child - No Top Margin */
+.content-body > *:first-child {
+  margin-top: 0 !important;
 }

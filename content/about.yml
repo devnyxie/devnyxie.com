@@ -12,11 +12,7 @@ content: |
 
   My passion for technology and coding started in my teenage years. I was fascinated by how things work, and that curiosity naturally led me to programming and engineering. In 2022, I graduated from high school in 🇬🇷 Thessaloniki, Greece, where I was first introduced to the basics of programming and computer science. Right after, I passed the C2 Proficiency in English and moved to 🇵🇱 Warsaw, Poland, in search of better opportunities.
 
-  <MdxGallery images={[
-      { src: "/images/about/test1.jpg", alt: "Description 1" },
-      { src: "/images/about/test2.jpg", alt: "Description 2" },
-      { src: "/images/about/test3.jpg", alt: "Description 2" }
-  ]}/>
+  <MdxImage src="/images/about/warsaw.jpg" className="w-full"/>
 
   ### Education
 

@@ -1,13 +1,14 @@
 import Heading from "@/components/heading";
 import { getPageData } from "@/lib/api/pages";
-import { getAllPortfolioItems } from "@/lib/api/portfolio";
-import { getAllDesigns } from "@/lib/api/designs";
+import { getAllPortfolioItems } from "@/lib/api/portfolio/portfolio";
+import { getAllDesigns } from "@/lib/api/portfolio/designs";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
 import ProjectCard from "@/components/portfolio/project-card";
 import DesignCard from "@/components/portfolio/design-card";
 import Gaps from "@/components/layout/gaps";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
 import { PortfolioPageType } from "@/lib/types/pages/portfolio";
+import Container from "@/components/layout/container";
 
 export async function generateMetadata() {
   const page: PortfolioPageType = getPageData("portfolio");
@@ -23,7 +24,7 @@ export default async function PortfolioPage() {
   const designs = await getAllDesigns();
 
   return (
-    <div className="mx-auto">
+    <Container>
       <PageBreadcrumb />
       <Gaps>
         <div className="w-full">
@@ -69,6 +70,6 @@ export default async function PortfolioPage() {
           </div>
         </div>
       </Gaps>
-    </div>
+    </Container>
   );
 }

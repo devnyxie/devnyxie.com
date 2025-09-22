@@ -1,5 +1,5 @@
-import { getAllArticles } from "@/lib/api/articles";
-import { getAllDeepDives } from "@/lib/api/deep-dives";
+import { getAllArticles } from "@/lib/api/blog/articles";
+import { getAllDeepDives } from "@/lib/api/blog/deep-dives";
 import { APP_CONFIG } from "@/lib/app.config";
 
 // This makes the route static at build time

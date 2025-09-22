@@ -13,6 +13,7 @@ const PAGE_TITLES: Record<string, string> = {
   now: "Now",
   articles: "Articles",
   "deep-dives": "Deep Dives",
+  tags: "Tags",
 };
 
 export function useBreadcrumbs(pageTitle?: string): BreadcrumbItem[] {
