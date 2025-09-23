@@ -6,13 +6,16 @@ import AboutMe from "@/components/landing/aboutMe";
 import Experience from "@/components/landing/experience";
 import Hero from "@/components/landing/hero";
 import Container from "@/components/layout/container";
+import List from "@/components/layout/list";
 import Gaps from "@/components/layout/gaps";
 import SkillsBento from "@/components/skills/skills-bento";
+import { Button } from "@/components/button";
 import { getAllPosts } from "@/lib/api/blog/blog";
 import { getPageData } from "@/lib/api/pages";
 import { getConfig } from "@/lib/app.config";
 import { PostInput } from "@/lib/types/data/blog";
 import { IndexPageType } from "@/lib/types/pages";
+import Link from "next/link";
 
 export default async function Home() {
   const pageData: IndexPageType = getPageData("index");
@@ -33,7 +36,7 @@ export default async function Home() {
         />
 
         {/* Make client components so we can use framer motion */}
-        <div className="!pt-0 flex flex-col gap-8 md:grid md:grid-cols-2">
+        <List asGrid cols="1 md:2" gap="8" className="!pt-0">
           {/* About Me */}
           <AboutMe
             title={pageData.about.title}
@@ -41,7 +44,7 @@ export default async function Home() {
           />
           {/* Work Experience */}
           <Experience experience={pageData.experience} />
-        </div>
+        </List>
 
         {/* Skills Section */}
         <FadeIn delay={0.7}>
@@ -57,13 +60,20 @@ export default async function Home() {
           <GitHeroSection />
         </FadeIn>
         <FadeIn delay={0.7}>
-          <Heading className="mb-2" size="default">
-            {pageData.blog.title}
-          </Heading>
-          <p className="text-balance text-left text-sm sm:text-md lg:text-sm text-muted-foreground">
-            {pageData.blog.description}
-          </p>
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="mb-8 flex items-start justify-between">
+            <div>
+              <Heading className="mb-2" size="default">
+                {pageData.blog.title}
+              </Heading>
+              <p className="text-balance text-left text-sm sm:text-md lg:text-sm text-muted-foreground">
+                {pageData.blog.description}
+              </p>
+            </div>
+            <Button variant="outline" asChild>
+              <Link href="/blog">More</Link>
+            </Button>
+          </div>
+          <List asGrid cols="1 sm:2" gap="4">
             {posts.length > 0 ? (
               <>
                 {posts.slice(0, 6).map((post) => (
@@ -73,7 +83,7 @@ export default async function Home() {
             ) : (
               <p className="text-sm text-muted-foreground">No posts found.</p>
             )}
-          </div>
+          </List>
         </FadeIn>
       </Gaps>
     </Container>

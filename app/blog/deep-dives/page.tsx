@@ -7,6 +7,7 @@ import PageBreadcrumb from "@/components/layout/breadcrumb";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
 import { Button } from "@/components/button";
 import Container from "@/components/layout/container";
+import List from "@/components/layout/list";
 
 export const metadata = createMetadata({
   title: "Deep Dives",
@@ -36,7 +37,7 @@ export default async function DeepDivesPage() {
         </div>
       </div>
 
-      <div className="grid gap-6">
+      <List gap="6">
         {deepDives.map((deepDive) => (
           <article
             key={deepDive.slug}
@@ -85,7 +86,7 @@ export default async function DeepDivesPage() {
             </div>
           </article>
         ))}
-      </div>
+      </List>
     </Container>
   );
 }

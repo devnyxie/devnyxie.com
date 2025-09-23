@@ -15,7 +15,7 @@ function AboutMe({
         <div className="mb-4">
           <Heading size="default">{title}</Heading>
         </div>
-        <p className="text-balance text-left text-sm sm:text-md lg:text-sm text-muted-foreground">
+        <p className="text-left text-sm sm:text-md lg:text-sm text-muted-foreground">
           {description}
         </p>
       </div>

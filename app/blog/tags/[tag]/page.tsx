@@ -9,6 +9,7 @@ import { Button } from "@/components/button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
+import Container from "@/components/layout/container";
 
 interface TagPageProps {
   params: Promise<{
@@ -54,7 +55,7 @@ export default async function TagPage({ params }: TagPageProps) {
   const totalPosts = articles.length + deepDives.length;
 
   return (
-    <>
+    <Container>
       <PageBreadcrumb />
       <Gaps>
         <div id="section" className="gap-8">
@@ -177,6 +178,6 @@ export default async function TagPage({ params }: TagPageProps) {
           )}
         </div>
       </Gaps>
-    </>
+    </Container>
   );
 }

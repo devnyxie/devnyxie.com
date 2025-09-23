@@ -1,15 +1,11 @@
 import { getAllArticles, getArticleBySlug } from "@/lib/api/blog/articles";
 import { notFound } from "next/navigation";
 import MDXContent from "@/components/mdx-content";
-import { formatDate } from "@/lib/utils";
 import "@/app/assets/md.css";
 import Surround from "@/components/blog/shared/surround";
-import Tag from "@/components/blog/shared/tag/tag";
 import PageBreadcrumb from "@/components/layout/breadcrumb";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
 import IntroSection from "@/components/blog/shared/introSection";
-import TableOfContents from "@/components/blog/shared/tableOfContents";
-import Container from "@/components/layout/container";
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
@@ -54,25 +50,22 @@ export default async function ArticlePage({
   }
 
   return (
-    <div
-      className="flex flex-col w-full md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,var(--breakpoint-md))_minmax(0,1fr)]
- gap-y-6"
-    >
+    <div className="flex flex-col w-full md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,var(--breakpoint-md))_minmax(0,1fr)]">
       <div className="col-start-2">
         <PageBreadcrumb pageTitle={article.title} />
       </div>
       <div className="col-start-2 gap-4 flex flex-col items-center">
-        <IntroSection {...article} tagPath="articles" />
+        <IntroSection {...article} />
       </div>
-      <div className="col-start-2 flex flex-wrap gap-2">
+      <div className="col-start-2 my-6">
         <Surround post={article} contentType="articles" />
       </div>
 
       <div className="content-body prose col-start-2 relative">
         <MDXContent source={article.content} />
       </div>
-      <TableOfContents content={article.content} />
-      <div className="col-start-2 flex flex-wrap gap-2">
+      {/* <TableOfContents /> */}
+      <div className="col-start-2 mt-6">
         <Surround post={article} contentType="articles" />
       </div>
     </div>

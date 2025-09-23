@@ -4,7 +4,6 @@ import "./assets/globals.css";
 import { ThemeProvider } from "next-themes";
 import { Navbar } from "../components/layout/navbar";
 import Footer from "@/components/layout/footer";
-import Content from "@/components/layout/content";
 import { ServerStatus } from "@/components/layout/server-status";
 import { getPageData } from "@/lib/api/pages";
 import { IndexPageType } from "@/lib/types/pages";
@@ -57,7 +56,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <Content>{children}</Content>
+          <div className="relative w-full flex-grow px-3 md:px-0 py-16 sm:py-20 lg:py-24 flex justify-center">
+            {children}
+          </div>
           <Footer />
           <ServerStatus />
         </ThemeProvider>

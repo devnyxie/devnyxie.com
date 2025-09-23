@@ -12,6 +12,7 @@ import Link from "next/link";
 import { Button } from "@/components/button";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
 import Container from "@/components/layout/container";
+import List from "@/components/layout/list";
 
 // todo: wire up metadata from the config files
 export async function generateMetadata() {
@@ -49,7 +50,7 @@ export default async function Blog() {
               </Button>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <List asGrid cols="1 sm:2" gap="4">
             {deep_dives ? (
               deep_dives
                 .slice(0, 4)
@@ -71,7 +72,7 @@ export default async function Blog() {
             ) : (
               <p className="text-muted-foreground">No deep dives found.</p>
             )}
-          </div>
+          </List>
         </div>
 
         {/* Articles */}
@@ -95,7 +96,7 @@ export default async function Blog() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-4">
+          <List asGrid cols="1" gap="4">
             {articles ? (
               articles
                 .slice(0, 6)
@@ -119,7 +120,7 @@ export default async function Blog() {
             ) : (
               <p className="text-muted-foreground">No articles found.</p>
             )}
-          </div>
+          </List>
         </div>
       </Gaps>
     </Container>
