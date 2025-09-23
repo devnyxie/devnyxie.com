@@ -6,6 +6,7 @@ import Gaps from "@/components/layout/gaps";
 import { getPageData } from "@/lib/api/pages";
 
 import { generateMetadata as createMetadata } from "@/lib/metadata";
+import Container from "@/components/layout/container";
 
 export const metadata = createMetadata({
   title: "Tags",
@@ -17,18 +18,15 @@ export default async function TagsPage() {
   const pageData = await getPageData("tags");
 
   return (
-    <>
+    <Container>
       <PageBreadcrumb />
       <Gaps>
         <div id="section" className="gap-8">
           <div className="mb-8">
-            <Heading size="big" className="mb-4">
+            <Heading size="big" className="mb-2">
               {pageData?.title || "Tags"}
             </Heading>
-            <p className="text-muted-foreground text-lg">
-              {pageData?.description ||
-                "Browse all tags used in articles and deep dives"}
-            </p>
+            <p className="text-muted-foreground">{pageData.description}</p>
           </div>
 
           {tags.length > 0 ? (
@@ -98,6 +96,6 @@ export default async function TagsPage() {
           )}
         </div>
       </Gaps>
-    </>
+    </Container>
   );
 }

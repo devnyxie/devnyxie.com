@@ -9,6 +9,7 @@ import Gaps from "@/components/layout/gaps";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
 import { PortfolioPageType } from "@/lib/types/pages/portfolio";
 import Container from "@/components/layout/container";
+import List from "@/components/layout/list";
 
 export async function generateMetadata() {
   const page: PortfolioPageType = getPageData("portfolio");
@@ -38,7 +39,7 @@ export default async function PortfolioPage() {
           <div className="mb-8">
             <Heading className="mb-4">Software Projects</Heading>
             {/* <PortfolioCarousel /> */}
-            <div className="grid gap-6">
+            <List gap="6">
               {projects.length > 0 ? (
                 projects.map((project, index) => (
                   <ProjectCard key={`${project.slug}-${index}`} {...project} />
@@ -46,7 +47,7 @@ export default async function PortfolioPage() {
               ) : (
                 <p className="text-muted-foreground">No projects found.</p>
               )}
-            </div>
+            </List>
           </div>
         </div>
 
@@ -59,7 +60,7 @@ export default async function PortfolioPage() {
               A collection of my design works and case studies.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <List asGrid cols="1 md:2 lg:3" gap="6">
             {designs.length > 0 ? (
               designs.map((design, index) => (
                 <DesignCard key={`${design.slug}-${index}`} {...design} />
@@ -67,7 +68,7 @@ export default async function PortfolioPage() {
             ) : (
               <p className="text-muted-foreground">No designs found.</p>
             )}
-          </div>
+          </List>
         </div>
       </Gaps>
     </Container>

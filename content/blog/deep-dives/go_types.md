@@ -74,9 +74,10 @@ Slices come with their own methods, which makes working with them extremely user
 - len -> length
 - cap -> capacity
 
-> [!info]
-> 👉 Arrays are rarely used directly in Go — slices are much more common!
-> It's very easy to convert an array to a slice too, here:
+<Callout variant="info">
+Arrays are rarely used directly in Go — slices are much more common!
+It's very easy to convert an array to a slice too, take a look below.
+</Callout>
 
 ## Transformation
 
@@ -191,10 +192,10 @@ fmt.Println(m["name"]) // John
 
 ```
 
-> [!info]
->
-> - Since JSON values can be strings, numbers, bools, arrays, objects, etc., we use `interface{}` as the map value type to handle this flexibility.
-> - Why `[]byte`? `json.Unmarshal()` expects raw bytes, not a string. Fortunately, Go allows us to get a binary buffer (raw bytes) with ease using `[]byte()` helper.
+<Callout variant="info">
+- Since JSON values can be strings, numbers, bools, arrays, objects, etc., we use `interface{}` as the map value type to handle this flexibility.
+- Why `[]byte`? `json.Unmarshal()` expects raw bytes, not a string. Fortunately, Go allows us to get a binary buffer (raw bytes) with ease using `[]byte()` helper.
+</Callout>
 
 # Pointers
 
@@ -361,11 +362,13 @@ for val := range ch {
 
 # Declaration & Allocation
 
-> [!info]
-> In Go, each variable is automatically initialized to it's default value: `""` for a `String`, `0` for an `int` and so on.
+<Callout variant="info">
+In Go, each variable is automatically initialized to it's default value: `""` for a `String`, `0` for an `int` and so on.
+</Callout>
 
-> [!info]
-> In Go, it's common **not** to explicitly define the type of a variable. Instead, we use the `:=` operator to let the compiler infer the type.
+<Callout variant="info">
+In Go, it's common **not** to explicitly define the type of a variable. Instead, we use the `:=` operator to let the compiler infer the type.
+</Callout>
 
 ## Basic
 
@@ -404,9 +407,9 @@ m := map[string]int{"a": 1}   // map literal
 p := &Person{Name: "John"}    // pointer to struct literal
 ```
 
-> [!info]
->
-> - `Person{Name: "John"}` — creates a **struct value** directly. It's like a full copy of that struct.
->   -> Use if you want to pass by value, or store a copy.
-> - `&Person{Name: "John"}` — creates the struct value **and then returns a pointer** to it.
->   -> Use if you want to work with a pointer, just like in C.
+<Callout variant="info">
+`Person{Name: "John"}` — creates a **struct value** directly. It's like a full copy of that struct.
+    Use if you want to pass by value, or store a copy.
+`&Person{Name: "John"}` — creates the struct value **and then returns a pointer** to it.
+    Use if you want to work with a pointer, just like in C.
+</Callout>

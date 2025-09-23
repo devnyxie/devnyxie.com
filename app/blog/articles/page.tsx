@@ -6,6 +6,7 @@ import Link from "next/link";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
 import { Button } from "@/components/button";
 import Container from "@/components/layout/container";
+import List from "@/components/layout/list";
 
 export const metadata = createMetadata({
   title: "Articles",
@@ -32,11 +33,11 @@ export default async function ArticlesPage() {
         </div>
       </div>
 
-      <div className="grid gap-6">
+      <List gap="6">
         {articles.map((article) => (
           <RowPost key={article.slug} {...article} />
         ))}
-      </div>
+      </List>
     </Container>
   );
 }

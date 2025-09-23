@@ -3,6 +3,8 @@ import { Mail, Rss, Calendar } from "lucide-react";
 import React from "react";
 import { APP_CONFIG } from "@/lib/app.config";
 
+const fontSize = "font-normal"; // "font-normal" | "font-medium"
+
 type Item = {
   href: string;
   label: string;
@@ -40,7 +42,7 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full border-t border-border py-8 mt-16">
+    <footer className="w-full border-t border-border py-8">
       <div className="container max-w-screen-md mx-auto px-4 md:px-0">
         <div className="flex flex-col items-center gap-6">
           {/* Links */}
@@ -50,7 +52,8 @@ function Footer() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  className={`flex items-center gap-2 text-sm text-muted-foreground
+                              hover:text-foreground transition-colors ${fontSize}`}
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener noreferrer" : undefined}
                 >
