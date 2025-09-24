@@ -2,6 +2,7 @@ import { IconBrandGithub } from "@tabler/icons-react";
 import { Mail, Rss, Calendar } from "lucide-react";
 import React from "react";
 import { APP_CONFIG } from "@/lib/app.config";
+import { ThemeSwitcher } from "./theme-switcher";
 
 const fontSize = "font-normal"; // "font-normal" | "font-medium"
 
@@ -45,23 +46,32 @@ function Footer() {
     <footer className="w-full border-t border-border py-8">
       <div className="container max-w-screen-md mx-auto px-4 md:px-0">
         <div className="flex flex-col items-center gap-6">
-          {/* Links */}
-          <div className="flex gap-6 flex-wrap items-center justify-center">
-            {items.map((item: Item) => {
-              return (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className={`flex items-center gap-2 text-sm text-muted-foreground
-                              hover:text-foreground transition-colors ${fontSize}`}
-                  target={item.external ? "_blank" : undefined}
-                  rel={item.external ? "noopener noreferrer" : undefined}
-                >
-                  {item.icon}
-                  {item.label}
-                </a>
-              );
-            })}
+          {/* Links and Theme Switcher */}
+          <div className="flex flex-col sm:flex-row gap-y-6 sm:gap-2 items-center justify-center">
+            {/* Social Links */}
+            <div className="flex gap-6 flex-wrap items-center justify-center">
+              {items.map((item: Item) => {
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className={`flex items-center gap-2 text-sm text-muted-foreground
+                                hover:text-foreground transition-colors ${fontSize}`}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noopener noreferrer" : undefined}
+                  >
+                    {item.icon}
+                    {item.label}
+                  </a>
+                );
+              })}
+            </div>
+            <span
+              className="hidden sm:inline-block h-5 w-px bg-border mx-2"
+              aria-hidden="true"
+            />
+            {/* Theme Switcher */}
+            <ThemeSwitcher />
           </div>
 
           {/* Copyright */}

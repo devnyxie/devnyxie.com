@@ -4,7 +4,7 @@ export const APP_CONFIG = {
     src: "/pfp_personal.jpg",
     alt: "My profile picture",
   },
-  meetingLink: "https://cal.com/timbusinez/30min",
+  meetingLink: "https://cal.com/tim-afanasiev",
   github_username: "devnyxie",
   email: "timbusinez@gmail.com",
   available: true,

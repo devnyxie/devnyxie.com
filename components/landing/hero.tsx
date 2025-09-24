@@ -16,7 +16,11 @@ type Props = {
   };
   meetingLink: string;
   available: boolean;
-  links?: { to?: string; label: string }[];
+  links?: {
+    to?: string;
+    label: string;
+    target?: "_blank" | "_self";
+  }[];
 };
 
 function Hero({
@@ -52,7 +56,16 @@ function Hero({
         <div className="flex gap-2">
           {links && links.length > 0 && links[0].to && (
             <Button asChild>
-              <Link href={links[0].to} className="flex gap-2 items-center">
+              <Link
+                href={links[0].to}
+                target={links[0].target}
+                rel={
+                  links[0].target === "_blank"
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                className="flex gap-2 items-center"
+              >
                 {links[0].label}
               </Link>
             </Button>

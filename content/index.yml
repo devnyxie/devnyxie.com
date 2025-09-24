@@ -5,7 +5,8 @@ description: >
 hero:
   links:
     - label: "Let's Talk"
-      to: https://cal.com/tim-afanasiev-7q9d0s
+      to: mailto:tim-afanasiev@proton.me
+      target: "_blank"
       color: "default"
 about:
   title: "About Me"

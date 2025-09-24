@@ -56,7 +56,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <div className="relative w-full flex-grow px-3 md:px-0 py-16 sm:py-20 lg:py-24 flex justify-center">
+          <div className="relative w-full flex-grow px-3 md:px-0 py-16 sm:py-20 lg:py-24 flex justify-center overflow-x-hidden">
             {children}
           </div>
           <Footer />
