@@ -1,26 +1,24 @@
-import Aura from "@primeuix/themes/aura";
+import tailwindcss from "@tailwindcss/vite";
 
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: "2025-05-15",
+  compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  css: [
-    "~/assets/css/main.css",
-    "~/assets/css/content.css",
-    "~/assets/css/overrides.css",
-  ],
+  css: ["~/assets/css/main.css", "~/assets/css/content.css"],
   modules: [
-    "@nuxt/icon",
     "@nuxt/content",
-    "@nuxtjs/tailwindcss",
+    "@nuxt/eslint",
+    "@nuxt/image",
+    "@nuxt/ui",
     "@nuxtjs/color-mode",
     "motion-v/nuxt",
-    "@nuxt/ui",
-    "@nuxt/fonts",
-    "@primevue/nuxt-module",
   ],
   colorMode: {
     classSuffix: "",
     classPrefix: "", // so it uses `dark`, not `dark-mode`
+  },
+  typescript: {
+    typeCheck: true,
   },
   content: {
     renderer: {
@@ -39,7 +37,6 @@ export default defineNuxtConfig({
       showURL: false,
     },
     build: {
-      transformers: ["~~/transformers/obsidian-links"],
       markdown: {
         highlight: {
           theme: {
@@ -64,11 +61,5 @@ export default defineNuxtConfig({
       content.readingTime = Math.ceil(wordCount / wordsPerMinute);
     },
   },
-  primevue: {
-    options: {
-      theme: {
-        preset: Aura,
-      },
-    },
-  },
+  vite: { plugins: [tailwindcss()] },
 });

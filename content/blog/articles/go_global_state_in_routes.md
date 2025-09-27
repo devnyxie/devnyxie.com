@@ -4,7 +4,7 @@ date: 2025-08-08
 tags:
   - go
   - api
-image: /Attachments/sharing_state_go.png
+# image: /Attachments/sharing_state_go.png
 icon: /icons/go_lang.png
 description: Learn how to share global state in Go routes using middleware, context, and interfaces.
 ---

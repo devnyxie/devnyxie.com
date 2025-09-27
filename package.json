@@ -1,42 +1,36 @@
 {
   "name": "nuxt-app",
-  "private": true,
   "type": "module",
+  "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev --host 0.0.0.0 --port 3000",
+    "dev": "nuxt dev --host --no-qr --logLevel=silent",
+    "clean": "npx nuxt cleanup && clear",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/content": "^3.6.2",
-    "@nuxt/fonts": "^0.11.4",
-    "@nuxt/icon": "^1.15.0",
-    "@nuxt/ui": "^3.2.0",
-    "@nuxtjs/color-mode": "^3.5.2",
-    "@nuxtjs/tailwindcss": "^7.0.0-beta.0",
-    "@primeuix/themes": "^1.2.3",
-    "@tailwindcss/vite": "^4.1.11",
-    "better-sqlite3": "^12.0.0",
-    "hast-util-to-html": "^9.0.5",
-    "mdast-util-find-and-replace": "^3.0.2",
-    "mdast-util-to-hast": "^13.2.0",
-    "motion-v": "^1.4.0",
+    "@nuxt/content": "3.7.1",
+    "@nuxt/eslint": "1.9.0",
+    "@nuxt/image": "1.11.0",
+    "@nuxt/ui": "4.0.0",
+    "@nuxtjs/color-mode": "3.5.2",
+    "@nuxtjs/tailwindcss": "6.14.0",
+    "@tailwindcss/vite": "^4.1.13",
+    "better-sqlite3": "^12.4.1",
+    "clsx": "^2.1.1",
+    "eslint": "^9.0.0",
+    "motion-v": "^1.7.1",
     "nuxt": "^4.1.2",
-    "primevue": "^4.3.7",
-    "rehype-callouts": "^2.1.1",
-    "rehype-raw": "^7.0.0",
-    "remark-parse": "^11.0.0",
-    "remark-reading-time": "^2.0.2",
-    "tailwindcss": "^4.1.11",
-    "unified": "^11.0.5",
-    "unist-util-visit": "^5.0.0",
-    "vue": "3.5.17",
-    "vue-router": "4.5.1"
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.13",
+    "vue": "^3.5.21",
+    "vue-router": "^4.5.1"
   },
   "packageManager": "pnpm@9.7.0+sha512.dc09430156b427f5ecfc79888899e1c39d2d690f004be70e05230b72cb173d96839587545d09429b55ac3c429c801b4dc3c0e002f653830a420fa2dd4e3cf9cf",
   "devDependencies": {
-    "@primevue/nuxt-module": "^4.3.7"
+    "typescript": "^5.9.2",
+    "vue-tsc": "^3.0.8"
   }
 }

@@ -1,41 +1,11 @@
 import { defineCollection, defineContentConfig, z } from "@nuxt/content";
-
-const createBaseSchema = () =>
-  z.object({
-    title: z.string(),
-    description: z.string(),
-  });
-
-const createButtonSchema = () =>
-  z.object({
-    label: z.string(),
-    icon: z.string().optional(),
-    to: z.string().optional(),
-    color: z
-      .enum(["primary", "neutral", "success", "warning", "error", "info"])
-      .optional(),
-    size: z.enum(["xs", "sm", "md", "lg", "xl"]).optional(),
-    variant: z
-      .enum(["solid", "outline", "subtle", "soft", "ghost", "link"])
-      .optional(),
-    target: z.enum(["_blank", "_self"]).optional(),
-  });
-
-const createImageSchema = () =>
-  z.object({
-    src: z.string().editor({ input: "media" }),
-    alt: z.string(),
-  });
-
-const createAuthorSchema = () =>
-  z.object({
-    name: z.string(),
-    description: z.string().optional(),
-    username: z.string().optional(),
-    twitter: z.string().optional(),
-    to: z.string().optional(),
-    avatar: createImageSchema().optional(),
-  });
+import {
+  createBaseSchema,
+  skillColorEnum,
+  createButtonSchema,
+  createImageSchema,
+  createAuthorSchema,
+} from "./content.config.utils";
 
 export default defineContentConfig({
   collections: {
@@ -44,7 +14,7 @@ export default defineContentConfig({
       source: "index.yml",
       schema: z.object({
         hero: z.object({
-          links: z.array(createButtonSchema()),
+          link: createButtonSchema(),
           images: z.array(createImageSchema()),
         }),
         about: createBaseSchema(),
@@ -57,6 +27,14 @@ export default defineContentConfig({
                 name: z.string(),
                 url: z.string(),
               }),
+            })
+          ),
+        }),
+        skills: createBaseSchema().extend({
+          items: z.array(
+            createBaseSchema().extend({
+              icon: z.string().editor({ input: "media" }),
+              color: skillColorEnum,
             })
           ),
         }),
@@ -93,15 +71,23 @@ export default defineContentConfig({
         date: z.date(),
       }),
     }),
-    blog: defineCollection({
+    articles: defineCollection({
       type: "page",
-      source: "blog/**/*.md",
+      source: "blog/articles/**/*.md",
       schema: z.object({
         tags: z.array(z.string().nonempty()).optional(),
         readingTime: z.number(), // filled by the hook
         date: z.date(),
-        type: z.enum(["article", "deep-dive", "note"]).default("article"),
         image: z.string().nonempty().editor({ input: "media" }).optional(),
+      }),
+    }),
+    deepDives: defineCollection({
+      type: "page",
+      source: "blog/deep-dives/**/*.md",
+      schema: z.object({
+        tags: z.array(z.string().nonempty()).optional(),
+        readingTime: z.number(), // filled by the hook
+        date: z.date(),
         icon: z.string().nonempty().editor({ input: "media" }).optional(),
       }),
     }),
@@ -112,7 +98,6 @@ export default defineContentConfig({
         { include: "now.yml" },
         { include: "blog.yml" },
         { include: "about.yml" },
-        { include: "tags.yml" },
       ],
       schema: z.object({
         links: z.array(createButtonSchema()),
@@ -125,7 +110,6 @@ export default defineContentConfig({
         title: z.string().nonempty(),
         description: z.string().nonempty(),
         content: z.object({}),
-        images: z.array(createImageSchema()),
       }),
     }),
     now: defineCollection({
@@ -135,15 +119,6 @@ export default defineContentConfig({
         title: z.string().nonempty(),
         description: z.string().nonempty(),
         content: z.string().nonempty(),
-      }),
-    }),
-    tagIcons: defineCollection({
-      type: "data",
-      source: "tag-icons/**.json",
-      schema: z.object({
-        name: z.string(),
-        public_icon: z.string(),
-        nuxt_icon: z.string(),
       }),
     }),
   },
