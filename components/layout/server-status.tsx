@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Server, Wifi, WifiOff, RefreshCw } from "lucide-react";
-import { useServerStatus } from "@/hooks/useServerStatus";
+import { useServerStatus } from "@/app/hooks/useServerStatus";
 
 interface ServerStatusProps {
   refreshInterval?: number;
@@ -26,16 +26,16 @@ export function ServerStatus({
     ? latency < 100
       ? "bg-green-500"
       : latency < 200
-      ? "bg-yellow-500"
-      : "bg-orange-500"
+        ? "bg-yellow-500"
+        : "bg-orange-500"
     : "bg-red-500";
 
   const statusText = isOnline
     ? latency < 100
       ? "Excellent"
       : latency < 200
-      ? "Good"
-      : "Fair"
+        ? "Good"
+        : "Fair"
     : "Offline";
 
   return (
