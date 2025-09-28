@@ -39,7 +39,8 @@ export async function getAllDeepDives(): Promise<DeepDiveInput[]> {
       return post;
     })
     .filter((post): post is DeepDiveInput => post !== null);
-  console.log(`Parsed ${deepDives.length} deep dives`);
+  // logger
+  // console.log(`Parsed ${deepDives.length} deep dives`);
   deepDives.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );

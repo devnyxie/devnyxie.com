@@ -37,7 +37,8 @@ export async function getAllArticles(): Promise<PostInput[]> {
       return post;
     })
     .filter((post): post is PostInput => post !== null);
-  console.log(`Parsed ${articles.length} articles`);
+  // logger
+  // console.log(`Parsed ${articles.length} articles`);
   articles.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );

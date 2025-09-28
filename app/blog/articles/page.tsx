@@ -1,12 +1,12 @@
 import { getAllArticles } from "@/lib/api/blog/articles";
-import PageBreadcrumb from "@/components/layout/breadcrumb";
-import RowPost from "@/components/blog/post";
+import PageBreadcrumb from "@/app/components/layout/breadcrumb";
+import RowPost from "@/app/components/blog/post";
 import Link from "next/link";
 
 import { generateMetadata as createMetadata } from "@/lib/metadata";
-import { Button } from "@/components/button";
-import Container from "@/components/layout/container";
-import List from "@/components/layout/list";
+import { Button } from "@/app/components/button";
+import Container from "@/app/components/layout/container";
+import List from "@/app/components/layout/list";
 
 export const metadata = createMetadata({
   title: "Articles",

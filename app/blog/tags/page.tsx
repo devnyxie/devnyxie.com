@@ -1,12 +1,12 @@
 import { getAllTags } from "@/lib/api/blog/tags";
-import PageBreadcrumb from "@/components/layout/breadcrumb";
-import Tag from "@/components/blog/shared/tag/tag";
-import Heading from "@/components/heading";
-import Gaps from "@/components/layout/gaps";
+import PageBreadcrumb from "@/app/components/layout/breadcrumb";
+import Tag from "@/app/components/blog/shared/tag/tag";
+import Heading from "@/app/components/heading";
+import Gaps from "@/app/components/layout/gaps";
 import { getPageData } from "@/lib/api/pages";
 
 import { generateMetadata as createMetadata } from "@/lib/metadata";
-import Container from "@/components/layout/container";
+import Container from "@/app/components/layout/container";
 
 export const metadata = createMetadata({
   title: "Tags",

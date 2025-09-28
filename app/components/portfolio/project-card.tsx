@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { PortfolioItem } from "@/lib/types/data/portfolio";
 import { Calendar, ExternalLink, Github } from "lucide-react";
-import { Button } from "@/components/button";
+import { Button } from "@/app/components/button";
 import { IconBrandGithub } from "@tabler/icons-react";
 import { formatDate } from "@/lib/utils";
 import ProjectState from "./project-state";

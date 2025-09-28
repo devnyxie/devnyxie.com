@@ -21,9 +21,9 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/shadcn/navigation-menu";
+} from "@/app/components/shadcn/navigation-menu";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/shadcn/button";
+import { Button } from "@/app/components/shadcn/button";
 
 function activeClassName(pathname: string, href: string) {
   if (href === "/") {

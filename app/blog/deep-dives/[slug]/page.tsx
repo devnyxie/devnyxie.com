@@ -1,11 +1,11 @@
 import { getAllDeepDives, getDeepDiveBySlug } from "@/lib/api/blog/deep-dives";
 import { notFound } from "next/navigation";
-import MDXContent from "@/components/mdx-content";
+import MDXContent from "@/app/components/mdx-content";
 import "@/app/assets/md.css";
-import Surround from "@/components/blog/shared/surround";
-import PageBreadcrumb from "@/components/layout/breadcrumb";
+import Surround from "@/app/components/blog/shared/surround";
+import PageBreadcrumb from "@/app/components/layout/breadcrumb";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
-import IntroSection from "@/components/blog/shared/introSection";
+import IntroSection from "@/app/components/blog/shared/introSection";
 
 export async function generateStaticParams() {
   const deepDives = await getAllDeepDives();

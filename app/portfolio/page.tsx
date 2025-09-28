@@ -1,15 +1,15 @@
-import Heading from "@/components/heading";
+import Heading from "@/app/components/heading";
 import { getPageData } from "@/lib/api/pages";
 import { getAllPortfolioItems } from "@/lib/api/portfolio/portfolio";
 import { getAllDesigns } from "@/lib/api/portfolio/designs";
-import PageBreadcrumb from "@/components/layout/breadcrumb";
-import ProjectCard from "@/components/portfolio/project-card";
-import DesignCard from "@/components/portfolio/design-card";
-import Gaps from "@/components/layout/gaps";
+import PageBreadcrumb from "@/app/components/layout/breadcrumb";
+import ProjectCard from "@/app/components/portfolio/project-card";
+import DesignCard from "@/app/components/portfolio/design-card";
+import Gaps from "@/app/components/layout/gaps";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
 import { PortfolioPageType } from "@/lib/types/pages/portfolio";
-import Container from "@/components/layout/container";
-import List from "@/components/layout/list";
+import Container from "@/app/components/layout/container";
+import List from "@/app/components/layout/list";
 
 export async function generateMetadata() {
   const page: PortfolioPageType = getPageData("portfolio");

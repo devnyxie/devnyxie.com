@@ -1,13 +1,13 @@
 import { getAllDeepDives } from "@/lib/api/blog/deep-dives";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
-import Tag from "@/components/blog/shared/tag/tag";
-import PageBreadcrumb from "@/components/layout/breadcrumb";
+import Tag from "@/app/components/blog/shared/tag/tag";
+import PageBreadcrumb from "@/app/components/layout/breadcrumb";
 
 import { generateMetadata as createMetadata } from "@/lib/metadata";
-import { Button } from "@/components/button";
-import Container from "@/components/layout/container";
-import List from "@/components/layout/list";
+import { Button } from "@/app/components/button";
+import Container from "@/app/components/layout/container";
+import List from "@/app/components/layout/list";
 
 export const metadata = createMetadata({
   title: "Deep Dives",

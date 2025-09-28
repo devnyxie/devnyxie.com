@@ -1,18 +1,18 @@
 import { getAllDeepDives } from "@/lib/api/blog/blog";
 import { getAllArticles } from "@/lib/api/blog/articles";
-import RowPost from "../../components/blog/post";
-import Heading from "@/components/heading";
+import RowPost from "../components/blog/post";
+import Heading from "@/app/components/heading";
 import { getPageData } from "@/lib/api/pages";
-import Gaps from "@/components/layout/gaps";
+import Gaps from "@/app/components/layout/gaps";
 import { BlogPageType } from "@/lib/types/pages/blog";
-import RowDeepDive from "@/components/blog/dive";
-import PageBreadcrumb from "@/components/layout/breadcrumb";
+import RowDeepDive from "@/app/components/blog/dive";
+import PageBreadcrumb from "@/app/components/layout/breadcrumb";
 import { DeepDiveInput, PostInput } from "@/lib/types/data/blog";
 import Link from "next/link";
-import { Button } from "@/components/button";
+import { Button } from "@/app/components/button";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
-import Container from "@/components/layout/container";
-import List from "@/components/layout/list";
+import Container from "@/app/components/layout/container";
+import List from "@/app/components/layout/list";
 
 // todo: wire up metadata from the config files
 export async function generateMetadata() {

@@ -1,15 +1,15 @@
 import { getAllPostsByTag, getAllTags } from "@/lib/api/blog/tags";
-import PageBreadcrumb from "@/components/layout/breadcrumb";
-import RowPost from "@/components/blog/post";
-import RowDeepDive from "@/components/blog/dive";
-import Tag from "@/components/blog/shared/tag/tag";
-import Heading from "@/components/heading";
-import Gaps from "@/components/layout/gaps";
-import { Button } from "@/components/button";
+import PageBreadcrumb from "@/app/components/layout/breadcrumb";
+import RowPost from "@/app/components/blog/post";
+import RowDeepDive from "@/app/components/blog/dive";
+import Tag from "@/app/components/blog/shared/tag/tag";
+import Heading from "@/app/components/heading";
+import Gaps from "@/app/components/layout/gaps";
+import { Button } from "@/app/components/button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
-import Container from "@/components/layout/container";
+import Container from "@/app/components/layout/container";
 
 interface TagPageProps {
   params: Promise<{

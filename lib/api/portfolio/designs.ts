@@ -45,7 +45,8 @@ export async function getAllDesigns(): Promise<PortfolioItem[]> {
     }
   }
 
-  console.log(`Parsed ${designs.length} designs`);
+  // logger
+  // console.log(`Parsed ${designs.length} designs`);
 
   return designs.sort((a, b) => {
     const dateA = new Date(a.date).getTime();

@@ -7,7 +7,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/shadcn/carousel";
+} from "@/app/components/shadcn/carousel";
 
 function PortfolioCarousel() {
   const items = [

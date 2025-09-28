@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import Heading from "@/components/heading";
-import PageBreadcrumb from "@/components/layout/breadcrumb";
-import MDXContent from "@/components/mdx-content";
+import Heading from "@/app/components/heading";
+import PageBreadcrumb from "@/app/components/layout/breadcrumb";
+import MDXContent from "@/app/components/mdx-content";
 import Container from "./container";
 
 interface ContentPageProps {

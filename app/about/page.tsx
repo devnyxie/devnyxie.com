@@ -1,6 +1,6 @@
 import ContentPage, {
   generateContentPageMetadata,
-} from "@/components/layout/content-page";
+} from "@/app/components/layout/content-page";
 import { getPageData } from "@/lib/api/pages";
 import { Metadata } from "next";
 import "@/app/assets/md.css";
