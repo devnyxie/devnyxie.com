@@ -26,7 +26,7 @@ function Experience({
                   ? item.date
                   : formatDate(item.date)}
               </div>
-              <hr className="grow bg-muted/50" />
+              <hr className="grow bg-bg-muted" />
               <a
                 href={item.company.url}
                 className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"

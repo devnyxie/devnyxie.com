@@ -7,7 +7,7 @@ export const APP_CONFIG = {
   meetingLink: "https://cal.com/timbusinez/30min",
   github_username: "devnyxie",
   email: "timbusinez@gmail.com",
-  available: true,
+  available: false,
   server: {
     name: process.env.NEXT_PUBLIC_SERVER_NAME || "Home Lab",
     region:

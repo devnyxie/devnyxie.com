@@ -1,4 +1,4 @@
-@reference './globals.css';
+@reference './shadcn.css';
 
 .content-body {
   /* all: unset;
@@ -87,7 +87,7 @@
 .content-body td:not(.mdx-component *) {
   text-align: left;
   vertical-align: top;
-  @apply p-2 py-0.5 bg-accent/25 border border-muted;
+  @apply p-2 py-0.5 bg-accent/25 border border-border;
 }
 .content-body th:not(.mdx-component *) {
   font-weight: 600;

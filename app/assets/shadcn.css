@@ -1,0 +1,89 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@reference './theme.css';
+
+@theme inline {
+  --font-sans: var(--font-roboto-sans);
+  --font-mono: var(--font-roboto-mono);
+
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
+  --color-foreground-highlighted: var(--color-text-highlighted);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  /* --color-border: var(--color-bg-muted); => exported in theme.css */
+  --color-destructive: var(--color-error);
+  --color-accent-foreground: var(--color-text);
+  --color-accent: var(--color-bg-accented);
+  --color-muted-foreground: var(--color-muted);
+  /* --color-muted: var(--color-bg-muted); => exported in theme.css */
+  --color-secondary-foreground: var(--color-text);
+  /* --color-secondary: var(--color-secondary); => exported in theme.css */
+  --color-primary-foreground: var(--color-text-inverted);
+  /* --color-primary: var(--color-primary); => exported in theme.css */
+  --color-popover-foreground: var(--color-text);
+  --color-popover: var(--color-bg-elevated);
+  --color-card-foreground: var(--color-text);
+  --color-card: var(--color-bg-elevated);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+}
+
+:root {
+  --card-foreground: var(--color-text);
+  --popover-foreground: var(--color-text);
+  --primary-foreground: var(--color-text-inverted);
+  --secondary-foreground: var(--color-text);
+  --accent-foreground: var(--color-text);
+  --input: var(--color-bg-accented);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --card-foreground: var(--color-text);
+  --popover-foreground: var(--color-text);
+  --primary-foreground: var(--color-text-inverted);
+  --secondary-foreground: var(--color-text);
+  --accent-foreground: var(--color-text);
+  --input: var(--color-bg-accented);
+  --ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .animate-ping {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Links */
+a {
+  cursor: pointer !important;
+}

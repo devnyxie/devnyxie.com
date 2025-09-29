@@ -39,7 +39,7 @@ function IntroSection({
         <p className="text-muted-foreground mb-2 text-center">{description}</p>
         <div className="flex gap-2 text-sm">
           <p className="text-muted-foreground">{formatDate(date)}</p>
-          <div className="flex-1 my-0.5 w-[1px] bg-muted" />
+          <div className="flex-1 my-0.5 w-[1px] bg-bg-muted" />
           <p className="text-muted-foreground">{readTime} min read</p>
         </div>
       </div>

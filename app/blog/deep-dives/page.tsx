@@ -29,7 +29,7 @@ export default async function DeepDivesPage() {
           </p>
         </div>
         <div className="flex gap-2 h-max">
-          <Link href="/blog/tags">
+          <Link href="/blog/tags" className="cursor-pointer">
             <Button variant={"outline"} size={"md"}>
               Browse Tags
             </Button>
@@ -41,7 +41,7 @@ export default async function DeepDivesPage() {
         {deepDives.map((deepDive) => (
           <article
             key={deepDive.slug}
-            className="border rounded-lg p-6 hover:shadow-md transition-shadow"
+            className="border border-border rounded-lg p-6 hover:shadow-md transition-shadow"
           >
             <div className="flex flex-col gap-4">
               <div className="flex items-start gap-4">

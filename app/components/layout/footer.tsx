@@ -42,7 +42,7 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full border-t border-border py-8">
+    <footer className="w-full border-t border-border/50 py-8">
       <div className="container max-w-screen-md mx-auto px-4 md:px-0">
         <div className="flex flex-col items-center gap-6">
           {/* Links */}

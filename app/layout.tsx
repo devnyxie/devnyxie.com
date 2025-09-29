@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
-import "./assets/globals.css";
 import { ThemeProvider } from "next-themes";
 import { Navbar } from "./components/layout/navbar";
 import Footer from "@/app/components/layout/footer";
@@ -8,6 +7,10 @@ import { ServerStatus } from "@/app/components/layout/server-status";
 import { getPageData } from "@/lib/api/pages";
 import { IndexPageType } from "@/lib/types/pages";
 import { APP_CONFIG } from "@/lib/app.config";
+
+import "@/app/assets/theme.css";
+import "@/app/assets/shadcn.css";
+// import "@/app/assets/md.css";
 
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",

@@ -25,7 +25,7 @@ export default function DesignCard({
 
   return (
     <>
-      <div className="group relative overflow-hidden rounded-lg border bg-card shadow-sm transition-all hover:shadow-md">
+      <div className="group relative overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md">
         <div className="aspect-video relative overflow-hidden">
           {image && (
             <Image

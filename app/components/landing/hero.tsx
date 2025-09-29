@@ -33,7 +33,7 @@ function Hero({
         <img
           src={picture.src}
           alt={picture.alt}
-          className="w-24 h-24 border-2 border-muted rounded-full"
+          className="w-24 h-24 border-2 border-border rounded-full"
         />
       </FadeIn>
       <div className="max-w-xl mx-auto">

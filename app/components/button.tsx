@@ -54,7 +54,8 @@ const buttonVariants = cva(
         variant: "outline",
         color: "primary",
         class:
-          "hover:bg-accent text-accent-foreground border dark:bg-input/25 dark:border-input dark:hover:bg-input/50",
+          // "hover:bg-input/25 text-accent-foreground border dark:bg-input/25 border-input dark:hover:bg-input/50",
+          "text-accent-foreground hover:bg-bg-elevated border border-border dark:bg-bg-elevated  dark:hover:bg-bg-accented/50",
       },
       // {
       //   variant: "outline",

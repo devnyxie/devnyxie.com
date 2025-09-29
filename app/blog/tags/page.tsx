@@ -59,7 +59,7 @@ export default async function TagsPage() {
                   {tags.map((tag) => (
                     <div
                       key={tag.name}
-                      className="border rounded-lg p-4 hover:shadow-md transition-shadow"
+                      className="border border-border rounded-lg p-4 hover:shadow-md transition-shadow"
                     >
                       <div className="flex items-start justify-between mb-2">
                         <Tag

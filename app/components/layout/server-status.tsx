@@ -26,16 +26,16 @@ export function ServerStatus({
     ? latency < 100
       ? "bg-green-500"
       : latency < 200
-        ? "bg-yellow-500"
-        : "bg-orange-500"
+      ? "bg-yellow-500"
+      : "bg-orange-500"
     : "bg-red-500";
 
   const statusText = isOnline
     ? latency < 100
       ? "Excellent"
       : latency < 200
-        ? "Good"
-        : "Fair"
+      ? "Good"
+      : "Fair"
     : "Offline";
 
   return (
@@ -145,9 +145,10 @@ export function ServerStatus({
                 transition={{ delay: 0.1, duration: 0.2 }}
               >
                 <div className="flex items-center justify-between">
-                  <p className="text-xs text-muted-foreground">
-                    Hosted from my home server
-                  </p>
+                  <div className="text-xs text-muted-foreground text-center">
+                    Last updated:{" "}
+                    {new Date(status.timestamp).toLocaleTimeString()}
+                  </div>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -161,10 +162,6 @@ export function ServerStatus({
                       className={`w-3 h-3 ${loading ? "animate-spin" : ""}`}
                     />
                   </button>
-                </div>
-                <div className="text-xs text-muted-foreground text-center mt-1">
-                  Last updated:{" "}
-                  {new Date(status.timestamp).toLocaleTimeString()}
                 </div>
               </motion.div>
             </motion.div>

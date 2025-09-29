@@ -52,7 +52,7 @@ const SkillCard = ({
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-lg border bg-card p-4 transition-all duration-300 hover:shadow-md hover:border-muted-foreground/20",
+        "group relative overflow-hidden rounded-lg border border-border bg-card p-4 transition-all duration-300 hover:shadow-md hover:border-muted-foreground/20",
         category.bgColor,
         size === "large" && "p-6",
         size === "small" && "p-3"

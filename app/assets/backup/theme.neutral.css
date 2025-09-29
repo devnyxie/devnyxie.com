@@ -1,0 +1,115 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+  -+-+-+- Info -+-+-+-
+  This file defines a custom theme, heavily inspired by Nuxt UI's theme system.
+
+  -+-+-+- Defaults -+-+-+- 
+  primary: 'green',
+  secondary: 'blue',
+  success: 'green',
+  info: 'blue',
+  warning: 'yellow',
+  error: 'red',
+  neutral: 'slate'
+*/
+
+@theme inline {
+  /* Text */
+  --color-dimmed: var(--ui-text-dimmed);
+  --color-muted: var(--ui-text-muted);
+  --color-toned: var(--ui-text-toned);
+  --color-text: var(--ui-text);
+  --color-text-highlighted: var(--ui-text-highlighted);
+  --color-text-inverted: var(--ui-text-inverted);
+
+  --ui-fg: var(--color-text);
+
+  /* Background */
+  --color-bg: var(--ui-bg);
+  --color-bg-muted: var(--ui-bg-muted);
+  --color-bg-elevated: var(--ui-bg-elevated);
+  --color-bg-accented: var(--ui-bg-accented);
+  --color-bg-inverted: var(--ui-bg-inverted);
+
+  /* Borders */
+  --color-border: var(--ui-border);
+  --color-border-muted: var(--ui-border-muted);
+  --color-border-accented: var(--ui-border-accented);
+  --color-border-inverted: var(--ui-border-inverted);
+
+  /* Colors */
+  --color-primary: var(--ui-primary);
+  --color-secondary: var(--ui-secondary);
+  --color-success: var(--ui-success);
+  --color-info: var(--ui-info);
+  --color-warning: var(--ui-warning);
+  --color-error: var(--ui-error);
+}
+
+:root {
+  --ui-radius: 0.25rem;
+  --ui-container: var(--container-3xl);
+}
+
+/* -+-+-+- Light Mode -+-+-+- */
+:root {
+  --ui-text-dimmed: var(--color-neutral-400);
+  --ui-text-muted: var(--color-neutral-500);
+  --ui-text-toned: var(--color-neutral-600);
+  --ui-text: var(--color-neutral-700);
+  --ui-text-highlighted: var(--color-neutral-900);
+  --ui-text-inverted: var(--color-white);
+
+  --ui-bg: var(--color-white);
+  --ui-bg-muted: var(--color-neutral-100);
+  --ui-bg-elevated: var(--color-neutral-100);
+  --ui-bg-accented: var(--color-neutral-200);
+  --ui-bg-inverted: var(--color-neutral-900);
+
+  --ui-border: var(--color-neutral-200);
+  --ui-border-muted: var(--color-neutral-200);
+  --ui-border-accented: var(--color-neutral-300);
+  --ui-border-inverted: var(--color-neutral-900);
+}
+
+:root {
+  --ui-primary: var(--color-neutral-900); /* darkened */
+  --ui-secondary: var(--color-blue-500);
+  --ui-success: var(--color-green-500);
+  --ui-info: var(--color-blue-500);
+  --ui-warning: var(--color-yellow-500);
+  --ui-error: var(--color-red-500);
+}
+
+/* -+-+-+- Dark Mode -+-+-+- */
+
+.dark {
+  --ui-text-dimmed: var(--color-neutral-500);
+  --ui-text-muted: var(--color-neutral-400);
+  --ui-text-toned: var(--color-neutral-300);
+  --ui-text: var(--color-neutral-200);
+  --ui-text-highlighted: var(--color-white);
+  --ui-text-inverted: var(--color-neutral-900);
+
+  --ui-bg: var(--color-neutral-900);
+  --ui-bg-muted: var(--color-neutral-800);
+  --ui-bg-elevated: var(--color-neutral-800);
+  --ui-bg-accented: var(--color-neutral-700);
+  --ui-bg-inverted: var(--color-white);
+
+  --ui-border: var(--color-neutral-700);
+  --ui-border-muted: var(--color-neutral-700);
+  --ui-border-accented: var(--color-neutral-700);
+  --ui-border-inverted: var(--color-white);
+}
+
+.dark {
+  --ui-primary: var(--color-neutral-200); /* lightened */
+  --ui-secondary: var(--color-blue-400);
+  --ui-success: var(--color-green-400);
+  --ui-info: var(--color-blue-400);
+  --ui-warning: var(--color-yellow-400);
+  --ui-error: var(--color-red-400);
+}

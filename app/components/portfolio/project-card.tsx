@@ -19,7 +19,7 @@ function ProjectCard(props: ProjectProps) {
 
   return (
     <>
-      <div className="relative bg-card border border-border shadow-xs rounded-md h-full">
+      <div className="relative bg-bg-elevated border border-border shadow-xs rounded-md h-full">
         <div
           className={`flex justify-between gap-x-4 p-4
           `}
