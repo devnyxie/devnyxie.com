@@ -6,6 +6,7 @@ import { Button } from "../button";
 import Link from "next/link";
 
 import FadeIn from "../animations/fadeIn";
+import Image from "next/image";
 
 type Props = {
   title: string;
@@ -30,9 +31,16 @@ function Hero({
   return (
     <div className="w-full flex flex-col items-center justify-center gap-4">
       <FadeIn delay={0.1}>
-        <img
+        {/* <img
           src={picture.src}
           alt={picture.alt}
+          className="w-24 h-24 border-2 border-muted rounded-full"
+        /> */}
+         <Image
+          src={picture.src}
+          alt={picture.alt}
+          width={250}
+          height={250}
           className="w-24 h-24 border-2 border-muted rounded-full"
         />
       </FadeIn>

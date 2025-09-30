@@ -22,6 +22,7 @@ minishell$ echo line1 > a && echo line2 >> a && < a cat | cat | cat > b
 minishell$ cat b
 line1
 line2
+minishell$ >/dev/null 2>&1 cat /etc/passwd | sort | tee >(grep root >&2) | less <&0
 ```
 
 
@@ -40,3 +41,24 @@ The project can be divided into several key components:
 ## Challenges Faced
 
 The journey was not without its challenges. Some of the most significant hurdles included:
+- **Structure**: Designing such robust project in C, a language that lacks many high-level abstractions, was a significant challenge. I had to carefully plan the architecture to ensure maintainability and scalability.  
+Don't be shy to create data types, structures and so on. It will save you a lot of time in the future.
+- **Memory Management**: C requires manual memory management, and in case of shell you must have fully dynamic and scalable memory handling. It had to be perfect, freeing after each command, on any error, exit and so on.
+- **Inner Workings of Shells**: Understanding how shells work under the hood, no, really understanding it - from process creation, signal handling, file descriptor & process management, to redirections and pipes - was crucial. This knowledge was essential for implementing the required features correctly.
+  ```bash
+  # this should work just fine 
+  >/dev/null 2>&1 cat /etc/passwd | sort | tee >(grep root >&2) | less <&0
+  ```
+
+## Feelings and Takeaways
+
+Completing the **minishell** project has been an incredibly rewarding experience. It has not only enhanced my programming skills in C but also really deepened my understanding of unix systems and how shells operate. Also, I get now why people say "In order to know how to use something, you must first know how it works - or even better - build it yourself".
+
+```bash
+minishell$ find . -name "*.[ch]" -print0 | xargs -0 cat | wc -l
+5431 # lines of code
+```
+
+**5400** lines of code in pure C, marbled to perfection. Based on our own `libc` implementation, zero leaks, zero errors, zero warnings, 100% norm compliance.
+
+ I am proud of what I have accomplished and, would be happy not to do it again. At least not in C.

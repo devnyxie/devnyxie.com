@@ -1,6 +1,6 @@
 import FadeIn from "@/app/components/animations/fadeIn";
 import RowPost from "@/app/components/blog/post";
-import GitHeroSection from "@/app/components/github/github_heroSection";
+// Removed direct import of GitHeroSection
 import Heading from "@/app/components/heading";
 import AboutMe from "@/app/components/landing/aboutMe";
 import Experience from "@/app/components/landing/experience";
@@ -16,6 +16,17 @@ import { getConfig } from "@/lib/app.config";
 import { PostInput } from "@/lib/types/data/blog";
 import { IndexPageType } from "@/lib/types/pages";
 import Link from "next/link";
+import { Suspense } from "react";
+import dynamic from 'next/dynamic';
+
+// Dynamically import GitHeroSection
+const GitHeroSectionLazy = dynamic(
+  () => import("@/app/components/github/github_heroSection"),
+  { 
+    loading: () => <div className="w-full h-[200px] bg-accent/10 rounded-lg animate-pulse flex items-center justify-center text-muted-foreground">Loading GitHub stats...</div>,
+    ssr: true
+  }
+);
 
 export default async function Home() {
   const pageData: IndexPageType = getPageData("index");
@@ -57,7 +68,9 @@ export default async function Home() {
           <SkillsBento skills={pageData.skills.items} />
         </FadeIn>
         <FadeIn delay={0.7}>
-          <GitHeroSection />
+          <Suspense fallback={<div className="w-full h-[200px] bg-accent/10 rounded-lg animate-pulse flex items-center justify-center text-muted-foreground">Loading GitHub data...</div>}>
+            <GitHeroSectionLazy />
+          </Suspense>
         </FadeIn>
         <FadeIn delay={0.7}>
           <div className="mb-8 flex items-start justify-between">

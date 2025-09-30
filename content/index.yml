@@ -5,7 +5,7 @@ description: >
 hero:
   links:
     - label: "Let's Talk"
-      to: https://cal.com/tim-afanasiev-7q9d0s
+      to: "mailto:tim@devnyxie.com"
       color: "default"
 about:
   title: "About Me"
@@ -27,7 +27,7 @@ experience:
         name: DemandSphere
         url: "https://www.demandsphere.com"
     - position: "Frontend Developer"
-      date: "2017 - 2018"
+      date: "2022-2023"
       company:
         name: Draive.gr
         url: "https://www.draive.gr"

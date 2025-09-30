@@ -99,7 +99,7 @@ export default async function Blog() {
           <List asGrid cols="1" gap="4">
             {articles ? (
               articles
-                .slice(0, 6)
+                .slice(0, 8)
                 .map((post) => (
                   <RowPost
                     key={post.slug}

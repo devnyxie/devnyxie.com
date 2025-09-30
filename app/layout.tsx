@@ -4,7 +4,7 @@ import "./assets/globals.css";
 import { ThemeProvider } from "next-themes";
 import { Navbar } from "./components/layout/navbar";
 import Footer from "@/app/components/layout/footer";
-import { ServerStatus } from "@/app/components/layout/server-status";
+import ServerStatusLoader from "@/app/components/layout/server-status-loader";
 import { getPageData } from "@/lib/api/pages";
 import { IndexPageType } from "@/lib/types/pages";
 import { APP_CONFIG } from "@/lib/app.config";
@@ -60,8 +60,9 @@ export default function RootLayout({
             {children}
           </div>
           <Footer />
-          <ServerStatus />
+          {/* Server status moved to client-side lazy loading */}
         </ThemeProvider>
+        <ServerStatusLoader />
       </body>
     </html>
   );
