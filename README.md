@@ -43,14 +43,15 @@ A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind
 
 ## Roadmap
 
-- [x] Add MDX Support: Callout Blocks, Steps/Timeline etc
-- [x] Add Motion Animations
 - [ ] Add parsing **Caching** for faster builds and development (medium)
 - [ ] Rework `button` component structure (low)
-- [x] Articles/Deep Dives responsiveness issue (critical)
 - [ ] Cleaner codebase and better documentation (medium)
 - [ ] Shared View component for Articles/Deep Dives (medium)
-- [ ] Overall Normalization of styles - paddings, margins, font sizes (medium)
+- [ ] Overall Normalization of styles - paddings, margins, font sizes (medium) <br/>
+      In progress - `design-system` branch 
+- [ ] Add **Search** functionality (low)
+- [ ] Make `TOC` scrollable, overflow issue with long TOCs (critical)
+- [ ] Update `readme.md` with new dependencies and features, add screenshot, get ideas from [enscribe's](https://github.com/jktrn/enscribe.dev) `readme` - minimal & good. (medium)
 
 ## Development
 

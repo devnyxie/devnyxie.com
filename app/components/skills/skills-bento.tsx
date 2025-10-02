@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import React from "react";
 
 interface SkillItem {
@@ -62,7 +63,9 @@ const SkillCard = ({
         <div className="flex items-center gap-3">
           {skill.icon && (
             <div className="flex-shrink-0">
-              <img
+              <Image
+                width={64}
+                height={64}
                 src={skill.icon}
                 alt={`${skill.title} icon`}
                 className={cn(

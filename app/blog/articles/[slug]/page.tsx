@@ -6,6 +6,7 @@ import Surround from "@/app/components/blog/shared/surround";
 import PageBreadcrumb from "@/app/components/layout/breadcrumb";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
 import IntroSection from "@/app/components/blog/shared/introSection";
+import TableOfContents from "@/app/components/blog/shared/tableOfContents-v2";
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
@@ -64,7 +65,7 @@ export default async function ArticlePage({
       <div className="content-body prose col-start-2 relative">
         <MDXContent source={article.content} />
       </div>
-      {/* <TableOfContents /> */}
+      <TableOfContents />
       <div className="col-start-2 mt-6">
         <Surround post={article} contentType="articles" />
       </div>

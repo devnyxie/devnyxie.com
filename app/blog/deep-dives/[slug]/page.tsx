@@ -6,6 +6,7 @@ import Surround from "@/app/components/blog/shared/surround";
 import PageBreadcrumb from "@/app/components/layout/breadcrumb";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
 import IntroSection from "@/app/components/blog/shared/introSection";
+import TableOfContents from "@/app/components/blog/shared/tableOfContents-v2";
 
 export async function generateStaticParams() {
   const deepDives = await getAllDeepDives();
@@ -63,7 +64,7 @@ export default async function DeepDivePage({
       <div className="content-body prose col-start-2 relative">
         <MDXContent source={deepDive.content} />
       </div>
-      {/* <TableOfContents /> */}
+      <TableOfContents />
       <div className="col-start-2 gap-2 mt-6">
         <Surround post={deepDive} contentType="deep-dives" />
       </div>
