@@ -1,0 +1,7 @@
+title: "Dev-Link"
+description: "A web application designed to help programmers find teams for collaborative projects and learning opportunities. It is built with React, Express, and PostgreSQL."
+image: /images/portfolio/software/dev-link.png
+preview: https://dev-link-client.vercel.app/
+state: "published"
+tags: ["Backend", "Frontend", "TypeScript", "React", "Express", "PostgreSQL"]
+date: "2024-07"

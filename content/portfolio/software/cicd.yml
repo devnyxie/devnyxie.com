@@ -1,6 +1,6 @@
 title: "Personal Go CI/CD Service"
 description: "A lightweight CI/CD service built with Go, designed for simplicity and speed. It supports basic deploy configurations and integrates with GitHub for automated deployments. Made specifically for simple server setups and personal projects."
-image:
+image: /images/portfolio/software/cicd-testrun.png
 preview:
 state: "published"
 tags: ["Backend", "Go", "CI/CD", "DevOps"]

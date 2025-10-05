@@ -53,7 +53,7 @@ const SkillCard = ({
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-lg border bg-card p-4 transition-all duration-300 hover:shadow-md hover:border-muted-foreground/20",
+        "group relative overflow-hidden rounded-lg border bg-card p-4",
         category.bgColor,
         size === "large" && "p-6",
         size === "small" && "p-3"
@@ -96,15 +96,65 @@ const SkillCard = ({
 };
 
 const SkillsBento: React.FC<SkillsBentoProps> = ({ skills, className }) => {
+  // Group skills into rows for precise control over layout
+  const rows = [];
+  for (let i = 0; i < skills.length; i += 3) {
+    rows.push(skills.slice(i, Math.min(i + 3, skills.length)));
+  }
+  
   return (
     <div className={cn("w-full", className)}>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {skills.map((skill) => (
-          <SkillCard key={skill.title} skill={skill} size="default" />
-        ))}
-      </div>
+      {rows.map((row, rowIndex) => (
+        <div 
+          key={`row-${rowIndex}`}
+          className="mb-4 last:mb-0"
+        >
+          {/* Mobile: 1 column layout */}
+          <div className="grid grid-cols-1 gap-4 md:hidden">
+            {row.map((skill) => (
+              <SkillCard key={`mobile-${skill.title}`} skill={skill} size="default" />
+            ))}
+          </div>
+          
+          {/* Tablet: 2 column layout with special handling for incomplete rows */}
+          <div className="hidden md:grid lg:hidden gap-4">
+            {row.length === 1 ? (
+              // Single item row - full width
+              <div className="grid grid-cols-1 gap-4">
+                <SkillCard key={`tablet-${row[0].title}`} skill={row[0]} size="default" />
+              </div>
+            ) : row.length === 2 ? (
+              // Two item row - split evenly
+              <div className="grid grid-cols-2 gap-4">
+                {row.map((skill) => (
+                  <SkillCard key={`tablet-${skill.title}`} skill={skill} size="default" />
+                ))}
+              </div>
+            ) : (
+              // Three item row - 2 columns (tablet can't fit 3 columns well)
+              <div className="grid grid-cols-2 gap-4">
+                <SkillCard key={`tablet-${row[0].title}`} skill={row[0]} size="default" />
+                <SkillCard key={`tablet-${row[1].title}`} skill={row[1]} size="default" />
+                <div className="col-span-2">
+                  <SkillCard key={`tablet-${row[2].title}`} skill={row[2]} size="default" />
+                </div>
+              </div>
+            )}
+          </div>
+          
+          {/* Desktop: 3 column layout with even distribution for incomplete rows */}
+          <div className="hidden lg:grid gap-4" 
+            style={{
+              gridTemplateColumns: row.length === 1 ? "1fr" : row.length === 2 ? "1fr 1fr" : "1fr 1fr 1fr"
+            }}
+          >
+            {row.map((skill) => (
+              <SkillCard key={`desktop-${skill.title}`} skill={skill} size="default" />
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
-
 export default SkillsBento;

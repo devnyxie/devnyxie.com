@@ -1,0 +1,7 @@
+title: "Distro API: 900+ Linux Distros"
+description: "When Distrowatch lacked an API, I decided to test my web-scraping skills. Data for more than 900 Linux distributions. Light/Dark Badge Generation for each one of them. Written in JavaScript."
+image: /images/portfolio/software/linux-distro-badges.png
+state: "archived"
+source: "https://github.com/devnyxie/distro-api/"
+tags: ["Backend", "JavaScript", "API", "Web Scraping"]
+date: "2023-12"

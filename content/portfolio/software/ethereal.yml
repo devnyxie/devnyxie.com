@@ -5,5 +5,5 @@ public: true
 source: "https://github.com/devnyxie/ethereal"
 preview: "https://ethereal-template.vercel.app"
 state: "published"
-tags: ["Frontend", "Next.js", "JavaScript"]
+tags: ["Frontend", "Next.js", "TypeScript", "Tailwind CSS"]
 date: "2024"

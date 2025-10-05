@@ -1,0 +1,8 @@
+title: "Sci-Fi Solar Map"
+description: "Abandoned Sci-Fi game. The Solar Map works and looks good though! Built with React."
+image: /images/portfolio/software/solar-map.gif
+state: "archived"
+preview: "https://solar-game-map.vercel.app"
+source: https://github.com/devnyxie/project0
+tags: ["Frontend", "React", "JavaScript"]
+date: "2023-05"

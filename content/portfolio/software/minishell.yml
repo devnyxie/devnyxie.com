@@ -1,5 +1,5 @@
-title: "Minishell: A Minimalist Shell Implementation in C"
-description: "A minimalist shell implementation written in C, designed to mimic basic shell functionalities. It supports command execution, piping, and redirection, providing a lightweight alternative to traditional shells. Ideal for learning low-level programming and system interactions."
+title: "Minishell: A Shell Implementation in C"
+description: "A minimalist shell implementation written in C, designed to mimic Bash functionalities. It supports command execution, piping, redirections, built-in cmds, and all kinds of edge cases. It's designed to be one to one with Bash, and it was a great challenge to overcome."
 image: /images/portfolio/software/minishell.gif
 public: true
 source: "https://github.com/devnyxie/minishell"

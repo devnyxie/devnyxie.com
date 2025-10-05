@@ -59,8 +59,10 @@ export default async function Home() {
 
         {/* Skills Section */}
         <FadeIn delay={0.7}>
-          <Heading size="default" className="mb-2">{pageData.skills.title}</Heading>
-          <p className="text-balance text-left text-sm sm:text-md lg:text-sm text-muted-foreground mb-4">
+          <div className="mb-2">
+            <Heading size="default">{pageData.skills.title}</Heading>
+          </div>
+          <p className="text-balance text-left text-sm sm:text-md lg:text-sm text-muted-foreground mb-6">
             {pageData.skills.description}
           </p>
           <SkillsBento skills={pageData.skills.items} />
@@ -71,7 +73,7 @@ export default async function Home() {
           </Suspense>
         </FadeIn>
         <FadeIn delay={0.7}>
-          <div className="mb-8 flex items-start justify-between">
+          <div className="mb-6 flex items-start justify-between">
             <div>
               <Heading className="mb-2" size="default">
                 {pageData.blog.title}

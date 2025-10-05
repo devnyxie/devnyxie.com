@@ -2,7 +2,8 @@ title: "Katsuragi: Metadata Toolkit"
 description: "Katsuragi is a metadata-extraction toolkit written in Go. I've designed it to be simple and effective: since most websites don't share a strict structure, extraction must rely on flexible heuristics. This was the first project I reached 100% test coverage on, and it's still a personal favorite."
 public: true
 source: "https://github.com/devnyxie/katsuragi"
+image: /images/portfolio/software/katsuragi.png
 preview:
 state: "published"
-tags: ["Go"]
+tags: ["Backend", "Go"]
 date: 2024-08-10

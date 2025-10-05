@@ -158,7 +158,7 @@ function TableOfContents() {
   const minLevel = Math.min(...headings.map((h) => h.level));
 
   return (
-    <nav className="sticky top-10 col-start-3 row-span-1 ml-10 mr-auto hidden h-[calc(100vh-5.5rem)] max-w-md xl:block">
+    <nav className="sticky top-10 col-start-3 row-span-1 ml-10 mr-auto hidden h-[calc(100vh-5.5rem)] max-w-md xl:block overflow-y-scroll pe-4">
       <p className="font-medium mb-2">On this page</p>
       <div
         ref={scrollContainerRef}
