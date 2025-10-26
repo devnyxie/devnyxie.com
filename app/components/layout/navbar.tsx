@@ -89,7 +89,8 @@ export function Navbar() {
 
   const moreItems = [
     { href: "/self-hosting", label: "Self Hosting", icon: Server },
-    { href: "https://status.devnyxie.com/status/all", label: "Status", icon: ServerCog, target: "_blank" },
+    // todo: shouldn't be hardcoded
+    { href: "https://status.devnyxie.com", label: "Status", icon: ServerCog, target: "_blank" },
     { href: "/resume", label: "Resume", icon: Download, target: "_blank" },
   ];
 
