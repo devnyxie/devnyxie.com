@@ -74,10 +74,10 @@ const SkillCard = ({ skill }: { skill: SkillItem }) => {
         // "border border-border",
         category.shadow,
         "shadow-sm hover:shadow-xl",
-        // Size-based padding and styling
-        size === "large" && "p-7 min-h-[200px]",
+        // Size-based padding and styling - large only on desktop, medium on smaller screens
+        size === "large" && "p-5 min-h-[160px] lg:p-7 lg:min-h-[200px]",
         size === "medium" && "p-5 min-h-[160px]",
-        size === "small" && "p-4 min-h-[120px]"
+        size === "small" && "p-5 min-h-[160px] lg:p-4 lg:min-h-[120px]"
       )}
     >
       
@@ -117,7 +117,8 @@ const SkillCard = ({ skill }: { skill: SkillItem }) => {
                 alt={`${skill.title} icon`}
                 className={cn(
                   "transition-all duration-500 filter brightness-90 group-hover:brightness-110",
-                  size === "large" ? "w-6 h-6" : size === "medium" ? "w-5 h-5" : "w-4 h-4",
+                  // Medium size on mobile/tablet, large size only on desktop for large skills
+                  size === "large" ? "w-5 h-5 lg:w-6 lg:h-6" : size === "medium" ? "w-5 h-5" : "w-5 h-5 lg:w-4 lg:h-4",
                   category.iconColor
                 )}
               />
@@ -139,7 +140,8 @@ const SkillCard = ({ skill }: { skill: SkillItem }) => {
               className={cn(
                 "font-bold text-foreground-highlighted transition-all duration-300 group-hover:text-foreground line-clamp-2",
                 "group-hover:tracking-wide",
-                size === "large" ? "text-xl leading-tight" : size === "medium" ? "text-lg leading-tight" : "text-base leading-tight"
+                // Medium size on mobile/tablet, large size only on desktop for large skills
+                size === "large" ? "text-lg leading-tight lg:text-xl lg:leading-tight" : size === "medium" ? "text-lg leading-tight" : "text-lg leading-tight lg:text-base lg:leading-tight"
               )}
             >
               {skill.title}
@@ -152,8 +154,9 @@ const SkillCard = ({ skill }: { skill: SkillItem }) => {
           <div className="relative">
             <p className={cn(
               "text-muted-foreground leading-relaxed transition-colors duration-300 group-hover:text-foreground/80",
-              size === "large" ? "text-sm" : "text-xs",
-              size === "large" ? "line-clamp-4" : "line-clamp-3"
+              // Medium text size on mobile/tablet, large text only on desktop for large skills
+              size === "large" ? "text-xs lg:text-sm" : "text-xs",
+              size === "large" ? "line-clamp-3 lg:line-clamp-4" : "line-clamp-3"
             )}>
               {skill.description}
             </p>
@@ -179,23 +182,36 @@ const SkillsBento: React.FC<SkillsBentoProps> = ({ skills, className }) => {
 
   return (
     <div className={cn("w-full space-y-6", className)}>
-      {/* Large skills - Hero section with 50% each on larger screens */}
-      {largeSkills.length > 0 && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {largeSkills.map((skill) => (
+      {/* Mobile/Tablet: All skills in equal grid, Desktop: Large skills get special treatment */}
+      <div className="block lg:hidden">
+        {/* On smaller screens, all skills are equal */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {skills.map((skill) => (
             <SkillCard key={skill.title} skill={skill} />
           ))}
         </div>
-      )}
-      
-      {/* Medium and small skills - Responsive 33% grid */}
-      {(mediumSkills.length > 0 || smallSkills.length > 0) && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
-          {[...mediumSkills, ...smallSkills].map((skill) => (
-            <SkillCard key={skill.title} skill={skill} />
-          ))}
-        </div>
-      )}
+      </div>
+
+      {/* Desktop layout: Large skills separate, others in 3-column grid */}
+      <div className="hidden lg:block space-y-6">
+        {/* Large skills - Hero section with 50% each */}
+        {largeSkills.length > 0 && (
+          <div className="grid grid-cols-2 gap-6">
+            {largeSkills.map((skill) => (
+              <SkillCard key={skill.title} skill={skill} />
+            ))}
+          </div>
+        )}
+        
+        {/* Medium and small skills - 3-column grid */}
+        {(mediumSkills.length > 0 || smallSkills.length > 0) && (
+          <div className="grid grid-cols-3 gap-5">
+            {[...mediumSkills, ...smallSkills].map((skill) => (
+              <SkillCard key={skill.title} skill={skill} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { getAllDeepDives } from "@/lib/api/blog/blog";
 import { getAllArticles } from "@/lib/api/blog/articles";
-import RowPost from "../components/blog/post";
+import BlogPost from "../components/blog/BlogPost";
 import Heading from "@/app/components/heading";
 import { getPageData } from "@/lib/api/pages";
 import Gaps from "@/app/components/layout/gaps";
@@ -101,20 +101,10 @@ export default async function Blog() {
               articles
                 .slice(0, 8)
                 .map((post) => (
-                  <RowPost
+                  <BlogPost
                     key={post.slug}
-                    slug={post.slug}
-                    title={post.title}
-                    description={post.description}
-                    date={post.date}
-                    image={post.image}
-                    path={post.slug}
-                    readTime={post.readTime}
-                    series_name={post.series_name}
-                    series_index={post.series_index}
-                    tags={post.tags}
-                    next={post.next}
-                    previous={post.previous}
+                    layout="row"
+                    {...post}
                   />
                 ))
             ) : (

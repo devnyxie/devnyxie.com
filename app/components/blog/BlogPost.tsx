@@ -4,25 +4,47 @@ import { PostInput } from "@/lib/types/data/blog";
 import { Calendar } from "lucide-react";
 import Tag from "./shared/tag/tag";
 
-type PostProps = Omit<PostInput, "content" | "published">;
+type PostProps = Omit<PostInput, "content" | "published"> & {
+  layout?: "card" | "row";
+};
 
-function RowPost(props: PostProps) {
+function BlogPost({ layout = "row", ...props }: PostProps) {
   const { title, slug, description, date, image, tags } = props;
 
   return (
     <div className="bg-card border border-border shadow-xs rounded-md h-full flex flex-col p-4 gap-2">
-      {image && (
-        <div className="rounded overflow-hidden w-full aspect-video flex sm:hidden items-center justify-center">
+      {/* Image - always on top for card layout */}
+      {image && layout === "card" && (
+        <div className="rounded overflow-hidden w-full aspect-video flex items-center justify-center">
           <img
             src={image}
             alt={title}
-            className="object-cover h-full "
+            className="object-cover h-full"
             loading="lazy"
           />
         </div>
       )}
+
+      {/* Row layout - image on top on mobile, left on larger screens */}
+      {layout === "row" && (
+        <>
+          {/* Mobile: image on top */}
+          {image && (
+            <div className="rounded overflow-hidden w-full aspect-video flex sm:hidden items-center justify-center">
+              <img
+                src={image}
+                alt={title}
+                className="object-cover h-full"
+                loading="lazy"
+              />
+            </div>
+          )}
+        </>
+      )}
+
       <div className="flex justify-between gap-x-4">
-        {image && (
+        {/* Row layout: image on left for larger screens */}
+        {layout === "row" && image && (
           <div className="rounded overflow-hidden max-h-[125px] aspect-video hidden sm:block shrink-0">
             <img
               src={image}
@@ -32,6 +54,7 @@ function RowPost(props: PostProps) {
             />
           </div>
         )}
+
         <div className="gap-2 flex flex-col h-full grow">
           <p className="text-sm text-muted-foreground flex gap-1 items-center">
             <Calendar className="w-3.5 h-3.5" />
@@ -68,4 +91,4 @@ function RowPost(props: PostProps) {
   );
 }
 
-export default RowPost;
+export default BlogPost;
