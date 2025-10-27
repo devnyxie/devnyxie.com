@@ -1,6 +1,6 @@
 import { getAllArticles } from "@/lib/api/blog/articles";
 import PageBreadcrumb from "@/app/components/layout/breadcrumb";
-import RowPost from "@/app/components/blog/post";
+import BlogPost from "@/app/components/blog/BlogPost";
 import Link from "next/link";
 
 import { generateMetadata as createMetadata } from "@/lib/metadata";
@@ -35,7 +35,7 @@ export default async function ArticlesPage() {
 
       <List gap="6">
         {articles.map((article) => (
-          <RowPost key={article.slug} {...article} />
+          <BlogPost key={article.slug} layout="row" {...article} />
         ))}
       </List>
     </Container>

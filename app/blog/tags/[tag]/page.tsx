@@ -1,6 +1,6 @@
 import { getAllPostsByTag, getAllTags } from "@/lib/api/blog/tags";
 import PageBreadcrumb from "@/app/components/layout/breadcrumb";
-import RowPost from "@/app/components/blog/post";
+import BlogPost from "@/app/components/blog/BlogPost";
 import RowDeepDive from "@/app/components/blog/dive";
 import Tag from "@/app/components/blog/shared/tag/tag";
 import Heading from "@/app/components/heading";
@@ -155,20 +155,10 @@ export default async function TagPage({ params }: TagPageProps) {
                   </div>
                   <div className="grid grid-cols-1 gap-4">
                     {articles.map((article) => (
-                      <RowPost
+                      <BlogPost
                         key={article.slug}
-                        slug={article.slug}
-                        title={article.title}
-                        description={article.description}
-                        date={article.date}
-                        image={article.image}
-                        path={article.slug}
-                        readTime={article.readTime}
-                        series_name={article.series_name}
-                        series_index={article.series_index}
-                        tags={article.tags}
-                        next={article.next}
-                        previous={article.previous}
+                        layout="row"
+                        {...article}
                       />
                     ))}
                   </div>

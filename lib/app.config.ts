@@ -1,7 +1,7 @@
 export const APP_CONFIG = {
   domain: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   picture: {
-    src: "/pfp_personal.jpg",
+    src: "/pfp_new.png",
     alt: "My profile picture",
   },
   meetingLink: "https://cal.com/tim-afanasiev",

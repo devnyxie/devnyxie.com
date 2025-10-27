@@ -1,5 +1,5 @@
 import FadeIn from "@/app/components/animations/fadeIn";
-import RowPost from "@/app/components/blog/post";
+import BlogPost from "@/app/components/blog/BlogPost";
 // Removed direct import of GitHeroSection
 import Heading from "@/app/components/heading";
 import AboutMe from "@/app/components/landing/aboutMe";
@@ -90,7 +90,7 @@ export default async function Home() {
             {posts.length > 0 ? (
               <>
                 {posts.slice(0, 6).map((post) => (
-                  <RowPost key={post.slug} {...post} image="" />
+                  <BlogPost key={post.slug} layout="card" {...post} />
                 ))}
               </>
             ) : (

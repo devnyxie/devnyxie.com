@@ -39,9 +39,9 @@ function Hero({
          <Image
           src={picture.src}
           alt={picture.alt}
-          width={250}
-          height={250}
-          className="w-24 h-24 border-2 border-muted rounded-full"
+          width={"500"}
+          height={"500"}
+          className="w-32 h-32 border-2 border-muted rounded-full"
         />
       </FadeIn>
       <div className="max-w-xl mx-auto">
