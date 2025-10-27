@@ -28,6 +28,7 @@ export const indexPageSchema = baseSchema.extend({
         description: z.string().optional(),
         icon: z.string().optional(),
         category: z.enum(["blue", "green", "purple", "orange", "pink", "teal"]),
+        size: z.enum(["small", "medium", "large"]).optional().default("medium"),
       })
     ),
   }),
