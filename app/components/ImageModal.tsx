@@ -1,6 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { createPortal } from "react-dom";
 
 function ImageModal({
   src,
@@ -76,7 +77,8 @@ function ImageModal({
       document.body.style.overflow = "";
     };
   }, [isOpen]);
-  return (
+
+  const modalContent = (
     <AnimatePresence>
       {isOpen && (
         <motion.div
@@ -112,6 +114,13 @@ function ImageModal({
       )}
     </AnimatePresence>
   );
+
+  // Render modal using a portal to avoid positioning issues with grid containers
+  if (typeof window !== 'undefined') {
+    return createPortal(modalContent, document.body);
+  }
+
+  return null;
 }
 
 export default ImageModal;
