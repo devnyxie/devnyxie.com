@@ -1,26 +1,35 @@
+'use client';
+
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { PostInput } from "@/lib/types/data/blog";
 import { Calendar } from "lucide-react";
 import Tag from "./shared/tag/tag";
+import Image from "next/image";
+import ImageModal from "../ImageModal";
 
 type PostProps = Omit<PostInput, "content" | "published"> & {
   layout?: "card" | "row";
 };
 
 function BlogPost({ layout = "row", ...props }: PostProps) {
+  const [open, setOpen] = useState(false);
   const { title, slug, description, date, image, tags } = props;
 
   return (
-    <div className="bg-card border border-border shadow-xs rounded-md h-full flex flex-col p-4 gap-2">
+    <>
+      <div className="bg-card border border-border shadow-xs rounded-md h-full flex flex-col p-4 gap-2">
       {/* Image - always on top for card layout */}
       {image && layout === "card" && (
         <div className="rounded overflow-hidden w-full aspect-video flex items-center justify-center">
           <img
             src={image}
             alt={title}
-            className="object-cover h-full"
-            loading="lazy"
+                className="object-cover h-full w-full cursor-zoom-in hover:opacity-80  transition-transform duration-300 group-hover:scale-105 select-none"
+                loading="lazy"
+                onClick={() => {
+                  setOpen(true);
+                }}
           />
         </div>
       )}
@@ -34,8 +43,7 @@ function BlogPost({ layout = "row", ...props }: PostProps) {
               <img
                 src={image}
                 alt={title}
-                className="object-cover h-full"
-                loading="lazy"
+
               />
             </div>
           )}
@@ -49,9 +57,13 @@ function BlogPost({ layout = "row", ...props }: PostProps) {
             <img
               src={image}
               alt={title}
-              className="object-cover h-full"
+                 className="object-cover h-full w-full cursor-zoom-in hover:opacity-80  transition-transform duration-300 group-hover:scale-105 select-none"
               loading="lazy"
+              onClick={() => {
+                setOpen(true);
+              }}
             />
+           
           </div>
         )}
 
@@ -88,6 +100,14 @@ function BlogPost({ layout = "row", ...props }: PostProps) {
         </div>
       </div>
     </div>
+    <ImageModal
+        src={image!}
+        alt={title}
+        isOpen={open}
+        onClose={() => setOpen(false)}
+      />
+      </>
+    
   );
 }
 
