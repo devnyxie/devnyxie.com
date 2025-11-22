@@ -1,6 +1,7 @@
 import { getAllPostsByTag, getAllTags } from "@/lib/api/blog/tags";
 import PageBreadcrumb from "@/app/components/layout/breadcrumb";
 import BlogPost from "@/app/components/blog/BlogPost";
+import MentionCard from "@/app/components/blog/MentionCard";
 import RowDeepDive from "@/app/components/blog/dive";
 import Tag from "@/app/components/blog/shared/tag/tag";
 import Heading from "@/app/components/heading";
@@ -10,6 +11,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
 import Container from "@/app/components/layout/container";
+import List from "@/app/components/layout/list";
 
 interface TagPageProps {
   params: Promise<{
@@ -46,13 +48,15 @@ export async function generateMetadata({ params }: TagPageProps) {
 export default async function TagPage({ params }: TagPageProps) {
   const { tag: tagParam } = await params;
   const tagName = decodeURIComponent(tagParam);
-  const { articles, deepDives, tag } = await getAllPostsByTag(tagName);
+  const { articles, deepDives, mentions, tag } = await getAllPostsByTag(
+    tagName
+  );
 
   if (!tag) {
     notFound();
   }
 
-  const totalPosts = articles.length + deepDives.length;
+  const totalPosts = articles.length + deepDives.length + mentions.length;
 
   return (
     <Container>
@@ -71,19 +75,22 @@ export default async function TagPage({ params }: TagPageProps) {
                 Posts tagged with #{tagName}
               </Heading>
               <p className="text-muted-foreground">
-                {tag.articlesCount > 0 && tag.deepDivesCount > 0
-                  ? `${tag.articlesCount} article${
+                {[
+                  tag.articlesCount > 0 &&
+                    `${tag.articlesCount} article${
                       tag.articlesCount !== 1 ? "s" : ""
-                    } and ${tag.deepDivesCount} deep dive${
+                    }`,
+                  tag.deepDivesCount > 0 &&
+                    `${tag.deepDivesCount} deep dive${
                       tag.deepDivesCount !== 1 ? "s" : ""
-                    }`
-                  : tag.articlesCount > 0
-                  ? `${tag.articlesCount} article${
-                      tag.articlesCount !== 1 ? "s" : ""
-                    }`
-                  : `${tag.deepDivesCount} deep dive${
-                      tag.deepDivesCount !== 1 ? "s" : ""
-                    }`}
+                    }`,
+                  tag.mentionsCount > 0 &&
+                    `${tag.mentionsCount} mention${
+                      tag.mentionsCount !== 1 ? "s" : ""
+                    }`,
+                ]
+                  .filter(Boolean)
+                  .join(", ")}
               </p>
             </div>
             <Button variant="outline" asChild>
@@ -135,6 +142,31 @@ export default async function TagPage({ params }: TagPageProps) {
                 </div>
               )}
 
+              {/* Mentions Section */}
+              {mentions.length > 0 && (
+                <div>
+                  <div className="mb-6 flex items-start justify-between">
+                    <div>
+                      <Heading size="default" className="mb-2">
+                        Mentions
+                      </Heading>
+                      <p className="text-muted-foreground">
+                        External resources and links tagged with #{tagName}
+                      </p>
+                    </div>
+                  </div>
+                  <List asGrid cols="1 sm:2 xl:3" gap="4">
+                    {mentions.map((mention, index) => (
+                      <MentionCard
+                        key={`${mention.url}-${index}`}
+                        mention={mention}
+                        layout="compact"
+                      />
+                    ))}
+                  </List>
+                </div>
+              )}
+
               {/* Articles Section */}
               {articles.length > 0 && (
                 <div>
@@ -155,11 +187,7 @@ export default async function TagPage({ params }: TagPageProps) {
                   </div>
                   <div className="grid grid-cols-1 gap-4">
                     {articles.map((article) => (
-                      <BlogPost
-                        key={article.slug}
-                        layout="row"
-                        {...article}
-                      />
+                      <BlogPost key={article.slug} layout="row" {...article} />
                     ))}
                   </div>
                 </div>

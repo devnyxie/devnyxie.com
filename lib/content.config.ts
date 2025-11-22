@@ -5,6 +5,7 @@ import { portfolioItemSchema } from "./types/data/portfolio";
 import t_content_config from "./types/content";
 import { blogPageSchema } from "./types/pages/blog";
 import { portfolioPageSchema } from "./types/pages/portfolio";
+import { mentionsPageSchema } from "./types/data/mentions";
 
 const contentConfig: t_content_config = {
   pages: {
@@ -35,6 +36,10 @@ const contentConfig: t_content_config = {
     tags: {
       source: "tags.yml",
       schema: baseSchema,
+    },
+    mentions: {
+      source: "mentions.yml",
+      schema: mentionsPageSchema,
     },
   },
   content: {

@@ -1,0 +1,43 @@
+title: Recent Mentions
+description: Articles, videos, and resources I've been reading and watching lately.
+
+items:
+  - title: "go101.org - Go Programming Self Learning"
+    url: "https://go101.org/"
+    description: "An up-to-date knowledge base for Go programming self learning with comprehensive tutorials and examples."
+    type: "website"
+    source: "go101.org"
+    date: "2024-11-20"
+    tags: ["golang", "learning", "tutorial"]
+
+  - title: "Go by Example - Annotated Example Programs"
+    url: "https://gobyexample.com/"
+    description: "An introduction to Go using annotated example programs covering all the core concepts of the language."
+    type: "website"
+    source: "Go by Example"
+    date: "2024-11-18"
+    tags: ["golang", "examples", "reference"]
+
+  - title: "Learn Go with Tests"
+    url: "https://quii.gitbook.io/learn-go-with-tests"
+    description: "Learn Go by writing tests - a comprehensive guide that teaches Go programming through test-driven development."
+    type: "article"
+    source: "GitBook"
+    date: "2024-11-15"
+    tags: ["golang", "testing", "tdd"]
+
+  - title: "Matt KØDVB - In-depth Go Classes"
+    url: "https://www.youtube.com/@mattkdvb5154"
+    description: "Awesome in-depth channel with old-school, detailed Go classes covering advanced topics and best practices."
+    type: "video"
+    source: "YouTube"
+    date: "2024-11-12"
+    tags: ["golang", "video", "advanced"]
+
+  - title: "Anthony GG - Go Programming Videos"
+    url: "https://www.youtube.com/@anthonygg_"
+    description: "A lot of good videos on Go covering practical examples, tutorials, and real-world applications."
+    type: "video"
+    source: "YouTube"
+    date: "2024-11-10"
+    tags: ["golang", "video", "practical"]

@@ -1,25 +1,36 @@
 import { getAllArticles } from "./articles";
 import { getAllDeepDives } from "./deep-dives";
+import { getMentions } from "../mentions";
 import { PostInput, DeepDiveInput } from "../../types/data/blog";
+import { MentionItem } from "../../types/data/mentions";
 
 export interface TagInfo {
   name: string;
   count: number;
   articlesCount: number;
   deepDivesCount: number;
+  mentionsCount: number;
 }
 
 export async function getAllTags(): Promise<TagInfo[]> {
   const articles = await getAllArticles();
   const deepDives = await getAllDeepDives();
+  const mentions = await getMentions();
 
-  const tagCounts = new Map<string, { articles: number; deepDives: number }>();
+  const tagCounts = new Map<
+    string,
+    { articles: number; deepDives: number; mentions: number }
+  >();
 
   // Count tags from articles
   articles.forEach((article) => {
     if (article.tags) {
       article.tags.forEach((tag) => {
-        const current = tagCounts.get(tag) || { articles: 0, deepDives: 0 };
+        const current = tagCounts.get(tag) || {
+          articles: 0,
+          deepDives: 0,
+          mentions: 0,
+        };
         current.articles++;
         tagCounts.set(tag, current);
       });
@@ -30,8 +41,27 @@ export async function getAllTags(): Promise<TagInfo[]> {
   deepDives.forEach((deepDive) => {
     if (deepDive.tags) {
       deepDive.tags.forEach((tag) => {
-        const current = tagCounts.get(tag) || { articles: 0, deepDives: 0 };
+        const current = tagCounts.get(tag) || {
+          articles: 0,
+          deepDives: 0,
+          mentions: 0,
+        };
         current.deepDives++;
+        tagCounts.set(tag, current);
+      });
+    }
+  });
+
+  // Count tags from mentions
+  mentions.items.forEach((mention) => {
+    if (mention.tags) {
+      mention.tags.forEach((tag) => {
+        const current = tagCounts.get(tag) || {
+          articles: 0,
+          deepDives: 0,
+          mentions: 0,
+        };
+        current.mentions++;
         tagCounts.set(tag, current);
       });
     }
@@ -40,9 +70,10 @@ export async function getAllTags(): Promise<TagInfo[]> {
   const tags: TagInfo[] = Array.from(tagCounts.entries()).map(
     ([name, counts]) => ({
       name,
-      count: counts.articles + counts.deepDives,
+      count: counts.articles + counts.deepDives + counts.mentions,
       articlesCount: counts.articles,
       deepDivesCount: counts.deepDives,
+      mentionsCount: counts.mentions,
     })
   );
 
@@ -60,10 +91,12 @@ export async function getTagByName(tagName: string): Promise<TagInfo | null> {
 export async function getAllPostsByTag(tagName: string): Promise<{
   articles: PostInput[];
   deepDives: DeepDiveInput[];
+  mentions: MentionItem[];
   tag: TagInfo | null;
 }> {
   const articles = await getAllArticles();
   const deepDives = await getAllDeepDives();
+  const mentionsData = await getMentions();
   const tag = await getTagByName(tagName);
 
   const filteredArticles = articles.filter(
@@ -74,9 +107,14 @@ export async function getAllPostsByTag(tagName: string): Promise<{
     (deepDive) => deepDive.tags && deepDive.tags.includes(tagName)
   );
 
+  const filteredMentions = mentionsData.items.filter(
+    (mention) => mention.tags && mention.tags.includes(tagName)
+  );
+
   return {
     articles: filteredArticles,
     deepDives: filteredDeepDives,
+    mentions: filteredMentions,
     tag,
   };
 }

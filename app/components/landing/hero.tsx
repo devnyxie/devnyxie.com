@@ -36,7 +36,7 @@ function Hero({
           alt={picture.alt}
           className="w-24 h-24 border-2 border-muted rounded-full"
         /> */}
-         <Image
+        <Image
           src={picture.src}
           alt={picture.alt}
           width={"500"}

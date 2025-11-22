@@ -85,6 +85,12 @@ export default async function TagsPage() {
                             {tag.deepDivesCount !== 1 ? "s" : ""}
                           </div>
                         )}
+                        {tag.mentionsCount > 0 && (
+                          <div>
+                            {tag.mentionsCount} mention
+                            {tag.mentionsCount !== 1 ? "s" : ""}
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
