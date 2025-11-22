@@ -121,7 +121,7 @@ export default async function Home() {
                 Recent Mentions
               </Heading>
               <p className="text-balance text-left text-sm sm:text-md lg:text-sm text-muted-foreground">
-                Resources and articles I've been exploring lately
+                Resources and articles I&apos;ve been exploring lately
               </p>
             </div>
             <Button variant="outline" asChild>

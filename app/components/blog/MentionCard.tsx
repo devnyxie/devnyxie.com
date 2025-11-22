@@ -3,8 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import { MentionItem } from "../../../lib/types/data/mentions";
-import { ExternalLink, Calendar, Play, Globe } from "lucide-react";
-import Tag from "./shared/tag/tag";
+import { ExternalLink, Play, Globe } from "lucide-react";
 
 type MentionCardProps = {
   mention: MentionItem;

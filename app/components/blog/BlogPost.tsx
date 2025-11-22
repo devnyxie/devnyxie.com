@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import { PostInput } from "@/lib/types/data/blog";
 import { Calendar } from "lucide-react";
 import Tag from "./shared/tag/tag";
-import Image from "next/image";
 import ImageModal from "../ImageModal";
 
 type PostProps = Omit<PostInput, "content" | "published"> & {
