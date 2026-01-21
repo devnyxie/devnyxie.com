@@ -7,6 +7,7 @@ import Link from "next/link";
 
 import FadeIn from "../animations/fadeIn";
 import Image from "next/image";
+import { MessageCircle, Send } from "lucide-react";
 
 type Props = {
   title: string;
@@ -61,38 +62,66 @@ function Hero({
           {links && links.length > 0 && links[0].to && (
             <Button asChild>
               <Link href={links[0].to} className="flex gap-2 items-center">
-                {links[0].label}
+                {links[0].label} <Send />
               </Link>
             </Button>
           )}
-          <Button
-            variant="ghost"
-            color={available ? "success" : "destructive"}
-            asChild
-          >
-            <Link
-              href={meetingLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex gap-2 items-center"
+
+          {available ? (
+            <Button
+              variant="ghost"
+              color={available ? "success" : "destructive"}
+              asChild
             >
-              <span className="relative flex size-2">
-                <span
-                  className={`
-                  absolute inline-flex size-full rounded-full opacity-75
-                  ${available ? "bg-success animate-ping" : "bg-destructive"}
-                  `}
-                />
-                <span
-                  className={`
-                  relative inline-flex size-2 scale-90 rounded-full
-                  ${available ? "bg-success" : "bg-destructive"}
-                  `}
-                />
-              </span>
-              {available ? "Available" : "Not available"}
-            </Link>
-          </Button>
+              <Link
+                href={meetingLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-2 items-center"
+              >
+                <span className="relative flex size-2">
+                  <span
+                    className={
+                      "absolute inline-flex size-full rounded-full opacity-75 bg-success animate-ping"
+                    }
+                  />
+                  <span
+                    className={
+                      "relative inline-flex size-2 scale-90 rounded-full bg-success"
+                    }
+                  />
+                </span>
+                Available
+              </Link>
+            </Button>
+          ) : (
+            <>
+              {/* <Button
+                variant="ghost"
+                color={available ? "success" : "destructive"}
+                asChild
+              >
+                <div
+                  rel="noopener noreferrer"
+                  className="flex gap-2 items-center"
+                >
+                  <span className="relative flex size-2">
+                    <span
+                      className={
+                        "absolute inline-flex size-full rounded-full opacity-75 bg-destructive"
+                      }
+                    />
+                    <span
+                      className={
+                        "relative inline-flex size-2 scale-90 rounded-full bg-destructive"
+                      }
+                    />
+                  </span>
+                  Not available
+                </div>
+              </Button> */}
+            </>
+          )}
         </div>
       </FadeIn>
     </div>

@@ -1,13 +1,13 @@
 export const APP_CONFIG = {
   domain: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   picture: {
-    src: "/pfp_new.png",
+    src: "/image.png",
     alt: "My profile picture",
   },
   meetingLink: "https://cal.com/tim-afanasiev",
   github_username: "devnyxie",
   email: "timbusinez@gmail.com",
-  available: true,
+  available: false,
   server: {
     name: process.env.NEXT_PUBLIC_SERVER_NAME || "Home Lab",
     region:
@@ -27,6 +27,9 @@ export const APP_CONFIG = {
     language: "en",
     authorName: "Tim Afanasiev",
     maxItems: 20,
+  },
+  features: {
+    mentions: false,
   },
 };
 

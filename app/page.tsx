@@ -37,10 +37,10 @@ const GitHeroSectionLazy = dynamic(
 
 export default async function Home() {
   const pageData: IndexPageType = getPageData("index");
-  const { picture, meetingLink, available } = getConfig();
+  const { picture, meetingLink, available, features } = getConfig();
 
   const posts: PostInput[] = await getAllPosts();
-  const mentions: MentionsPageType = await getMentions();
+  const mentions: MentionsPageType | null = features.mentions ? await getMentions() : null;
 
   return (
     <Container>
@@ -114,38 +114,40 @@ export default async function Home() {
         </FadeIn>
 
         {/* Recent Mentions */}
-        <FadeIn delay={0.9}>
-          <div className="mb-6 flex items-start justify-between">
-            <div>
-              <Heading className="mb-2" size="default">
-                Recent Mentions
-              </Heading>
-              <p className="text-balance text-left text-sm sm:text-md lg:text-sm text-muted-foreground">
-                Resources and articles I&apos;ve been exploring lately
-              </p>
+        {features.mentions && (
+          <FadeIn delay={0.9}>
+            <div className="mb-6 flex items-start justify-between">
+              <div>
+                <Heading className="mb-2" size="default">
+                  Recent Mentions
+                </Heading>
+                <p className="text-balance text-left text-sm sm:text-md lg:text-sm text-muted-foreground">
+                  Resources and articles I&apos;ve been exploring lately
+                </p>
+              </div>
+              <Button variant="outline" asChild>
+                <Link href="/blog">More</Link>
+              </Button>
             </div>
-            <Button variant="outline" asChild>
-              <Link href="/blog">More</Link>
-            </Button>
-          </div>
-          <List asGrid cols="1 sm:2" gap="4">
-            {mentions.items && mentions.items.length > 0 ? (
-              <>
-                {mentions.items.slice(0, 4).map((mention, index) => (
-                  <MentionCard
-                    key={`${mention.url}-${index}`}
-                    mention={mention}
-                    layout="compact"
-                  />
-                ))}
-              </>
-            ) : (
-              <p className="text-sm text-muted-foreground">
-                No mentions found.
-              </p>
-            )}
-          </List>
-        </FadeIn>
+            <List asGrid cols="1 sm:2" gap="4">
+              {mentions?.items && mentions.items.length > 0 ? (
+                <>
+                  {mentions.items.slice(0, 4).map((mention, index) => (
+                    <MentionCard
+                      key={`${mention.url}-${index}`}
+                      mention={mention}
+                      layout="compact"
+                    />
+                  ))}
+                </>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No mentions found.
+                </p>
+              )}
+            </List>
+          </FadeIn>
+        )}
       </Gaps>
     </Container>
   );

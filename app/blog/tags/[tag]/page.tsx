@@ -10,6 +10,7 @@ import { Button } from "@/app/components/button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { generateMetadata as createMetadata } from "@/lib/metadata";
+import { getConfig } from "@/lib/app.config";
 import Container from "@/app/components/layout/container";
 import List from "@/app/components/layout/list";
 
@@ -48,6 +49,7 @@ export async function generateMetadata({ params }: TagPageProps) {
 export default async function TagPage({ params }: TagPageProps) {
   const { tag: tagParam } = await params;
   const tagName = decodeURIComponent(tagParam);
+  const { features } = getConfig();
   const { articles, deepDives, mentions, tag } = await getAllPostsByTag(
     tagName
   );
@@ -56,7 +58,7 @@ export default async function TagPage({ params }: TagPageProps) {
     notFound();
   }
 
-  const totalPosts = articles.length + deepDives.length + mentions.length;
+  const totalPosts = articles.length + deepDives.length + (features.mentions ? mentions.length : 0);
 
   return (
     <Container>
@@ -84,7 +86,7 @@ export default async function TagPage({ params }: TagPageProps) {
                     `${tag.deepDivesCount} deep dive${
                       tag.deepDivesCount !== 1 ? "s" : ""
                     }`,
-                  tag.mentionsCount > 0 &&
+                  features.mentions && tag.mentionsCount > 0 &&
                     `${tag.mentionsCount} mention${
                       tag.mentionsCount !== 1 ? "s" : ""
                     }`,
@@ -143,7 +145,7 @@ export default async function TagPage({ params }: TagPageProps) {
               )}
 
               {/* Mentions Section */}
-              {mentions.length > 0 && (
+              {features.mentions && mentions.length > 0 && (
                 <div>
                   <div className="mb-6 flex items-start justify-between">
                     <div>

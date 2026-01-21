@@ -5,6 +5,7 @@ import BlogPost from "../components/blog/BlogPost";
 import MentionCard from "../components/blog/MentionCard";
 import Heading from "@/app/components/heading";
 import { getPageData } from "@/lib/api/pages";
+import { getConfig } from "@/lib/app.config";
 import Gaps from "@/app/components/layout/gaps";
 import { BlogPageType } from "@/lib/types/pages/blog";
 import RowDeepDive from "@/app/components/blog/dive";
@@ -28,49 +29,52 @@ export async function generateMetadata() {
 
 export default async function Blog() {
   const page: BlogPageType = await getPageData("blog");
+  const { features } = getConfig();
   const articles: PostInput[] = await getAllArticles();
   const deep_dives: DeepDiveInput[] = await getAllDeepDives();
-  const mentions: MentionsPageType = await getMentions();
+  const mentions: MentionsPageType | null = features.mentions ? await getMentions() : null;
   return (
     <Container>
       <PageBreadcrumb />
       <Gaps>
         {/* Mentions */}
-        <div id="section" className="gap-8">
-          <div className="mb-8 flex items-start justify-between">
-            <div>
-              <Heading className="mb-2" size="big">
-                {page.title_mentions}
-              </Heading>
-              <p className="text-muted-foreground">
-                {page.description_mentions}
-              </p>
+        {features.mentions && (
+          <div id="section" className="gap-8">
+            <div className="mb-8 flex items-start justify-between">
+              <div>
+                <Heading className="mb-2" size="big">
+                  {page.title_mentions}
+                </Heading>
+                <p className="text-muted-foreground">
+                  {page.description_mentions}
+                </p>
+              </div>
+              <div className="flex gap-2">
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href="/blog/tags">Tags</Link>
+                </Button>
+                <Button variant="outline" asChild>
+                  <Link href="#mentions">View All</Link>
+                </Button>
+              </div>
             </div>
-            <div className="flex gap-2">
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/blog/tags">Tags</Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link href="#mentions">View All</Link>
-              </Button>
-            </div>
+            <List asGrid cols="1 sm:2 xl:3" gap="4">
+              {mentions?.items ? (
+                mentions.items
+                  .slice(0, 6)
+                  .map((mention, index) => (
+                    <MentionCard
+                      key={`${mention.url}-${index}`}
+                      mention={mention}
+                      layout="compact"
+                    />
+                  ))
+              ) : (
+                <p className="text-muted-foreground">No mentions found.</p>
+              )}
+            </List>
           </div>
-          <List asGrid cols="1 sm:2 xl:3" gap="4">
-            {mentions.items ? (
-              mentions.items
-                .slice(0, 6)
-                .map((mention, index) => (
-                  <MentionCard
-                    key={`${mention.url}-${index}`}
-                    mention={mention}
-                    layout="compact"
-                  />
-                ))
-            ) : (
-              <p className="text-muted-foreground">No mentions found.</p>
-            )}
-          </List>
-        </div>
+        )}
 
         {/* Deep Dives */}
         <div id="section" className="gap-8">

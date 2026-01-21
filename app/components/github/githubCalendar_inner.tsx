@@ -13,12 +13,11 @@ const GithubCalendarInner: React.FC<Props> = ({ resolvedTheme }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const currentYear = new Date().getFullYear();
     const { github_username } = getConfig();
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://github-contributions-api.jogruber.de/v4/${github_username}?y=${currentYear}`
+          `https://github-contributions-api.jogruber.de/v4/${github_username}?y=last`
         );
         const result = await response.json();
         if (result) {

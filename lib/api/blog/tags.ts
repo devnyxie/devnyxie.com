@@ -1,6 +1,7 @@
 import { getAllArticles } from "./articles";
 import { getAllDeepDives } from "./deep-dives";
 import { getMentions } from "../mentions";
+import { getConfig } from "../../app.config";
 import { PostInput, DeepDiveInput } from "../../types/data/blog";
 import { MentionItem } from "../../types/data/mentions";
 
@@ -13,9 +14,10 @@ export interface TagInfo {
 }
 
 export async function getAllTags(): Promise<TagInfo[]> {
+  const { features } = getConfig();
   const articles = await getAllArticles();
   const deepDives = await getAllDeepDives();
-  const mentions = await getMentions();
+  const mentions = features.mentions ? await getMentions() : null;
 
   const tagCounts = new Map<
     string,
@@ -52,20 +54,22 @@ export async function getAllTags(): Promise<TagInfo[]> {
     }
   });
 
-  // Count tags from mentions
-  mentions.items.forEach((mention) => {
-    if (mention.tags) {
-      mention.tags.forEach((tag) => {
-        const current = tagCounts.get(tag) || {
-          articles: 0,
-          deepDives: 0,
-          mentions: 0,
-        };
-        current.mentions++;
-        tagCounts.set(tag, current);
-      });
-    }
-  });
+  // Count tags from mentions (only if feature is enabled)
+  if (features.mentions && mentions) {
+    mentions.items.forEach((mention) => {
+      if (mention.tags) {
+        mention.tags.forEach((tag) => {
+          const current = tagCounts.get(tag) || {
+            articles: 0,
+            deepDives: 0,
+            mentions: 0,
+          };
+          current.mentions++;
+          tagCounts.set(tag, current);
+        });
+      }
+    });
+  }
 
   const tags: TagInfo[] = Array.from(tagCounts.entries()).map(
     ([name, counts]) => ({
@@ -94,9 +98,10 @@ export async function getAllPostsByTag(tagName: string): Promise<{
   mentions: MentionItem[];
   tag: TagInfo | null;
 }> {
+  const { features } = getConfig();
   const articles = await getAllArticles();
   const deepDives = await getAllDeepDives();
-  const mentionsData = await getMentions();
+  const mentionsData = features.mentions ? await getMentions() : null;
   const tag = await getTagByName(tagName);
 
   const filteredArticles = articles.filter(
@@ -107,9 +112,11 @@ export async function getAllPostsByTag(tagName: string): Promise<{
     (deepDive) => deepDive.tags && deepDive.tags.includes(tagName)
   );
 
-  const filteredMentions = mentionsData.items.filter(
-    (mention) => mention.tags && mention.tags.includes(tagName)
-  );
+  const filteredMentions = features.mentions && mentionsData
+    ? mentionsData.items.filter(
+        (mention) => mention.tags && mention.tags.includes(tagName)
+      )
+    : [];
 
   return {
     articles: filteredArticles,

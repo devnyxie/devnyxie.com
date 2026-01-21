@@ -6,6 +6,7 @@ import { PostInput } from "@/lib/types/data/blog";
 import { Calendar } from "lucide-react";
 import Tag from "./shared/tag/tag";
 import ImageModal from "../ImageModal";
+import Image from "next/image";
 
 type PostProps = Omit<PostInput, "content" | "published"> & {
   layout?: "card" | "row";
@@ -24,15 +25,13 @@ function BlogPost({ layout = "row", ...props }: PostProps) {
         {/* Image - always on top for card layout */}
         {image && layout === "card" && (
           <div className="rounded overflow-hidden w-full aspect-video flex items-center justify-center">
-            <img
+            <Image
+              width={1280}
+              height={720}
               src={image}
               alt={title}
-              className="object-cover h-full w-full cursor-pointer hover:opacity-80 transition-transform duration-300 group-hover:scale-105 select-none"
+              className="object-cover h-full w-full cursor-pointer transition-transform duration-300 group-hover:scale-105 select-none"
               loading="lazy"
-              onClick={(e) => {
-                e.preventDefault();
-                setOpen(true);
-              }}
             />
           </div>
         )}
@@ -43,14 +42,12 @@ function BlogPost({ layout = "row", ...props }: PostProps) {
             {/* Mobile: image on top */}
             {image && (
               <div className="rounded overflow-hidden w-full aspect-video flex sm:hidden items-center justify-center">
-                <img
+                <Image
+                  width={1280}
+                  height={720}
                   src={image}
                   alt={title}
-                  className="object-cover h-full w-full cursor-pointer hover:opacity-80 transition-transform duration-300 group-hover:scale-105 select-none"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpen(true);
-                  }}
+                  className="object-cover h-full w-full cursor-pointer transition-transform duration-300 group-hover:scale-105 select-none"
                 />
               </div>
             )}
@@ -61,15 +58,13 @@ function BlogPost({ layout = "row", ...props }: PostProps) {
           {/* Row layout: image on left for larger screens */}
           {layout === "row" && image && (
             <div className="rounded overflow-hidden max-h-[125px] aspect-video hidden sm:block shrink-0">
-              <img
+              <Image
+                width={1280}
+                height={720}
                 src={image}
                 alt={title}
-                className="object-cover h-full w-full cursor-pointer hover:opacity-80 transition-transform duration-300 group-hover:scale-105 select-none"
+                className="object-cover h-full w-full cursor-pointer transition-transform duration-300 group-hover:scale-105 select-none"
                 loading="lazy"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setOpen(true);
-                }}
               />
             </div>
           )}

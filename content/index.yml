@@ -17,7 +17,12 @@ experience:
   title: Work Experience
   items:
     - position: "Software Engineer"
-      date: "2024 - Present"
+      date: "2026 - Present"
+      company:
+        name: Capgemini
+        url: "https://www.capgemini.com"
+    - position: "Software Engineer"
+      date: "2024 - 2025"
       company:
         name: Upwork
         url: "https://www.upwork.com"
@@ -37,7 +42,7 @@ skills:
   items:
     - title: "Frontend Development"
       description: "Crafting beautiful, performant user interfaces with React, Next.js, Vue, and TypeScript. Expert in modern state management, animation, and responsive design patterns."
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+      icon: "/images/react.svg"
       category: "blue"
       size: "large"
     - title: "Backend Engineering"
@@ -47,22 +52,17 @@ skills:
       size: "large"
     - title: "Database Architecture"
       description: "Designing efficient data models and optimizing performance with PostgreSQL, MongoDB, and Redis."
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+      icon: "/images/postgresql.svg"
       category: "purple"
       size: "medium"
     - title: "DevOps & Cloud"
       description: "Container orchestration, CI/CD automation, and cloud infrastructure with Docker, Kubernetes, and AWS."
-      icon: "https://www.svgrepo.com/show/448221/docker.svg"
+      icon: "/images/docker.svg"
       category: "orange"
       size: "medium"
-    # - title: "Design Systems"
-    #   description: "Creating cohesive user experiences and scalable design systems with modern tools and principles."
-    #   icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 2a3 3 0 0 0-3 3 3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3-3z'/%3E%3Cpath d='M12 12a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z'/%3E%3C/svg%3E"
-    #   category: "pink"
-    #   size: "medium"
     - title: "Design"
       description: "UI/UX design and prototyping with Figma, creating user-centered interfaces and design systems."
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+      icon: "/images/figma.svg"
       category: "pink"
       size: "medium"
 blog:

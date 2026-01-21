@@ -18,7 +18,7 @@ function Experience({
         <ul className="list-disc list-inside text-sm sm:text-md lg:text-sm flex flex-col gap-2">
           {experience.items.map((item) => (
             <li
-              key={item.position}
+              key={`${item.position}-${typeof item.date === "string" ? item.date : item.date.toString()}`}
               className="w-full flex items-center gap-1 text-sm"
             >
               <div className="text-muted-foreground">
