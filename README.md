@@ -1,14 +1,22 @@
-# Pluto Template
+# devnyxie.com
 
-A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind CSS`, and `MDX`.
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white)
+![ESLint](https://img.shields.io/badge/code%20style-eslint-4B32C3?logo=eslint&logoColor=white)
+![License](https://img.shields.io/github/license/devnyxie/devnyxie.com)
+
+![Build](https://img.shields.io/github/actions/workflow/status/devnyxie/devnyxie.com/ci.yml?branch=main)
+
+
+
+A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind CSS` and `MDX`.
 
 ## Features
 
-- **Dark Mode**: Built-in dark mode support.
-- **Awesome Markdown Support**: Write your blog posts in Markdown with support for front matter, along with syntax cool highlighting and many themes for code blocks.
-- **Config Driven**: Easily customize **all** aspects of your blog through configuration files.
-- **SEO Optimized**: Built with SEO best practices in mind.
-- **Statically Generated**: Almost everything is statically generated for optimal performance and minimal server load.
+- **Awesome Markdown Support**: Write your blog posts in Markdown with support for front matter, along with cool syntax highlighting and themes.
+- **Config Driven**: Easily manage **all** content of your blog through configuration files.
+- **SEO Optimized**: Built with SEO best practices in mind, almost everything is statically generated for optimal performance and minimal server load.
 
 ## Dependencies Overview
 
@@ -19,58 +27,47 @@ A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind
 - `remark-rehype` for converting markdown to HTML
 - `remark-breaks` for converting line breaks to `<br>` tags
 - `remark-gfm` for GitHub Flavored Markdown support
-- `rehype` for transforming HTML
 - `rehype-stringify` for converting HTML to strings
 - `rehype-slug` for adding slugs to headings
 - `rehype-autolink-headings` for adding links to headings
 - `@shikijs/rehype` for syntax highlighting
+- `shiki` for syntax highlighting engine
+- `next-mdx-remote` for MDX support in Next.js
 - `gray-matter` for parsing front matter
+- `js-yaml` for YAML parsing
 - `zod` for static content validation and typization
 
-### Components
+### Components & UI
 
 - `tailwind-merge` for merging Tailwind CSS classes
 - `clsx` for conditional class names
 - `class-variance-authority` for managing component variants
 - `next-themes` for theme management
-- `@radix-ui/react-*` for accessible UI components <br/>
-  Components used (1x):
-  - `navigation-menu`.
+- `@radix-ui/react-slot` for composable component slots
+- `@radix-ui/react-navigation-menu` for accessible navigation menus
+- `lucide-react` for React icon components
+- `@tabler/icons-react` for Tabler icon components
 
-### Animation
+### Animations & Interactions
 
-- `motion` for animations and transitions
+- `framer-motion` for animations and transitions
+- `embla-carousel-react` for carousel components
+- `embla-carousel-autoplay` for carousel autoplay functionality
+- `react-intersection-observer` for intersection observer hooks
+
+### Development & Data
+
+- `glob` for file pattern matching
+- `react-activity-calendar` for GitHub-style activity calendars
 
 ## Roadmap
 
-- [ ] Add parsing **Caching** for faster builds and development (medium)
-- [ ] Rework `button` component structure (low)
-- [ ] Cleaner codebase and better documentation (medium)
-- [ ] Shared View component for Articles/Deep Dives (medium)
-- [ ] Overall Normalization of styles - paddings, margins, font sizes (medium) <br/>
-      In progress - `design-system` branch 
-- [ ] Add **Search** functionality (low)
-- [ ] Make `TOC` scrollable, overflow issue with long TOCs (critical)
-- [ ] Update `readme.md` with new dependencies and features, add screenshot, get ideas from [enscribe's](https://github.com/jktrn/enscribe.dev) `readme` - minimal & good. (medium)
+- [ ] Overall Normalization of styles - paddings, margins, font sizes
+- [ ] Add **Search** functionality
 
 ## Development
 
-We are utilizing Node.js 22 LTS for this project, along with `pnpm` as our package manager. To set up the development environment, please follow these steps:
-
-1. Install Node.js 22 LTS from the [official Node.js website](https://nodejs.org/) or via a version manager like `nvm`.
-2. Install `pnpm` globally by running the following command:
-   ```bash
-   npm install -g pnpm
-   ```
-3. Clone the repository to your local machine.
-4. Navigate to the project directory and install the dependencies using `pnpm`:
-   ```bash
-   pnpm install
-   ```
-5. Start the development server:
-   ```bash
-    pnpm dev
-   ```
+We are utilizing Node.js 24 LTS for this project, along with `pnpm` as our package manager. To set up the development environment, please follow these steps:
 
 ## License
 

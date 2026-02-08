@@ -1,11 +1,5 @@
 export { getAllArticles, getArticleBySlug, getArticlesByTag } from "./articles";
 
-export {
-  getAllDeepDives,
-  getDeepDiveBySlug,
-  getDeepDivesByTag,
-} from "./deep-dives";
-
 export { getAllTags, getTagByName, getAllPostsByTag } from "./tags";
 
 export { getAllArticles as getAllPosts } from "./articles";

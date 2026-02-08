@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
-import { APP_CONFIG } from "@/lib/app.config";
+import { NextResponse } from "next/server";
+import { APP_CONFIG } from "@/app.config";
 
 interface ServerStatusResponse {
   isOnline: boolean;
@@ -9,7 +9,7 @@ interface ServerStatusResponse {
   region: string;
 }
 
-export async function GET(_request: NextRequest) {
+export async function GET() {
   try {
     const startTime = Date.now();
 

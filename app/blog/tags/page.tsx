@@ -5,12 +5,12 @@ import Heading from "@/app/components/heading";
 import Gaps from "@/app/components/layout/gaps";
 import { getPageData } from "@/lib/api/pages";
 
-import { generateMetadata as createMetadata } from "@/lib/metadata";
+import { generateMetadata as createMetadata } from "@/metadata";
 import Container from "@/app/components/layout/container";
 
 export const metadata = createMetadata({
   title: "Tags",
-  description: "Browse all tags used in articles and deep dives",
+  description: "Browse all tags used in articles and mentions",
 });
 
 export default async function TagsPage() {
@@ -77,12 +77,6 @@ export default async function TagsPage() {
                           <div>
                             {tag.articlesCount} article
                             {tag.articlesCount !== 1 ? "s" : ""}
-                          </div>
-                        )}
-                        {tag.deepDivesCount > 0 && (
-                          <div>
-                            {tag.deepDivesCount} deep dive
-                            {tag.deepDivesCount !== 1 ? "s" : ""}
                           </div>
                         )}
                         {tag.mentionsCount > 0 && (

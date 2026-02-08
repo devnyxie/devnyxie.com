@@ -1,7 +1,6 @@
 import path from "path";
-import contentConfig from "../content.config";
+import contentConfig from "../../content.config";
 import { parseYamlFile } from "../utils/yaml_parser";
-import { contentPageSchema } from "../types/base";
 
 export function getPageData(pageName: string) {
   const pageConfig = contentConfig.pages[pageName];
@@ -23,7 +22,7 @@ export function getAllContentPages() {
 export function getContentPageBySlug(slug: string) {
   try {
     return getPageData(slug);
-  } catch (error) {
+  } catch {
     return null;
   }
 }

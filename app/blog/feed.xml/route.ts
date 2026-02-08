@@ -1,26 +1,14 @@
 import { getAllArticles } from "@/lib/api/blog/articles";
-import { getAllDeepDives } from "@/lib/api/blog/deep-dives";
-import { APP_CONFIG } from "@/lib/app.config";
+import { APP_CONFIG } from "@/app.config";
 
 // This makes the route static at build time
 export const dynamic = "force-static";
 
 export async function GET() {
   const articles = await getAllArticles();
-  const deepDives = await getAllDeepDives();
-
-  // Add type to distinguish between articles and deep dives
-  const articlesWithType = articles.map((post) => ({
-    ...post,
-    type: "article" as const,
-  }));
-  const deepDivesWithType = deepDives.map((post) => ({
-    ...post,
-    type: "deep-dive" as const,
-  }));
 
   // Combine and sort all blog posts by date
-  const allPosts = [...articlesWithType, ...deepDivesWithType]
+  const allPosts = articles
     .filter((post) => post.published)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, APP_CONFIG.rss.maxItems);
@@ -47,12 +35,8 @@ export async function GET() {
     <item>
       <title><![CDATA[${post.title}]]></title>
       <description><![CDATA[${post.description || ""}]]></description>
-      <link>${siteUrl}/blog/${
-          post.type === "deep-dive" ? "deep-dives" : "articles"
-        }/${post.slug}</link>
-      <guid isPermaLink="true">${siteUrl}/blog/${
-          post.type === "deep-dive" ? "deep-dives" : "articles"
-        }/${post.slug}</guid>
+      <link>${siteUrl}/blog/${post.slug}</link>
+      <guid isPermaLink="true">${siteUrl}/blog/${post.slug}</guid>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
       ${
         post.tags

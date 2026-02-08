@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
@@ -40,11 +41,16 @@ function PortfolioCarousel() {
       <CarouselContent>
         {items.map((src, index) => (
           <CarouselItem key={index}>
-            <img
-              src={src}
-              alt={`Portfolio item ${index + 1}`}
-              className="w-full h-full aspect-video object-contain"
-            />
+            <div className="relative w-full aspect-video">
+              <Image
+                src={src}
+                alt={`Portfolio item ${index + 1}`}
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 70vw, 50vw"
+                priority={index === 0}
+              />
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>

@@ -4,7 +4,7 @@ date: 2025-06-15
 tags:
   - go
 description: A comprehensive guide to Go's core types, including strings, numbers, structs, arrays, slices, maps, pointers, interfaces, channels, and more.
-icon: https://go.dev/blog/go-brand/Go-Logo/PNG/Go-Logo_Blue.png
+image: /images/articles/go_data_types/thumbnail.jpg
 ---
 
 # Core Types

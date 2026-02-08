@@ -2,20 +2,16 @@ import React from "react";
 import { Button } from "../../button";
 
 import Link from "next/link";
-import { PostInput, DeepDiveInput } from "@/lib/types/data/blog";
+import { PostInput } from "@/lib/types/data/blog";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function Surround({
   post,
-  contentType = "articles",
 }: {
-  post: PostInput | DeepDiveInput;
-  contentType?: "articles" | "deep-dives";
+  post: PostInput;
 }) {
   const getHref = (slug: string) => {
-    return contentType === "deep-dives"
-      ? `/blog/deep-dives/${slug}`
-      : `/blog/articles/${slug}`;
+    return `/blog/${slug}`;
   };
 
   return (

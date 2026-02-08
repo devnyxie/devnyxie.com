@@ -2,6 +2,7 @@ import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 
 function ImageModal({
   src,
@@ -95,10 +96,13 @@ function ImageModal({
             exit={{ scale: 0.7, opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
-            <img
+            <Image
+              width={1920}
+              height={1080}
+              quality={100}
               src={src}
               alt={alt}
-              className="rounded-lg cursor-zoom-out"
+              className="rounded-lg cursor-zoom-out border"
               style={getOptimalImageStyles()}
               onLoad={handleImageLoad}
               onClick={onClose}

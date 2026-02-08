@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import FadeIn from "../animations/fadeIn";
 import Image from "next/image";
-import { MessageCircle, Send } from "lucide-react";
+import { Send } from "lucide-react";
 
 type Props = {
   title: string;
@@ -96,7 +96,7 @@ function Hero({
             </Button>
           ) : (
             <>
-              {/* <Button
+              <Button
                 variant="ghost"
                 color={available ? "success" : "destructive"}
                 asChild
@@ -119,7 +119,7 @@ function Hero({
                   </span>
                   Not available
                 </div>
-              </Button> */}
+              </Button>
             </>
           )}
         </div>

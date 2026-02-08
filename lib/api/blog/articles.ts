@@ -1,9 +1,8 @@
 import fs from "fs";
-import path from "path";
 import { blogPostSchema, PostInput } from "../../types/data/blog";
 import matter from "gray-matter";
 import { glob } from "glob";
-import { getContentConfig } from "../../content.config";
+import { getContentConfig } from "../../../content.config";
 import { getSlug } from "./utils";
 
 function parsePostFile(filePath: string): PostInput | null {

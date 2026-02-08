@@ -6,7 +6,7 @@ import PageBreadcrumb from "@/app/components/layout/breadcrumb";
 import ProjectCard from "@/app/components/portfolio/project-card";
 import DesignCard from "@/app/components/portfolio/design-card";
 import Gaps from "@/app/components/layout/gaps";
-import { generateMetadata as createMetadata } from "@/lib/metadata";
+import { generateMetadata as createMetadata } from "@/metadata";
 import { PortfolioPageType } from "@/lib/types/pages/portfolio";
 import Container from "@/app/components/layout/container";
 import List from "@/app/components/layout/list";

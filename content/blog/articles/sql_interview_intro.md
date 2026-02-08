@@ -5,7 +5,7 @@ date: 2025-11-02
 tags:
   - sql
   - interview
-image: /images/blog/articles/sql_interview_intro/pg.png
+image: /images/articles/sql_interview_intro/pg.png
 ---
 
 SQL interview questions are a staple of data science, analytics, and backend engineering interviews. While they may seem intimidating at first, most follow recognizable patterns that you can master with practice. This guide walks through common SQL concepts and real interview questions to help you build a systematic approach to solving them.

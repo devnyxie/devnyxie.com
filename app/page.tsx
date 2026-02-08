@@ -14,7 +14,7 @@ import { Button } from "@/app/components/button";
 import { getAllPosts } from "@/lib/api/blog/blog";
 import { getMentions } from "@/lib/api/mentions";
 import { getPageData } from "@/lib/api/pages";
-import { getConfig } from "@/lib/app.config";
+import { getConfig } from "@/app.config";
 import { PostInput } from "@/lib/types/data/blog";
 import { MentionsPageType } from "@/lib/types/data/mentions";
 import { IndexPageType } from "@/lib/types/pages";

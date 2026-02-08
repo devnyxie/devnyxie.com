@@ -5,7 +5,7 @@ tags:
   - sysadmin
   - bash
 date: 2024-12-25
-image: /images/blog/articles/born2beroot/thumbnail.png
+image: /images/articles/born2beroot/thumbnail.png
 description: A comprehensive guide to setting up a secure Debian server using VirtualBox, covering installation, partitioning, SSH configuration, firewall setup, sudo rules, password policies, and a monitoring script.
 ---
 
@@ -13,7 +13,7 @@ The **Born2beRoot** project is a system administration exercise that introduces 
 
 The **bonus** involves setting up additional features, like **advanced partitioning**, a **WordPress website** with specific services, or another functional service of your choice. However, bonus evaluation requires the mandatory part to be **flawless**.
 
-[Born2BeRoot.pdf](/images/blog/articles/born2beroot/born2beroot.pdf)
+[Born2BeRoot.pdf](/images/articles/born2beroot/born2beroot.pdf)
 
 ## Download the Debian ISO
 
@@ -40,7 +40,7 @@ Now that our virtual machine is ready, the next step is to install the operating
 Click "Start" on your Virtualbox interface. Select "Install" and then follow the on-screen instructions. The installation process is quite straightforward, especially when compared to more complex distributions like Arch or Gentoo. If you've ever tried installing those, you'll find Debian notably easier.
 
 <Callout variant="info" title="Screenshots">
-![Installation Screen](/images/blog/articles/born2beroot/screenshots/Screenshot%20from%202024-12-23%2007-24-21.webp)
+![Installation Screen](/images/articles/born2beroot/screenshots/Screenshot%20from%202024-12-23%2007-24-21.webp)
 </Callout>
 
 Set the hostname as your login followed by 42, as required by the project guidelines. This is the name of your device on the local network. Skip domain name configuration. Set a password for root. Make a user with your login and set a password for this account.
@@ -83,17 +83,17 @@ Select "Guided - use entire disk and set up encrypted LVM" then select "Separate
 Set a password. With this, even if the police raid my home, they won't get to my data unless they break my (super weak) password. 🥸
 
 <Callout variant="info" title="Screenshots">
-![Screenshot 1](/images/blog/articles/born2beroot/screenshots/Screenshot%20from%202024-12-23%2008-49-34.webp)
-![Screenshot 2](/images/blog/articles/born2beroot/screenshots/Screenshot%20from%202024-12-23%2008-49-57.webp)
-![Pasted image](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223085721.webp)
+![Screenshot 1](/images/articles/born2beroot/screenshots/Screenshot%20from%202024-12-23%2008-49-34.webp)
+![Screenshot 2](/images/articles/born2beroot/screenshots/Screenshot%20from%202024-12-23%2008-49-57.webp)
+![Pasted image](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223085721.webp)
 Adjust the volume group size in guided partitioning to carve out space for a couple more logical volumes.
-![Screenshot 3](/images/blog/articles/born2beroot/screenshots/Screenshot%20from%202024-12-23%2009-03-56-1.webp)
+![Screenshot 3](/images/articles/born2beroot/screenshots/Screenshot%20from%202024-12-23%2009-03-56-1.webp)
 </Callout>
 
 Head over to "Configure the Logical Volume Manager", and make two logical volumes: `srv` and `var-log`. Set them both as "Ext4 journaling file system" and mount them respectively to `/srv` and `/var/log`.
 
 <Callout variant="info" title="Screenshots">
-![LVM Configuration](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223091041.webp)
+![LVM Configuration](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223091041.webp)
 </Callout>
 
 #### srv
@@ -103,11 +103,11 @@ What is `/srv`? It's a directory that is used to store data served by the system
 </Callout>
 
 <Callout variant="info" title="Screenshots">
-![srv configuration 1](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223091323.webp)
-![srv configuration 2](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223091345.webp)
-![srv configuration 3](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223091415.webp)
+![srv configuration 1](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223091323.webp)
+![srv configuration 2](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223091345.webp)
+![srv configuration 3](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223091415.webp)
 Let's allocate `4000mb` for `/srv`:
-![srv allocation](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223091438.webp)
+![srv allocation](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223091438.webp)
 </Callout>
 
 #### var-log
@@ -134,12 +134,12 @@ Alright. The volumes are created now:
 But in order to use them, we need to format (`ext4` format) and mount them. In short, the system needs to know where these partitions are and how to access them.
 
 <Callout variant="info" title="Screenshots - srv">
-![srv format 1](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223092332.webp)
-![srv format 2](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223102240.webp)
-![srv format 3](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223102255.webp)
-![srv format 4](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223102319.webp)
-![srv format 5](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223102332.webp)
-![srv format 6](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223102352.webp)
+![srv format 1](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223092332.webp)
+![srv format 2](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223102240.webp)
+![srv format 3](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223102255.webp)
+![srv format 4](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223102319.webp)
+![srv format 5](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223102332.webp)
+![srv format 6](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223102352.webp)
 </Callout>
 
 Repeat the same process for `/var/log`:
@@ -148,7 +148,7 @@ Repeat the same process for `/var/log`:
 - Mount it to `/var/log` (enter manually)
 
 <Callout variant="info" title="Screenshots">
-![var-log format](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223102843.webp)
+![var-log format](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223102843.webp)
 </Callout>
 
 Seems like we're done with partitioning. Let's move on to the next step.
@@ -160,7 +160,7 @@ Seems like we're done with partitioning. Let's move on to the next step.
 Avoid scanning for extra installation media
 
 <Callout variant="info" title="Screenshots">
-![Installation Media Scan](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223105600.webp)
+![Installation Media Scan](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223105600.webp)
 </Callout>
 
 #### Country
@@ -168,7 +168,7 @@ Avoid scanning for extra installation media
 Select your country from the list
 
 <Callout variant="info" title="Screenshots">
-![Country Selection](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223105711.webp)
+![Country Selection](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223105711.webp)
 </Callout>
 
 #### Mirror
@@ -176,7 +176,7 @@ Select your country from the list
 Select the default Debian archive mirror
 
 <Callout variant="info" title="Screenshots">
-![Mirror Selection](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223105747.webp)
+![Mirror Selection](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223105747.webp)
 </Callout>
 
 #### HTTP Proxy
@@ -184,7 +184,7 @@ Select the default Debian archive mirror
 Leave it blank `:)`
 
 <Callout variant="info" title="Screenshots">
-![HTTP Proxy](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223105916.webp)
+![HTTP Proxy](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223105916.webp)
 </Callout>
 
 #### Software Selection
@@ -196,9 +196,9 @@ Choose only the `SSH server` and `standard system utilities`. Use space to check
 Install the GRUB boot loader to the master boot record. This is the default option.
 
 <Callout variant="info" title="Screenshots">
-![GRUB Boot Loader 1](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223113440.webp)
-![GRUB Boot Loader 2](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223113747.webp)
-![GRUB Boot Loader 3](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241223121041.webp)
+![GRUB Boot Loader 1](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223113440.webp)
+![GRUB Boot Loader 2](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223113747.webp)
+![GRUB Boot Loader 3](/images/articles/born2beroot/screenshots/Pasted%20image%2020241223121041.webp)
 </Callout>
 
 And just like that, we're done installing. 🎉
@@ -237,7 +237,7 @@ Now the port is changed and root login is disabled. Lets test it out by connecti
 
 ### SSH Connection
 
-![Port Forward Diagram](/images/blog/articles/born2beroot/port_forward.svg)
+![Port Forward Diagram](/images/articles/born2beroot/port_forward.svg)
 
 #### Port Forwarding
 
@@ -265,7 +265,7 @@ Explanation:
 </Callout>
 
 <Callout variant="info" title="Screenshots">
-![SSH Connection](/images/blog/articles/born2beroot/screenshots/Pasted%20image%2020241224130440.png)
+![SSH Connection](/images/articles/born2beroot/screenshots/Pasted%20image%2020241224130440.png)
 </Callout>
 
 Congrats! You've successfully set up an SSH server and connected to your Debian Virtual Machine 🚀
@@ -514,11 +514,11 @@ This line tells the system to run the `monitoring.sh` script every 10 minutes. S
 
 And that's it! You've successfully set up a monitoring script that logs all the necessary system information every 10 minutes 🎉
 
-![Good Job](/images/blog/articles/born2beroot/frieren_good_job.gif)
+![Good Job](/images/articles/born2beroot/frieren_good_job.gif)
 
 ## Bonus Part ⭐
 
-![Webmin Logo](/images/blog/articles/born2beroot/logos/webmin.webp)
+![Webmin Logo](/images/articles/born2beroot/logos/webmin.webp)
 
 The bonus part of the Born2beRoot project involves setting up additional features on your server.
 
@@ -529,9 +529,9 @@ The bonus part of the Born2beRoot project involves setting up additional feature
 I chose to set up a **Webmin**, a web-based system administration tool. With Webmin, you can manage your server, databases, cron jobs, security, configure system settings, and monitor performance through a web interface.
 
 <Callout variant="info" title="Webmin Screenshots">
-![Webmin 1](/images/blog/articles/born2beroot/webmin/webmin_1.webp)
-![Webmin 2](/images/blog/articles/born2beroot/webmin/webmin_2.webp)
-![Webmin 3](/images/blog/articles/born2beroot/webmin/webmin_3.webp)
+![Webmin 1](/images/articles/born2beroot/webmin/webmin_1.webp)
+![Webmin 2](/images/articles/born2beroot/webmin/webmin_2.webp)
+![Webmin 3](/images/articles/born2beroot/webmin/webmin_3.webp)
 </Callout>
 
 ### WordPress and Lighttpd

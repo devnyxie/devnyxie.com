@@ -20,12 +20,9 @@ const headingVariants = cva(
 function Heading({
   className,
   size,
-  asChild = false,
   ...props
 }: React.ComponentProps<"p"> &
-  VariantProps<typeof headingVariants> & {
-    asChild?: boolean;
-  }) {
+  VariantProps<typeof headingVariants>) {
   return <p className={cn(headingVariants({ size, className }))} {...props} />;
 }
 
