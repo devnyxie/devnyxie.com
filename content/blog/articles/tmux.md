@@ -4,12 +4,12 @@ tags:
   - unix
   - terminal
 date: 2025-02-16
-icon: /images/blog/deep_dives/tmux/tmux.svg
+image: /images/articles/tmux/screenshot.png
 description: "Learning how to use TMUX, a terminal multiplexer that allows you to run multiple terminal sessions in a single window."
 ---
 
 <MdxImage
-  src="/images/blog/deep_dives/tmux/screenshot.png"
+  src="/images/articles/tmux/screenshot.png"
   className="w-full"
   />
 

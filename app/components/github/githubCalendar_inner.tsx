@@ -1,4 +1,4 @@
-import { getConfig } from "@/lib/app.config";
+import { getConfig } from "@/app.config";
 import React, { useState, useEffect } from "react";
 import ActivityCalendar, { Activity } from "react-activity-calendar";
 import colors from "tailwindcss/colors";

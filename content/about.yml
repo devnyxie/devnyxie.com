@@ -4,40 +4,38 @@ content: |
 
   Hi, I'm **Timothee Afanasiev**, a Full Stack Developer based right here in Warsaw, Poland. For the past four years, I've been immersed in the world of digital product creation, focusing on building products that are not just functional, but genuinely intuitive for users.
 
-   <MdxImage src="/images/about/personal_image.jpg" className="w-80"/>
-
   ## My Journey
 
   ### Early Spark
 
-  My passion for technology and coding started in my teenage years. I was fascinated by how things work, and that curiosity naturally led me to programming and engineering. In 2022, I graduated from high school in 🇬🇷 Thessaloniki, Greece, where I was first introduced to the basics of programming and computer science. Right after, I passed the C2 Proficiency in English and moved to 🇵🇱 Warsaw, Poland, in search of better opportunities.
+  My passion for technology and coding started in my teenage years. I was fascinated by how things work, and that curiosity naturally led me to programming and engineering. In 2021, I graduated from high school in [Thessaloniki, Greece](https://en.wikipedia.org/wiki/Thessaloniki), where I was first introduced to the basics of programming and computer science. Right after, I passed the C2 Proficiency Exam in English and moved to [Warsaw, Poland](https://en.wikipedia.org/wiki/Warsaw), in search of great opportunities.
 
   <MdxImage src="/images/about/warsaw.jpg" className="w-full"/>
 
   ### Education
 
-  - In 2022, I joined the **[Polish-Japanese Academy of Information Technology](https://pja.edu.pl/en/)**, pursuing a degree in Computer Science. It gave me a strong foundation in programming concepts and problem-solving—an important stepping stone into the tech world.
-    <MdxImage src="/images/about/pjatk_cover_fhd.jpg" className="w-full"/>
+  1. In 2022, I joined the **[Polish-Japanese Academy of Information Technology](https://pja.edu.pl/en/)**, pursuing a degree in Computer Science. It gave me a strong foundation in programming concepts and problem-solving - an important stepping stone into the real world.
+      <MdxImage src="/images/about/pjatk_cover_fhd.jpg" className="w-100"/>
 
-  - At the same time, I participated in the 🇮🇹 **[Epicode Bootcamp](https://epicode.com/en/)** (2022-2023), where I focused on the JavaScript ecosystem for both frontend and backend development, which has been my primary toolkit. The program was intense, covering everything from real-time applications and authentication to encryption, databases, and highly interactive interfaces—but I loved every bit of it.
-    <MdxImage src="/images/about/epicode_cert.png" className="w-full"/>
+  2. At the same time, I participated in the **[Epicode Bootcamp](https://epicode.com/en/)** (2022-2023), where I focused on the JavaScript ecosystem for both frontend and backend development, which has been my primary toolkit. The program was intense, covering everything from real-time applications and authentication to encryption, databases, and highly interactive interfaces - and I loved every bit of it.
+      <MdxImage src="/images/about/epicode_cert.png" className="w-100"/>
 
-  - Wanting to challenge myself further, I joined **42 Warsaw** (2024-Now). The program's emphasis on low-level C programming, UNIX systems, and efficiency was exactly what I needed to sharpen my problem-solving skills. Once I graduate, I'll earn France's RNCP Level 7 diploma, equivalent to a Master's degree.
-    <MdxImage src="/images/about/42_kickoff.jpg" className="w-full"/>
+  3. Wanting to challenge myself further, I joined **42 Warsaw** (2024-2026). The program's emphasis on low-level C/C++ programming, UNIX systems, and efficiency was exactly what I needed. Many great projects.
+      <MdxImage src="/images/about/42_kickoff.jpg" className="w-100"/>
 
-  - In parallel with **42 Warsaw**, I started studying 🇵🇱 Polish at **[Language School Together](https://en.together.edu.pl/)**. In July 2025, I passed my A2 exam, and I'm now preparing for B1.
+  4. In parallel with **42 Warsaw**, I started studying Polish at [Language School Together](https://en.together.edu.pl/). 
+      1. In July 2025, I passed my A2 exam. 
+      2. In November 2025, I passed my B1 exam.
 
 
   ### Professional Experience
 
-  1. While studying in Epicode, I interned as a Frontend Engineer at **[draive.gr](https://draive.gr/)** (2022-2023), a 🇬🇷 Greek startup focused on autonomous driving technology. I worked on their website, polishing the user interface. This role gave me my first taste of real-world collaboration.
+  1. While studying in Epicode, I interned as a Frontend Engineer at **[draive.gr](https://draive.gr/)** (2022-2023), Thessaloniki-based startup focused on autonomous driving technology. I worked on their website, polishing the user interface. This role gave me my first taste of real-world collaboration.
 
-  2. Right after graduating, I joined **[Demandsphere](https://www.demandsphere.com/)** (2023), a 🇺🇸🇯🇵 US/JP SEO company, as a Junior Full Stack Developer. There, I worked with Ruby, Python, and JavaScript on projects ranging from legacy system migrations to developing new features. This experience helped me grow both technically and as part of a team, while learning how to balance client requirements with real-world solutions.
+  2. Right after graduating, I joined **[Demandsphere](https://www.demandsphere.com/)** (2023-2024), a US/Japanase SEO (Search Engine Optimization) company, as a Junior Full Stack Developer. There, I worked with Ruby, Python, Go, and JavaScript on projects ranging from legacy system migrations to developing new features.
 
-  3. In 2024, I transitioned to **freelance development**, which allowed me to stay connected with real-world projects while giving me the freedom to explore new technologies—especially **Go**.
+  3. In 2024, I transitioned to **freelance development**, which allowed me to stay connected with real-world projects while giving me the freedom to study and explore new technologies - especially **Go**.
 
-  Apart from paid work, I also dedicate time to **Open Source**. I've contributed to several major repositories, including **Grafana**, **Next.js**, and **Pterm**.
+  4. In 2026, I started working as a **Golang Software Engineer** at **Capgemini** and relocated from Warsaw to Wrocław for this role.
 
-  <Callout variant="info" title="Open to Opportunities" icon="💼">
-    I'm currently available part-time for both frontend and backend roles. If you're looking for a dedicated developer to help bring your ideas to life, feel free to reach out!
-  </Callout>
+  Apart from paid work, I also try to dedicate time to **Open Source**. I've contributed to several major repositories, including **Grafana**, **Next.js**, and **Pterm**, mainly for documentation improvements.

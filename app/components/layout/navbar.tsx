@@ -96,7 +96,7 @@ export function Navbar() {
 
   return (
     <>
-      <div className="w-full flex items-center justify-center border-b border-border dark:border-border/50 z-[2]">
+  <div className="w-full flex items-center justify-center border-b border-border dark:border-border/50 z-2">
         <div className="container max-w-screen-md py-4 flex items-center justify-between px-4 md:px-0">
           <Link href="/" className="font-semibold">
             timothee
@@ -105,7 +105,7 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <NavigationMenu viewport={false} className="hidden md:flex">
             <NavigationMenuList>
-              {navigationItems.map((item, index) => (
+              {navigationItems.map((item) => (
                 <NavigationMenuItem key={item.href + "-desktop"}>
                   <NavigationMenuLink
                     asChild

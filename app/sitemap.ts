@@ -1,12 +1,11 @@
 import { MetadataRoute } from "next";
 import {
   getAllArticles,
-  getAllDeepDives,
   getAllTags,
 } from "@/lib/api/blog/blog";
-import { PostInput, DeepDiveInput } from "@/lib/types/data/blog";
+import { PostInput } from "@/lib/types/data/blog";
 import { TagInfo } from "@/lib/api/blog/tags";
-import { APP_CONFIG } from "@/lib/app.config";
+import { APP_CONFIG } from "@/app.config";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = APP_CONFIG.domain;
@@ -56,13 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/blog/articles`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/blog/deep-dives`,
+      url: `${baseUrl}/blog/all`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
@@ -79,19 +72,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getAllArticles();
   const articleRoutes: MetadataRoute.Sitemap = articles.map(
     (article: PostInput) => ({
-      url: `${baseUrl}/blog/articles/${article.slug}`,
-      lastModified: article.date ? new Date(article.date) : new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    })
-  );
-
-  // Dynamic routes - Deep Dives
-  const deepDives = await getAllDeepDives();
-  const deepDiveRoutes: MetadataRoute.Sitemap = deepDives.map(
-    (deepDive: DeepDiveInput) => ({
-      url: `${baseUrl}/blog/deep-dives/${deepDive.slug}`,
-      lastModified: deepDive.date ? new Date(deepDive.date) : new Date(),
+      url: `${baseUrl}/blog/${article.slug}`,
+      lastModified: article.date,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })
@@ -106,5 +88,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...articleRoutes, ...deepDiveRoutes, ...tagRoutes];
+  return [...staticRoutes, ...articleRoutes, ...tagRoutes];
 }

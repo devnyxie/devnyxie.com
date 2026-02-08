@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import ImageModal from "./ImageModal";
 
 interface GalleryImage {
@@ -55,14 +56,15 @@ export const MdxGallery = ({
           {images.map((image, index) => (
             <div
               key={index}
-              className="group overflow-hidden bg-card/50 hover:bg-card/80 transition-all duration-300 cursor-zoom-in"
+              className="group overflow-hidden bg-card/50 hover:bg-card/80 transition-all duration-300 cursor-zoom-in h-48 sm:h-56 lg:h-64 relative"
+              onClick={() => handleImageClick(index)}
             >
-              <img
+              <Image
                 src={image.src}
                 alt={image.alt}
-                className="w-full h-48 sm:h-56 lg:h-64 object-cover transition-all duration-300 group-hover:scale-[102%]"
-                loading="lazy"
-                onClick={() => handleImageClick(index)}
+                fill
+                className="object-cover transition-all duration-300 group-hover:scale-[102%]"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
 
               <ImageModal

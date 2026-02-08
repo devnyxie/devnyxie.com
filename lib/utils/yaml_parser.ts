@@ -2,7 +2,6 @@
 
 import fs from "fs";
 import yaml from "js-yaml";
-import { ZodObject, ZodType } from "zod";
 import { schemaType } from "../types/content";
 
 export function parseYamlFile(filePath: string, schema: schemaType) {

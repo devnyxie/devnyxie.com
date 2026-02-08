@@ -19,6 +19,7 @@ export const blogPostSchema = baseSchema
     image: z.string().default(""),
     date: z.date(), // YAML usually loads dates as strings
     published: z.boolean().default(true),
+    pinned: z.boolean().default(false),
     tags: z.array(z.string().min(1)).max(10).default([]),
     // *** To Be Implemented ***
     series_name: z.string().optional().default(""),
@@ -30,34 +31,7 @@ export const blogPostSchema = baseSchema
   .transform((post) => ({
     ...post,
     readTime: Math.ceil(post.content.split(/\s+/).length / 180),
-    path: `/blog/articles/${post.slug}`,
+    path: `/blog/${post.slug}`,
   }));
 
 export type PostInput = z.infer<typeof blogPostSchema>;
-
-export const deepDiveSchema = baseSchema
-  .extend({
-    slug: slugSchema,
-    content: z.string().min(1, "Content is required"),
-    icon: z.string(),
-    date: z.date(), // YAML usually loads dates as strings
-    published: z.boolean().default(true),
-    tags: z.array(z.string().min(1)).max(10).default([]),
-    // *** To Be Implemented ***
-    // series_name: z.string().optional().default(""),
-    // series_index: z.number().optional().default(0),
-    // *** Linked Data ***
-    next: surroundPost.optional(),
-    previous: surroundPost.optional(),
-  })
-  .transform((post) => ({
-    ...post,
-    readTime: Math.ceil(post.content.split(/\s+/).length / 180),
-    path: `/blog/deep-dives/${post.slug}`,
-  }));
-
-export type DeepDiveInput = z.infer<typeof deepDiveSchema>;
-
-// unseparate deep dives methods from blog methods
-
-// getData(deep_dives) ???

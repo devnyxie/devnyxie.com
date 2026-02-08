@@ -6,6 +6,6 @@ tags:
   - api
   - javascript
 date: 2024-12-25
-icon: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg
+image: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg
 published: false
 ---

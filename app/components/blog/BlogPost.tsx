@@ -19,7 +19,7 @@ function BlogPost({ layout = "row", ...props }: PostProps) {
   return (
     <>
       <Link
-        href={`/blog/articles/${slug}`}
+        href={`/blog/${slug}`}
         className="group bg-card border border-border hover:border-foreground/20 shadow-xs rounded-lg h-full flex flex-col p-4 gap-2 hover:shadow-sm transition-all duration-200"
       >
         {/* Image - always on top for card layout */}

@@ -12,7 +12,6 @@ const PAGE_TITLES: Record<string, string> = {
   portfolio: "Portfolio",
   now: "Now",
   articles: "Articles",
-  "deep-dives": "Deep Dives",
   tags: "Tags",
 };
 
@@ -47,7 +46,7 @@ export function useBreadcrumbs(pageTitle?: string): BreadcrumbItem[] {
         href: isLast ? undefined : currentPath,
       });
     } else if (pathSegments[0] === "blog" && i === 1) {
-      // Second level blog pages (articles, deep-dives)
+      // Second level blog pages (articles, tags)
       const title = PAGE_TITLES[segment] || segment;
       breadcrumbItems.push({
         title,

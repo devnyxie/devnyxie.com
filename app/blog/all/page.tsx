@@ -3,7 +3,7 @@ import PageBreadcrumb from "@/app/components/layout/breadcrumb";
 import BlogPost from "@/app/components/blog/BlogPost";
 import Link from "next/link";
 
-import { generateMetadata as createMetadata } from "@/lib/metadata";
+import { generateMetadata as createMetadata } from "@/metadata";
 import { Button } from "@/app/components/button";
 import Container from "@/app/components/layout/container";
 import List from "@/app/components/layout/list";

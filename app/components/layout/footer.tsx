@@ -1,7 +1,7 @@
 import { IconBrandGithub } from "@tabler/icons-react";
 import { Mail, Rss, Calendar, Notebook, Download } from "lucide-react";
 import React from "react";
-import { APP_CONFIG } from "@/lib/app.config";
+import { APP_CONFIG } from "@/app.config";
 
 const fontSize = "font-normal"; // "font-normal" | "font-medium"
 

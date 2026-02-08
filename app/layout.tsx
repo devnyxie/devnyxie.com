@@ -7,7 +7,7 @@ import Footer from "@/app/components/layout/footer";
 import ServerStatusLoader from "@/app/components/layout/server-status-loader";
 import { getPageData } from "@/lib/api/pages";
 import { IndexPageType } from "@/lib/types/pages";
-import { APP_CONFIG } from "@/lib/app.config";
+import { APP_CONFIG } from "@/app.config";
 
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",

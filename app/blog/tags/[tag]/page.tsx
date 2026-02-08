@@ -2,15 +2,14 @@ import { getAllPostsByTag, getAllTags } from "@/lib/api/blog/tags";
 import PageBreadcrumb from "@/app/components/layout/breadcrumb";
 import BlogPost from "@/app/components/blog/BlogPost";
 import MentionCard from "@/app/components/blog/MentionCard";
-import RowDeepDive from "@/app/components/blog/dive";
 import Tag from "@/app/components/blog/shared/tag/tag";
 import Heading from "@/app/components/heading";
 import Gaps from "@/app/components/layout/gaps";
 import { Button } from "@/app/components/button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { generateMetadata as createMetadata } from "@/lib/metadata";
-import { getConfig } from "@/lib/app.config";
+import { generateMetadata as createMetadata } from "@/metadata";
+import { getConfig } from "@/app.config";
 import Container from "@/app/components/layout/container";
 import List from "@/app/components/layout/list";
 
@@ -50,7 +49,7 @@ export default async function TagPage({ params }: TagPageProps) {
   const { tag: tagParam } = await params;
   const tagName = decodeURIComponent(tagParam);
   const { features } = getConfig();
-  const { articles, deepDives, mentions, tag } = await getAllPostsByTag(
+  const { articles, mentions, tag } = await getAllPostsByTag(
     tagName
   );
 
@@ -58,7 +57,7 @@ export default async function TagPage({ params }: TagPageProps) {
     notFound();
   }
 
-  const totalPosts = articles.length + deepDives.length + (features.mentions ? mentions.length : 0);
+  const totalPosts = articles.length + (features.mentions ? mentions.length : 0);
 
   return (
     <Container>
@@ -82,10 +81,6 @@ export default async function TagPage({ params }: TagPageProps) {
                     `${tag.articlesCount} article${
                       tag.articlesCount !== 1 ? "s" : ""
                     }`,
-                  tag.deepDivesCount > 0 &&
-                    `${tag.deepDivesCount} deep dive${
-                      tag.deepDivesCount !== 1 ? "s" : ""
-                    }`,
                   features.mentions && tag.mentionsCount > 0 &&
                     `${tag.mentionsCount} mention${
                       tag.mentionsCount !== 1 ? "s" : ""
@@ -106,41 +101,18 @@ export default async function TagPage({ params }: TagPageProps) {
             </p>
           ) : (
             <div className="space-y-12">
-              {/* Deep Dives Section */}
-              {deepDives.length > 0 && (
+              {/* Articles Section */}
+              {articles.length > 0 && (
                 <div>
-                  <div className="mb-6 flex items-start justify-between">
-                    <div>
-                      <Heading size="default" className="mb-2">
-                        Deep Dives
-                      </Heading>
-                      <p className="text-muted-foreground">
-                        In-depth explorations tagged with #{tagName}
-                      </p>
-                    </div>
-                    {deepDives.length > 0 && (
-                      <Button variant="ghost" asChild>
-                        <Link href="/blog/deep-dives">View All Deep Dives</Link>
-                      </Button>
-                    )}
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {deepDives.map((deepDive) => (
-                      <RowDeepDive
-                        key={deepDive.slug}
-                        slug={deepDive.slug}
-                        title={deepDive.title}
-                        description={deepDive.description}
-                        date={deepDive.date}
-                        icon={deepDive.icon}
-                        path={deepDive.slug}
-                        readTime={deepDive.readTime}
-                        tags={deepDive.tags}
-                        next={deepDive.next}
-                        previous={deepDive.previous}
+                  <List asGrid cols="1" gap="4">
+                    {articles.map((article) => (
+                      <BlogPost
+                        key={article.slug}
+                        layout="row"
+                        {...article}
                       />
                     ))}
-                  </div>
+                  </List>
                 </div>
               )}
 
@@ -166,32 +138,6 @@ export default async function TagPage({ params }: TagPageProps) {
                       />
                     ))}
                   </List>
-                </div>
-              )}
-
-              {/* Articles Section */}
-              {articles.length > 0 && (
-                <div>
-                  <div className="mb-6 flex items-start justify-between">
-                    <div>
-                      <Heading size="default" className="mb-2">
-                        Articles
-                      </Heading>
-                      <p className="text-muted-foreground">
-                        Technical articles tagged with #{tagName}
-                      </p>
-                    </div>
-                    {articles.length > 0 && (
-                      <Button variant="ghost" asChild>
-                        <Link href="/blog/articles">View All Articles</Link>
-                      </Button>
-                    )}
-                  </div>
-                  <div className="grid grid-cols-1 gap-4">
-                    {articles.map((article) => (
-                      <BlogPost key={article.slug} layout="row" {...article} />
-                    ))}
-                  </div>
                 </div>
               )}
             </div>

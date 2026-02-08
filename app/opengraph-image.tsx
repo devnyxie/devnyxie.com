@@ -1,6 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "next/og";
-import { APP_CONFIG as Config } from "@/lib/app.config";
+import { APP_CONFIG as Config } from "@/app.config";
 
 export const runtime = "edge";
 export const alt = `${Config.og_img.name} - ${Config.og_img.title}`;

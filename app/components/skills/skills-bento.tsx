@@ -106,7 +106,7 @@ const SkillCard = ({ skill }: { skill: SkillItem }) => {
         <div className="flex items-center gap-3">
           {skill.icon && (
             <div className={cn(
-              "relative flex-shrink-0 rounded-lg p-2 transition-all duration-500 group-hover:scale-110 group-hover:rotate-2",
+              "relative shrink-0 rounded-lg p-2 transition-all duration-500 group-hover:scale-110 group-hover:rotate-2",
               category.accent,
               "shadow-sm group-hover:shadow-md"
             )}>

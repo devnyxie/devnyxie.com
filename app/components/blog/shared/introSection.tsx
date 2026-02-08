@@ -1,5 +1,6 @@
 import { formatDate } from "@/lib/utils";
 import React from "react";
+import Image from "next/image";
 import Tag from "./tag/tag";
 
 interface Props {
@@ -25,12 +26,23 @@ function IntroSection({
     <div className="flex flex-col items-center w-full mb-4">
       {image && (
         <div className="w-full rounded aspect-video flex justify-center items-center overflow-hidden mb-2">
-          <img src={image} className="object-cover h-full" alt={title} />
+          <Image
+            src={image}
+            alt={title}
+            width={1280}
+            height={720}
+            className="object-cover h-full w-full"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 50vw"
+            priority
+          />
         </div>
       )}
       {icon && (
-        <img
+        <Image
           src={icon}
+          width={64}
+          height={64}
+          alt={`${title} icon`}
           className="w-16 h-16 rounded-lg flex items-center justify-center text-2xl mb-2"
         />
       )}
@@ -39,7 +51,7 @@ function IntroSection({
         <p className="text-muted-foreground mb-2 text-center">{description}</p>
         <div className="flex gap-2 text-sm">
           <p className="text-muted-foreground">{formatDate(date)}</p>
-          <div className="flex-1 my-0.5 w-[1px] bg-muted" />
+          <div className="flex-1 my-0.5 w-px bg-muted" />
           <p className="text-muted-foreground">{readTime} min read</p>
         </div>
       </div>

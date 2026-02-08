@@ -2,7 +2,7 @@
 title: "Nuxt Content: The git-based CMS"
 description: Review of Nuxt Content, the git-based CMS for Nuxt projects.
 date: 2025-07-06
-icon: https://nuxt.com/assets/design-kit/icon-green.svg
+image: /images/articles/nuxt/thumbnail.png
 tags:
   - nuxt
   - frontend

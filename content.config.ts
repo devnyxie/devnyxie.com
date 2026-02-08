@@ -1,11 +1,11 @@
-import { baseSchema, contentPageSchema } from "./types/base";
-import { blogPostSchema } from "./types/data/blog";
-import { indexPageSchema } from "./types/pages/index";
-import { portfolioItemSchema } from "./types/data/portfolio";
-import t_content_config from "./types/content";
-import { blogPageSchema } from "./types/pages/blog";
-import { portfolioPageSchema } from "./types/pages/portfolio";
-import { mentionsPageSchema } from "./types/data/mentions";
+import { baseSchema, contentPageSchema } from "./lib/types/base";
+import { blogPostSchema } from "./lib/types/data/blog";
+import { indexPageSchema } from "./lib/types/pages/index";
+import { portfolioItemSchema } from "./lib/types/data/portfolio";
+import t_content_config from "./lib/types/content";
+import { blogPageSchema } from "./lib/types/pages/blog";
+import { portfolioPageSchema } from "./lib/types/pages/portfolio";
+import { mentionsPageSchema } from "./lib/types/data/mentions";
 
 const contentConfig: t_content_config = {
   pages: {
@@ -45,10 +45,6 @@ const contentConfig: t_content_config = {
   content: {
     articles: {
       source: "blog/articles/**/*.{md,mdx}",
-      schema: blogPostSchema,
-    },
-    deep_dives: {
-      source: "blog/deep-dives/**/*.{md,mdx}",
       schema: blogPostSchema,
     },
     software: {

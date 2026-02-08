@@ -46,7 +46,7 @@ A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind
 - [ ] Add parsing **Caching** for faster builds and development (medium)
 - [ ] Rework `button` component structure (low)
 - [ ] Cleaner codebase and better documentation (medium)
-- [ ] Shared View component for Articles/Deep Dives (medium)
+- [ ] Shared View component for Articles/Notes (medium)
 - [ ] Overall Normalization of styles - paddings, margins, font sizes (medium) <br/>
       In progress - `design-system` branch 
 - [ ] Add **Search** functionality (low)

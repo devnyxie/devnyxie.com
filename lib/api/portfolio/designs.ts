@@ -1,7 +1,7 @@
 import path from "path";
 import { PortfolioItem, portfolioItemSchema } from "@/lib/types/data/portfolio";
 import { parseYamlFile } from "../../utils/yaml_parser";
-import { getContentConfig } from "../../content.config";
+import { getContentConfig } from "../../../content.config";
 import { glob } from "glob";
 
 function parseFile(filePath: string): PortfolioItem | null {
@@ -21,7 +21,7 @@ function parseFile(filePath: string): PortfolioItem | null {
       return null;
     }
     return parsed.data as PortfolioItem;
-  } catch (error) {
+  } catch {
     return null;
   }
 }

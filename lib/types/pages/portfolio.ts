@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { titleSchema, descriptionSchema } from "../base";
+import { titleSchema } from "../base";
 
 export const portfolioPageSchema = z.object({
   title: titleSchema,
