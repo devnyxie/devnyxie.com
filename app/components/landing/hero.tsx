@@ -32,11 +32,6 @@ function Hero({
   return (
     <div className="w-full flex flex-col items-center justify-center gap-4">
       <FadeIn delay={0.1}>
-        {/* <img
-          src={picture.src}
-          alt={picture.alt}
-          className="w-24 h-24 border-2 border-muted rounded-full"
-        /> */}
         <Image
           src={picture.src}
           alt={picture.alt}

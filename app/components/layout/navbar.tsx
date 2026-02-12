@@ -102,7 +102,6 @@ export function Navbar() {
             timothee
           </Link>
 
-          {/* Desktop Navigation */}
           <NavigationMenu viewport={false} className="hidden md:flex">
             <NavigationMenuList>
               {navigationItems.map((item) => (
@@ -146,7 +145,6 @@ export function Navbar() {
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* Mobile Menu Button */}
           <Button
             ref={menuButtonRef}
             variant="ghost"
@@ -165,19 +163,15 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
-          {/* Backdrop */}
           <div
             className="fixed inset-0 bg-black/80 backdrop-blur-sm"
             onClick={closeMobileMenu}
           />
 
-          {/* Menu Panel */}
           <div className="fixed right-0 top-0 h-full w-full max-w-xs bg-background border-l border-border shadow-2xl transform transition-transform duration-300 ease-out translate-x-0">
             <div className="flex flex-col h-full">
-              {/* Header */}
               <div className="flex items-center justify-between p-4 border-b border-border">
                 <span className="font-semibold">Navigation</span>
                 <Button
@@ -191,7 +185,6 @@ export function Navbar() {
                 </Button>
               </div>
 
-              {/* Navigation Items */}
               <nav className="flex-1 overflow-y-auto py-4">
                 <div className="space-y-2 px-4">
                   {navigationItems.map((item) => (
@@ -210,7 +203,6 @@ export function Navbar() {
                     </Link>
                   ))}
 
-                  {/* More Section */}
                   <div className="pt-4 mt-4 border-t border-border">
                     <div className="text-xs text-muted-foreground px-3 mb-2 uppercase tracking-wider">
                       More

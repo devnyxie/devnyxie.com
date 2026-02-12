@@ -86,17 +86,6 @@ function ProjectCard(props: ProjectProps) {
             </div>
           </div>
           <div className="hidden sm:block rounded h-[125px] aspect-[16/9] shrink-0 overflow-hidden group">
-            {/* {image && (
-              <img
-                src={image}
-                alt={title}
-                className="object-cover h-full w-full cursor-zoom-in hover:opacity-80  transition-transform duration-300 group-hover:scale-105 select-none"
-                loading="lazy"
-                onClick={() => {
-                  setOpen(true);
-                }}
-              />
-            )} */}
             {image && (
               <Image
                 height={250}

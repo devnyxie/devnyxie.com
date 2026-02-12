@@ -22,7 +22,6 @@ function BlogPost({ layout = "row", ...props }: PostProps) {
         href={`/blog/${slug}`}
         className="group bg-card border border-border hover:border-foreground/20 shadow-xs rounded-lg h-full flex flex-col p-4 gap-2 hover:shadow-sm transition-all duration-200"
       >
-        {/* Image - always on top for card layout */}
         {image && layout === "card" && (
           <div className="rounded overflow-hidden w-full aspect-video flex items-center justify-center">
             <Image
@@ -36,10 +35,8 @@ function BlogPost({ layout = "row", ...props }: PostProps) {
           </div>
         )}
 
-        {/* Row layout - image on top on mobile, left on larger screens */}
         {layout === "row" && (
           <>
-            {/* Mobile: image on top */}
             {image && (
               <div className="rounded overflow-hidden w-full aspect-video flex sm:hidden items-center justify-center">
                 <Image
@@ -55,7 +52,6 @@ function BlogPost({ layout = "row", ...props }: PostProps) {
         )}
 
         <div className="flex justify-between gap-x-4">
-          {/* Row layout: image on left for larger screens */}
           {layout === "row" && image && (
             <div className="rounded overflow-hidden max-h-[125px] aspect-video hidden sm:block shrink-0">
               <Image
@@ -81,7 +77,7 @@ function BlogPost({ layout = "row", ...props }: PostProps) {
             <h3 className="text-lg font-medium hyphens-auto line-clamp-1 group-hover:text-info transition-colors">
               {title}
             </h3>
-            <p className="text-muted-foreground text-sm break-words hyphens-auto line-clamp-2">
+            <p className="text-muted-foreground text-sm wrap-break-word hyphens-auto line-clamp-2">
               {description}
             </p>
             <div className="tags flex flex-wrap gap-1 mt-auto">
@@ -91,7 +87,6 @@ function BlogPost({ layout = "row", ...props }: PostProps) {
                   <Tag
                     key={`${tag}-${idx}`}
                     name={tag}
-                    // path={`/blog/tags/${tag}`}
                     variant="subtle"
                   />
                 ))}

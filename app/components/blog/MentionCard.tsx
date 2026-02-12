@@ -64,7 +64,6 @@ function MentionCard({ mention, layout = "compact" }: MentionCardProps) {
         rel="noopener noreferrer"
         className="group bg-card border border-border hover:border-foreground/20 rounded-lg h-full transition-all duration-200 flex flex-col justify-between p-4 hover:bg-muted/20"
       >
-        {/* Header */}
         <div className="flex items-start gap-3 mb-3">
           <div
             className={`mt-0.5 ${getTypeColor()} opacity-60 group-hover:opacity-100 transition-opacity`}
@@ -81,7 +80,6 @@ function MentionCard({ mention, layout = "compact" }: MentionCardProps) {
           </div>
         </div>
 
-        {/* Footer - Simple */}
         <div className="flex items-center justify-between text-xs text-muted-foreground/80 mt-auto">
           <span className="font-medium truncate">{source}</span>
           <div className="flex items-center gap-2">
@@ -93,7 +91,6 @@ function MentionCard({ mention, layout = "compact" }: MentionCardProps) {
           </div>
         </div>
 
-        {/* Tags - Only if available and minimal */}
         {tags && tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-2 opacity-60 group-hover:opacity-80 transition-opacity">
             {tags.slice(0, 2).map((tag) => (
@@ -123,7 +120,6 @@ function MentionCard({ mention, layout = "compact" }: MentionCardProps) {
       rel="noopener noreferrer"
       className="group bg-card border border-border hover:border-foreground/20 rounded-lg h-full transition-all duration-200 flex flex-col p-5 hover:bg-muted/20"
     >
-      {/* Header */}
       <div className="flex items-start gap-4 mb-4">
         <div
           className={`mt-1 ${getTypeColor()} opacity-70 group-hover:opacity-100 transition-opacity`}
@@ -140,7 +136,6 @@ function MentionCard({ mention, layout = "compact" }: MentionCardProps) {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="flex items-center justify-between text-sm text-muted-foreground/80 mt-auto">
         <div className="flex items-center gap-2">
           <span className="font-medium">{source}</span>
@@ -154,7 +149,6 @@ function MentionCard({ mention, layout = "compact" }: MentionCardProps) {
         </div>
       </div>
 
-      {/* Tags */}
       {tags && tags.length > 0 && (
         <div className="flex flex-wrap gap-1 mt-3 opacity-60 group-hover:opacity-80 transition-opacity">
           {tags.slice(0, 3).map((tag) => (

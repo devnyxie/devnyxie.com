@@ -80,29 +80,7 @@ const SkillCard = ({ skill }: { skill: SkillItem }) => {
         size === "small" && "p-5 min-h-[160px] lg:p-4 lg:min-h-[120px]"
       )}
     >
-      
-      {/* Floating particles effect */}
-      {/* <div className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-30 transition-opacity duration-700">
-        <div className={cn(
-          "absolute w-2 h-2 rounded-full animate-bounce",
-          category.iconColor,
-          "top-1/4 left-1/4"
-        )} style={{ animationDelay: '0s', animationDuration: '3s' }} />
-        <div className={cn(
-          "absolute w-1 h-1 rounded-full animate-bounce",
-          category.iconColor,
-          "top-3/4 right-1/3"
-        )} style={{ animationDelay: '1s', animationDuration: '4s' }} />
-        <div className={cn(
-          "absolute w-1.5 h-1.5 rounded-full animate-bounce",
-          category.iconColor,
-          "bottom-1/3 left-2/3"
-        )} style={{ animationDelay: '2s', animationDuration: '5s' }} />
-      </div>
-       */}
-      {/* Content */}
       <div className="relative z-10 flex flex-col gap-4">
-        {/* Header with icon and title */}
         <div className="flex items-center gap-3">
           {skill.icon && (
             <div className={cn(
@@ -122,13 +100,11 @@ const SkillCard = ({ skill }: { skill: SkillItem }) => {
                   category.iconColor
                 )}
               />
-              {/* Animated glow effect */}
               <div className={cn(
                 "absolute inset-0 rounded-lg opacity-0 transition-all duration-500 group-hover:opacity-30 animate-pulse",
                 category.accent,
                 "blur-sm"
               )} />
-              {/* Subtle ring on hover */}
               <div className={cn(
                 "absolute inset-0 rounded-lg border-2 opacity-0 transition-all duration-300 group-hover:opacity-50",
                 category.border
@@ -149,7 +125,6 @@ const SkillCard = ({ skill }: { skill: SkillItem }) => {
           </div>
         </div>
 
-        {/* Description */}
         {skill.description && (
           <div className="relative">
             <p className={cn(
@@ -163,7 +138,6 @@ const SkillCard = ({ skill }: { skill: SkillItem }) => {
           </div>
         )}
 
-        {/* Interactive hover accent */}
         <div className={cn(
           "absolute -inset-0.5 rounded-xl opacity-0 transition-all duration-500 group-hover:opacity-100 -z-10",
           category.gradient,
@@ -182,9 +156,7 @@ const SkillsBento: React.FC<SkillsBentoProps> = ({ skills, className }) => {
 
   return (
     <div className={cn("w-full space-y-6", className)}>
-      {/* Mobile/Tablet: All skills in equal grid, Desktop: Large skills get special treatment */}
       <div className="block lg:hidden">
-        {/* On smaller screens, all skills are equal */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {skills.map((skill) => (
             <SkillCard key={skill.title} skill={skill} />
@@ -192,9 +164,7 @@ const SkillsBento: React.FC<SkillsBentoProps> = ({ skills, className }) => {
         </div>
       </div>
 
-      {/* Desktop layout: Large skills separate, others in 3-column grid */}
       <div className="hidden lg:block space-y-6">
-        {/* Large skills - Hero section with 50% each */}
         {largeSkills.length > 0 && (
           <div className="grid grid-cols-2 gap-6">
             {largeSkills.map((skill) => (
@@ -203,7 +173,6 @@ const SkillsBento: React.FC<SkillsBentoProps> = ({ skills, className }) => {
           </div>
         )}
         
-        {/* Medium and small skills - 3-column grid */}
         {(mediumSkills.length > 0 || smallSkills.length > 0) && (
           <div className="grid grid-cols-3 gap-5">
             {[...mediumSkills, ...smallSkills].map((skill) => (
