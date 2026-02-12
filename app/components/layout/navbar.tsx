@@ -12,6 +12,7 @@ import {
   User2,
   LucideClock4,
   Download,
+  Search,
 } from "lucide-react";
 
 import {
@@ -24,6 +25,7 @@ import {
 } from "@/app/components/shadcn/navigation-menu";
 import { usePathname } from "next/navigation";
 import { Button } from "@/app/components/shadcn/button";
+import { SearchModal } from "@/app/components/search/search-modal";
 
 function activeClassName(pathname: string, href: string) {
   if (href === "/") {
@@ -45,12 +47,26 @@ Notes:
 export function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const menuButtonRef = React.useRef<HTMLButtonElement>(null);
 
   // Close mobile menu when pathname changes
   React.useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
+
+  // Handle keyboard shortcut for search (Cmd+K / Ctrl+K)
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setIsSearchOpen((open) => !open);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   // Prevent body scroll when mobile menu is open and handle keyboard events
   React.useEffect(() => {
@@ -96,70 +112,94 @@ export function Navbar() {
 
   return (
     <>
-  <div className="w-full flex items-center justify-center border-b border-border dark:border-border/50 z-2">
+      <div className="w-full flex items-center justify-center border-b border-border dark:border-border/50 z-2">
         <div className="container max-w-screen-md py-4 flex items-center justify-between px-4 md:px-0">
           <Link href="/" className="font-semibold">
             timothee
           </Link>
 
-          <NavigationMenu viewport={false} className="hidden md:flex">
-            <NavigationMenuList>
-              {navigationItems.map((item) => (
-                <NavigationMenuItem key={item.href + "-desktop"}>
-                  <NavigationMenuLink
-                    asChild
-                    className={activeClassName(pathname, item.href)}
+          <div className="hidden md:flex items-center gap-2">
+            <NavigationMenu viewport={false}>
+              <NavigationMenuList>
+                {navigationItems.map((item) => (
+                  <NavigationMenuItem key={item.href + "-desktop"}>
+                    <NavigationMenuLink
+                      asChild
+                      className={activeClassName(pathname, item.href)}
+                    >
+                      <Link href={item.href}>{item.label}</Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                ))}
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger
+                    className={activeClassName(pathname, "/more")}
                   >
-                    <Link href={item.href}>{item.label}</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className={activeClassName(pathname, "/more")}
-                >
-                  More
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[200px] gap-4">
-                    <li>
-                      {moreItems.map((item) => (
-                        <NavigationMenuLink
-                          asChild
-                          key={item.href + "-desktop"}
-                        >
-                          <Link
-                            href={item.href}
-                            className="flex-row items-center gap-2"
-                            target={item.target}
+                    More
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[200px] gap-4">
+                      <li>
+                        {moreItems.map((item) => (
+                          <NavigationMenuLink
+                            asChild
+                            key={item.href + "-desktop"}
                           >
-                            <item.icon />
-                            {item.label}
-                          </Link>
-                        </NavigationMenuLink>
-                      ))}
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+                            <Link
+                              href={item.href}
+                              className="flex-row items-center gap-2"
+                              target={item.target}
+                            >
+                              <item.icon />
+                              {item.label}
+                            </Link>
+                          </NavigationMenuLink>
+                        ))}
+                      </li>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
 
-          <Button
-            ref={menuButtonRef}
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle navigation menu"
-            aria-expanded={isMobileMenuOpen}
-          >
-            {isMobileMenuOpen ? (
-              <X className="size-5" />
-            ) : (
-              <Menu className="size-5" />
-            )}
-          </Button>
+            <Button
+              variant="outline"
+              onClick={() => setIsSearchOpen(true)}
+              className="relative gap-2 text-sm text-muted-foreground hover:text-foreground justify-start"
+            >
+              <Search className="size-4" />
+              <span>Search</span>
+              <kbd className="pointer-events-none ml-auto inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-xs font-medium text-muted-foreground">
+                <span className="text-xs">⌘</span>K
+              </kbd>
+            </Button>
+          </div>
+
+          <div className="flex md:hidden items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsSearchOpen(true)}
+              aria-label="Search"
+            >
+              <Search className="size-5" />
+            </Button>
+            <Button
+              ref={menuButtonRef}
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? (
+                <X className="size-5" />
+              ) : (
+                <Menu className="size-5" />
+              )}
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -225,6 +265,8 @@ export function Navbar() {
           </div>
         </div>
       )}
+
+      <SearchModal open={isSearchOpen} onOpenChange={setIsSearchOpen} />
     </>
   );
 }

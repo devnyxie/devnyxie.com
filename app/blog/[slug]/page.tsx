@@ -55,18 +55,21 @@ export default async function ArticlePage({
       <div className="col-start-2">
         <PageBreadcrumb pageTitle={article.title} />
       </div>
-      <div className="col-start-2 gap-4 flex flex-col items-center">
+
+      <div className="col-start-2 mt-6">
         <IntroSection {...article} />
       </div>
-      <div className="col-start-2 my-6">
-        <Surround post={article} />
-      </div>
 
-      <div className="content-body prose col-start-2 relative">
+      <div className="col-start-2 mt-6 mb-6">
+        <hr />
+      </div>
+      <div className="content-body prose col-start-2 relative mb-16">
         <MDXContent source={article.content} />
       </div>
+
       <TableOfContents />
-      <div className="col-start-2 mt-6">
+
+      <div className="col-start-2 mb-12">
         <Surround post={article} />
       </div>
     </div>

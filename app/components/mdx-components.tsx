@@ -45,16 +45,16 @@ export const Callout = ({
   variant?: "default" | "info" | "warning" | "error" | "success";
 }) => (
   <div
-    className={`mdx-component callout-${variant} relative w-full rounded-lg border-l-4 p-4 my-6 ${
+    className={`mdx-component callout-${variant} relative w-full border-l-4 p-4 my-6 ${
       variant === "info"
         ? "border-l-blue-500 bg-blue-50 dark:bg-blue-500/5"
         : variant === "warning"
-        ? "border-l-yellow-500 bg-yellow-50 dark:bg-yellow-500/5"
-        : variant === "error"
-        ? "border-l-red-500 bg-red-50 dark:bg-red-500/5"
-        : variant === "success"
-        ? "border-l-green-500 bg-green-50 dark:bg-green-500/5"
-        : "border-l-gray-500 bg-card/50 dark:bg-card"
+          ? "border-l-yellow-500 bg-yellow-50 dark:bg-yellow-500/5"
+          : variant === "error"
+            ? "border-l-red-500 bg-red-50 dark:bg-red-500/5"
+            : variant === "success"
+              ? "border-l-green-500 bg-green-50 dark:bg-green-500/5"
+              : "border-l-violet-500 bg-card/50 dark:bg-card"
     }`}
   >
     <div className="flex items-start gap-3">
