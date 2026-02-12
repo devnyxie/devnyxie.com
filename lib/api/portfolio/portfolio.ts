@@ -9,18 +9,17 @@ function parseFile(filePath: string): PortfolioItem | null {
   try {
     const frontmatter = parseYamlFile(filePath, portfolioItemSchema);
 
-    const portfolioData = {
-      ...frontmatter,
-      slug,
-      path: filePath,
-    };
-
-    const parsed = portfolioItemSchema.safeParse(portfolioData);
+    const parsed = portfolioItemSchema.safeParse(frontmatter);
 
     if (!parsed.success) {
       return null;
     }
-    return parsed.data as PortfolioItem;
+    
+    return {
+      ...parsed.data,
+      slug,
+      path: filePath,
+    } as PortfolioItem;
   } catch {
     return null;
   }

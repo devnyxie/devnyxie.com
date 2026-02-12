@@ -15,23 +15,38 @@ export interface SearchResult {
   date?: string;
 }
 
+function stripMarkdown(text: string): string {
+  return text
+    .replace(/<[^>]+>/g, '')
+    .replace(/!?\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/#{1,6}\s+/g, '')
+    .replace(/([*_~`]{1,3})([^*_~`]+)\1/g, '$2')
+    .replace(/^[-*+]\s+/gm, '')
+    .replace(/^>\s+/gm, '')
+    .replace(/^\d+\.\s+/gm, '')
+    .replace(/```[^`]*```/gs, '')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/\n{2,}/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function extractExcerpt(content: string, query: string, maxLength = 150): string {
   if (!content) return "";
   
-  const lowerContent = content.toLowerCase();
+  const strippedContent = stripMarkdown(content);
+  const lowerContent = strippedContent.toLowerCase();
   const lowerQuery = query.toLowerCase();
   const index = lowerContent.indexOf(lowerQuery);
   
   if (index === -1) {
-    // If no match, return the beginning
-    return content.slice(0, maxLength).trim() + "...";
+    return strippedContent.slice(0, maxLength).trim() + "...";
   }
   
-  // Get context around the match
   const start = Math.max(0, index - 60);
-  const end = Math.min(content.length, index + query.length + 90);
+  const end = Math.min(strippedContent.length, index + query.length + 90);
   
-  let excerpt = content.slice(start, end).trim();
+  let excerpt = strippedContent.slice(start, end).trim();
   if (start > 0) excerpt = "..." + excerpt;
   if (end < content.length) excerpt = excerpt + "...";
   
