@@ -35,7 +35,7 @@ export default function PageBreadcrumb({
   const items = customItems || defaultItems;
 
   return (
-    <div className="mb-6">
+    <div className="mb-8">
       <Breadcrumb>
         <BreadcrumbList>
           {items.map((item, index) => (

@@ -112,7 +112,7 @@ export function Navbar() {
 
   return (
     <>
-  <div className="w-full flex items-center justify-center border-b border-border dark:border-border/50 z-2">
+      <div className="w-full flex items-center justify-center border-b border-border dark:border-border/50 z-2">
         <div className="container max-w-screen-md py-4 flex items-center justify-between px-4 md:px-0">
           <Link href="/" className="font-semibold">
             timothee
@@ -120,57 +120,58 @@ export function Navbar() {
 
           <div className="hidden md:flex items-center gap-2">
             <NavigationMenu viewport={false}>
-            <NavigationMenuList>
-              {navigationItems.map((item) => (
-                <NavigationMenuItem key={item.href + "-desktop"}>
-                  <NavigationMenuLink
-                    asChild
-                    className={activeClassName(pathname, item.href)}
+              <NavigationMenuList>
+                {navigationItems.map((item) => (
+                  <NavigationMenuItem key={item.href + "-desktop"}>
+                    <NavigationMenuLink
+                      asChild
+                      className={activeClassName(pathname, item.href)}
+                    >
+                      <Link href={item.href}>{item.label}</Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                ))}
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger
+                    className={activeClassName(pathname, "/more")}
                   >
-                    <Link href={item.href}>{item.label}</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className={activeClassName(pathname, "/more")}
-                >
-                  More
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[200px] gap-4">
-                    <li>
-                      {moreItems.map((item) => (
-                        <NavigationMenuLink
-                          asChild
-                          key={item.href + "-desktop"}
-                        >
-                          <Link
-                            href={item.href}
-                            className="flex-row items-center gap-2"
-                            target={item.target}
+                    More
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[200px] gap-4">
+                      <li>
+                        {moreItems.map((item) => (
+                          <NavigationMenuLink
+                            asChild
+                            key={item.href + "-desktop"}
                           >
-                            <item.icon />
-                            {item.label}
-                          </Link>
-                        </NavigationMenuLink>
-                      ))}
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+                            <Link
+                              href={item.href}
+                              className="flex-row items-center gap-2"
+                              target={item.target}
+                            >
+                              <item.icon />
+                              {item.label}
+                            </Link>
+                          </NavigationMenuLink>
+                        ))}
+                      </li>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
 
             <Button
-              variant="ghost"
-              size="icon"
+              variant="outline"
               onClick={() => setIsSearchOpen(true)}
-              aria-label="Search"
-              className="relative"
+              className="relative gap-2 text-sm text-muted-foreground hover:text-foreground justify-start"
             >
               <Search className="size-4" />
-              <span className="sr-only">Search (Cmd+K)</span>
+              <span>Search</span>
+              <kbd className="pointer-events-none ml-auto inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-xs font-medium text-muted-foreground">
+                <span className="text-xs">⌘</span>K
+              </kbd>
             </Button>
           </div>
 
@@ -183,21 +184,20 @@ export function Navbar() {
             >
               <Search className="size-5" />
             </Button>
-
             <Button
               ref={menuButtonRef}
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle navigation menu"
-            aria-expanded={isMobileMenuOpen}
-          >
-            {isMobileMenuOpen ? (
-              <X className="size-5" />
-            ) : (
-              <Menu className="size-5" />
-            )}
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? (
+                <X className="size-5" />
+              ) : (
+                <Menu className="size-5" />
+              )}
             </Button>
           </div>
         </div>

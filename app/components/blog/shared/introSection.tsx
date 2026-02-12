@@ -23,9 +23,9 @@ function IntroSection({
   tags,
 }: Props) {
   return (
-    <div className="flex flex-col items-center w-full mb-4">
+    <div className="flex flex-col w-full">
       {image && (
-        <div className="w-full rounded aspect-video flex justify-center items-center overflow-hidden mb-2">
+        <div className="w-full rounded-lg aspect-video flex justify-center items-center overflow-hidden mb-8 border border-border/50">
           <Image
             src={image}
             alt={title}
@@ -37,35 +37,43 @@ function IntroSection({
           />
         </div>
       )}
-      {icon && (
-        <Image
-          src={icon}
-          width={64}
-          height={64}
-          alt={`${title} icon`}
-          className="w-16 h-16 rounded-lg flex items-center justify-center text-2xl mb-2"
-        />
-      )}
-      <div className="w-full flex flex-col items-center justify-center mb-4">
-        <h1 className="text-4xl font-medium mb-2 text-center">{title}</h1>
-        <p className="text-muted-foreground mb-2 text-center">{description}</p>
-        <div className="flex gap-2 text-sm">
-          <p className="text-muted-foreground">{formatDate(date)}</p>
-          <div className="flex-1 my-0.5 w-px bg-muted" />
-          <p className="text-muted-foreground">{readTime} min read</p>
-        </div>
-      </div>
-      <div className="tags flex flex-wrap gap-1">
-        {tags &&
-          tags.length > 0 &&
-          tags.map((tag, idx) => (
-            <Tag
-              key={`${tag}-${idx}`}
-              name={tag}
-              path={`/blog/tags/${tag}`}
-              variant="subtle"
+      
+      <div className="flex flex-col space-y-4">
+        {icon && (
+          <div className="flex">
+            <Image
+              src={icon}
+              width={56}
+              height={56}
+              alt={`${title} icon`}
+              className="w-14 h-14 rounded-lg"
             />
-          ))}
+          </div>
+        )}
+        
+        <div className="flex flex-col space-y-3">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">{title}</h1>
+          <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">{description}</p>
+        </div>
+        
+        <div className="flex items-center gap-3 text-sm text-muted-foreground pt-2">
+          <time dateTime={date.toISOString()}>{formatDate(date)}</time>
+          <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
+          <span>{readTime} min read</span>
+        </div>
+        
+        {tags && tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 pt-2">
+            {tags.map((tag, idx) => (
+              <Tag
+                key={`${tag}-${idx}`}
+                name={tag}
+                path={`/blog/tags/${tag}`}
+                variant="subtle"
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
