@@ -51,10 +51,6 @@ const contentConfig: t_content_config = {
       source: "portfolio/software/**/*.yml",
       schema: portfolioItemSchema,
     },
-    designs: {
-      source: "portfolio/designs/**/*.yml",
-      schema: portfolioItemSchema,
-    },
   },
 };
 

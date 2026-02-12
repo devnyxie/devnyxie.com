@@ -28,12 +28,10 @@ export default function PageBreadcrumb({
 }: PageBreadcrumbProps) {
   const defaultItems = useBreadcrumbs(pageTitle);
 
-  // Don't show breadcrumb on root page
   if (defaultItems.length === 0 && !customItems) {
     return null;
   }
 
-  // Use custom items if provided, otherwise use default items
   const items = customItems || defaultItems;
 
   return (

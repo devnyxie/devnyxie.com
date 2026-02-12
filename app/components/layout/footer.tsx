@@ -60,7 +60,6 @@ function Footer() {
     <footer className="w-full border-t border-border py-8">
       <div className="container max-w-screen-md mx-auto px-4 md:px-0">
         <div className="flex flex-col items-center gap-4">
-          {/* Primary Links - Contact & Resume */}
           <div className="flex gap-6 flex-wrap items-center justify-center">
             {primaryItems.map((item: Item) => {
               return (
@@ -79,7 +78,6 @@ function Footer() {
             })}
           </div>
 
-          {/* Secondary Links - Social & Other */}
           <div className="flex gap-6 flex-wrap items-center justify-center">
             {secondaryItems.map((item: Item) => {
               return (
@@ -98,7 +96,6 @@ function Footer() {
             })}
           </div>
 
-          {/* Copyright */}
           <div className="text-xs text-muted-foreground text-center">
             © {currentYear} Tim Afanasiev. All rights reserved.
           </div>
