@@ -54,6 +54,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.4.7",
     "node-fetch": "^3.3.2",
+    "playwright": "^1.58.2",
     "tw-animate-css": "^1.3.7",
     "typescript": "^5",
     "xml2js": "^0.6.2"
