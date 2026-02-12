@@ -17,8 +17,9 @@ export function generateMetadata({
   publishedTime,
   image,
 }: BaseMetadata): Metadata {
-  const fullTitle = title.includes(siteName) ? title : `${title} - ${siteName}`;
-
+  // Disabled for now, repeating site name when shared on social media
+  // const fullTitle = title.includes(siteName) ? title : `${title} - ${siteName}`;
+  const fullTitle = title;
   const metadata: Metadata = {
     title: fullTitle,
     description,
