@@ -12,6 +12,8 @@
 
 A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind CSS` and `MDX`.
 
+<img src="screenshot.png" alt="Screenshot of devnyxie.com" />
+
 ## Features
 
 - **Awesome Markdown Support**: Write your blog posts in Markdown with support for front matter, along with cool syntax highlighting and themes.

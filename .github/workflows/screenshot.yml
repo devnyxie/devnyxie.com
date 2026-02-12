@@ -1,0 +1,51 @@
+name: Update README screenshot
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches: ["main", "master"]
+  workflow_dispatch:
+
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: "pnpm"
+
+      - name: Install deps
+        run: pnpm install
+
+      - name: Install Playwright
+        run: |
+          pnpm add -D playwright
+          npx playwright install --with-deps
+
+      - name: Build Next.js
+        run: pnpm run build
+
+      - name: Start server & take screenshot
+        run: |
+          pnpm run start & sleep 5
+          npx playwright screenshot \
+            --viewport-size=1920,1080 \
+            --color-scheme=dark \
+            --wait-for-timeout=5000 \
+            http://localhost:3000 screenshot.png
+            
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "chore: update screenshot"
