@@ -12,6 +12,7 @@ import {
   User2,
   LucideClock4,
   Download,
+  Search,
 } from "lucide-react";
 
 import {
@@ -24,6 +25,7 @@ import {
 } from "@/app/components/shadcn/navigation-menu";
 import { usePathname } from "next/navigation";
 import { Button } from "@/app/components/shadcn/button";
+import { SearchModal } from "@/app/components/search/search-modal";
 
 function activeClassName(pathname: string, href: string) {
   if (href === "/") {
@@ -45,12 +47,26 @@ Notes:
 export function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const menuButtonRef = React.useRef<HTMLButtonElement>(null);
 
   // Close mobile menu when pathname changes
   React.useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
+
+  // Handle keyboard shortcut for search (Cmd+K / Ctrl+K)
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setIsSearchOpen((open) => !open);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   // Prevent body scroll when mobile menu is open and handle keyboard events
   React.useEffect(() => {
@@ -102,7 +118,8 @@ export function Navbar() {
             timothee
           </Link>
 
-          <NavigationMenu viewport={false} className="hidden md:flex">
+          <div className="hidden md:flex items-center gap-2">
+            <NavigationMenu viewport={false}>
             <NavigationMenuList>
               {navigationItems.map((item) => (
                 <NavigationMenuItem key={item.href + "-desktop"}>
@@ -145,8 +162,30 @@ export function Navbar() {
             </NavigationMenuList>
           </NavigationMenu>
 
-          <Button
-            ref={menuButtonRef}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsSearchOpen(true)}
+              aria-label="Search"
+              className="relative"
+            >
+              <Search className="size-4" />
+              <span className="sr-only">Search (Cmd+K)</span>
+            </Button>
+          </div>
+
+          <div className="flex md:hidden items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsSearchOpen(true)}
+              aria-label="Search"
+            >
+              <Search className="size-5" />
+            </Button>
+
+            <Button
+              ref={menuButtonRef}
             variant="ghost"
             size="icon"
             className="md:hidden"
@@ -159,7 +198,8 @@ export function Navbar() {
             ) : (
               <Menu className="size-5" />
             )}
-          </Button>
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -225,6 +265,8 @@ export function Navbar() {
           </div>
         </div>
       )}
+
+      <SearchModal open={isSearchOpen} onOpenChange={setIsSearchOpen} />
     </>
   );
 }

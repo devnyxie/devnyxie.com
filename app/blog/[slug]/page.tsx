@@ -58,9 +58,6 @@ export default async function ArticlePage({
       <div className="col-start-2 gap-4 flex flex-col items-center">
         <IntroSection {...article} />
       </div>
-      <div className="col-start-2 my-6">
-        <Surround post={article} />
-      </div>
 
       <div className="content-body prose col-start-2 relative">
         <MDXContent source={article.content} />
