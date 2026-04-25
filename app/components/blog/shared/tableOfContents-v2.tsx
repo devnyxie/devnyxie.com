@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 interface HeadingItem {
   level: number;
@@ -9,130 +9,56 @@ interface HeadingItem {
   slug: string;
 }
 
+const SCROLL_OFFSET = 120;
+
 function TableOfContents() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeHeading, setActiveHeading] = useState<string>("");
   const [headings, setHeadings] = useState<HeadingItem[]>([]);
-  const isUserScrollingRef = useRef(false);
 
-  // Extract headings from the actual DOM after MDX rendering
-  const extractHeadingsFromDOM = (): HeadingItem[] => {
-    const articleContent = document.querySelector('.content-body');
-    if (!articleContent) return [];
-    
-    const headingElements = articleContent.querySelectorAll("h1, h2, h3, h4, h5, h6");
-    const headings: HeadingItem[] = [];
+  // Extract headings from DOM once on mount (MDX content is static)
+  useEffect(() => {
+    const articleContent = document.querySelector(".content-body");
+    if (!articleContent) return;
 
-    headingElements.forEach((element) => {
-      const level = parseInt(element.tagName[1]);
-      const text = element.textContent || "";
-      const slug = element.id;
+    const elements = articleContent.querySelectorAll("h1, h2, h3, h4, h5, h6");
+    const extracted: HeadingItem[] = [];
 
+    elements.forEach((el) => {
+      const text = el.textContent || "";
+      const slug = el.id;
       if (text && slug) {
-        headings.push({ level, text, slug });
+        extracted.push({ level: parseInt(el.tagName[1]), text, slug });
       }
     });
 
-    return headings;
-  };
-
-  // Extract headings on mount and when content changes
-  useEffect(() => {
-    const extractedHeadings = extractHeadingsFromDOM();
-    setHeadings(extractedHeadings);
-
-    // Re-extract if DOM changes (for dynamic content)
-    const observer = new MutationObserver(() => {
-      const newHeadings = extractHeadingsFromDOM();
-      setHeadings(newHeadings);
-    });
-
-    const articleContent = document.querySelector('.content-body');
-    if (articleContent) {
-      observer.observe(articleContent, {
-        childList: true,
-        subtree: true,
-      });
-    }
-
-    return () => observer.disconnect();
+    setHeadings(extracted);
   }, []);
 
-  // Track active heading using intersection observer
+  // Track active heading: last heading whose top <= SCROLL_OFFSET
   useEffect(() => {
     if (headings.length === 0) return;
 
-    const headingElements: { [key: string]: Element } = {};
+    const updateActive = () => {
+      let active = headings[0].slug;
 
-    // Find all heading elements in the document
-    headings.forEach(({ slug }) => {
-      const element = document.getElementById(slug);
-      if (element) {
-        headingElements[slug] = element;
-      }
-    });
-
-    if (Object.keys(headingElements).length === 0) return;
-
-    const findClosestHeading = () => {
-      if (isUserScrollingRef.current) return;
-
-      let closestHeading = "";
-      let closestDistance = Infinity;
-      const viewportCenter = window.innerHeight / 2;
-
-      Object.entries(headingElements).forEach(([slug, element]) => {
-        const rect = element.getBoundingClientRect();
-        const elementCenter = rect.top + rect.height / 2;
-        const distanceFromCenter = Math.abs(elementCenter - viewportCenter);
-
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          if (distanceFromCenter < closestDistance) {
-            closestDistance = distanceFromCenter;
-            closestHeading = slug;
-          }
+      for (const { slug } of headings) {
+        const el = document.getElementById(slug);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= SCROLL_OFFSET) {
+          active = slug;
         }
-      });
-
-      if (!closestHeading) {
-        Object.entries(headingElements).forEach(([slug, element]) => {
-          const rect = element.getBoundingClientRect();
-          const distanceFromTop = Math.abs(rect.top);
-
-          if (distanceFromTop < closestDistance) {
-            closestDistance = distanceFromTop;
-            closestHeading = slug;
-          }
-        });
       }
 
-      if (closestHeading && closestHeading !== activeHeading) {
-        setActiveHeading(closestHeading);
-      }
+      setActiveHeading(active);
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const hasVisibleHeading = entries.some((entry) => entry.isIntersecting);
-        if (hasVisibleHeading) {
-          findClosestHeading();
-        }
-      },
-      {
-        rootMargin: "-10% 0% -10% 0%",
-        threshold: 0,
-      }
-    );
-
-    Object.values(headingElements).forEach((element) => {
-      observer.observe(element);
-    });
+    updateActive();
 
     let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          findClosestHeading();
+          updateActive();
           ticking = false;
         });
         ticking = true;
@@ -140,63 +66,40 @@ function TableOfContents() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    findClosestHeading();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [headings]);
 
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [headings, activeHeading]);
+  if (headings.length < 2) return null;
 
-  const handleTocClick = (targetSlug: string) => {
-    setActiveHeading(targetSlug);
-    isUserScrollingRef.current = true;
-    setTimeout(() => {
-      isUserScrollingRef.current = false;
-    }, 500);
-  };
-
-  if (headings.length < 2) {
-    return null;
-  }
-
-  // Find the minimum level to adjust padding
   const minLevel = Math.min(...headings.map((h) => h.level));
 
   return (
-    <nav className="sticky top-10 col-start-3 row-span-1 ml-10 mr-auto hidden h-[calc(100vh-5.5rem)] max-w-md xl:block overflow-y-scroll pe-4">
-      <p className="font-medium mb-2">On this page</p>
-      <div
-        ref={scrollContainerRef}
-        className="overflow-y-auto"
-        style={{ scrollbarWidth: "thin" }}
-      >
-        <ul className="p-0 m-0 space-y-1 list-disc">
-          {headings.map((heading, index) => (
-            <li
-              key={`${heading.slug}-${index}`}
-              style={{ listStyleType: "initial" }}
-              className="flex items-center"
-            >
+    <nav className="sticky top-10 col-start-3 row-span-1 ml-10 mr-auto hidden h-[calc(100vh-5.5rem)] max-w-[14rem] xl:flex xl:flex-col overflow-y-auto pe-2">
+      <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-3">
+        On this page
+      </p>
+      <ul className="border-l border-border space-y-0.5">
+        {headings.map((heading, index) => {
+          const isActive = activeHeading === heading.slug;
+          return (
+            <li key={`${heading.slug}-${index}`}>
               <Link
                 href={`#${heading.slug}`}
-                onClick={() => handleTocClick(heading.slug)}
-                className={`w-full text-sm transition-all duration-200 block py-1.5 rounded ${
-                  activeHeading === heading.slug
-                    ? "text-blue-400"
-                    : "text-muted-foreground hover:text-foreground"
+                className={`block text-sm py-1 pr-2 transition-colors duration-150 border-l -ml-px ${
+                  isActive
+                    ? "border-foreground text-foreground font-medium"
+                    : "border-transparent text-muted-foreground hover:text-foreground hover:border-muted-foreground"
                 }`}
                 style={{
-                  paddingLeft: `${(heading.level - minLevel) * 18}px`,
+                  paddingLeft: `${(heading.level - minLevel) * 12 + 12}px`,
                 }}
               >
                 {heading.text}
               </Link>
             </li>
-          ))}
-        </ul>
-      </div>
-      <hr className="my-6" />
+          );
+        })}
+      </ul>
     </nav>
   );
 }
