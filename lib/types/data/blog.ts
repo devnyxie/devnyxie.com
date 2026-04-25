@@ -15,9 +15,10 @@ const surroundPost = z.object({
 export const blogPostSchema = baseSchema
   .extend({
     slug: slugSchema,
-    content: z.string().min(1, "Content is required"),
+    code: z.string().min(1, "Compiled MDX code is required"),
+    rawContent: z.string().min(1, "Raw content is required"),
     image: z.string().default(""),
-    date: z.date(), // YAML usually loads dates as strings
+    date: z.date(),
     published: z.boolean().default(true),
     pinned: z.boolean().default(false),
     tags: z.array(z.string().min(1)).max(10).default([]),
@@ -30,7 +31,7 @@ export const blogPostSchema = baseSchema
   })
   .transform((post) => ({
     ...post,
-    readTime: Math.ceil(post.content.split(/\s+/).length / 180),
+    readTime: Math.ceil(post.rawContent.split(/\s+/).length / 180),
     path: `/blog/${post.slug}`,
   }));
 

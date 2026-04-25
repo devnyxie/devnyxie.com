@@ -22,20 +22,16 @@ A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind
 
 ## Dependencies Overview
 
-### Markdown Parsing
+### Content Pipeline
 
-- `unified` for processing markdown
-- `remark-parse` for parsing markdown
-- `remark-rehype` for converting markdown to HTML
+- `velite` for build-time content processing — compiles all MDX once, outputs typed JS modules
+- `@mdx-js/mdx` for runtime MDX compilation (YAML-sourced content pages)
 - `remark-breaks` for converting line breaks to `<br>` tags
 - `remark-gfm` for GitHub Flavored Markdown support
-- `rehype-stringify` for converting HTML to strings
 - `rehype-slug` for adding slugs to headings
 - `rehype-autolink-headings` for adding links to headings
 - `@shikijs/rehype` for syntax highlighting
 - `shiki` for syntax highlighting engine
-- `next-mdx-remote` for MDX support in Next.js
-- `gray-matter` for parsing front matter
 - `js-yaml` for YAML parsing
 - `zod` for static content validation and typization
 
@@ -65,7 +61,6 @@ A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind
 ## Roadmap
 
 - [ ] Overall Normalization of styles - paddings, margins, font sizes
-- [ ] Add **Search** functionality
 
 ## Development
 

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Heading from "@/app/components/heading";
 import PageBreadcrumb from "@/app/components/layout/breadcrumb";
-import MDXContent from "@/app/components/mdx-content";
+import DynamicMDXContent from "@/app/components/dynamic-mdx-content";
 import Container from "./container";
 
 interface ContentPageProps {
@@ -40,7 +40,7 @@ export function generateContentPageMetadata({
   };
 }
 
-export default function ContentPage({
+export default async function ContentPage({
   title,
   description,
   processedContent,
@@ -56,7 +56,7 @@ export default function ContentPage({
 
       <div className="markdown content-body">
         {content ? (
-          <MDXContent source={content} />
+          <DynamicMDXContent source={content} />
         ) : processedContent ? (
           <div dangerouslySetInnerHTML={{ __html: processedContent }} />
         ) : (

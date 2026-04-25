@@ -23,7 +23,7 @@ export const APP_CONFIG = {
   rss: {
     title: "Tim Afanasiev - Blog",
     description:
-      "Passionate about crafting elegant solutions and building impactful software. Based in Warsaw, available for both Frontend and Backend projects worldwide.",
+      "Passionate about crafting elegant solutions and building impactful software. Based in Wrocław, available for both Frontend and Backend projects worldwide.",
     language: "en",
     authorName: "Tim Afanasiev",
     maxItems: 20,

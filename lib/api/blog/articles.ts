@@ -1,43 +1,14 @@
-import fs from "fs";
-import { blogPostSchema, PostInput } from "../../types/data/blog";
-import matter from "gray-matter";
-import { glob } from "glob";
-import { getContentConfig } from "../../../content.config";
-import { getSlug } from "./utils";
+import { PostInput } from "../../types/data/blog";
+import { articles as veliteArticles } from "@/.velite";
 
-function parsePostFile(filePath: string): PostInput | null {
-  const contentRaw = fs.readFileSync(filePath, "utf-8");
-  const { data: frontmatter, content } = matter(contentRaw);
-  const postData = {
-    ...frontmatter,
-    content,
-    slug: getSlug(filePath),
-    published: frontmatter.published ?? true,
-    date: frontmatter.date,
-  };
-  const parsed = blogPostSchema.safeParse(postData);
-  if (!parsed.success) {
-    if (!postData.published) {
-      return null;
-    }
-    const errorMessage = `Error parsing article "${filePath}": ${parsed.error}`;
-    throw new Error(errorMessage);
-  }
-  return parsed.data;
-}
+// Velite serializes Date objects to ISO strings in JSON; re-hydrate them here.
+type VeliteArticle = Omit<PostInput, "date"> & { date: string };
 
 export async function getAllArticles(): Promise<PostInput[]> {
-  const { content } = getContentConfig();
-  const articlesGlob = "./content/" + content.articles.source;
-  const filePaths = await glob(articlesGlob, { nodir: true });
-  const articles: PostInput[] = filePaths
-    .map((filePath) => {
-      const post = parsePostFile(filePath);
-      return post;
-    })
-    .filter((post): post is PostInput => post !== null);
-  // logger
-  // console.log(`Parsed ${articles.length} articles`);
+  const articles: PostInput[] = (veliteArticles as unknown as VeliteArticle[])
+    .filter((a) => a.published)
+    .map((a) => ({ ...a, date: new Date(a.date) }));
+
   articles.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
