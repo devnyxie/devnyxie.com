@@ -60,9 +60,8 @@ export default function RootLayout({
             {children}
           </div>
           <Footer />
-          {/* Server status moved to client-side lazy loading */}
         </ThemeProvider>
-        <ServerStatusLoader />
+        {/* <ServerStatusLoader /> */}
       </body>
     </html>
   );

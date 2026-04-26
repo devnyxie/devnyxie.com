@@ -1,5 +1,4 @@
 import { baseSchema, contentPageSchema } from "./lib/types/base";
-import { blogPostSchema } from "./lib/types/data/blog";
 import { indexPageSchema } from "./lib/types/pages/index";
 import { portfolioItemSchema } from "./lib/types/data/portfolio";
 import t_content_config from "./lib/types/content";
@@ -43,10 +42,6 @@ const contentConfig: t_content_config = {
     },
   },
   content: {
-    articles: {
-      source: "blog/articles/**/*.{md,mdx}",
-      schema: blogPostSchema,
-    },
     software: {
       source: "portfolio/software/**/*.yml",
       schema: portfolioItemSchema,

@@ -25,7 +25,7 @@ export function useServerStatus({
     latency: 0,
     timestamp: Date.now(),
     server: "Home Lab",
-    region: "Warsaw, PL",
+    region: "Wrocław, PL",
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

@@ -64,7 +64,7 @@ export default async function ArticlePage({
         <hr />
       </div>
       <div className="content-body prose col-start-2 relative mb-16">
-        <MDXContent source={article.content} />
+        <MDXContent code={article.code} />
       </div>
 
       <TableOfContents />

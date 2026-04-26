@@ -1,0 +1,313 @@
+---
+title: "velite: The Content Pipeline I Was Building by Hand"
+description: "How @nuxt/content gave me content-pipeline envy, why I spent months building the same thing in Next.js by hand, and how Velite made it all irrelevant."
+date: 2026-04-25
+tags:
+  - nextjs
+  - frontend
+  - tooling
+published: true
+image: /images/articles/velite/velite-og.jpg
+
+---
+
+I was working on the Nuxt version of this website a while back, and one thing genuinely impressed me: `@nuxt/content`. You drop your `.md` files into a folder, define a Zod-like schema in a config file, and everything is automatically typed, validated, and queryable — at build time. No glue code. No custom parsers. No re-inventing the wheel.
+
+Then I switched back to Next.js, and reality hit me.
+
+## The Glue Stack
+
+Every Next.js blog eventually ends up with the same pile of dependencies bolted together:
+
+- `glob` to find files
+- `gray-matter` to parse YAML frontmatter
+- `unified` + `remark-*` + `rehype-*` for the transform pipeline
+- `@shikijs/rehype` for syntax highlighting
+- `next-mdx-remote` to compile and render MDX in server components
+- Zod to validate everything after parsing
+
+That's six or seven packages to do what `@nuxt/content` handles natively. And the real pain wasn't installation — it was maintenance. Every request would re-run the full pipeline: read file from disk, parse frontmatter, run `unified`, initialize Shiki, compile MDX, serialize. On a cold start, a single article page could take 200-800ms just for content processing.
+
+Here's roughly what `getAllArticles()` looked like in this very website before the migration:
+
+```ts
+import fs from "fs";
+import matter from "gray-matter";
+import { glob } from "glob";
+
+export async function getAllArticles() {
+  const filePaths = await glob("./content/blog/articles/**/*.{md,mdx}");
+
+  return filePaths
+    .map((filePath) => {
+      const raw = fs.readFileSync(filePath, "utf-8");
+      const { data: frontmatter, content } = matter(raw);
+
+      return blogPostSchema.parse({
+        ...frontmatter,
+        content,
+        slug: path.basename(filePath, path.extname(filePath)),
+      });
+    })
+    .filter(Boolean)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+```
+
+And the MDX renderer:
+
+```tsx
+import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypeShiki from "@shikijs/rehype";
+import rehypeSlug from "rehype-slug";
+// ...
+
+export default function MDXContent({ source }) {
+  return (
+    <MDXRemote
+      source={source}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [remarkGfm, remarkBreaks],
+          rehypePlugins: [
+            rehypeSlug,
+            [rehypeAutolinkHeadings, { behavior: "wrap" }],
+            [rehypeShiki, { themes: { light: "github-light-default", dark: "dark-plus" }, defaultColor: false }],
+          ],
+        },
+      }}
+      components={mdxComponents}
+    />
+  );
+}
+```
+
+It worked. But every time someone navigated to `/blog/[slug]`, the server would spin up Shiki from scratch and run the whole pipeline again. There was no caching layer — just Next.js's default request memoization, which helped a little but didn't survive across requests.
+
+For a while I considered writing a proper cache myself. Key it by `slug + mtime`, serialize to `.cache/`, invalidate on file change. I got about halfway through before life intervened — got hired, shelved the whole thing. When I came back to it months later I stumbled upon Velite: 763 stars at the time of writing, doing exactly what I was trying to build.
+
+## Velite
+
+<MdxImage
+  src="/images/articles/velite/velite-repo.png"
+  className="w-120"
+  />
+
+[Velite](https://velite.js.org/) is essentially `@nuxt/content` for any framework. It pre-compiles all your content at build time, outputs typed JavaScript modules to `.velite/`, and in dev mode watches your content directory and only reprocesses changed files.
+
+The mental model is simple:
+
+1. You define **collections** in `velite.config.ts` — schema, glob pattern, MDX plugins
+2. Running `velite build` processes every file and writes `.velite/index.js` + `.velite/index.d.ts`
+3. Your app imports from `@/.velite` like any other module — fully typed, no runtime file I/O
+
+That's it. There's no runtime processing. Rendering a blog article goes from "run the full pipeline" to "evaluate a pre-compiled JS function."
+
+## Setting It Up
+
+### Installation
+
+```bash
+pnpm add -D velite
+```
+
+Velite is a devDependency — it only runs at build time.
+
+### The Config File
+
+Create `velite.config.ts` in your project root. Here's a real-world schema for a blog:
+
+```ts
+import { defineConfig, s } from "velite";
+import remarkGfm from "remark-gfm";
+import remarkBreaks from "remark-breaks";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeShiki from "@shikijs/rehype";
+
+export default defineConfig({
+  root: "content",
+  output: {
+    data: ".velite",
+    assets: "public/static",
+    base: "/static/",
+    clean: true,
+  },
+  collections: {
+    articles: {
+      name: "Article",
+      pattern: "blog/articles/**/*.{md,mdx}",
+      schema: s
+        .object({
+          title: s.string().min(3).max(120),
+          description: s.string().min(10).max(250),
+          slug: s.path().transform((p) => p.split("/").pop() ?? p),
+          image: s.string().default(""),
+          date: s.isodate().transform((d) => new Date(d)),
+          published: s.boolean().default(true),
+          pinned: s.boolean().default(false),
+          tags: s.array(s.string()).max(10).default([]),
+          code: s.mdx(),
+          rawContent: s
+            .raw()
+            .transform((raw) => raw.replace(/^---[\s\S]*?---\s*\n/, "")),
+        })
+        .transform((data) => ({
+          ...data,
+          readTime: Math.ceil(data.rawContent.split(/\s+/).length / 180),
+          path: `/blog/${data.slug}`,
+        })),
+    },
+  },
+  mdx: {
+    copyLinkedFiles: false,
+    remarkPlugins: [remarkGfm, remarkBreaks],
+    rehypePlugins: [
+      rehypeSlug,
+      [rehypeAutolinkHeadings, { behavior: "wrap", properties: { className: ["heading-anchor"] } }],
+      [rehypeShiki as never, { themes: { light: "github-light-default", dark: "dark-plus" }, defaultColor: false }],
+    ],
+  },
+});
+```
+
+A few things worth pointing out:
+
+- `s.path()` auto-derives the slug from the file path, so `blog/articles/my-post.mdx` becomes `"my-post"` — no manual extraction needed.
+- `code: s.mdx()` is where the magic happens. Velite compiles the full MDX into a JavaScript function-body string. Shiki runs **once**, at build time, for every article.
+- `rawContent: s.raw()` gives you the unprocessed source text — useful for search, word count, excerpt extraction.
+- The `.transform()` at the end computes derived fields like `readTime` and `path`.
+
+<Callout variant="info" title="s is extended Zod">
+  The `s` object from Velite is Zod with extra schemas: `s.isodate()`, `s.mdx()`, `s.path()`, `s.image()`, `s.file()`, and more. You can use regular `z` imports for everything else.
+</Callout>
+
+### Integrating with Next.js
+
+Since this project uses Turbopack (`next dev --turbopack`), we can't use Velite's webpack plugin. Instead, we hook into `next.config.ts` directly:
+
+```ts
+import type { NextConfig } from "next";
+
+const isDev = process.argv.indexOf("dev") !== -1;
+const isBuild = process.argv.indexOf("build") !== -1;
+if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
+  process.env.VELITE_STARTED = "1";
+  import("velite").then((m) => m.build({ watch: isDev, clean: !isDev }));
+}
+
+const nextConfig: NextConfig = {
+  output: "standalone",
+};
+
+export default nextConfig;
+```
+
+`watch: isDev` means in development, Velite runs in the background watching `content/` for changes. Edit an article, save it — Velite recompiles that one file in under 500ms, Next.js hot-reloads. In production builds, `clean: true` ensures a fresh `.velite/` on every `next build`.
+
+Add `.velite` to your `.gitignore`:
+
+```
+# velite
+.velite
+```
+
+And add the path alias in `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"],
+      "@/.velite": ["./.velite"]
+    }
+  }
+}
+```
+
+### Importing Content
+
+After `velite build` runs, `.velite/index.js` and `.velite/index.d.ts` are generated. Import from them like any module:
+
+```ts
+import { articles } from "@/.velite";
+
+export async function getAllArticles() {
+  return articles
+    .filter((a) => a.published)
+    .map((a) => ({ ...a, date: new Date(a.date) })) // re-hydrate date from JSON
+    .sort((a, b) => b.date.getTime() - a.date.getTime());
+}
+```
+
+<Callout variant="warning" title="Date Re-hydration">
+  Velite serializes `Date` objects to ISO strings in its JSON output. If you use `s.isodate().transform(d => new Date(d))` in your schema, you'll get a string back at runtime — re-hydrate it manually after import.
+</Callout>
+
+Everything is fully typed. Your IDE knows exactly what fields are on each article, because Velite generates the TypeScript declarations from your schema.
+
+### Rendering MDX
+
+The `code` field contains a compiled JS function-body. To render it, you evaluate it with `new Function` and inject `react/jsx-runtime`:
+
+```tsx
+import * as runtime from "react/jsx-runtime";
+import { mdxComponents } from "./mdx-components";
+
+const useMDXComponent = (code: string) => {
+  const fn = new Function(code);
+  return fn({ ...runtime }).default;
+};
+
+export default function MDXContent({ code }) {
+  const Component = useMDXComponent(code);
+  return (
+    <Component
+      components={mdxComponents as never}
+    />
+  );
+}
+```
+
+No more `<MDXRemote>`. No more async server component overhead. Just a synchronous function call.
+
+<Callout variant="info" title="Is new Function safe here?">
+  Yes — the code was generated by Velite at build time from your own content files. It never executes user-submitted input at runtime. The security concern with `new Function` is dynamic execution of untrusted strings, which does not apply here.
+</Callout>
+
+## Before and After
+
+The improvement is measurable. Previously:
+
+- Every article page request: `readFileSync` + `gray-matter` parse + `unified` pipeline + Shiki init + MDX compile = **200–800ms** of pure content processing
+- In dev, every hot reload hit this full path
+
+After Velite:
+
+- Build time: Shiki initializes once, compiles all articles in a single pass (~7s for 15 articles)
+- Dev: only the changed file is reprocessed (~100–500ms)
+- Per-request: evaluate a pre-compiled function = **effectively 0ms**
+
+The `getAllArticles()` function went from a file-system operation to a plain array import. Search, tag filtering, sitemap generation — they all got faster by the same factor.
+
+## The Caveat
+
+Velite is at version `0.3`. It's not `1.0`. The API could change on a minor bump, and the community is small.
+
+That said, the strategic risk is limited — Velite is a thin layer over `@mdx-js/mdx`, remark, rehype, and Shiki. If Velite ever breaks or stalls, the migration path is clear: pull those same plugins together manually and add a simple file-mtime cache. You're not locked in. The compiled `.velite/` output is just JSON and JavaScript.
+
+If you pin the version (`"velite": "0.3.1"`) and don't let it upgrade automatically, the surface area of risk is basically zero.
+
+## Verdict
+
+If you're building a Next.js blog or documentation site with MDX, Velite is the most direct solution to the performance problem that every such site eventually runs into. It gives you what `@nuxt/content` gives Nuxt developers — a real, typed, build-time content pipeline — without making you stitch it together yourself.
+
+For a personal site like this one, where the only moving parts are my own articles, it's an obvious choice. The 20-minute migration saved every future visitor ~500ms per page load, eliminated a pile of glue dependencies, and made the dev experience genuinely faster.
+
+Not bad for a `0.3`.
+
+---
+
+- [Velite Documentation](https://velite.js.org/)
+- [Velite Next.js Integration Guide](https://velite.js.org/guide/with-nextjs)
+- [My nuxt/content article](/blog/nuxt_content) — what started the content-pipeline envy

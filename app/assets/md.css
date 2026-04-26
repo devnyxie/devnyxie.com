@@ -128,3 +128,8 @@ code:not(pre code) {
 .content-body > *:first-child {
   margin-top: 0 !important;
 }
+
+/* hr margin */
+.content-body hr:not(.mdx-component *) {
+  @apply my-6;
+}

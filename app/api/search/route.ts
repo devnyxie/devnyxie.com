@@ -76,12 +76,12 @@ export async function GET(request: NextRequest) {
     const articles = await getAllArticles();
     for (const article of articles) {
       const titleMatch = article.title.toLowerCase().includes(lowerQuery);
-      const contentMatch = article.content?.toLowerCase().includes(lowerQuery);
+      const contentMatch = article.rawContent?.toLowerCase().includes(lowerQuery);
       const descriptionMatch = article.description?.toLowerCase().includes(lowerQuery);
 
       if (titleMatch || contentMatch || descriptionMatch) {
         const excerpt = extractExcerpt(
-          article.content || article.description || "",
+          article.rawContent || article.description || "",
           query
         );
         

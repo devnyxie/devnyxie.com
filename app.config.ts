@@ -1,13 +1,15 @@
 export const APP_CONFIG = {
   domain: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   picture: {
-    src: "/pfp/drawing.jpg",
+    src: "/pfp/treejp.jpg",
     alt: "My profile picture",
   },
   meetingLink: "https://cal.com/tim-afanasiev",
   github_username: "devnyxie",
   email: "timbusinez@gmail.com",
-  available: true,
+  available: false,
+  displayName: "timothee",
+  employer: "Capgemini",
   server: {
     name: process.env.NEXT_PUBLIC_SERVER_NAME || "Home Lab",
     region:
@@ -23,7 +25,7 @@ export const APP_CONFIG = {
   rss: {
     title: "Tim Afanasiev - Blog",
     description:
-      "Passionate about crafting elegant solutions and building impactful software. Based in Warsaw, available for both Frontend and Backend projects worldwide.",
+      "Passionate about crafting elegant solutions and building impactful software. Based in Wrocław, available for both Frontend and Backend projects worldwide.",
     language: "en",
     authorName: "Tim Afanasiev",
     maxItems: 20,
