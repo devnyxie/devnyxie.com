@@ -15,13 +15,13 @@ content: |
   ### Education
 
   1. In 2022, I joined the **[Polish-Japanese Academy of Information Technology](https://pja.edu.pl/en/)**, pursuing a degree in Computer Science. It gave me a strong foundation in programming concepts and problem-solving - an important stepping stone into the real world.
-      <MdxImage src="/images/about/pjatk_cover_fhd.jpg" className="w-100"/>
+      <MdxImage src="/images/about/pjatk_cover_fhd.jpg" className="w-full"/>
 
   2. At the same time, I participated in the **[Epicode Bootcamp](https://epicode.com/en/)** (2022-2023), where I focused on the JavaScript ecosystem for both frontend and backend development, which has been my primary toolkit. The program was intense, covering everything from real-time applications and authentication to encryption, databases, and highly interactive interfaces - and I loved every bit of it.
       <MdxImage src="/images/about/epicode_cert.png" className="w-100"/>
 
   3. Wanting to challenge myself further, I joined **42 Warsaw** (2024-2026). The program's emphasis on low-level C/C++ programming, UNIX systems, and efficiency was exactly what I needed. Many great projects.
-      <MdxImage src="/images/about/42_kickoff.jpg" className="w-100"/>
+      <MdxImage src="/images/about/42_kickoff.jpg" className="w-full"/>
 
   4. In parallel with **42 Warsaw**, I started studying Polish at [Language School Together](https://en.together.edu.pl/). 
       1. In July 2025, I passed my A2 exam. 
@@ -36,6 +36,7 @@ content: |
 
   3. In 2024, I transitioned to **freelance development**, which allowed me to stay connected with real-world projects while giving me the freedom to study and explore new technologies - especially **Go**.
 
-  4. In 2026, I started working as a **Golang Software Engineer** at **Capgemini** and relocated from Warsaw to Wrocław for this role.
+  4. In 2026, I started working as a **Software Engineer** at **Capgemini** and relocated from Warsaw to Wrocław for this role.
+        <MdxImage src="/images/about/capgemini-office.jpg" className="w-full"/>
 
   Apart from paid work, I also try to dedicate time to **Open Source**. I've contributed to several major repositories, including **Grafana**, **Next.js**, and **Pterm**, mainly for documentation improvements.

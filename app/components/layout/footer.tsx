@@ -53,12 +53,6 @@ const connectItems: Item[] = [
     external: true,
   },
   {
-    href: "https://notes.devnyxie.com",
-    label: "Notes",
-    icon: <Notebook size={14} />,
-    external: true,
-  },
-  {
     href: "/blog/feed.xml",
     label: "RSS",
     icon: <Rss size={14} />,
@@ -85,15 +79,20 @@ function Footer() {
               href="/"
               className="font-semibold text-foreground hover:opacity-80 transition-opacity"
             >
-              timothee
+              {APP_CONFIG.displayName}
             </Link>
             <p className="text-sm text-muted-foreground">
               {APP_CONFIG.og_img.title}
             </p>
-            {APP_CONFIG.available && (
+            {APP_CONFIG.available ? (
               <span className="flex items-center gap-1.5 text-xs text-green-500 mt-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
                 Available for work
+              </span>
+            ) : (
+              <span className="flex items-center gap-1.5 text-xs text-blue-400 mt-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                Working @ {APP_CONFIG.employer}
               </span>
             )}
           </div>

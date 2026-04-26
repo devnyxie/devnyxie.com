@@ -37,7 +37,7 @@ function Hero({
           alt={picture.alt}
           width={"500"}
           height={"500"}
-          className="w-32 h-32 border-2 border-muted rounded-full"
+          className="w-32 h-32 border-2 border-muted rounded-full object-cover"
         />
       </FadeIn>
       <div className="max-w-xl mx-auto">
@@ -91,30 +91,13 @@ function Hero({
             </Button>
           ) : (
             <>
-              <Button
-                variant="ghost"
-                color={available ? "success" : "destructive"}
-                asChild
-              >
-                <div
-                  rel="noopener noreferrer"
-                  className="flex gap-2 items-center"
-                >
-                  <span className="relative flex size-2">
-                    <span
-                      className={
-                        "absolute inline-flex size-full rounded-full opacity-75 bg-destructive"
-                      }
-                    />
-                    <span
-                      className={
-                        "relative inline-flex size-2 scale-90 rounded-full bg-destructive"
-                      }
-                    />
-                  </span>
-                  Not available
-                </div>
-              </Button>
+              <div className="flex gap-2 items-center px-4 py-2 text-sm">
+                <span className="relative flex size-2">
+                  <span className="absolute inline-flex size-full rounded-full opacity-75 bg-blue-400 animate-ping" />
+                  <span className="relative inline-flex size-2 scale-90 rounded-full bg-blue-400" />
+                </span>
+                Occupied
+              </div>
             </>
           )}
         </div>
