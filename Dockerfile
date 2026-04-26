@@ -13,7 +13,8 @@ RUN pnpm install --frozen-lockfile
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-COPY .env* ./  # for build-time env
+# Copy env files for build-time
+COPY .env* ./
 
 # Disable telemetry to avoid warnings
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -33,7 +34,8 @@ RUN adduser --system --uid 1001 nextjs
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-COPY --from=builder --chown=nextjs:nodejs /app/.env* ./  # runtime env
+# Copy env files for runtime
+COPY --from=builder --chown=nextjs:nodejs /app/.env* ./
 
 RUN mkdir .next && chown nextjs:nodejs .next
 USER nextjs
