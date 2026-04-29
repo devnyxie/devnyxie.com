@@ -40,7 +40,7 @@
 .content-body h4:not(.mdx-component *),
 .content-body h5:not(.mdx-component *),
 .content-body h6:not(.mdx-component *) {
-  @apply relative w-max;
+  @apply relative max-w-full;
 }
 
 .content-body h1:not(.mdx-component *):hover,

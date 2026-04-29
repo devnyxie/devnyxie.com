@@ -62,7 +62,6 @@
   --accent: var(--color-zinc-100); /*var(--color-white);*/
   --accent-foreground: oklch(0.205 0 0);
   --destructive: var(--color-red-700);
-  /* --success: oklch(0.577 0.245 134.325); */
   --success: var(--color-green-500); /* added */
   --border: var(--color-neutral-200); /*oklch(0.922 0 0); */
   --input: oklch(0.922 0 0);
@@ -80,6 +79,9 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0); */
+
+  /* additional colors for default tailwind palette */
+  --color-neutral-750: oklch(31% 0 0);
 }
 
 .dark {
@@ -100,7 +102,7 @@
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --success: var(--color-green-400); /* added */
-  --border: oklch(1 0 0 / 10%);
+  --border: var(--color-neutral-750);
   --input: oklch(0.269 0 0); /* oklch(1 0 0 / 15%); */
   --ring: oklch(0.556 0 0);
   /* --chart-1: oklch(0.488 0.243 264.376);
@@ -131,16 +133,16 @@
   .animate-ping {
     animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
-  
+
   /* Grid pattern background */
   .bg-grid-pattern {
-    background-image: 
+    background-image:
       linear-gradient(to right, currentColor 1px, transparent 1px),
       linear-gradient(to bottom, currentColor 1px, transparent 1px);
     background-size: 20px 20px;
     opacity: 0.1;
   }
-  
+
   /* Text utilities */
   .line-clamp-2 {
     display: -webkit-box;
@@ -148,14 +150,14 @@
     -webkit-line-clamp: 2;
     overflow: hidden;
   }
-  
+
   .line-clamp-3 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
   }
-  
+
   .line-clamp-4 {
     display: -webkit-box;
     -webkit-box-orient: vertical;

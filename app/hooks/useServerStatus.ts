@@ -16,9 +16,9 @@ interface UseServerStatusOptions {
   enabled?: boolean;
 }
 
-export function useServerStatus({ 
+export function useServerStatus({
   refreshInterval = 30000, // 30 seconds default
-  enabled = true 
+  enabled = true,
 }: UseServerStatusOptions = {}) {
   const [status, setStatus] = useState<ServerStatus>({
     isOnline: true,
@@ -40,18 +40,18 @@ export function useServerStatus({
           "Cache-Control": "no-cache",
         },
       });
-      
+
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
-      
+
       const data: ServerStatus = await response.json();
       setStatus(data);
       setError(null);
     } catch (err) {
       console.error("Failed to fetch server status:", err);
       setError(err instanceof Error ? err.message : "Unknown error");
-      setStatus(prev => ({ ...prev, isOnline: false, latency: 0 }));
+      setStatus((prev) => ({ ...prev, isOnline: false, latency: 0 }));
     } finally {
       setLoading(false);
     }
