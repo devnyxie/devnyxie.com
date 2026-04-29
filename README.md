@@ -8,8 +8,6 @@
 
 ![Build](https://img.shields.io/github/actions/workflow/status/devnyxie/devnyxie.com/ci.yml?branch=main)
 
-
-
 A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind CSS` and `MDX`.
 
 <img src="screenshot.png" alt="Screenshot of devnyxie.com" />
@@ -49,8 +47,6 @@ A minimalist, fast, and accessible blog template built with `Next.js`, `Tailwind
 ### Animations & Interactions
 
 - `framer-motion` for animations and transitions
-- `embla-carousel-react` for carousel components
-- `embla-carousel-autoplay` for carousel autoplay functionality
 - `react-intersection-observer` for intersection observer hooks
 
 ### Development & Data
