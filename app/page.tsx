@@ -1,7 +1,5 @@
 import FadeIn from "@/app/components/animations/fadeIn";
 import BlogPost from "@/app/components/blog/BlogPost";
-import MentionCard from "@/app/components/blog/MentionCard";
-// Removed direct import of GitHeroSection
 import Heading from "@/app/components/heading";
 import AboutMe from "@/app/components/landing/aboutMe";
 import Experience from "@/app/components/landing/experience";
@@ -12,11 +10,9 @@ import Gaps from "@/app/components/layout/gaps";
 import SkillsBento from "@/app/components/skills/skills-bento";
 import { Button } from "@/app/components/button";
 import { getAllPosts } from "@/lib/api/blog/blog";
-import { getMentions } from "@/lib/api/mentions";
 import { getPageData } from "@/lib/api/pages";
 import { getConfig } from "@/app.config";
-import { PostInput } from "@/lib/types/data/blog";
-import { MentionsPageType } from "@/lib/types/data/mentions";
+import { PostInput } from "@/velite.config";
 import { IndexPageType } from "@/lib/types/pages";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -37,10 +33,9 @@ const GitHeroSectionLazy = dynamic(
 
 export default async function Home() {
   const pageData: IndexPageType = getPageData("index");
-  const { picture, meetingLink, available, features } = getConfig();
+  const { picture, meetingLink, available } = getConfig();
 
   const posts: PostInput[] = await getAllPosts();
-  const mentions: MentionsPageType | null = features.mentions ? await getMentions() : null;
 
   return (
     <Container>
@@ -55,7 +50,7 @@ export default async function Home() {
         />
 
         {/* Make client components so we can use framer motion */}
-        <List asGrid cols="1 md:2" gap="8" className="!pt-0">
+        <List asGrid cols="1 md:2" gap="8" className="pt-0">
           {/* About Me */}
           <AboutMe
             title={pageData.about.title}
@@ -112,42 +107,6 @@ export default async function Home() {
             )}
           </List>
         </FadeIn>
-
-        {/* Recent Mentions */}
-        {features.mentions && (
-          <FadeIn delay={0.9}>
-            <div className="mb-6 flex items-start justify-between">
-              <div>
-                <Heading className="mb-2" size="default">
-                  Recent Mentions
-                </Heading>
-                <p className="text-balance text-left text-sm sm:text-md lg:text-sm text-muted-foreground">
-                  Resources and articles I&apos;ve been exploring lately
-                </p>
-              </div>
-              <Button variant="outline" asChild>
-                <Link href="/blog">More</Link>
-              </Button>
-            </div>
-            <List asGrid cols="1 sm:2" gap="4">
-              {mentions?.items && mentions.items.length > 0 ? (
-                <>
-                  {mentions.items.slice(0, 4).map((mention, index) => (
-                    <MentionCard
-                      key={`${mention.url}-${index}`}
-                      mention={mention}
-                      layout="compact"
-                    />
-                  ))}
-                </>
-              ) : (
-                <p className="text-sm text-muted-foreground">
-                  No mentions found.
-                </p>
-              )}
-            </List>
-          </FadeIn>
-        )}
       </Gaps>
     </Container>
   );

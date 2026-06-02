@@ -1,4 +1,4 @@
-import { PostInput } from "../../types/data/blog";
+import { PostInput } from "@/velite.config";
 import { articles as veliteArticles } from "@/.velite";
 
 // Velite serializes Date objects to ISO strings in JSON; re-hydrate them here.
@@ -30,6 +30,7 @@ export async function getAllArticles(): Promise<PostInput[]> {
     }
   }
 
+  console.log("Loaded articles:", articles.map((a) => a.slug));
   return articles;
 }
 

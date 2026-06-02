@@ -1,15 +1,12 @@
 import { getAllArticles } from "@/lib/api/blog/articles";
-import { getMentions } from "@/lib/api/mentions";
 import BlogPost from "../components/blog/BlogPost";
-import MentionCard from "../components/blog/MentionCard";
 import Heading from "@/app/components/heading";
 import { getPageData } from "@/lib/api/pages";
 import { getConfig } from "@/app.config";
 import Gaps from "@/app/components/layout/gaps";
 import { BlogPageType } from "@/lib/types/pages/blog";
 import PageBreadcrumb from "@/app/components/layout/breadcrumb";
-import { PostInput } from "@/lib/types/data/blog";
-import { MentionsPageType } from "@/lib/types/data/mentions";
+import { PostInput } from "@/velite.config";
 import Link from "next/link";
 import { Button } from "@/app/components/button";
 import { generateMetadata as createMetadata } from "@/metadata";
@@ -28,56 +25,15 @@ export async function generateMetadata() {
 
 export default async function Blog() {
   const page: BlogPageType = await getPageData("blog");
-  const { features } = getConfig();
   const allArticles: PostInput[] = await getAllArticles();
   const pinnedArticles = allArticles.filter(article => article.pinned);
   const regularArticles = allArticles.filter(article => !article.pinned);
   const displayedArticles = regularArticles.slice(0, 8);
   const remainingCount = regularArticles.length - displayedArticles.length;
-  const mentions: MentionsPageType | null = features.mentions ? await getMentions() : null;
   return (
     <Container>
       <PageBreadcrumb />
       <Gaps>
-        {/* Mentions */}
-        {features.mentions && (
-          <div id="section" className="gap-8">
-            <div className="mb-8 flex items-start justify-between">
-              <div>
-                <Heading className="mb-2" size="big">
-                  {page.title_mentions}
-                </Heading>
-                <p className="text-muted-foreground">
-                  {page.description_mentions}
-                </p>
-              </div>
-              <div className="flex gap-2">
-                <Button variant="ghost" size="sm" asChild>
-                  <Link href="/blog/tags">Tags</Link>
-                </Button>
-                <Button variant="outline" asChild>
-                  <Link href="#mentions">View All</Link>
-                </Button>
-              </div>
-            </div>
-            <List asGrid cols="1 sm:2 xl:3" gap="4">
-              {mentions?.items ? (
-                mentions.items
-                  .slice(0, 6)
-                  .map((mention, index) => (
-                    <MentionCard
-                      key={`${mention.url}-${index}`}
-                      mention={mention}
-                      layout="compact"
-                    />
-                  ))
-              ) : (
-                <p className="text-muted-foreground">No mentions found.</p>
-              )}
-            </List>
-          </div>
-        )}
-
         {/* Articles Section - Combined Pinned and Regular */}
         <div id="section" className="gap-8">
           <div className="mb-8 flex items-start justify-between">
@@ -131,9 +87,6 @@ export default async function Blog() {
           {/* View All Link */}
           {remainingCount > 0 && (
             <div className="mt-8 relative">
-              {/* <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                <div className="w-full border-t border-border"></div>
-              </div> */}
               <div className="relative flex justify-center">
                 <Button
                   variant="ghost"

@@ -67,7 +67,7 @@ export default async function ArticlePage({
         <MDXContent code={article.code} />
       </div>
 
-      <TableOfContents />
+      <TableOfContents toc={article.toc} />
 
       <div className="col-start-2 mb-12">
         <Surround post={article} />

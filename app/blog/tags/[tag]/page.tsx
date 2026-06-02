@@ -1,7 +1,6 @@
 import { getAllPostsByTag, getAllTags } from "@/lib/api/blog/tags";
 import PageBreadcrumb from "@/app/components/layout/breadcrumb";
 import BlogPost from "@/app/components/blog/BlogPost";
-import MentionCard from "@/app/components/blog/MentionCard";
 import Tag from "@/app/components/blog/shared/tag/tag";
 import Heading from "@/app/components/heading";
 import Gaps from "@/app/components/layout/gaps";
@@ -48,8 +47,7 @@ export async function generateMetadata({ params }: TagPageProps) {
 export default async function TagPage({ params }: TagPageProps) {
   const { tag: tagParam } = await params;
   const tagName = decodeURIComponent(tagParam);
-  const { features } = getConfig();
-  const { articles, mentions, tag } = await getAllPostsByTag(
+  const { articles, tag } = await getAllPostsByTag(
     tagName
   );
 
@@ -57,8 +55,7 @@ export default async function TagPage({ params }: TagPageProps) {
     notFound();
   }
 
-  const totalPosts = articles.length + (features.mentions ? mentions.length : 0);
-
+  const totalPosts = articles.length;
   return (
     <Container>
       <PageBreadcrumb />
@@ -80,10 +77,6 @@ export default async function TagPage({ params }: TagPageProps) {
                   tag.articlesCount > 0 &&
                     `${tag.articlesCount} article${
                       tag.articlesCount !== 1 ? "s" : ""
-                    }`,
-                  features.mentions && tag.mentionsCount > 0 &&
-                    `${tag.mentionsCount} mention${
-                      tag.mentionsCount !== 1 ? "s" : ""
                     }`,
                 ]
                   .filter(Boolean)
@@ -110,31 +103,6 @@ export default async function TagPage({ params }: TagPageProps) {
                         key={article.slug}
                         layout="row"
                         {...article}
-                      />
-                    ))}
-                  </List>
-                </div>
-              )}
-
-              {/* Mentions Section */}
-              {features.mentions && mentions.length > 0 && (
-                <div>
-                  <div className="mb-6 flex items-start justify-between">
-                    <div>
-                      <Heading size="default" className="mb-2">
-                        Mentions
-                      </Heading>
-                      <p className="text-muted-foreground">
-                        External resources and links tagged with #{tagName}
-                      </p>
-                    </div>
-                  </div>
-                  <List asGrid cols="1 sm:2 xl:3" gap="4">
-                    {mentions.map((mention, index) => (
-                      <MentionCard
-                        key={`${mention.url}-${index}`}
-                        mention={mention}
-                        layout="compact"
                       />
                     ))}
                   </List>

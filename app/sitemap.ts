@@ -3,7 +3,7 @@ import {
   getAllArticles,
   getAllTags,
 } from "@/lib/api/blog/blog";
-import { PostInput } from "@/lib/types/data/blog";
+import { PostInput } from "@/velite.config";
 import { TagInfo } from "@/lib/api/blog/tags";
 import { APP_CONFIG } from "@/app.config";
 

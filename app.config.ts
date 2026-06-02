@@ -30,9 +30,6 @@ export const APP_CONFIG = {
     authorName: "Tim Afanasiev",
     maxItems: 20,
   },
-  features: {
-    mentions: false,
-  },
 };
 
 export function getConfig() {

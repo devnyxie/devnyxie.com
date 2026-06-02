@@ -68,7 +68,7 @@ export default async function TagsPage() {
                           variant="subtle"
                         />
                         <span className="text-sm font-medium text-muted-foreground">
-                          {tag.count} post{tag.count !== 1 ? "s" : ""}
+                          {tag.count} result{tag.count !== 1 ? "s" : ""}
                         </span>
                       </div>
 
@@ -77,12 +77,6 @@ export default async function TagsPage() {
                           <div>
                             {tag.articlesCount} article
                             {tag.articlesCount !== 1 ? "s" : ""}
-                          </div>
-                        )}
-                        {tag.mentionsCount > 0 && (
-                          <div>
-                            {tag.mentionsCount} mention
-                            {tag.mentionsCount !== 1 ? "s" : ""}
                           </div>
                         )}
                       </div>
